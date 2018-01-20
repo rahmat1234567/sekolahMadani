@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 20, 2018 at 10:40 AM
+-- Generation Time: Jan 20, 2018 at 10:52 AM
 -- Server version: 5.5.16
 -- PHP Version: 5.3.8
 
@@ -157,6 +157,20 @@ CREATE TABLE IF NOT EXISTS `staffit` (
   `telp_staffit` varchar(20) DEFAULT NULL,
   `alamat_staffit` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id_staffit`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `walikelas`
+--
+
+CREATE TABLE IF NOT EXISTS `walikelas` (
+  `id_wk` int(10) NOT NULL,
+  `id_guru` int(10) NOT NULL,
+  `id_kls` int(10) NOT NULL,
+  `id_sklh` int(10) NOT NULL,
+  PRIMARY KEY (`id_wk`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
