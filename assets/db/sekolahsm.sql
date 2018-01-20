@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 3.4.5
+-- version 3.3.9
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 19, 2018 at 10:16 AM
--- Server version: 5.5.16
--- PHP Version: 5.3.8
+-- Generation Time: Jan 20, 2018 at 10:06 AM
+-- Server version: 5.5.8
+-- PHP Version: 5.3.5
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -27,11 +26,21 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `akun` (
-  `id_admin` int(20) NOT NULL,
-  `pass_admin` varchar(30) NOT NULL,
+  `id_login` varchar(30) NOT NULL,
+  `pass_login` varchar(100) NOT NULL,
   `level` int(2) NOT NULL,
-  PRIMARY KEY (`id_admin`)
+  PRIMARY KEY (`id_login`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `akun`
+--
+
+INSERT INTO `akun` (`id_login`, `pass_login`, `level`) VALUES
+('1507112346', '16a30a734c46d35a6565fe576c8a5f9f', 1),
+('1507115285', '99138fcf1f8adf450c68e09c118d4f9d', 1),
+('1507115719', '5a1f19006889410c9d7a2ca0e2cf6d76', 1),
+('1507123530', 'bd596c423d62002e9734d49c5aeeb181', 1);
 
 -- --------------------------------------------------------
 
@@ -50,6 +59,11 @@ CREATE TABLE IF NOT EXISTS `guru` (
   PRIMARY KEY (`nip`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `guru`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -62,6 +76,11 @@ CREATE TABLE IF NOT EXISTS `matpel` (
   `id_kls` int(10) NOT NULL,
   PRIMARY KEY (`id_matpel`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `matpel`
+--
+
 
 -- --------------------------------------------------------
 
@@ -77,6 +96,11 @@ CREATE TABLE IF NOT EXISTS `sekolah` (
   `jml_siswa` int(10) NOT NULL,
   PRIMARY KEY (`id_sklh`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `sekolah`
+--
+
 
 -- --------------------------------------------------------
 
@@ -96,6 +120,11 @@ CREATE TABLE IF NOT EXISTS `siswa` (
   PRIMARY KEY (`nis`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `siswa`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -112,6 +141,7 @@ CREATE TABLE IF NOT EXISTS `staffit` (
   PRIMARY KEY (`id_staffit`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+--
+-- Dumping data for table `staffit`
+--
+
