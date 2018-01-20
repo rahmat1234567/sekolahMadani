@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 3.3.9
+-- version 3.4.5
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 20, 2018 at 10:06 AM
--- Server version: 5.5.8
--- PHP Version: 5.3.5
+-- Generation Time: Jan 20, 2018 at 10:40 AM
+-- Server version: 5.5.16
+-- PHP Version: 5.3.8
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -18,6 +19,20 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 --
 -- Database: `sekolahsm`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admin`
+--
+
+CREATE TABLE IF NOT EXISTS `admin` (
+  `id_login` varchar(20) NOT NULL,
+  `nama_adm` varchar(50) NOT NULL,
+  `email` varchar(50) DEFAULT NULL,
+  `telp_adm` varchar(30) DEFAULT NULL,
+  PRIMARY KEY (`id_login`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -51,7 +66,7 @@ INSERT INTO `akun` (`id_login`, `pass_login`, `level`) VALUES
 CREATE TABLE IF NOT EXISTS `guru` (
   `nip` int(50) NOT NULL,
   `nama_guru` varchar(50) NOT NULL,
-  `pass_guru` varchar(50) NOT NULL,
+  `pass_guru` varchar(100) NOT NULL,
   `alamat_guru` varchar(50) DEFAULT NULL,
   `telp_guru` varchar(20) DEFAULT NULL,
   `id_sklh` int(50) DEFAULT NULL,
@@ -59,10 +74,17 @@ CREATE TABLE IF NOT EXISTS `guru` (
   PRIMARY KEY (`nip`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+-- --------------------------------------------------------
+
 --
--- Dumping data for table `guru`
+-- Table structure for table `kelas`
 --
 
+CREATE TABLE IF NOT EXISTS `kelas` (
+  `id_kls` int(10) NOT NULL,
+  `nama_kls` varchar(30) NOT NULL,
+  PRIMARY KEY (`id_kls`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -71,16 +93,22 @@ CREATE TABLE IF NOT EXISTS `guru` (
 --
 
 CREATE TABLE IF NOT EXISTS `matpel` (
-  `id_matpel` int(50) NOT NULL,
+  `id_matpel` int(50) NOT NULL AUTO_INCREMENT,
   `nama_matpel` varchar(50) NOT NULL,
-  `id_kls` int(10) NOT NULL,
   PRIMARY KEY (`id_matpel`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `matpel`
 --
 
+INSERT INTO `matpel` (`id_matpel`, `nama_matpel`) VALUES
+(1, 'Matematika'),
+(2, 'Bahasa Indonesia'),
+(3, 'Bahasa Inggris'),
+(4, 'Fisika'),
+(5, 'Kimia'),
+(6, 'Seni Budaya');
 
 -- --------------------------------------------------------
 
@@ -97,11 +125,6 @@ CREATE TABLE IF NOT EXISTS `sekolah` (
   PRIMARY KEY (`id_sklh`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `sekolah`
---
-
-
 -- --------------------------------------------------------
 
 --
@@ -111,7 +134,7 @@ CREATE TABLE IF NOT EXISTS `sekolah` (
 CREATE TABLE IF NOT EXISTS `siswa` (
   `nis` int(30) NOT NULL,
   `nama_siswa` varchar(50) NOT NULL,
-  `pass_siswa` varchar(50) NOT NULL,
+  `pass_siswa` varchar(100) NOT NULL,
   `alamat_siswa` varchar(100) NOT NULL,
   `id_sklh` int(20) NOT NULL,
   `id_kls` int(10) NOT NULL,
@@ -119,11 +142,6 @@ CREATE TABLE IF NOT EXISTS `siswa` (
   `nama_ibu` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`nis`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `siswa`
---
-
 
 -- --------------------------------------------------------
 
@@ -134,14 +152,13 @@ CREATE TABLE IF NOT EXISTS `siswa` (
 CREATE TABLE IF NOT EXISTS `staffit` (
   `id_staffit` int(30) NOT NULL,
   `nama_staffit` varchar(50) NOT NULL,
-  `pass_staffit` varchar(50) NOT NULL,
+  `pass_staffit` varchar(100) NOT NULL,
   `id_sklh` int(20) NOT NULL,
   `telp_staffit` varchar(20) DEFAULT NULL,
   `alamat_staffit` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id_staffit`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `staffit`
---
-
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
