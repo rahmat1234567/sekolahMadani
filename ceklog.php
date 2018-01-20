@@ -76,6 +76,5 @@ else
 			echo"<center><h2>ID atau Password anda salah.</h2><br>
 				<a href=index.php><b>Ulangi Lagi</b></a></center>";	
 }
-}
-}
+
 ?>
