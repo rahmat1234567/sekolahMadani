@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 20, 2018 at 10:52 AM
+-- Generation Time: Jan 20, 2018 at 11:05 AM
 -- Server version: 5.5.16
 -- PHP Version: 5.3.8
 
@@ -83,6 +83,8 @@ CREATE TABLE IF NOT EXISTS `guru` (
 CREATE TABLE IF NOT EXISTS `kelas` (
   `id_kls` int(10) NOT NULL,
   `nama_kls` varchar(30) NOT NULL,
+  `id_wk` int(10) NOT NULL,
+  `id_sklh` int(20) NOT NULL,
   PRIMARY KEY (`id_kls`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -93,7 +95,7 @@ CREATE TABLE IF NOT EXISTS `kelas` (
 --
 
 CREATE TABLE IF NOT EXISTS `matpel` (
-  `id_matpel` int(50) NOT NULL AUTO_INCREMENT,
+  `id_matpel` int(20) NOT NULL AUTO_INCREMENT,
   `nama_matpel` varchar(50) NOT NULL,
   PRIMARY KEY (`id_matpel`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
@@ -167,9 +169,9 @@ CREATE TABLE IF NOT EXISTS `staffit` (
 
 CREATE TABLE IF NOT EXISTS `walikelas` (
   `id_wk` int(10) NOT NULL,
-  `id_guru` int(10) NOT NULL,
+  `nip` int(10) NOT NULL,
   `id_kls` int(10) NOT NULL,
-  `id_sklh` int(10) NOT NULL,
+  `id_sklh` int(20) NOT NULL,
   PRIMARY KEY (`id_wk`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
