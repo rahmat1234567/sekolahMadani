@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 22, 2018 at 05:32 AM
+-- Generation Time: Jan 22, 2018 at 05:42 AM
 -- Server version: 5.5.16
 -- PHP Version: 5.3.8
 
@@ -32,6 +32,7 @@ CREATE TABLE IF NOT EXISTS `admin` (
   `email` varchar(50) DEFAULT NULL,
   `telp_adm` varchar(30) DEFAULT NULL,
   `pass_login` varchar(100) NOT NULL,
+  `status_akun` int(2) NOT NULL,
   PRIMARY KEY (`id_login`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -39,11 +40,11 @@ CREATE TABLE IF NOT EXISTS `admin` (
 -- Dumping data for table `admin`
 --
 
-INSERT INTO `admin` (`id_login`, `nama_adm`, `email`, `telp_adm`, `pass_login`) VALUES
-('1507112346', 'Rahmat Wibowo', 'rahmatwibowo66@gmail.com', '082381169597', '16a30a734c46d35a6565fe576c8a5f9f'),
-('1507115285', 'Nidya Nur Syafiqoh', 'nidya.nursyafiqoh5285@student.unri.ac.id', '081311442407', '99138fcf1f8adf450c68e09c118d4f9d'),
-('1507115719', 'Lukmannil Hakim', 'lukmannil.hakim5719@student.unri.ac.id', '081371339605', '5a1f19006889410c9d7a2ca0e2cf6d76'),
-('1507123530', 'M. Muflih Fikri', 'muhammad.muflihfikrialazdi@student.unri.ac.id', '083167841065', 'bd596c423d62002e9734d49c5aeeb181');
+INSERT INTO `admin` (`id_login`, `nama_adm`, `email`, `telp_adm`, `pass_login`, `status_akun`) VALUES
+('1507112346', 'Rahmat Wibowo', 'rahmatwibowo66@gmail.com', '082381169597', '16a30a734c46d35a6565fe576c8a5f9f', 1),
+('1507115285', 'Nidya Nur Syafiqoh', 'nidya.nursyafiqoh5285@student.unri.ac.id', '081311442407', '99138fcf1f8adf450c68e09c118d4f9d', 1),
+('1507115719', 'Lukmannil Hakim', 'lukmannil.hakim5719@student.unri.ac.id', '081371339605', '5a1f19006889410c9d7a2ca0e2cf6d76', 1),
+('1507123530', 'M. Muflih Fikri', 'muhammad.muflihfikrialazdi@student.unri.ac.id', '083167841065', 'bd596c423d62002e9734d49c5aeeb181', 1);
 
 -- --------------------------------------------------------
 
@@ -59,6 +60,7 @@ CREATE TABLE IF NOT EXISTS `guru` (
   `telp_guru` varchar(20) DEFAULT NULL,
   `id_sklh` int(20) DEFAULT NULL,
   `wk_status` int(2) NOT NULL,
+  `status_akun` int(2) NOT NULL,
   PRIMARY KEY (`nip`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -160,6 +162,7 @@ CREATE TABLE IF NOT EXISTS `siswa` (
   `id_kls` int(10) NOT NULL,
   `nama_ayah` varchar(50) DEFAULT NULL,
   `nama_ibu` varchar(50) DEFAULT NULL,
+  `status_akun` int(2) NOT NULL,
   PRIMARY KEY (`nis`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -176,6 +179,7 @@ CREATE TABLE IF NOT EXISTS `staffit` (
   `id_sklh` int(20) NOT NULL,
   `telp_staffit` varchar(20) DEFAULT NULL,
   `alamat_staffit` varchar(100) DEFAULT NULL,
+  `status_akun` int(2) NOT NULL,
   PRIMARY KEY (`id_staffit`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
