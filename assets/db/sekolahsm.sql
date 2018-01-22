@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 22, 2018 at 03:49 AM
+-- Generation Time: Jan 22, 2018 at 05:18 AM
 -- Server version: 5.5.16
 -- PHP Version: 5.3.8
 
@@ -31,31 +31,19 @@ CREATE TABLE IF NOT EXISTS `admin` (
   `nama_adm` varchar(50) NOT NULL,
   `email` varchar(50) DEFAULT NULL,
   `telp_adm` varchar(30) DEFAULT NULL,
-  PRIMARY KEY (`id_login`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `akun`
---
-
-CREATE TABLE IF NOT EXISTS `akun` (
-  `id_login` varchar(30) NOT NULL,
   `pass_login` varchar(100) NOT NULL,
-  `level` int(2) NOT NULL,
   PRIMARY KEY (`id_login`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `akun`
+-- Dumping data for table `admin`
 --
 
-INSERT INTO `akun` (`id_login`, `pass_login`, `level`) VALUES
-('1507112346', '16a30a734c46d35a6565fe576c8a5f9f', 1),
-('1507115285', '99138fcf1f8adf450c68e09c118d4f9d', 1),
-('1507115719', '5a1f19006889410c9d7a2ca0e2cf6d76', 1),
-('1507123530', 'bd596c423d62002e9734d49c5aeeb181', 1);
+INSERT INTO `admin` (`id_login`, `nama_adm`, `email`, `telp_adm`, `pass_login`) VALUES
+('1507112340', 'Rahmat Wibowo', NULL, NULL, '1a4b8221c4aeb257ef2be538bc2275af'),
+('1507115285', 'Nidya Nur Syafiqoh', 'nidya.nursyafiqoh5285@student.unri.ac.id', '081311442407', '99138fcf1f8adf450c68e09c118d4f9d'),
+('1507115719', 'Lukmannil Hakim', NULL, NULL, '5a1f19006889410c9d7a2ca0e2cf6d76'),
+('1507123530', 'M. Muflih Fikri', 'muhammad.muflihfikrialazdi@student.unri.ac.id', '083167841065', 'bd596c423d62002e9734d49c5aeeb181');
 
 -- --------------------------------------------------------
 
@@ -116,7 +104,7 @@ CREATE TABLE IF NOT EXISTS `matpel` (
   `id_matpel` int(20) NOT NULL AUTO_INCREMENT,
   `nama_matpel` varchar(50) NOT NULL,
   PRIMARY KEY (`id_matpel`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
 --
 -- Dumping data for table `matpel`
@@ -128,7 +116,8 @@ INSERT INTO `matpel` (`id_matpel`, `nama_matpel`) VALUES
 (3, 'Bahasa Inggris'),
 (4, 'Fisika'),
 (5, 'Kimia'),
-(6, 'Seni Budaya');
+(6, 'Seni Budaya'),
+(7, 'Pendidikan Jasmani');
 
 -- --------------------------------------------------------
 
