@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 22, 2018 at 05:18 AM
+-- Generation Time: Jan 22, 2018 at 05:32 AM
 -- Server version: 5.5.16
 -- PHP Version: 5.3.8
 
@@ -40,9 +40,9 @@ CREATE TABLE IF NOT EXISTS `admin` (
 --
 
 INSERT INTO `admin` (`id_login`, `nama_adm`, `email`, `telp_adm`, `pass_login`) VALUES
-('1507112340', 'Rahmat Wibowo', NULL, NULL, '1a4b8221c4aeb257ef2be538bc2275af'),
+('1507112346', 'Rahmat Wibowo', 'rahmatwibowo66@gmail.com', '082381169597', '16a30a734c46d35a6565fe576c8a5f9f'),
 ('1507115285', 'Nidya Nur Syafiqoh', 'nidya.nursyafiqoh5285@student.unri.ac.id', '081311442407', '99138fcf1f8adf450c68e09c118d4f9d'),
-('1507115719', 'Lukmannil Hakim', NULL, NULL, '5a1f19006889410c9d7a2ca0e2cf6d76'),
+('1507115719', 'Lukmannil Hakim', 'lukmannil.hakim5719@student.unri.ac.id', '081371339605', '5a1f19006889410c9d7a2ca0e2cf6d76'),
 ('1507123530', 'M. Muflih Fikri', 'muhammad.muflihfikrialazdi@student.unri.ac.id', '083167841065', 'bd596c423d62002e9734d49c5aeeb181');
 
 -- --------------------------------------------------------
@@ -192,18 +192,6 @@ CREATE TABLE IF NOT EXISTS `walikelas` (
   `id_sklh` int(20) NOT NULL,
   PRIMARY KEY (`id_wk`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `jadwal`
---
-ALTER TABLE `jadwal`
-  ADD CONSTRAINT `fk_jadwal_guru` FOREIGN KEY (`nip`) REFERENCES `guru` (`nip`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_jadwal_kls` FOREIGN KEY (`id_kls`) REFERENCES `kelas` (`id_kls`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_jadwal_matpel` FOREIGN KEY (`id_matpel`) REFERENCES `matpel` (`id_matpel`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
