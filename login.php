@@ -6,7 +6,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Sekolahku</title>
+    <title>Sekolah Madani</title>
+
+    <!-- Custom CSS - Include with every page -->
+    <link href="assets/css/custom-css.css" rel="stylesheet">
 
     <!-- Core CSS - Include with every page -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
@@ -15,24 +18,22 @@
     <!-- SB Admin CSS - Include with every page -->
     <link href="assets/css/sb-admin.css" rel="stylesheet">
 
-    <!-- Custom CSS - Include in Login page only -->
-    <link href="assets/css/custom-css.css" rel="stylesheet">
 
 </head>
 
-<body id="custombg">
+<body>
     <div class="container">
         <div class="row">
             <div class="col-md-4 col-md-offset-4">
                 <div class="login-panel panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Login</h3>
+                        <center><h3 class="panel-title">Sekolah Smart Madani - Login</h3><center>
                     </div>
                     <div class="panel-body">
                         <form role="form" method="post" action="ceklog.php">
-                            <fieldset>
+                            <fieldset class="fs1">
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="Username" name="username"  autofocus>
+                                    <input class="form-control" placeholder="NIP/NIS" name="username"  autofocus>
                                 </div>
                                 <div class="form-group">
                                     <input class="form-control" placeholder="Password" name="password" type="password" value="">

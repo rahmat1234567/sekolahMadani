@@ -1,11 +1,4 @@
-#custombg{
-	background-color:#99cccc;
-	background-image: linear-gradient(30deg, #77A1A1 12%, transparent 12.5%, transparent 87%, #77A1A1 87.5%, #77A1A1),
-	linear-gradient(150deg, #77A1A1 12%, transparent 12.5%, transparent 87%, #77A1A1 87.5%, #77A1A1),
-	linear-gradient(30deg, #77A1A1 12%, transparent 12.5%, transparent 87%, #77A1A1 87.5%, #77A1A1),
-	linear-gradient(150deg, #77A1A1 12%, transparent 12.5%, transparent 87%, #77A1A1 87.5%, #77A1A1),
-	linear-gradient(60deg, #568282 25%, transparent 25.5%, transparent 75%, #568282 75%, #568282), 
-	linear-gradient(60deg, #568282 25%, transparent 25.5%, transparent 75%, #568282 75%, #568282);
-	background-size:80px 140px;
-	background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
+#fs1{
+	background: red;
+	box-shadow: 0 4px 5px black;
 }
