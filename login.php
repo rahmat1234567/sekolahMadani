@@ -21,7 +21,7 @@
 
 </head>
 
-<body>
+<body id="custombg">
     <div class="container">
         <div class="row">
             <div class="col-md-4 col-md-offset-4">
@@ -31,7 +31,7 @@
                     </div>
                     <div class="panel-body">
                         <form role="form" method="post" action="ceklog.php">
-                            <fieldset id="fs1">
+                            <fieldset>
                                 <div class="form-group">
                                     <input class="form-control" placeholder="NIP/NIS" name="username"  autofocus>
                                 </div>
