@@ -16,7 +16,7 @@ include "config/conn.php";
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>SISTEM ABSENSI REAL TIME</title>
+    <title>Sekolah Smart Madani</title>
 
     <!-- Core CSS - Include with every page -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
