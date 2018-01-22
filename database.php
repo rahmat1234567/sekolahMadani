@@ -12,11 +12,19 @@ class database{
 	}
 	
 	function tampil_data(){
-		$data=mysql_query("select * from matpel");
+		$data=mysql_query("select * from matpel"); //untuk mengambil data dari database dengan tabel matpel
 		while($d = mysql_fetch_array($data)){
 			$hasil[]=$d;
 		}
 		return $hasil;
+	}
+	
+	function input($nama_matpel){
+		mysql_query("insert into matpel values('','$nama_matpel')");
+	}
+	
+	function hapus($id_matpel){
+		mysql_query("delete from matpel where id_matpel='$id_matpel'");
 	}
 }
 ?>
