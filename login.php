@@ -9,15 +9,18 @@
     <title>Sekolahku</title>
 
     <!-- Core CSS - Include with every page -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet">
 
     <!-- SB Admin CSS - Include with every page -->
-    <link href="css/sb-admin.css" rel="stylesheet">
+    <link href="assets/css/sb-admin.css" rel="stylesheet">
+
+    <!-- Custom CSS - Include in Login page only -->
+    <link href="assets/css/custom-css.css" rel="stylesheet">
 
 </head>
 
-<body>
+<body id="custombg">
     <div class="container">
         <div class="row">
             <div class="col-md-4 col-md-offset-4">
