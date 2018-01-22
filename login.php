@@ -30,7 +30,7 @@
                         <center><h3 class="panel-title">Sekolah Smart Madani - Login</h3><center>
                     </div>
                     <div class="panel-body">
-                        <form role="form" method="post" action="ceklog.php">
+                        <form role="form" method="post" name="loginform" action="ceklog.php" onSubmit="return valid()">
                             <fieldset>
                                 <div class="form-group">
                                     <input class="form-control" placeholder="NIP/NIS" name="username"  autofocus>
@@ -39,7 +39,7 @@
                                     <input class="form-control" placeholder="Password" name="password" type="password" value="">
                                 </div>
                                 <!-- Change this to a button or input when using this as a form -->
-                                <button class="btn btn-lg btn-success btn-block">Login</button>
+                                <input type="submit" class="btn btn-lg btn-success btn-block" value="Login">
                             </fieldset>
                         </form>
                     </div>
@@ -55,7 +55,37 @@
 
     <!-- SB Admin Scripts - Include with every page -->
     <script src="js/sb-admin.js"></script>
+    <script>
+        function valid(){
+            var userValid = /^[0-9\-]*$/;
+            var user      = loginform.username.value;
+            var pass      = loginform.password.value;
+            
+            var pesan = '';
+             
+            if (pass1 == '') {
+                pesan = '- Password harus diisi\n';
+            }
+             
+            if (user == '') {
+                pesan = '- Nama harus diisi\n';
+            }
+             
+            if (user != '' && !user.match(userValid)) {
+                pesan += '- NIP/NIS tidak valid\n';
+            }
+            
+            if (pesan != '') {
+                alert('Maaf, ada kesalahan saat login : \n'+pesan);
+                return false;
+            }
+        return true
+        }
+    </script>
+
 
 </body>
+
+
 
 </html>
