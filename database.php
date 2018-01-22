@@ -26,5 +26,17 @@ class database{
 	function hapus($id_matpel){
 		mysql_query("delete from matpel where id_matpel='$id_matpel'");
 	}
+	
+	function edit($id_matpel){
+		$data = mysql_query("select * from matpel where id_matpel='$id_matpel'");
+		while($d = mysql_fetch_array($data)){
+			$hasil[] = $d;
+		}
+		return $hasil;
+	}
+	
+	function update($id_matpel,$nama_matpel){
+		mysql_query("update matpel set nama_matpel='$nama_matpel' where id_matpel='$id_matpel'");
+	}
 }
 ?>
