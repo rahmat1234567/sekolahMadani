@@ -1,5 +1,5 @@
 <?php
-include"assets/config/conn.php";
+include"config/conn.php";
 
 $pass=md5($_POST['password']);
 $passw=$_POST['password'];
