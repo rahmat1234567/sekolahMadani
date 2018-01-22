@@ -16,6 +16,10 @@
 	animation-duration: 1s;
 	animation-delay: 500ms;
 	animation-fill-mode: forwards;
+	-webkit-animation-name: up;
+	-webkit-animation-duration: 1s;
+	-webkit-animation-delay: 500ms;
+	-webkit-animation-fill-mode: forwards;
 }
 
 

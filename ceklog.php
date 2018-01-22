@@ -19,7 +19,7 @@ if($rs['level']==1){
 			$_SESSION['email']=$rs['email'];
 			$_SESSION['telp_adm']=$rs['telp_adm'];
 				
-		header('location:media.php?module=home');
+		header('location:admin.php?module=home');
 }
 else if($rs['level']==4){
 $mr=md5($_POST['pass_login']);
@@ -43,7 +43,7 @@ $mr=md5($_POST['pass_login']);
 					$countaaa=mysql_num_rows($sqlaaa);
 					$rsaaa=mysql_fetch_array($sqlaaa);
 				$_SESSION['nama_sklh']=$rsaaa['nama_sklh'];
-			header('location:media.php?module=home');
+			header('location:admin.php?module=home');
 				
 }
 
@@ -69,7 +69,7 @@ $gr=md5($_POST['pass_login']);
 					$countzzz=mysql_num_rows($sqlzzz);
 					$rszzz=mysql_fetch_array($sqlzzz);
 				}
-			header('location:media.php?module=home');
+			header('location:admin.php?module=home');
 	
 	
 }
