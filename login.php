@@ -31,7 +31,7 @@
                     </div>
                     <div class="panel-body">
                         <form role="form" method="post" action="ceklog.php">
-                            <fieldset class="fs1">
+                            <fieldset id="fs1">
                                 <div class="form-group">
                                     <input class="form-control" placeholder="NIP/NIS" name="username"  autofocus>
                                 </div>
@@ -39,7 +39,7 @@
                                     <input class="form-control" placeholder="Password" name="password" type="password" value="">
                                 </div>
                                 <!-- Change this to a button or input when using this as a form -->
-                                <button class="btn btn-lg btn-success btn-block">Login</a>
+                                <button class="btn btn-lg btn-success btn-block">Login</button>
                             </fieldset>
                         </form>
                     </div>
