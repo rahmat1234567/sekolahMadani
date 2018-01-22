@@ -21,6 +21,8 @@ if($rs['level']==1){
 				
 		header('location:admin.php?module=home');
 }
+
+
 else if($rs['level']==4){
 $mr=md5($_POST['pass_login']);
 	$sqla=mysql_query("select * from siswa where nis='$user' and pass_siswa='$mr'");
