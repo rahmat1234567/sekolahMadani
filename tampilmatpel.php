@@ -6,11 +6,11 @@ $db = new database();
 <h1>CRUD OOP UNTUK MATPEL SMART MADANI</h1>
 <h2>Create BY RAHMAT AGLER</h2>
 
-<a href="input.php">Silahkan Input Data</a>
+<a href="inputmatpel.php">Silahkan Input Data</a>
 <table border="2">
 	<tr>
 		<th>No</th>
-		<th>Matpel</th>
+		<th>Mata Pelajaran</th>
 	</tr>
 	<?php
 	$no = 1;
@@ -21,7 +21,7 @@ $db = new database();
 		<td><?php echo $x['nama_matpel']; ?></td>
 		<td>
 			<a href="edit.php?id=<?php echo $x['id']; ?>&aksi=edit">Edit</a>
-			<a href="hapus.php?id=<?php echo $x['id']; ?>&aksi=hapus">Hapus</a>
+			<a href="proses.php?id_matpel=<?php echo $x['id_matpel']; ?>&aksi=hapus">Hapus</a>
 		</td>
 	</tr>
 	<?php
