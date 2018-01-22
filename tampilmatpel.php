@@ -20,7 +20,7 @@ $db = new database();
 		<td><?php echo $no++; ?></td>
 		<td><?php echo $x['nama_matpel']; ?></td>
 		<td>
-			<a href="edit.php?id=<?php echo $x['id']; ?>&aksi=edit">Edit</a>
+			<a href="editmatpel.php?id_matpel=<?php echo $x['id_matpel']; ?>&aksi=edit">Edit</a>
 			<a href="proses.php?id_matpel=<?php echo $x['id_matpel']; ?>&aksi=hapus">Hapus</a>
 		</td>
 	</tr>

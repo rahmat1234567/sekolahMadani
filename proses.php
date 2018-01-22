@@ -12,7 +12,7 @@ elseif($aksi == "hapus"){
 	header("location:tampilmatpel.php");
 }
 elseif($aksi == "update"){
-	$db->update($_POST['id'], $_POST['nama_matpel']);
-	header("location:tampil.php");
+	$db->update($_POST['id_matpel'], $_POST['nama_matpel']);
+	header("location:tampilmatpel.php");
 }
 ?>

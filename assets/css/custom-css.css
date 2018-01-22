@@ -11,19 +11,25 @@
 }
 
 .login-panel {
-	transition: all 700ms ease-in-out;
+	opacity: 0;
 	animation-name: up;
-	animation-duration: 7s;
-	animation-delay: -7s;
-	animation-direction: reverse;
+	animation-duration: 1s;
+	animation-delay: 500ms;
+	animation-fill-mode: forwards;
+	-webkit-animation-name: up;
+	-webkit-animation-duration: 1s;
+	-webkit-animation-delay: 500ms;
+	-webkit-animation-fill-mode: forwards;
 }
 
 
 @keyframes up {
     from {
     	opacity: 0;
+    	transform: translateY(50px);
     }
     to {
     	opacity: 1;
+    	transform: translateY(0px);
     }
 }
