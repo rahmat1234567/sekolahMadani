@@ -1,10 +1,13 @@
 <?php
 include"assets/config/conn.php";
 
-$pass=md5($_POST['pass_login']);
-$passw=$_POST['pass_login'];
+$pass=md5($_POST['password']);
+$passw=$_POST['password'];
 
-$user=$_POST['id_login'];
+$user=$_POST['username'];
+$sql=mysql_query("select * from akun where id_login='$user' and pass_login='$pass'");
+	$count=mysql_num_rows($sql);
+	$rs=mysql_fetch_array($sql);
 if($rs['level']==1){
 	$sql=mysql_query("select * from akun where id_login='$user' and pass_login='$pass'");
 	$count=mysql_num_rows($sql);
@@ -16,7 +19,6 @@ if($rs['level']==1){
 			$_SESSION['email']=$rs['email'];
 			$_SESSION['telp_adm']=$rs['telp_adm'];
 				
-			
 		header('location:media.php?module=home');
 }
 else if($rs['level']==4){
