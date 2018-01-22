@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 20, 2018 at 11:05 AM
+-- Generation Time: Jan 22, 2018 at 03:49 AM
 -- Server version: 5.5.16
 -- PHP Version: 5.3.8
 
@@ -69,9 +69,27 @@ CREATE TABLE IF NOT EXISTS `guru` (
   `pass_guru` varchar(100) NOT NULL,
   `alamat_guru` varchar(50) DEFAULT NULL,
   `telp_guru` varchar(20) DEFAULT NULL,
-  `id_sklh` int(50) DEFAULT NULL,
+  `id_sklh` int(20) DEFAULT NULL,
   `wk_status` int(2) NOT NULL,
   PRIMARY KEY (`nip`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `jadwal`
+--
+
+CREATE TABLE IF NOT EXISTS `jadwal` (
+  `id_jadwal` int(20) NOT NULL,
+  `jam` varchar(30) NOT NULL,
+  `id_matpel` int(20) NOT NULL,
+  `nip` int(50) NOT NULL,
+  `id_kls` int(10) NOT NULL,
+  PRIMARY KEY (`id_jadwal`),
+  KEY `fk_jadwal_kls` (`id_kls`),
+  KEY `fk_jadwal_matpel` (`id_matpel`),
+  KEY `fk_jadwal_guru` (`nip`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -119,13 +137,24 @@ INSERT INTO `matpel` (`id_matpel`, `nama_matpel`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `sekolah` (
-  `id_sklh` int(20) NOT NULL,
+  `id_sklh` int(20) NOT NULL AUTO_INCREMENT,
   `nama_sklh` varchar(50) NOT NULL,
   `alamat_sklh` varchar(100) DEFAULT NULL,
-  `telp_sklh` varchar(20) DEFAULT NULL,
-  `jml_siswa` int(10) NOT NULL,
+  `telp_sklh` varchar(50) DEFAULT NULL,
+  `jmlh_siswa` int(10) DEFAULT NULL,
   PRIMARY KEY (`id_sklh`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10006 ;
+
+--
+-- Dumping data for table `sekolah`
+--
+
+INSERT INTO `sekolah` (`id_sklh`, `nama_sklh`, `alamat_sklh`, `telp_sklh`, `jmlh_siswa`) VALUES
+(10001, 'SMP Negeri 1 Pekanbaru', 'Jl. Sultan Syarif Qasim 157', NULL, NULL),
+(10002, 'SMP Negeri 2 Pekanbaru', 'Jl.Prof.M.Yamin SH No.65', NULL, NULL),
+(10003, 'SMP Negeri 3 Pekanbaru', 'Jl. Dahlia No. 102', NULL, NULL),
+(10004, 'SMP Negeri 4 Pekanbaru', 'Jl. Dr. Sutomo 110', NULL, NULL),
+(10005, 'SMP Negeri 5 Pekanbaru', 'Jl. Sultan Syarif Qasim 155', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -174,6 +203,18 @@ CREATE TABLE IF NOT EXISTS `walikelas` (
   `id_sklh` int(20) NOT NULL,
   PRIMARY KEY (`id_wk`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `jadwal`
+--
+ALTER TABLE `jadwal`
+  ADD CONSTRAINT `fk_jadwal_guru` FOREIGN KEY (`nip`) REFERENCES `guru` (`nip`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_jadwal_kls` FOREIGN KEY (`id_kls`) REFERENCES `kelas` (`id_kls`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_jadwal_matpel` FOREIGN KEY (`id_matpel`) REFERENCES `matpel` (`id_matpel`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
