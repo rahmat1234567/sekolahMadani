@@ -30,16 +30,16 @@
                         <center><h3 class="panel-title">Sekolah Smart Madani - Login</h3><center>
                     </div>
                     <div class="panel-body">
-                        <form role="form" method="post" name="loginform" action="ceklog.php" onSubmit="return valid()">
+                        <form method="post" name="loginform" action="ceklog.php" onSubmit="return valid()">
                             <fieldset>
                                 <div class="form-group">
                                     <input class="form-control" placeholder="NIP/NIS" name="username"  autofocus>
                                 </div>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="Password" name="password" type="password" value="">
+                                    <input class="form-control" placeholder="Password" name="password" type="password">
                                 </div>
                                 <!-- Change this to a button or input when using this as a form -->
-                                <input type="submit" class="btn btn-lg btn-success btn-block" value="Login">
+                                <input type="submit" class="btn btn-lg btn-success btn-block" value="Login" onClick="return valid()">
                             </fieldset>
                         </form>
                     </div>
@@ -60,7 +60,6 @@
             var userValid = /^[0-9\-]*$/;
             var user      = loginform.username.value;
             var pass      = loginform.password.value;
-            
             var pesan = '';
              
             if (pass1 == '') {
@@ -79,7 +78,7 @@
                 alert('Maaf, ada kesalahan saat login : \n'+pesan);
                 return false;
             }
-        return true
+            return true;
         }
     </script>
 

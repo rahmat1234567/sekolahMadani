@@ -16,7 +16,7 @@ include "config/conn.php";
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Sekolah Smart Madani</title>
+    <title>Halaman Admin - Sekolah Smart Madani</title>
 
     <!-- Core CSS - Include with every page -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
@@ -42,7 +42,7 @@ include "config/conn.php";
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="admin.php?module=home">SISTEM ABSENSI REAL TIME</a>
+                <a class="navbar-brand" href="admin.php?module=home">SEKOLAH SMART MADANI</a>
             </div>
             <!-- /.navbar-header -->
 
