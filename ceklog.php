@@ -18,6 +18,7 @@ if($rs['status_akun']==1){
 			$_SESSION['nama_adm']=$rs['nama_adm'];
 			$_SESSION['email']=$rs['email'];
 			$_SESSION['telp_adm']=$rs['telp_adm'];
+			$_SESSION['status_akun']=$rs['status_akun'];
 				
 		header('location:admin.php?module=home');
 }

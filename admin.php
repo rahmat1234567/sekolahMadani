@@ -4,9 +4,6 @@ if(!empty($_SESSION['nama_adm'])){
 $uidi=$_SESSION['id_login'];	
 $usre=$_SESSION['nama_adm'];
 $level=$_SESSION['status_akun'];
-$klss=$_SESSION['idk'];
-$ortu=$_SESSION['ortu'];
-$idd=$_SESSION['id'];
 
 
 include "config/conn.php";
@@ -61,17 +58,17 @@ echo "User : $usre";
        <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
 <?php 
-if($level=="admin_guru"){
-	$sqla=mysql_query("select * from sekolah where id='$idd'");
-	$rsa=mysql_fetch_array($sqla);
-echo "Sekolah : $rsa[nama]" ;
-}else{
+if($level==1){
+echo "Welcome, Admin!";
+}
+/*
+else{
 	$sql=mysql_query("select * from kelas where idk='$klss'");
 	$rs=mysql_fetch_array($sql);
 	$sqla=mysql_query("select * from sekolah where id='$rs[id]'");
 	$rsa=mysql_fetch_array($sqla);
 echo "Sekolah : $rsa[nama] | $rs[nama]" ;
-}
+}*/
 ?> 
                    </a>
                 </li>
