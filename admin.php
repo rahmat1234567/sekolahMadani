@@ -1,9 +1,9 @@
 <?php
 session_start();
-if(!empty($_SESSION['nama'])){
-$uidi=$_SESSION['idu'];	
-$usre=$_SESSION['nama'];
-$level=$_SESSION['level'];
+if(!empty($_SESSION['nama_adm'])){
+$uidi=$_SESSION['id_login'];	
+$usre=$_SESSION['nama_adm'];
+$level=$_SESSION['status_akun'];
 $klss=$_SESSION['idk'];
 $ortu=$_SESSION['ortu'];
 $idd=$_SESSION['id'];

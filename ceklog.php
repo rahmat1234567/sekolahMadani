@@ -5,11 +5,11 @@ $pass=md5($_POST['password']);
 $passw=$_POST['password'];
 
 $user=$_POST['username'];
-$sql=mysql_query("select * from akun where id_login='$user' and pass_login='$pass'");
+$sql=mysql_query("select * from admin where id_login='$user' and pass_login='$pass'");
 	$count=mysql_num_rows($sql);
 	$rs=mysql_fetch_array($sql);
-if($rs['level']==1){
-	$sql=mysql_query("select * from akun where id_login='$user' and pass_login='$pass'");
+if($rs['status_akun']==1){
+	$sql=mysql_query("select * from admin where id_login='$user' and pass_login='$pass'");
 	$count=mysql_num_rows($sql);
 	$rs=mysql_fetch_array($sql);
 	
@@ -23,7 +23,7 @@ if($rs['level']==1){
 }
 
 
-else if($rs['level']==4){
+else if($rs['status_akun']==4){
 $mr=md5($_POST['pass_login']);
 	$sqla=mysql_query("select * from siswa where nis='$user' and pass_siswa='$mr'");
 	$counta=mysql_num_rows($sqla);
@@ -49,7 +49,7 @@ $mr=md5($_POST['pass_login']);
 				
 }
 
-else if($rs['level']==3){
+else if($rs['status_akun']==3){
 $gr=md5($_POST['pass_login']);
 	$sqlz=mysql_query("select * from guru where nip='$user' and pass_guru='$gr'");
 	$countz=mysql_num_rows($sqlz);
