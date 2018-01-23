@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 22, 2018 at 05:42 AM
+-- Generation Time: Jan 23, 2018 at 03:33 AM
 -- Server version: 5.5.16
 -- PHP Version: 5.3.8
 
@@ -64,6 +64,13 @@ CREATE TABLE IF NOT EXISTS `guru` (
   PRIMARY KEY (`nip`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `guru`
+--
+
+INSERT INTO `guru` (`nip`, `nama_guru`, `pass_guru`, `alamat_guru`, `telp_guru`, `id_sklh`, `wk_status`, `status_akun`) VALUES
+(2147483647, 'Riva Eka Putri', '7f15e383b9621dc01eee9c0506c56f67', 'JL. Kartama No. 27', '081324067905', 10003, 0, 3);
+
 -- --------------------------------------------------------
 
 --
@@ -106,7 +113,7 @@ CREATE TABLE IF NOT EXISTS `matpel` (
   `id_matpel` int(20) NOT NULL AUTO_INCREMENT,
   `nama_matpel` varchar(50) NOT NULL,
   PRIMARY KEY (`id_matpel`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
 --
 -- Dumping data for table `matpel`
@@ -166,6 +173,13 @@ CREATE TABLE IF NOT EXISTS `siswa` (
   PRIMARY KEY (`nis`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `siswa`
+--
+
+INSERT INTO `siswa` (`nis`, `nama_siswa`, `pass_siswa`, `alamat_siswa`, `id_sklh`, `id_kls`, `nama_ayah`, `nama_ibu`, `status_akun`) VALUES
+(23693536, 'Najwa Nurhumaidah', 'cb2147dca12f89ef8c4f9e5783456c64', 'Jl. Enau No. 389', 0, 0, 'Drs. Multachdi M.Si', 'Dra. Agustina', 4);
+
 -- --------------------------------------------------------
 
 --
@@ -173,7 +187,7 @@ CREATE TABLE IF NOT EXISTS `siswa` (
 --
 
 CREATE TABLE IF NOT EXISTS `staffit` (
-  `id_staffit` int(30) NOT NULL,
+  `id_staffit` int(30) NOT NULL AUTO_INCREMENT,
   `nama_staffit` varchar(50) NOT NULL,
   `pass_staffit` varchar(100) NOT NULL,
   `id_sklh` int(20) NOT NULL,
@@ -181,7 +195,14 @@ CREATE TABLE IF NOT EXISTS `staffit` (
   `alamat_staffit` varchar(100) DEFAULT NULL,
   `status_akun` int(2) NOT NULL,
   PRIMARY KEY (`id_staffit`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=123002 ;
+
+--
+-- Dumping data for table `staffit`
+--
+
+INSERT INTO `staffit` (`id_staffit`, `nama_staffit`, `pass_staffit`, `id_sklh`, `telp_staffit`, `alamat_staffit`, `status_akun`) VALUES
+(123001, 'Muhammad Iqbal Nasution', 'fe34bd483a283bfa1331f5e65625553c', 10001, '085271667019', 'Jl. Pemuda No.11', 2);
 
 -- --------------------------------------------------------
 
