@@ -12,7 +12,7 @@ class database{
 	}
 	
 	function tampil_data(){
-		$data=mysql_query("select * from sekolah");
+		$data=mysql_query("select * from staffit");
 		while($d = mysql_fetch_array($data)){
 			$hasil[]=$d;
 		}
