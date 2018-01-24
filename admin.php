@@ -49,11 +49,12 @@ include "config/conn.php";
             <ul class="nav navbar-top-links navbar-right">
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <i class="fa fa-user">
 <?php 
 echo "User : $usre"; 
 ?> 
 
-                   </a>
+                   </i></a>
                 </li>
        <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -73,16 +74,18 @@ echo "Sekolah : $rsa[nama] | $rs[nama]" ;
                    </a>
                 </li>
 
-<li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="" href="logout.php">
-<?php echo "Logout"; ?> 
-                   </a>
-                </li>                
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
 <?php echo "Tanggal : ".date("d-m-Y"); ?> 
                    </a>
                 </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="" href="logout.php">
+                    <i class="fa fa-sign-out">
+<?php echo "Logout"; ?> 
+                   </i></a>
+                </li>                
+
                 <!-- /.dropdown -->
             </ul>
             <!-- /.navbar-top-links -->
