@@ -1,9 +1,15 @@
 <?php
 session_start();
-if(!empty($_SESSION['nama_adm'])){
-$uidi=$_SESSION['id_login'];	
-$usre=$_SESSION['nama_adm'];
-$level=$_SESSION['status_akun'];
+if(!empty($_SESSION['nama'])){
+$uidi=$_SESSION['id'];	
+$usre=$_SESSION['nama'];
+$level=$_SESSION['status'];
+
+$mail=$_SESSION['email'];
+$tlpn=$_SESSION['telp'];
+$jkjk=$_SESSION['jk'];
+$nmsklh=$_SESSION['nama_sklh']; 
+$nmkls=$_SESSION['nama_kls'];
 
 
 include "config/conn.php";
