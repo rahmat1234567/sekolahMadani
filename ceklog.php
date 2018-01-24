@@ -114,27 +114,3 @@ else{
 	}
 }
 ?>
-
-<!-- ini code siswa 
-
-
-			session_start();
-				$_SESSION['nis']=$rsa['nis'];
-				$_SESSION['nama_siswa']=$rsa['nama_siswa'];
-				$_SESSION['alamat_siswa']=$rsa['alamat_siswa'];
-				$_SESSION['nama_ibu']=$rsa['nama_ibu'];
-				$_SESSION['nama_ayah']=$rsa['nama_ayah'];
-					$kode_kls=$rsa['id_kls']; 
-					$sqlaa=mysql_query("select nama_kls from kelas where id_kls='$kode_kls'");
-					$countaa=mysql_num_rows($sqlaa);
-					$rsaa=mysql_fetch_array($sqlaa);
-				$_SESSION['nama_kelas']=$rsaa['nama_kls'];
-					$kode_sklh=$rsa['id_sklh']; 
-					$sqlaaa=mysql_query("select nama_sklh from sekolah where id_sklh='$kode_sklh'");
-					$countaaa=mysql_num_rows($sqlaaa);
-					$rsaaa=mysql_fetch_array($sqlaaa);
-				$_SESSION['nama_sklh']=$rsaaa['nama_sklh'];
-			header('location:admin.php?module=home');	
-
-
--->
