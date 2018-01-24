@@ -18,5 +18,25 @@ class database{
 		}
 		return $hasil;
 	}
+	
+	function input($nama_staffit,$pass_staffit,$alamat_staffit,$telp_staffit){
+		mysql_query("insert into staffit values('','$nama_staffit','$pass_staffit','','$telp_staffit','$alamat_staffit','')");
+	}
+	
+	function hapus($id_staffit){
+		mysql_query("delete from staffit where id_staffit='$id_staffit'");
+	}
+	
+	function edit($id_staffit){
+		$data = mysql_query("select * from staffit where id_staffit='$id_staffit'");
+		while($d = mysql_fetch_array($data)){
+			$hasil[] = $d;
+		}
+		return $hasil;
+	}
+	
+	function update($nama_staffit,$pass_staffit,$alamat_staffit,$telp_staffit){
+		mysql_query("update staffit set nama_staffit='$nama_staffit',pass_staffit='$pass_staffit', alamat_staffit='$alamat_staffit', telp_staffit='$telp_staffit' where id_staffit='$id_staffit'");
+	}
 }
 ?>
