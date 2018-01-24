@@ -19,8 +19,8 @@ class database{
 		return $hasil;
 	}
 	
-	function input($nip,$nama_guru,$pass_guru,$alamat_guru,$telp_guru){
-		mysql_query("insert into guru values('$nip','$nama_guru','$pass_guru','$alamat_guru','$telp_guru','','','')");
+	function input($nip,$nama_guru,$jk,$pass_guru,$alamat_guru,$telp_guru){
+		mysql_query("insert into guru values('$nip','$nama_guru','$pass_guru','$alamat_guru','$telp_guru','','','','$jk')");
 	}
 	
 	function hapus($nip){

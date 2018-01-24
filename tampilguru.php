@@ -12,6 +12,7 @@ $db = new database();
 		<th>No</th>
 		<th>NIP</th>
 		<th>Nama Guru</th>
+		<th>Gender</th>
 		<th>Alamat</th>
 		<th>Telp</th>
 		<th>Nama Sekolah</th>
@@ -26,6 +27,7 @@ $db = new database();
 		<td><?php echo $no++; ?></td>
 		<td><?php echo $x['nip']; ?></td>
 		<td><?php echo $x['nama_guru']; ?></td>	
+		<td><?php echo $x['jk']; ?></td>
 		<td><?php echo $x['alamat_guru']; ?></td>
 		<td><?php echo $x['telp_guru']; ?></td>
 		<td><?php echo $x['id_sklh']; ?></td>
