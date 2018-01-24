@@ -8,8 +8,6 @@
 
     <title>Sekolah Madani</title>
 
-    <script src="assets/js/verify.js"></script>
-
     <!-- Custom CSS - Include with every page -->
     <link href="assets/css/custom-css.css" rel="stylesheet">
 
@@ -40,19 +38,19 @@
                         var pesan = '';
                          
                         if (pass == '') {
-                            pesan = '- Password harus diisi\n';
+                            pesan = '> Password harus diisi\n';
                         }
                          
                         if (user == '') {
-                            pesan = '- NIP/NIS harus diisi\n';
+                            pesan = '> NIP/NIS harus diisi\n';
                         }
                          
                         if (user != '' && !user.match(userValid)) {
-                            pesan += '- NIP/NIS tidak valid\n';
+                            pesan += '> NIP/NIS tidak valid\n';
                         }
                         
                         if (pesan != '') {
-                            alert('Maaf, ada kesalahan saat login : \n'+pesan);
+                            alert('Maaf, ada kesalahan saat login: \n'+pesan);
                             return false;
                         }
                         return true;
