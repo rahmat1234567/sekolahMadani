@@ -6,7 +6,7 @@ $aksi = $_GET['aksi'];
 if($aksi == "tambah"){
 	
 	$pass=md5($_POST['pass_staffit']);
-	$db->input($_POST['nama_staffit'],$pass,$_POST['alamat_staffit'],$_POST['telp_staffit']);
+	$db->input($_POST['nama_staffit'],$_POST['jk'],$pass,$_POST['alamat_staffit'],$_POST['telp_staffit']);
 	header("location:tampilstaffit.php");
 }
 elseif($aksi == "hapus"){
@@ -20,7 +20,7 @@ elseif($aksi == "update"){
 	else{
 		$pass1=md5($_POST['pass_staffit']);
 	}
-	$db->update($_POST['nama_staffit'],$pass1,$_POST['alamat_staffit'],$_POST['telp_staffit']);
+	$db->update($_POST['nama_staffit'],$_POST['jk'],$pass1,$_POST['alamat_staffit'],$_POST['telp_staffit']);
 	header("location:tampilstaffit.php");
 }
 ?>

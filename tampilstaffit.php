@@ -11,6 +11,7 @@ $db = new database();
 	<tr>
 		<th>No</th>
 		<th>Nama Staff IT</th>
+		<th>Gender</th>
 		<th>Alamat</th>
 		<th>Telp</th>
 		<th>ID Sekolah</th>
@@ -23,6 +24,7 @@ $db = new database();
 	<tr>
 		<td><?php echo $no++; ?></td>
 		<td><?php echo $x['nama_staffit']; ?></td>
+		<td><?php echo $x['jk']; ?></td>
 		<td><?php echo $x['alamat_staffit']; ?></td>
 		<td><?php echo $x['telp_staffit']; ?></td>
 		<td><?php echo $x['id_sklh']; ?></td>
