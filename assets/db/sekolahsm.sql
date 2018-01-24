@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 23, 2018 at 03:33 AM
+-- Generation Time: Jan 24, 2018 at 05:31 AM
 -- Server version: 5.5.16
 -- PHP Version: 5.3.8
 
@@ -33,6 +33,7 @@ CREATE TABLE IF NOT EXISTS `admin` (
   `telp_adm` varchar(30) DEFAULT NULL,
   `pass_login` varchar(100) NOT NULL,
   `status_akun` int(2) NOT NULL,
+  `jk` varchar(2) NOT NULL,
   PRIMARY KEY (`id_login`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -40,11 +41,11 @@ CREATE TABLE IF NOT EXISTS `admin` (
 -- Dumping data for table `admin`
 --
 
-INSERT INTO `admin` (`id_login`, `nama_adm`, `email`, `telp_adm`, `pass_login`, `status_akun`) VALUES
-('1507112346', 'Rahmat Wibowo', 'rahmatwibowo66@gmail.com', '082381169597', '16a30a734c46d35a6565fe576c8a5f9f', 1),
-('1507115285', 'Nidya Nur Syafiqoh', 'nidya.nursyafiqoh5285@student.unri.ac.id', '081311442407', '99138fcf1f8adf450c68e09c118d4f9d', 1),
-('1507115719', 'Lukmannil Hakim', 'lukmannil.hakim5719@student.unri.ac.id', '081371339605', '5a1f19006889410c9d7a2ca0e2cf6d76', 1),
-('1507123530', 'M. Muflih Fikri', 'muhammad.muflihfikrialazdi@student.unri.ac.id', '083167841065', 'bd596c423d62002e9734d49c5aeeb181', 1);
+INSERT INTO `admin` (`id_login`, `nama_adm`, `email`, `telp_adm`, `pass_login`, `status_akun`, `jk`) VALUES
+('1507112346', 'Rahmat Wibowo', 'rahmatwibowo66@gmail.com', '082381169597', '16a30a734c46d35a6565fe576c8a5f9f', 1, 'L'),
+('1507115285', 'Nidya Nur Syafiqoh', 'nidya.nursyafiqoh5285@student.unri.ac.id', '081311442407', '99138fcf1f8adf450c68e09c118d4f9d', 1, 'P'),
+('1507115719', 'Lukmannil Hakim', 'lukmannil.hakim5719@student.unri.ac.id', '081371339605', '5a1f19006889410c9d7a2ca0e2cf6d76', 1, 'L'),
+('1507123530', 'M. Muflih Fikri', 'muhammad.muflihfikrialazdi@student.unri.ac.id', '083167841065', 'bd596c423d62002e9734d49c5aeeb181', 1, 'L');
 
 -- --------------------------------------------------------
 
@@ -61,6 +62,7 @@ CREATE TABLE IF NOT EXISTS `guru` (
   `id_sklh` int(20) DEFAULT NULL,
   `wk_status` int(2) NOT NULL,
   `status_akun` int(2) NOT NULL,
+  `jk` varchar(2) NOT NULL,
   PRIMARY KEY (`nip`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -68,8 +70,8 @@ CREATE TABLE IF NOT EXISTS `guru` (
 -- Dumping data for table `guru`
 --
 
-INSERT INTO `guru` (`nip`, `nama_guru`, `pass_guru`, `alamat_guru`, `telp_guru`, `id_sklh`, `wk_status`, `status_akun`) VALUES
-(2147483647, 'Riva Eka Putri', '7f15e383b9621dc01eee9c0506c56f67', 'JL. Kartama No. 27', '081324067905', 10003, 0, 3);
+INSERT INTO `guru` (`nip`, `nama_guru`, `pass_guru`, `alamat_guru`, `telp_guru`, `id_sklh`, `wk_status`, `status_akun`, `jk`) VALUES
+(2147483647, 'Riva Eka Putri', '7f15e383b9621dc01eee9c0506c56f67', 'JL. Kartama No. 27', '081324067905', 10003, 0, 3, 'P');
 
 -- --------------------------------------------------------
 
@@ -170,6 +172,7 @@ CREATE TABLE IF NOT EXISTS `siswa` (
   `nama_ayah` varchar(50) DEFAULT NULL,
   `nama_ibu` varchar(50) DEFAULT NULL,
   `status_akun` int(2) NOT NULL,
+  `jk` varchar(2) NOT NULL,
   PRIMARY KEY (`nis`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -177,8 +180,8 @@ CREATE TABLE IF NOT EXISTS `siswa` (
 -- Dumping data for table `siswa`
 --
 
-INSERT INTO `siswa` (`nis`, `nama_siswa`, `pass_siswa`, `alamat_siswa`, `id_sklh`, `id_kls`, `nama_ayah`, `nama_ibu`, `status_akun`) VALUES
-(23693536, 'Najwa Nurhumaidah', 'cb2147dca12f89ef8c4f9e5783456c64', 'Jl. Enau No. 389', 0, 0, 'Drs. Multachdi M.Si', 'Dra. Agustina', 4);
+INSERT INTO `siswa` (`nis`, `nama_siswa`, `pass_siswa`, `alamat_siswa`, `id_sklh`, `id_kls`, `nama_ayah`, `nama_ibu`, `status_akun`, `jk`) VALUES
+(23693536, 'Najwa Nurhumaidah', 'cb2147dca12f89ef8c4f9e5783456c64', 'Jl. Enau No. 389', 0, 0, 'Drs. Multachdi M.Si', 'Dra. Agustina', 4, 'P');
 
 -- --------------------------------------------------------
 
@@ -194,6 +197,7 @@ CREATE TABLE IF NOT EXISTS `staffit` (
   `telp_staffit` varchar(20) DEFAULT NULL,
   `alamat_staffit` varchar(100) DEFAULT NULL,
   `status_akun` int(2) NOT NULL,
+  `jk` varchar(2) NOT NULL,
   PRIMARY KEY (`id_staffit`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=123002 ;
 
@@ -201,8 +205,8 @@ CREATE TABLE IF NOT EXISTS `staffit` (
 -- Dumping data for table `staffit`
 --
 
-INSERT INTO `staffit` (`id_staffit`, `nama_staffit`, `pass_staffit`, `id_sklh`, `telp_staffit`, `alamat_staffit`, `status_akun`) VALUES
-(123001, 'Muhammad Iqbal Nasution', 'fe34bd483a283bfa1331f5e65625553c', 10001, '085271667019', 'Jl. Pemuda No.11', 2);
+INSERT INTO `staffit` (`id_staffit`, `nama_staffit`, `pass_staffit`, `id_sklh`, `telp_staffit`, `alamat_staffit`, `status_akun`, `jk`) VALUES
+(123001, 'Muhammad Iqbal Nasution', 'fe34bd483a283bfa1331f5e65625553c', 10001, '085271667019', 'Jl. Pemuda No.11', 2, 'L');
 
 -- --------------------------------------------------------
 
