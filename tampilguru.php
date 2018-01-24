@@ -25,7 +25,7 @@ $db = new database();
 	<tr>
 		<td><?php echo $no++; ?></td>
 		<td><?php echo $x['nip']; ?></td>
-		<td><?php echo $x['nama_guru']; ?></td>
+		<td><?php echo $x['nama_guru']; ?></td>	
 		<td><?php echo $x['alamat_guru']; ?></td>
 		<td><?php echo $x['telp_guru']; ?></td>
 		<td><?php echo $x['id_sklh']; ?></td>

@@ -24,6 +24,7 @@
 		<td>Telp Guru</td>
 		<td><input type="text" name="telp_guru"></td>
 	</tr>
+	<tr>
 		<td></td>
 		<td><input type="submit" value="Simpan"></td>
 	</tr>
