@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 24, 2018 at 05:31 AM
+-- Generation Time: Jan 25, 2018 at 03:45 PM
 -- Server version: 5.5.16
 -- PHP Version: 5.3.8
 
@@ -104,6 +104,17 @@ CREATE TABLE IF NOT EXISTS `kelas` (
   `id_sklh` int(20) NOT NULL,
   PRIMARY KEY (`id_kls`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `kelas`
+--
+
+INSERT INTO `kelas` (`id_kls`, `nama_kls`, `id_wk`, `id_sklh`) VALUES
+(10001001, 'X-1', 0, 10001),
+(10002001, 'X-1', 0, 10002),
+(10003001, 'X-1', 0, 10003),
+(10004001, 'X-1', 0, 10004),
+(10005001, 'X-1', 0, 10005);
 
 -- --------------------------------------------------------
 
