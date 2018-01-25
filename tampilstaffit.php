@@ -31,6 +31,9 @@ $db = new database();
 		<td><?php echo $x['status_akun']; ?></td>
 		<td>
 			<a href="editstaffit.php?id_staffit=<?php echo $x['id_staffit']; ?>&aksi=edit">Edit</a>
+				<form action="editstaffit.php?id_staffit=<?php echo $x['id_staffit']; ?>&aksi=edit" method="GET">
+					<input type="hidden" name="id_staffit" value="<?php echo $x['id_staffit']; ?>">
+				</form>
 			<a href="prosesstaffit.php?id_staffit=<?php echo $x['id_staffit']; ?>&aksi=hapus">Hapus</a>
 		</td>
 	</tr>

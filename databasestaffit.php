@@ -36,7 +36,7 @@ class database{
 	}
 	
 	function update($nama_staffit,$jk,$pass_staffit,$alamat_staffit,$telp_staffit){
-		mysql_query("update staffit set nama_staffit='$nama_staffit',jk='$jk',pass_staffit='$pass_staffit', alamat_staffit='$alamat_staffit', telp_staffit='$telp_staffit' where id_staffit='$id_staffit'");
+		mysql_query("update staffit set nama_staffit='$nama_staffit',pass_staffit='$pass_staffit', alamat_staffit='$alamat_staffit', telp_staffit='$telp_staffit',jk='$jk' where id_staffit='$id_staffit'");
 	}
 }
 ?>
