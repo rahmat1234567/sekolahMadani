@@ -59,6 +59,7 @@ else{
 					$_SESSION['id']=$rsz['nip'];
 					$_SESSION['nama']=$rsz['nama_guru'];
 					$_SESSION['alamat']=$rsz['alamat_guru'];
+					$_SESSION['status']=$rsz['status_akun'];
 						$kode_sklhz=$rsz['id_sklh']; 
 						$sqlzz=mysql_query("select nama_sklh from sekolah where id_sklh='$kode_sklh'");
 						$countzz=mysql_num_rows($sqlzz);
@@ -92,6 +93,7 @@ else{
 				$_SESSION['alamat']=$rsx['alamat_siswa'];
 				$_SESSION['nama_ibu']=$rsx['nama_ibu'];
 				$_SESSION['nama_ayah']=$rsx['nama_ayah'];
+				$_SESSION['status']=$rsx['status_akun'];
 					$kode_kls=$rsx['id_kls']; 
 					$sqlxx=mysql_query("select nama_kls from kelas where id_kls='$kode_kls'");
 					$countxx=mysql_num_rows($sqlxx);

@@ -65,17 +65,25 @@ echo "User : $usre";
        <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
 <?php 
-if($level==1){
-echo "Welcome, Admin!";
-}
-/*
-else{
-	$sql=mysql_query("select * from kelas where idk='$klss'");
-	$rs=mysql_fetch_array($sql);
-	$sqla=mysql_query("select * from sekolah where id='$rs[id]'");
-	$rsa=mysql_fetch_array($sqla);
-echo "Sekolah : $rsa[nama] | $rs[nama]" ;
-}*/
+    echo "Login as - ";
+    if($level==1){
+        echo "Admin";
+    }
+
+    if($level==2){
+        echo "Staff IT $nmsklh";
+    }
+
+    if($level==3){
+        echo "Guru $nmsklh, ";
+        if($nmkls!=""){
+            echo "Wali Kelas $nmkls";
+        }
+    }
+
+    if($level==4){
+        echo "Siswa $nmsklh";
+    }
 ?> 
                    </a>
                 </li>
@@ -110,7 +118,7 @@ echo "Sekolah : $rsa[nama] | $rs[nama]" ;
                             </div>
                             <!-- /input-group -->
                         </li>
-<?php if($level=='1' or $level=='1'){ ?>
+<?php if($level==1 or $level==2){ ?>
 
                         <li>
                             <a href="#"><i class="fa fa-dashboard fa-fw"></i> Data Siswa<span class="fa arrow"></span></a>
@@ -140,7 +148,7 @@ echo "Sekolah : $rsa[nama] | $rs[nama]" ;
                         </li>
 <?php } ?>
 
-<?php if($level=='1' or $level=='1'){ ?>
+<?php if($level==2 or $level==3){ ?>
 
                         <li>
                             <a href="#"><i class="fa fa-dashboard fa-fw"></i> Data Kelas<span class="fa arrow"></span></a>
@@ -156,7 +164,7 @@ echo "Sekolah : $rsa[nama] | $rs[nama]" ;
                         </li>
 <?php } ?>
 
-<?php if($level=='1'){ ?>
+<?php if($level==1){ ?>
 
                           <li>
                             <a href="#"><i class="fa fa-dashboard fa-fw"></i> Data Sekolah<span class="fa arrow"></span></a>
@@ -173,7 +181,7 @@ echo "Sekolah : $rsa[nama] | $rs[nama]" ;
 
 <?php } ?>
 
-<?php if($level=='1'){ ?>
+<?php if($level==3){ ?>
 
                         <li>
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Data Absensi<span class="fa arrow"></span></a>
@@ -187,17 +195,17 @@ echo "Sekolah : $rsa[nama] | $rs[nama]" ;
 <?php } ?>
 
 
-<?php if($level=='1'){ ?>
+<?php if($level==3){ ?>
                         <li>
                             <a href="admin.php?module=pilih_laporan"><i class="fa fa-bar-chart-o fa-fw"></i> Laporan</a>
                         </li>
 <?php } ?>
-<?php if($level=='1'){ ?>
+<?php if($level==3){ ?>
                         <li>
                             <a href="admin.php?module=guru_det"><i class="fa fa-dashboard fa-fw"></i> Data Guru</a>
                         </li>
 <?php } ?>
-<?php if($level=='1'){ ?>
+<?php if($level==4){ ?>
                         <li>
                             <a href="admin.php?module=siswa_det"><i class="fa fa-dashboard fa-fw"></i> Data Siswa</a>
                         </li>
