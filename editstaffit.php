@@ -19,7 +19,7 @@ foreach($db->edit($_GET['id_staffit']) as $d){
 	</tr>
 	<tr>
 		<td>Jenis Kelamin</td>
-		<td><input type="radio" name="jk" value="P"> Laki-Laki</br>
+		<td><input type="radio" name="jk" value="L"> Laki-Laki</br>
 			<input type="radio" name="jk" value="P"> Perempuan</br>
 		</td>
 	</tr>
