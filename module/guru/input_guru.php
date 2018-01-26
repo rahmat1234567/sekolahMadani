@@ -16,16 +16,16 @@ if($_GET['act']=="input"){
                         </div>
                         <div class="panel-body">
                             <div class="row">
-                                    <form method="post" role="form" action="././module/simpan.php?act=input_guru">
+                                    <form method="post" role="form" action="././module/guru/prosesguru.php?aksi=tambah">
 
                                 <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>NIP</label>
-                                            <input class="form-control" placeholder="Nip" name="nip">
+                                            <input class="form-control" placeholder="NIP" name="nip">
                                         </div>
                                         <div class="form-group">
                                             <label>Nama</label>
-                                            <input class="form-control" placeholder="Nama" name="nama">
+                                            <input class="form-control" placeholder="Nama" name="nama_guru">
                                         </div>
                                         <div class="form-group">
                                             <label>Jenis Kelamin</label>
@@ -48,41 +48,21 @@ if($_GET['act']=="input"){
 
                                         <div class="form-group">
                                             <label>Alamat</label>
-                                            <textarea class="form-control" placeholder="Alamat" name="alamat" rows="3"></textarea>
+                                            <textarea class="form-control" placeholder="Alamat" name="alamat_guru" rows="3"></textarea>
                                         </div>
                                         
                                         <div class="form-group">
                                             <label>Password</label>
-                                            <input class="form-control" placeholder="Password" name="k_password" type="password">
+                                            <input class="form-control" placeholder="Password" name="pass_guru" type="password">
                                         </div>
-                                        
-                                        
                                         
                                         <div class="form-group">
-                                            <label>Kelas</label>
-                                            <select class="form-control" name="kelas">
-
-  <?php 
-	$sql=mysql_query("select * from kelas");
-	while($rs=mysql_fetch_array($sql)){
-	$sqla=mysql_query("select * from sekolah where id='$rs[id]'");
-	$rsa=mysql_fetch_array($sqla);
-if($_SESSION['level']=="admin_guru"){
-if($rsa['id']==$_SESSION['id']){
-
-	echo "<option value='$rs[idk]'>$rsa[nama] | $rs[nama]</option>";	
-}
-}else{
-	echo "<option value='$rs[idk]'>$rsa[nama] | $rs[nama]</option>";	
-
-	}
-}
-
-?>
-                                            </select>
+                                            <label>No Telepon</label>
+                                            <input class="form-control" placeholder="No Telp" name="telp_guru">
                                         </div>
                                         
-                                        <button type="submit" class="btn btn-default">Submit Button</button>
+                                        
+                                        <button type="submit" value"simpan" class="btn btn-default">Submit Button</button>
                                 </div>
                                 <!-- /.col-lg-6 (nested) -->
                                     </form>
@@ -120,19 +100,19 @@ if($_GET['act']=="edit_guru"){
                         <div class="panel-body">
                             <div class="row">
 <?php                            
-                            	$sql=mysql_query("select * from guru where idg='$_GET[idg]'");
+                            	$sql=mysql_query("select * from guru where nip='$_GET[nip]'");
 								$rs=mysql_fetch_array($sql);
 ?>
-                                    <form method="post" role="form" action="././module/simpan.php?act=edit_guru">
-<input type="hidden" name="idg" value="<?php echo $_GET['idg'] ?>" />
+                                    <form method="post" role="form" action="././module/guru/prosesguru.php?aksi=update">
+<input type="hidden" name="nip" value="<?php echo $_GET['nip'] ?>" />
                                 <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>NIP</label>
-                                            <input class="form-control" placeholder="Nip" name="nip" value="<?php echo "$rs[nip]"; ?>" >
+                                            <input class="form-control" placeholder="NIP" name="nip" value="<?php echo "$rs[nip]"; ?>" >
                                         </div>
                                         <div class="form-group">
                                             <label>Nama</label>
-                                            <input class="form-control" placeholder="Nama" name="nama" value="<?php echo "$rs[nama]"; ?>">
+                                            <input class="form-control" placeholder="Nama" name="nama_guru" value="<?php echo "$rs[nama_guru]"; ?>">
                                         </div>
                                         <div class="form-group">
          
@@ -174,44 +154,20 @@ if($_GET['act']=="edit_guru"){
 
                                         <div class="form-group">
                                             <label>Alamat</label>
-                                            <textarea class="form-control" placeholder="Alamat" name="alamat" rows="3"><?php echo "$rs[alamat]"; ?></textarea>
+                                            <textarea class="form-control" placeholder="Alamat" name="alamat_guru" rows="3"><?php echo "$rs[alamat_guru]"; ?></textarea>
                                         </div>
+
                                         <div class="form-group">
                                             <label>Password</label>
-                                            <input class="form-control" placeholder="Password" name="k_password" type="password">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Kelas</label>
-                                            <select class="form-control" name="kelas">
-  <?php 
- 	$sqlc=mysql_query("select * from kelas");
-	while($rsc=mysql_fetch_array($sqlc)){
-	$sqla=mysql_query("select * from sekolah where id='$rsc[id]'");
-	$rsa=mysql_fetch_array($sqla);
-if($_SESSION['level']=="admin_guru"){
-if($rsa['id']==$_SESSION['id']){
-
-if($rs['idk']==$rsc['idk']){
-	echo "<option value='$rsc[idk]' selected>$rsa[nama] | $rsc[nama]</option>";	
-}else{
-	echo "<option value='$rsc[idk]'>$rsa[nama] | $rsc[nama]</option>";	
-
-}
-}
-}else{
-if($rs['idk']==$rsc['idk']){
-	echo "<option value='$rsc[idk]' selected>$rsa[nama] | $rsc[nama]</option>";	
-}else{
-	echo "<option value='$rsc[idk]'>$rsa[nama] | $rsc[nama]</option>";	
-
-}
-	
-	}
-}?>
-                                          </select>
+                                            <input class="form-control" placeholder="Password" name="pass_guru" type="password" value="">
                                         </div>
                                         
-                                        <button type="submit" class="btn btn-default">Submit Button</button>
+                                        <div class="form-group">
+                                            <label>No Telepon</label>
+                                            <input class="form-control" placeholder="No Telp" name="telp_guru" value="<?php echo "$rs[telp_guru]"; ?>">
+                                        </div>
+
+                                        <button type="submit" value="Simpan" class="btn btn-default">Submit Button</button>
                                 </div>
                                 <!-- /.col-lg-6 (nested) -->
                                     </form>

@@ -15,6 +15,6 @@ elseif($aksi == "hapus"){
 }
 elseif($aksi == "update"){
 	$db->update($_POST['nip'],$_POST['nama_guru'],$_POST['pass_guru'],$_POST['alamat_guru'],$_POST['telp_guru']);
-	header("location:tampilguru.php");
+	header("location:http://localhost/sekolahMadani/admin.php?module=guru&kls=semua");
 }
 ?>
