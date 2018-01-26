@@ -160,6 +160,7 @@ if($_GET['act']=="edit_guru"){
                                         <div class="form-group">
                                             <label>Password</label>
                                             <input class="form-control" placeholder="Password" name="pass_guru" type="password" value="">
+                                            <input class="form-control" type="hidden" name="pass_lama" value="<?php echo "$rs[pass_guru]"; ?>">
                                         </div>
                                         
                                         <div class="form-group">
