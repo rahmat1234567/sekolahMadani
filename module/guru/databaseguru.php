@@ -35,8 +35,8 @@ class database{
 		return $hasil;
 	}
 	
-	function update($nip,$nama_guru,$pass_guru,$alamat_guru,$telp_guru){
-		mysql_query("update guru set nama_guru='$nama_guru',pass_guru='$pass_guru', alamat_guru='$alamat_guru', telp_guru='$telp_guru' where nip='$nip'");
+	function update($nip,$nama_guru,$jk,$pass_guru,$alamat_guru,$telp_guru){
+		mysql_query("update guru set nama_guru='$nama_guru',jk='$jk',pass_guru='$pass_guru', alamat_guru='$alamat_guru', telp_guru='$telp_guru' where nip='$nip'");
 	}
 }
 ?>

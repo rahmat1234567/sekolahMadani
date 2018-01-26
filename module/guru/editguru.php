@@ -24,6 +24,19 @@ foreach($db->edit($_GET['nip']) as $d){
 		</td>
 	</tr>
 	<tr>
+		<td>Jenis Kelamin</td>
+		<td><input type="radio" name="jk" value="L"> Laki-Laki</br>
+			<input type="radio" name="jk" value="P"> Perempuan</br>
+		</td>
+	</tr>
+	<tr>
+		<td>Password</td>
+		<td>
+			<input type="text" name="pass_guru">
+			<input type="hidden" name="pass_lama" value="<?php echo $d['pass_guru'] ?>">
+		</td>
+	</tr>
+	<tr>
 		<td>Alamat Guru</td>
 		<td><input type="text" name="alamat_guru" value="<?php echo $d['alamat_guru'] ?>"></td>
 	</tr>
