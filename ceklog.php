@@ -72,7 +72,7 @@ else{
 						");
 						$countzzz=mysql_num_rows($sqlzzz);
 						$rszzz=mysql_fetch_array($sqlzzz);
-						$_SESSION['nama_kls']=$rszzz;
+						$_SESSION['nama_kls']=$rszzz['nama_kls'];
 					}
 					else{
 						$_SESSION['nama_kls']="";

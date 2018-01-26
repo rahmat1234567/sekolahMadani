@@ -22,7 +22,7 @@ include "config/conn.php";
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Halaman Admin - Sekolah Smart Madani</title>
+    <title>Sekolah Smart Madani</title>
 
     <!-- Core CSS - Include with every page -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
@@ -141,7 +141,7 @@ echo "User : $usre";
                                     <a href="admin.php?module=input_guru&act=input">Input Data</a>
                                 </li>
                                 <li>
-                                    <a href="admin.php?module=tampil_guru">View Data</a>
+                                    <a href="admin.php?module=guru&kls=semua">View Data</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->

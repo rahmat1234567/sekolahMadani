@@ -18,8 +18,12 @@
                                     <thead>
                                         <tr>
 											<th class="text-center">NIP</th>
-                                            <th class="text-center" width="50%">Nama</th>
+                                            <th class="text-center" width="40%">Nama</th>
                                             <th class="text-center">JK</th>
+                                            <th class="text-center">Alamat</th>
+                                            <th class="text-center">Nama Sekolah</th>
+                                            <th class="text-center">Status Wali Kelas</th>
+                                            <th class="text-center">Status Akun</th>
                                             <th class="text-center">Aksi</th>
                                         </tr>
                                     </thead>
@@ -27,80 +31,78 @@
                                                                         
 <?php
 $no=1;
+include 'databaseguru.php';
+$db = new database();
 $klas=$_GET['kls'];
 if($klas=="semua")
 {
 	$sql=mysql_query("select * from guru");
 }
-else
-{
-	$sql=mysql_query("select * from guru where idk='$_GET[kls]'");	
-}
 
-	while($rs=mysql_fetch_array($sql))
+	
+    foreach($db->tampil_data() as $rs)
 	{
-		$sqlw=mysql_query("select * from kelas where idk='$rs[idk]'");
-		$rsw=mysql_fetch_array($sqlw);
-		$sqlb=mysql_query("select * from sekolah where id='$rsw[id]'");
-		$rsb=mysql_fetch_array($sqlb);
 
-if($_SESSION['level']=="admin_guru"){
+//if($level==1 and $level==2){
 
-if($rsb['id']==$_SESSION['id']){
-?>                                        <tr class="odd gradeX">
-                                            <td><?php echo"$rs[nip]";  ?></td>
-                                            <td><?php echo"$rs[nama]";  ?></td>
-<?php
-if($rs['jk']=="L"){
-?>
-                                            <td class="text-center">Laki - Laki</td>
-<?php
-}else{
-?>
-                                            <td class="text-center">Perempuan</td>
-<?php
-}
-?>
-                                         <td class="text-center">
-										 <a href="./././media.php?module=detail_guru&idg=<?php echo $rs['idg'] ?>">
-										 <button type="button" class="btn btn-warning">Detail</button> 
-										 
-										 <a href="./././media.php?module=input_guru&act=edit_guru&idg=<?php echo $rs['idg'] ?>">
-										 <button type="button" class="btn btn-info">Edit</button> 
-										 
-										 <a href="././module/simpan.php?act=hapus_guru&idg=<?php echo $rs['idg'] ?>">
-										 <button type="button" class="btn btn-danger">Hapus</button></a></td>
-                                        </tr>
-<?php
-}
-}else{
-?>	
-                                        <tr class="odd gradeX">
-                                            <td><?php echo"$rs[nip]";  ?></td>
-                                            <td><?php echo"$rs[nama]";  ?></td>
-<?php
-if($rs['jk']=="L"){
-?>
-                                            <td class="text-center">Laki - Laki</td>
-<?php
-}else{
-?>
-                                            <td class="text-center">Perempuan</td>
-<?php
-}
-?>
+    ?>                                        <tr class="odd gradeX">
+                                                <td><?php echo"$rs[nip]";  ?></td>
+                                                <td><?php echo"$rs[nama_guru]";  ?></td>
+    <?php
+    if($rs['jk']=="L"){
+    ?>
+                                                <td class="text-center">Laki - Laki</td>
+    <?php
+    }else{
+    ?>
+                                                <td class="text-center">Perempuan</td>
+    <?php
+    }
+    ?>
+                                                <td><?php echo"$rs[alamat_guru]";  ?></td>
+                                                <?php $kode_sklh=$rs['id_sklh']; 
+                                                    $sqlzz=mysql_query("select nama_sklh from sekolah where id_sklh='$kode_sklh'");
+                                                    $countzz=mysql_num_rows($sqlzz);
+                                                    $rszz=mysql_fetch_array($sqlzz);
+                                                ?>
+                                                <td><?php echo"$rszz[nama_sklh]";  ?></td>
 
-                                        <td class="text-center">
-										<a href="./././media.php?module=detail_guru&idg=<?php echo $rs['idg'] ?>">
-										 <button type="button" class="btn btn-warning">Detail</button> 
-										<a href="./././media.php?module=input_guru&act=edit_guru&idg=<?php echo $rs['idg'] ?>">
-										<button type="button" class="btn btn-info">Edit</button> 
-										<a href="././module/simpan.php?act=hapus_guru&idg=<?php echo $rs['idg'] ?>">
-										<button type="button" class="btn btn-danger">Hapus</button></a></td>
+                                                <?php if($rs['wk_status']==1){
+                                                    $kode_wk=$rs['nip'];                   
+                                                    $sqlzzz=mysql_query("
+                                                        select nama_kls from kelas, walikelas where walikelas.nip=$kode_wk and kelas.id_kls=walikelas.id_kls
+                                                    ");
+                                                    $countzzz=mysql_num_rows($sqlzzz);
+                                                    $rszzz=mysql_fetch_array($sqlzzz);
+                                                    $wkwk=$rszzz['nama_kls'];
+                                                }
+                                                else{
+                                                    $wkwk="-";
+                                                } ?>
+                                                <td><?php echo"$wkwk";  ?></td>
+    <?php
+    if($rs['status_akun']!=0){
+    ?>
+                                                <td class="text-center">Aktif</td>
+    <?php
+    }else{
+    ?>
+                                                <td class="text-center">Tidak Aktif</td>
+    <?php
+    }
+    ?>                                            
 
-                                        </tr>
-<?php
-}
+                                             <td class="text-center"> 
+    										 <a href="./././admin.php?module=input_guru&act=edit_guru&nip=<?php echo $rs['nip'] ?>">
+    										 <button type="button" class="btn btn-info">Edit</button> 
+    										 
+    										 <a href="././module/guru/prosesguru.php?nip=<?php echo $rs['nip'] ?>&aksi=hapus">
+    										 <button type="button" class="btn btn-danger">Hapus</button></a></td>
+                                            </tr>
+    <?php
+    
+//}
+
 }
 ?>
                                     </tbody>
