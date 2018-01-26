@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 24, 2018 at 05:31 AM
+-- Generation Time: Jan 25, 2018 at 04:24 PM
 -- Server version: 5.5.16
 -- PHP Version: 5.3.8
 
@@ -54,7 +54,7 @@ INSERT INTO `admin` (`id_login`, `nama_adm`, `email`, `telp_adm`, `pass_login`, 
 --
 
 CREATE TABLE IF NOT EXISTS `guru` (
-  `nip` int(50) NOT NULL,
+  `nip` bigint(50) NOT NULL,
   `nama_guru` varchar(50) NOT NULL,
   `pass_guru` varchar(100) NOT NULL,
   `alamat_guru` varchar(50) DEFAULT NULL,
@@ -71,7 +71,7 @@ CREATE TABLE IF NOT EXISTS `guru` (
 --
 
 INSERT INTO `guru` (`nip`, `nama_guru`, `pass_guru`, `alamat_guru`, `telp_guru`, `id_sklh`, `wk_status`, `status_akun`, `jk`) VALUES
-(2147483647, 'Riva Eka Putri', '7f15e383b9621dc01eee9c0506c56f67', 'JL. Kartama No. 27', '081324067905', 10003, 0, 3, 'P');
+(198503302003122002, 'Riva Eka Putri', '7f15e383b9621dc01eee9c0506c56f67', 'JL. Kartama No. 27', '081324067905', 10003, 0, 3, 'P');
 
 -- --------------------------------------------------------
 
@@ -83,7 +83,7 @@ CREATE TABLE IF NOT EXISTS `jadwal` (
   `id_jadwal` int(20) NOT NULL,
   `jam` varchar(30) NOT NULL,
   `id_matpel` int(20) NOT NULL,
-  `nip` int(50) NOT NULL,
+  `nip` bigint(50) NOT NULL,
   `id_kls` int(10) NOT NULL,
   PRIMARY KEY (`id_jadwal`),
   KEY `fk_jadwal_kls` (`id_kls`),
@@ -104,6 +104,17 @@ CREATE TABLE IF NOT EXISTS `kelas` (
   `id_sklh` int(20) NOT NULL,
   PRIMARY KEY (`id_kls`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `kelas`
+--
+
+INSERT INTO `kelas` (`id_kls`, `nama_kls`, `id_wk`, `id_sklh`) VALUES
+(10001001, 'X-1', 0, 10001),
+(10002001, 'X-1', 0, 10002),
+(10003001, 'X-1', 0, 10003),
+(10004001, 'X-1', 0, 10004),
+(10005001, 'X-1', 0, 10005);
 
 -- --------------------------------------------------------
 
@@ -163,7 +174,7 @@ INSERT INTO `sekolah` (`id_sklh`, `nama_sklh`, `alamat_sklh`, `telp_sklh`, `jmlh
 --
 
 CREATE TABLE IF NOT EXISTS `siswa` (
-  `nis` int(30) NOT NULL,
+  `nis` varchar(30) NOT NULL,
   `nama_siswa` varchar(50) NOT NULL,
   `pass_siswa` varchar(100) NOT NULL,
   `alamat_siswa` varchar(100) NOT NULL,
@@ -181,7 +192,7 @@ CREATE TABLE IF NOT EXISTS `siswa` (
 --
 
 INSERT INTO `siswa` (`nis`, `nama_siswa`, `pass_siswa`, `alamat_siswa`, `id_sklh`, `id_kls`, `nama_ayah`, `nama_ibu`, `status_akun`, `jk`) VALUES
-(23693536, 'Najwa Nurhumaidah', 'cb2147dca12f89ef8c4f9e5783456c64', 'Jl. Enau No. 389', 0, 0, 'Drs. Multachdi M.Si', 'Dra. Agustina', 4, 'P');
+('0023693536', 'Najwa Nurhumaidah', 'cb2147dca12f89ef8c4f9e5783456c64', 'Jl. Enau No. 389', 0, 0, 'Drs. Multachdi M.Si', 'Dra. Agustina', 4, 'P');
 
 -- --------------------------------------------------------
 
@@ -216,7 +227,7 @@ INSERT INTO `staffit` (`id_staffit`, `nama_staffit`, `pass_staffit`, `id_sklh`, 
 
 CREATE TABLE IF NOT EXISTS `walikelas` (
   `id_wk` int(10) NOT NULL,
-  `nip` int(10) NOT NULL,
+  `nip` bigint(10) NOT NULL,
   `id_kls` int(10) NOT NULL,
   `id_sklh` int(20) NOT NULL,
   PRIMARY KEY (`id_wk`)
