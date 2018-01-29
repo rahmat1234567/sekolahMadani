@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 29, 2018 at 04:00 AM
+-- Generation Time: Jan 29, 2018 at 07:34 AM
 -- Server version: 5.5.16
 -- PHP Version: 5.3.8
 
@@ -194,6 +194,7 @@ CREATE TABLE IF NOT EXISTS `n_tugas` (
   `nisn` varchar(30) NOT NULL,
   `nilai_tugas` int(10) NOT NULL,
   `ket` varchar(30) NOT NULL,
+  `nama_tugas` varchar(100) NOT NULL,
   PRIMARY KEY (`id_ntugas`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
@@ -209,6 +210,7 @@ CREATE TABLE IF NOT EXISTS `n_ulanganharian` (
   `id_matpel` int(20) NOT NULL,
   `nisn` varchar(30) NOT NULL,
   `nilai_uh` int(10) NOT NULL,
+  `ket_uh` varchar(100) NOT NULL,
   PRIMARY KEY (`id_nuh`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
