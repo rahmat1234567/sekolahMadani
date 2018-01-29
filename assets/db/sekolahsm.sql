@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 29, 2018 at 03:15 AM
+-- Generation Time: Jan 29, 2018 at 04:00 AM
 -- Server version: 5.5.16
 -- PHP Version: 5.3.8
 
@@ -27,13 +27,13 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `absensi` (
-  `id_abs` int(100) NOT NULL AUTO_INCREMENT,
+  `id_abs` int(100) NOT NULL,
   `id_kls` int(10) NOT NULL,
   `tgl` date NOT NULL,
   `jam` time NOT NULL,
   `ket` varchar(3) NOT NULL,
   PRIMARY KEY (`id_abs`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -173,13 +173,13 @@ CREATE TABLE IF NOT EXISTS `matpel` (
 --
 
 INSERT INTO `matpel` (`id_matpel`, `nama_matpel`) VALUES
-(1, 'Matematika'),
-(2, 'Bahasa Indonesia'),
-(3, 'Bahasa Inggris'),
-(4, 'Fisika'),
-(5, 'Kimia'),
-(6, 'Seni Budaya'),
-(7, 'Pendidikan Jasmani');
+(101, 'Matematika'),
+(102, 'Bahasa Indonesia'),
+(103, 'Bahasa Inggris'),
+(104, 'Fisika'),
+(105, 'Kimia'),
+(106, 'Seni Budaya'),
+(107, 'Pendidikan Jasmani');
 
 -- --------------------------------------------------------
 
@@ -188,14 +188,14 @@ INSERT INTO `matpel` (`id_matpel`, `nama_matpel`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `n_tugas` (
-  `id_ntugas` int(20) NOT NULL,
+  `id_ntugas` int(20) NOT NULL AUTO_INCREMENT,
   `id_kls` int(10) NOT NULL,
   `id_matpel` int(20) NOT NULL,
   `nisn` varchar(30) NOT NULL,
   `nilai_tugas` int(10) NOT NULL,
   `ket` varchar(30) NOT NULL,
   PRIMARY KEY (`id_ntugas`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -204,13 +204,13 @@ CREATE TABLE IF NOT EXISTS `n_tugas` (
 --
 
 CREATE TABLE IF NOT EXISTS `n_ulanganharian` (
-  `id_nuh` int(20) NOT NULL,
+  `id_nuh` int(20) NOT NULL AUTO_INCREMENT,
   `id_kls` int(10) NOT NULL,
   `id_matpel` int(20) NOT NULL,
   `nisn` varchar(30) NOT NULL,
   `nilai_uh` int(10) NOT NULL,
   PRIMARY KEY (`id_nuh`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
