@@ -16,9 +16,9 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             Data Siswa <?php 
-  							$sqlj=mysql_query("select * from kelas where idk='$_SESSION[idk]'");
+  							$sqlj=mysql_query("select * from kelas where id_kls='$_SESSION[id_kls]'");
 							$rsj=mysql_fetch_array($sqlj);
-							echo "Kelas $rsj[nama]";					
+							echo "Kelas $rsj[nama_kls]";					
 							$klas=$_GET['kls'];
 $rg=10;
 while($rg>0){							
@@ -62,21 +62,21 @@ $tg=date("d-m-Y");
 if($klas=="semua"){
 	$sql=mysql_query("select * from siswa");
 }else{
-	$sql=mysql_query("select * from siswa where idk='$_GET[kls]'");	
+	$sql=mysql_query("select * from siswa where id_kls='$_GET[kls]'");	
 }
 	while($rs=mysql_fetch_array($sql)){
-	$sqla=mysql_query("select * from absen where ids='$rs[ids]' and tgl='$dt' and jam='$_GET[jam]'");
+	$sqla=mysql_query("select * from absensi where ids='$rs[ids]' and tgl='$dt' and jam='$_GET[jam]'"); //masih ragu
 	$rsa=mysql_fetch_array($sqla);
 	$conk=mysql_num_rows($sqla);
 	
-	$sqlw=mysql_query("select * from kelas where idk='$rs[idk]'");
+	$sqlw=mysql_query("select * from kelas where id_kls='$rs[id_kls]'");
 	$rsw=mysql_fetch_array($sqlw);
-	$sqlb=mysql_query("select * from sekolah where id='$rsw[id]'");
+	$sqlb=mysql_query("select * from sekolah where id_sklh='$rsw[id_sklh]'");
 	$rsb=mysql_fetch_array($sqlb);
 
 ?>                                        <tr class="odd gradeX">
                                             <td><?php echo"$rs[nis]";  ?></td>
-                                            <td><?php echo"$rs[nama]";  ?></td>
+                                            <td><?php echo"$rs[nama_siswa]";  ?></td>
 <?php
 if($rs['jk']=="L"){
 ?>
@@ -89,10 +89,10 @@ if($rs['jk']=="L"){
 }
 ?>
 
-                                            <td><?php echo"$rs[alamat]";  ?></td>
-                                            <td><?php echo"$rs[tlp]";  ?></td>
-                                            <td><?php echo"$rsb[nama]";  ?></td>
-                                            <td class="text-center"><?php echo"$rsw[nama]";  ?></td>
+                                            <td><?php echo"$rs[alamat_siswa]";  ?></td>
+                                            <td><?php echo"$rs[tlp_ortu]";  ?></td>
+                                            <td><?php echo"$rsb[nama_siswa]";  ?></td>
+                                            <td class="text-center"><?php echo"$rsw[nama_siswa]";  ?></td>
                                             
                                                                                     
 
@@ -110,7 +110,7 @@ if($conk==0){
 if($rsa['ket']=="A"){
 ?>                                            
 
-                                        <td class="text-center"><a href="././module/sms.php?ids=<?php echo $rs['ids'] ?>"><button type="button" class="btn btn-danger">Kirim SMS</button></a></td>
+                                        <td class="text-center"><a href="././module/sms.php?ids=<?php echo $rs['nisn'] ?>"><button type="button" class="btn btn-danger">Kirim SMS</button></a></td>
 
 
 <?php }else{ ?>
