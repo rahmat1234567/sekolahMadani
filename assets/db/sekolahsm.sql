@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 26, 2018 at 09:45 AM
+-- Generation Time: Jan 29, 2018 at 03:15 AM
 -- Server version: 5.5.16
 -- PHP Version: 5.3.8
 
@@ -257,6 +257,7 @@ CREATE TABLE IF NOT EXISTS `siswa` (
   `jk` varchar(2) NOT NULL,
   `id_ekskul` int(20) DEFAULT NULL,
   `foto_siswa` varchar(100) NOT NULL,
+  `telp_ortu` varchar(50) NOT NULL,
   PRIMARY KEY (`nisn`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -264,8 +265,8 @@ CREATE TABLE IF NOT EXISTS `siswa` (
 -- Dumping data for table `siswa`
 --
 
-INSERT INTO `siswa` (`nisn`, `nama_siswa`, `pass_siswa`, `alamat_siswa`, `id_sklh`, `id_kls`, `nama_ayah`, `nama_ibu`, `status_akun`, `jk`, `id_ekskul`, `foto_siswa`) VALUES
-('0023693536', 'Najwa Nurhumaidah', 'cb2147dca12f89ef8c4f9e5783456c64', 'Jl. Enau No. 389', 0, 0, 'Drs. Multachdi M.Si', 'Dra. Agustina', 4, 'P', NULL, '');
+INSERT INTO `siswa` (`nisn`, `nama_siswa`, `pass_siswa`, `alamat_siswa`, `id_sklh`, `id_kls`, `nama_ayah`, `nama_ibu`, `status_akun`, `jk`, `id_ekskul`, `foto_siswa`, `telp_ortu`) VALUES
+('0023693536', 'Najwa Nurhumaidah', 'cb2147dca12f89ef8c4f9e5783456c64', 'Jl. Enau No. 389', 0, 0, 'Drs. Multachdi M.Si', 'Dra. Agustina', 4, 'P', NULL, '', '081178965281');
 
 -- --------------------------------------------------------
 
