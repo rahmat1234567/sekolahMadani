@@ -1,24 +1,21 @@
-            <div class="row">
-                <div class="col-lg-12">
-					<h3 class="page-header"><strong>Input Data Absensi Tanggal : <?php 
-							if($_GET['tanggal']<10){ $rw="0$_GET[tanggal]";}else{ $rw="$_GET[tanggal]"; }
-							if($_GET['bulan']<10){ $rc="0$_GET[bulan]";}else{ $rc="$_GET[bulan]";}
-							$dt=$rw."-".$rc."-".$_GET['tahun']; 
-							echo $dt;
-							?> </strong></h3>
-                </div>
-                <!-- /.col-lg-12 -->
-            </div>
-            <!-- /.row -->
+<?php
+$no=1;
+include 'databaseabsen.php';
+$db = new database();
+$klas=$_GET['kls'];
+$id_kls=$_SESSION['id_kls'];
+?>
+
+			<!-- /.row -->
             <div class="row">
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             Data Siswa <?php 
-							$sqlj=mysql_query("select * from kelas where idk='$_SESSION[idk]'");
+							$sqlj=mysql_query("select * from kelas where id_kls='$_SESSION[id_kls]'");
 							$rsj=mysql_fetch_array($sqlj);
 							
-							echo "Kelas $rsj[nama]";
+							echo "Kelas $rsj[nama_kls]";
 							$klas=$_GET['kls'];
 $rg=10;
 while($rg>0){							
