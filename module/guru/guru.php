@@ -17,6 +17,7 @@
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                     <thead>
                                         <tr>
+											<th class="text-center">FOTO</th>
 											<th class="text-center">NIP</th>
                                             <th class="text-center" width="40%">Nama</th>
                                             <th class="text-center">JK</th>
@@ -46,6 +47,7 @@ if($klas=="semua")
 //if($level==1 and $level==2){
 
     ?>                                        <tr class="odd gradeX">
+												<td><?php echo"$rs[foto_guru]";  ?></td>
                                                 <td><?php echo"$rs[nip]";  ?></td>
                                                 <td><?php echo"$rs[nama_guru]";  ?></td>
     <?php

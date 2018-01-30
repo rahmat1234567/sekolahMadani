@@ -6,7 +6,7 @@ $aksi = $_GET['aksi'];
 if($aksi == "tambah"){
 	
 	$pass = md5($_POST['pass_guru']);
-	$db->input($_POST['nip'],$_POST['nama_guru'],$_POST['jk'],$pass,$_POST['alamat_guru'],$_POST['telp_guru']);
+	$db->input($_POST['foto_guru'],$_POST['nip'],$_POST['nama_guru'],$_POST['jk'],$pass,$_POST['alamat_guru'],$_POST['telp_guru']);
 	header("location:http://localhost/sekolahMadani/admin.php?module=guru&kls=semua");
 }
 elseif($aksi == "hapus"){
@@ -22,7 +22,7 @@ elseif($aksi == "update"){
 		$pass1 = md5($_POST['pass_guru']);
 	}
 
-	$db->update($_POST['nip'],$_POST['nama_guru'],$_POST['jk'],$pass1,$_POST['alamat_guru'],$_POST['telp_guru']);
+	$db->update($_POST['foto_guru'],$_POST['nip'],$_POST['nama_guru'],$_POST['jk'],$pass1,$_POST['alamat_guru'],$_POST['telp_guru']);
 	header("location:http://localhost/sekolahMadani/admin.php?module=guru&kls=semua");
 }
 ?>

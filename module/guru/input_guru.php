@@ -19,6 +19,10 @@ if($_GET['act']=="input"){
                                     <form method="post" role="form" action="././module/guru/prosesguru.php?aksi=tambah">
 
                                 <div class="col-lg-6">
+										<div class="form-group">
+                                            <label>FOTO</label>
+                                            <input style="padding-bottom:3%;" type="file" name="foto_guru">
+                                        </div>
                                         <div class="form-group">
                                             <label>NIP</label>
                                             <input class="form-control" placeholder="NIP" name="nip">
