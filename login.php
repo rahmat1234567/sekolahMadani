@@ -10,6 +10,7 @@
 
     <!-- Custom CSS - Include with every page -->
     <link href="assets/css/custom-css.css" rel="stylesheet">
+    <link href="assets/css/style-animate.css" rel="stylesheet">
 
     <!-- Core CSS - Include with every page -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
@@ -27,7 +28,7 @@
             <div class="col-md-4 col-md-offset-4">
                 <div class="login-panel panel panel-default">
                     <div class="panel-heading">
-                        <center><h3 class="panel-title">Sekolah Smart Madani - Login</h3><center>
+                        <center><h3 class="panel-title">Sekolah Smart Madani - Login</h3></center>
                     </div>
                     <div class="panel-body">
                         <form method="post" name="loginform" action="ceklog.php" onSubmit="
@@ -72,6 +73,38 @@
             </div>
         </div>
     </div>
+
+    </div><div class="main-container">
+  <div class="img img-1"></div>
+  <div class="img img-2"></div>
+  <div class="img img-3"></div>
+  <div class="img img-4"></div>
+  <div class="img img-5"></div>
+  <div class="title title-1">Lukmen</div>
+  <div class="title title-2">Bowok</div>
+  <div class="title title-3">Nidya</div>
+  <div class="title title-4">Fikri</div>
+  <div class="title title-5">Fii</div>
+  <div class="info-container">
+    <h3>CSS gallery powered by <a href="http://animista.net" target="_blank">Animista.net</a></h3>
+    <h4>Appearing animations</h4>
+    <p><a href="http://animista.net/play/background/ken-burns/kenburns-top" target="_blank">kenburns-top</a>, <a href="http://animista.net/play/background/ken-burns/kenburns-bottom" target="_blank">kenburns-bottom</a>, <a href="http://animista.net/play/background/ken-burns/kenburns-left" target="_blank">kenburns-left</a>, <a href="http://animista.net/play/background/ken-burns/kenburns-right" target="_blank">kenburns-right</a></p>
+    <p><a href="http://animista.net/play/text/focus-in/focus-in-contract" target="_blank">focus-in-contract</a></p>
+    <p><a href="http://animista.net/play/entrances/slide-in/slide-in-bottom" target="_blank">slide-in-bottom</a></p>
+    <h4>Disappearing animations</h4>
+    <p><a href="http://animista.net/play/exits/fade-out/fade-out" target="_blank">fade-out</a></p>
+    <p><a href="http://animista.net/play/text/blur-out/text-blur-out" target="_blank">text-blur-out</a></p>
+  </div>
+  
+</div>
+<div class="preloaded"></div>
+  <script src='assets/js/preload.js'></script>
+
+  
+
+    <script  src="assets/js/index.js"></script>
+
+
 
     <!-- Core Scripts - Include with every page -->
     <script src="assets/js/jquery-1.10.2.js"></script>
