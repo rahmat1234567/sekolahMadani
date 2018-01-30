@@ -11,7 +11,6 @@ $jkjk=$_SESSION['jk'];
 $nmsklh=$_SESSION['nama_sklh']; 
 $nmkls=$_SESSION['nama_kls'];
 
-
 include "config/conn.php";
 ?>
 <!DOCTYPE html>

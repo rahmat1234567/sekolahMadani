@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 29, 2018 at 04:00 AM
+-- Generation Time: Jan 29, 2018 at 09:09 AM
 -- Server version: 5.5.16
 -- PHP Version: 5.3.8
 
@@ -154,7 +154,9 @@ INSERT INTO `kelas` (`id_kls`, `nama_kls`, `id_wk`, `id_sklh`) VALUES
 (10002001, 'VII-1', 0, 10002),
 (10003001, 'VII-1', 0, 10003),
 (10004001, 'VII-1', 0, 10004),
-(10005001, 'VII-1', 0, 10005);
+(10005001, 'VII-1', 0, 10005),
+(10006001, 'VII-1', 0, 10006),
+(10007001, 'VII-1', 0, 10007);
 
 -- --------------------------------------------------------
 
@@ -194,6 +196,7 @@ CREATE TABLE IF NOT EXISTS `n_tugas` (
   `nisn` varchar(30) NOT NULL,
   `nilai_tugas` int(10) NOT NULL,
   `ket` varchar(30) NOT NULL,
+  `nama_tugas` varchar(100) NOT NULL,
   PRIMARY KEY (`id_ntugas`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
@@ -209,6 +212,7 @@ CREATE TABLE IF NOT EXISTS `n_ulanganharian` (
   `id_matpel` int(20) NOT NULL,
   `nisn` varchar(30) NOT NULL,
   `nilai_uh` int(10) NOT NULL,
+  `ket_uh` varchar(100) NOT NULL,
   PRIMARY KEY (`id_nuh`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
@@ -225,7 +229,7 @@ CREATE TABLE IF NOT EXISTS `sekolah` (
   `telp_sklh` varchar(50) DEFAULT NULL,
   `jmlh_siswa` int(10) DEFAULT NULL,
   PRIMARY KEY (`id_sklh`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10006 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10008 ;
 
 --
 -- Dumping data for table `sekolah`
@@ -236,7 +240,9 @@ INSERT INTO `sekolah` (`id_sklh`, `nama_sklh`, `alamat_sklh`, `telp_sklh`, `jmlh
 (10002, 'SMP Negeri 2 Pekanbaru', 'Jl.Prof.M.Yamin SH No.65', NULL, NULL),
 (10003, 'SMP Negeri 3 Pekanbaru', 'Jl. Dahlia No. 102', NULL, NULL),
 (10004, 'SMP Negeri 4 Pekanbaru', 'Jl. Dr. Sutomo 110', NULL, NULL),
-(10005, 'SMP Negeri 5 Pekanbaru', 'Jl. Sultan Syarif Qasim 155', NULL, NULL);
+(10005, 'SMP Negeri 5 Pekanbaru', 'Jl. Sultan Syarif Qasim 155', NULL, NULL),
+(10006, 'SMP Negeri 6 Pekanbaru', 'Jl. Camp Rumbai Km 2.5 Tipe VI Rumbai', NULL, NULL),
+(10007, 'SMP Negeri 7 Pekanbaru', 'Jl. Lokomotif No.28', '(0761) 23979', NULL);
 
 -- --------------------------------------------------------
 
