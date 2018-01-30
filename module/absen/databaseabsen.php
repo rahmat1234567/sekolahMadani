@@ -19,12 +19,12 @@ class database{
 		return $hasil;
 	}
 	
-	function input($nip,$nama_guru,$jk,$pass_guru,$alamat_guru,$telp_guru){
-		mysql_query("insert into guru values('$nip','$nama_guru','$pass_guru','$alamat_guru','$telp_guru','','','','$jk')");
+	function input($id_kls,$tgl,$jam,$ket){
+		mysql_query("insert into absensi values('','$id_kls','$tgl','$jam','$ket')");
 	}
 	
-	function hapus($nip){
-		mysql_query("delete from guru where nip='$nip'");
+	function hapus($id_abs){
+		mysql_query("delete from absensi where id_abs='$id_abs'");
 	}
 	
 	function edit($nip){

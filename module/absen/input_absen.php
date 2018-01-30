@@ -1,11 +1,3 @@
-<?php
-$no=1;
-include 'databaseabsen.php';
-$db = new database();
-$klas=$_GET['kls'];
-$id_kls=$_SESSION['id_kls'];
-?>
-
 			<!-- /.row -->
             <div class="row">
                 <div class="col-lg-12">
@@ -49,19 +41,19 @@ if($_GET['jam']==$rg){
 <?php
 $no=1;
 $tg=date("d-m-Y");
-	$sql=mysql_query("select * from siswa where idk='$_GET[kls]'");
+	$sql=mysql_query("select * from siswa where id_kls='$_GET[kls]'");
 	while($rs=mysql_fetch_array($sql)){
-	$sqla=mysql_query("select * from absen where ids='$rs[ids]' and tgl='$dt' and jam='$_GET[jam]'");
+	$sqla=mysql_query("select * from absensi where id_kls='$rs[id_kls]' and tgl='$dt' and jam='$_GET[jam]'");
 	$rsa=mysql_fetch_array($sqla);
 	$conk=mysql_num_rows($sqla);
-	$sqlw=mysql_query("select * from kelas where idk='$rs[idk]'");
+	$sqlw=mysql_query("select * from kelas where id_kls='$rs[id_kls]'");
 	$rsw=mysql_fetch_array($sqlw);
-	$sqlb=mysql_query("select * from sekolah where id='$rsw[id]'");
+	$sqlb=mysql_query("select * from sekolah where id_sklh='$rsw[id_sklh]'");
 	$rsb=mysql_fetch_array($sqlb);
 
 ?>                                        <tr class="odd gradeX">
-                                            <td><?php echo"$rs[nis]";  ?></td>
-                                            <td><?php echo"$rs[nama]";  ?></td>
+                                            <td><?php echo"$rs[nisn]";  ?></td>
+                                            <td><?php echo"$rs[nama_siswa]";  ?></td>
 <?php
 if($rs['jk']=="L"){
 ?>
@@ -74,8 +66,8 @@ if($rs['jk']=="L"){
 }
 ?>
 
-                                            <td><?php echo"$rs[alamat]";  ?></td>
-                                            <td><?php echo"$rs[tlp]";  ?></td>
+                                            <td><?php echo"$rs[alamat_siswa]";  ?></td>
+                                            <td><?php echo"$rs[telp_ortu]";  ?></td>
                                             <td class="text-center">
                                                                                     <div class="form-group">
 
