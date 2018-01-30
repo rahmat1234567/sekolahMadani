@@ -20,6 +20,8 @@
                                             <th class="text-center">Kode</th>
                                             <th class="text-center">Nama Sekolah</th>
                                             <th class="text-center">Alamat</th>
+											<th class="text-center">Telp</th>
+											<th class="text-center">Jumlah Siswa</th>
                                             <th class="text-center">Aksi</th>
 
                                         </tr>
@@ -27,15 +29,21 @@
                                     <tbody>
 <?php
 $no=1;
+include 'databasesekolah.php';
+$db = new database();
 	$sql=mysql_query("select * from sekolah");
-	while($rs=mysql_fetch_array($sql)){
 
+	
+    foreach($db->tampil_data() as $rs)
+	{
 ?>                                        <tr class="odd gradeX">
                                             <td><?php echo"$rs[id_sklh]";  ?></td>
                                             <td ><?php echo"$rs[nama_sklh]";  ?></td>
                                             <td ><?php echo"$rs[alamat_sklh]";  ?></td>
+											<td ><?php echo"$rs[telp_sklh]";  ?></td>
+											<td ><?php echo"$rs[jmlh_siswa]";  ?></td>
 
-                                        <td class="text-center"><a href="./././media.php?module=input_sekolah&act=edit_sekolah&id=<?php echo $rs['id'] ?>"><button type="button" class="btn btn-info">Edit</button> <a href="././module/simpan.php?act=hapus_sekolah&id=<?php echo $rs['id'] ?>"><button type="button" class="btn btn-danger">Hapus</button></a></td>
+                                        <td class="text-center"><a href="./././admin.php?module=input_sekolah&act=edit_sekolah&id_sklh=<?php echo $rs['id_sklh'] ?>"><button type="button" class="btn btn-info">Edit</button> <a href="././module/sekolah/prosessekolah.php?aksi=hapus&id_sklh=<?php echo $rs['id_sklh'] ?>"><button type="button" class="btn btn-danger">Hapus</button></a></td>
 
                                         </tr>
 <?php

@@ -16,12 +16,12 @@ if($_GET['act']=="input"){
                         </div>
                         <div class="panel-body">
                             <div class="row">
-                                    <form method="post" role="form" action="././module/simpan.php?act=input_sekolah">
+                                    <form method="post" role="form" action="././module/sekolah/prosessekolah.php?aksi=tambah">
 
                                 <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>Kode Sekolah</label>
-                                            <input class="form-control" placeholder="Kode" name="id_sklh">
+                                            <input  value="" class="form-control" placeholder="Kode" name="id_sklh" disabled>
                                         </div>
                                         <div class="form-group">
                                             <label>Nama Sekolah</label>
@@ -30,6 +30,10 @@ if($_GET['act']=="input"){
                                         <div class="form-group">
                                             <label>Alamat</label>
                                             <textarea class="form-control" placeholder="Alamat" name="alamat_sklh" rows="3"></textarea>
+                                        </div>
+										<div class="form-group">
+                                            <label>Telp</label>
+                                            <textarea class="form-control" placeholder="Telp" name="telp_sklh" rows="3"></textarea>
                                         </div>
 
                                         
@@ -75,16 +79,15 @@ if($_GET['act']=="edit_sekolah"){
 								$rs=mysql_fetch_array($sql);
 
 ?>
-                                    <form method="post" role="form" action="././module/simpan.php?act=edit_sekolah">
+                                    <form method="post" role="form" action="././module/sekolah/prosessekolah.php?aksi=update">
 <input type="hidden" name="id_sklh" value="<?php echo $_GET['id_sklh'] ?>" />
 
                                 <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>Kode Sekolah</label>
-                                            <input class="form-control" placeholder="Kode" name="id_sklh" value="<?php echo "$rs[id_sklh]"; ?>">
+                                            <input class="form-control" placeholder="Kode" name="id_sklh" value="<?php echo "$rs[id_sklh]"; ?>" disabled>
 </div>
                                         <div class="form-group">
-
                                             <label>Nama Sekolah</label>
                                             <input class="form-control" placeholder="Nama Sekolah" name="nama_sklh" value="<?php echo "$rs[nama_sklh]"; ?>">
 
@@ -93,6 +96,10 @@ if($_GET['act']=="edit_sekolah"){
                                         <div class="form-group">
                                             <label>Alamat</label>
                                             <textarea class="form-control" placeholder="Alamat" name="alamat_sklh" rows="3"><?php echo "$rs[alamat_sklh]"; ?></textarea>
+                                        </div>
+										<div class="form-group">
+                                            <label>Telp</label>
+                                            <textarea class="form-control" placeholder="Telp" name="telp_sklh" rows="3"><?php echo "$rs[telp_sklh]"; ?></textarea>
                                         </div>
 
                                         <button type="submit" class="btn btn-default">Submit Button</button>
