@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 30, 2018 at 02:47 AM
+-- Generation Time: Jan 30, 2018 at 04:33 AM
 -- Server version: 5.5.16
 -- PHP Version: 5.3.8
 
@@ -111,6 +111,9 @@ CREATE TABLE IF NOT EXISTS `guru` (
 --
 
 INSERT INTO `guru` (`nip`, `nama_guru`, `pass_guru`, `alamat_guru`, `telp_guru`, `id_sklh`, `wk_status`, `status_akun`, `jk`, `foto_guru`) VALUES
+(196106161984031007, 'Safrudin', '6ab4520232a7e9862e0ae1befebcd2b1', 'Jl. Bantul no.7', '081222909178', 10007, 1, 3, 'L', ''),
+(196509112007011010, 'Daroni', 'af491529b1dd328d2ce21a0ad9700a5a', 'Jl. Jogjakarta no. 10', '081278455100', 10007, 0, 3, 'L', ''),
+(197409162008012005, 'Nining Widuri', '00fa5751a3c4c8812ce5d8a29a6284da', 'Jl. Selamat no. 74', '089877191077', 10007, 1, 3, 'P', ''),
 (198503302003122002, 'Riva Eka Putri', '7f15e383b9621dc01eee9c0506c56f67', 'JL. Kartama No. 27', '081324067905', 10003, 0, 3, 'P', '');
 
 -- --------------------------------------------------------
@@ -120,8 +123,9 @@ INSERT INTO `guru` (`nip`, `nama_guru`, `pass_guru`, `alamat_guru`, `telp_guru`,
 --
 
 CREATE TABLE IF NOT EXISTS `jadwal` (
-  `id_jadwal` int(20) NOT NULL,
-  `jam` varchar(30) NOT NULL,
+  `id_jadwal` int(20) NOT NULL AUTO_INCREMENT,
+  `hari` varchar(30) NOT NULL,
+  `jam` time NOT NULL,
   `id_matpel` int(20) NOT NULL,
   `nip` bigint(50) NOT NULL,
   `id_kls` int(10) NOT NULL,
@@ -129,7 +133,14 @@ CREATE TABLE IF NOT EXISTS `jadwal` (
   KEY `fk_jadwal_kls` (`id_kls`),
   KEY `fk_jadwal_matpel` (`id_matpel`),
   KEY `fk_jadwal_guru` (`nip`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `jadwal`
+--
+
+INSERT INTO `jadwal` (`id_jadwal`, `hari`, `jam`, `id_matpel`, `nip`, `id_kls`) VALUES
+(1, 'Senin', '07:00:00', 105, 197409162008012005, 10007001);
 
 -- --------------------------------------------------------
 
@@ -295,7 +306,7 @@ CREATE TABLE IF NOT EXISTS `staffit` (
   `jk` varchar(2) NOT NULL,
   `foto_staffit` varchar(100) NOT NULL,
   PRIMARY KEY (`id_staffit`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=123003 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=123005 ;
 
 --
 -- Dumping data for table `staffit`
@@ -303,7 +314,9 @@ CREATE TABLE IF NOT EXISTS `staffit` (
 
 INSERT INTO `staffit` (`id_staffit`, `nama_staffit`, `pass_staffit`, `id_sklh`, `telp_staffit`, `alamat_staffit`, `status_akun`, `jk`, `foto_staffit`) VALUES
 (123001, 'Muhammad Iqbal Nasution', 'fe34bd483a283bfa1331f5e65625553c', 10001, '085271667019', 'Jl. Pemuda No.11', 2, 'L', ''),
-(123002, 'Fira Dwi Putri', 'bbc23ed229f45f4a0bf869441f3578b9', 10002, '087811818729', 'Jl. Kenanga No. 21', 2, 'P', '');
+(123002, 'Fira Dwi Putri', 'bbc23ed229f45f4a0bf869441f3578b9', 10002, '087811818729', 'Jl. Kenanga No. 21', 2, 'P', ''),
+(123003, 'Sani Ismanta', 'f3e22d3287391e82d6f6b017887359fd', 10007, '081171779007', 'Jl. Selamat no. 68', 2, 'L', ''),
+(123004, 'Aryasih Banowati', '3e8d19b1246637afc543e201b1059b77', 10007, '081126379007', 'Jl. Jogjakarta no. 9', 2, 'P', '');
 
 -- --------------------------------------------------------
 
