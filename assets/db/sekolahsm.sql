@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 29, 2018 at 09:09 AM
+-- Generation Time: Jan 30, 2018 at 02:47 AM
 -- Server version: 5.5.16
 -- PHP Version: 5.3.8
 
@@ -168,7 +168,7 @@ CREATE TABLE IF NOT EXISTS `matpel` (
   `id_matpel` int(20) NOT NULL AUTO_INCREMENT,
   `nama_matpel` varchar(50) NOT NULL,
   PRIMARY KEY (`id_matpel`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=108 ;
 
 --
 -- Dumping data for table `matpel`
@@ -272,7 +272,11 @@ CREATE TABLE IF NOT EXISTS `siswa` (
 --
 
 INSERT INTO `siswa` (`nisn`, `nama_siswa`, `pass_siswa`, `alamat_siswa`, `id_sklh`, `id_kls`, `nama_ayah`, `nama_ibu`, `status_akun`, `jk`, `id_ekskul`, `foto_siswa`, `telp_ortu`) VALUES
-('0023693536', 'Najwa Nurhumaidah', 'cb2147dca12f89ef8c4f9e5783456c64', 'Jl. Enau No. 389', 0, 0, 'Drs. Multachdi M.Si', 'Dra. Agustina', 4, 'P', NULL, '', '081178965281');
+('0023693536', 'Najwa Nurhumaidah', 'cb2147dca12f89ef8c4f9e5783456c64', 'Jl. Enau No. 389', 10013, 0, 'Drs. Multachdi M.Si', 'Dra. Agustina', 4, 'P', NULL, '', '081178965281'),
+('9965589833', 'Ratna Puspa Nur Athariq', '1d2449c5a0164a01d3c01af5827316fd', 'Jl. Adi Sucipto Komplek Rajawali V no.13', 10008, 0, 'Yudi Apaya', NULL, 4, 'P', NULL, '', '085277781680'),
+('9971848276', 'Ahmad Syukri', '1a067be8e9641193d9f8d4712a1d48c2', '', 0, 0, 'Bukhairi', 'Asni', 4, 'L', NULL, '', '081277828011'),
+('9982583332', 'Rifdha Tambusai', 'f32369e992295b97337560732a2ab07d', '', 10035, 0, NULL, NULL, 4, 'P', NULL, '', '081910001866'),
+('9990579707', 'Nurul Aini Supriyadi', '666ebf7600d770d789b01547700dd786', 'Jl. Adi Sucipto Komplek Bangau no.17', 10008, 0, 'Supriyadi Sukarna', 'Isbadria', 4, 'P', NULL, '', '081377081982');
 
 -- --------------------------------------------------------
 
