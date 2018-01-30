@@ -74,7 +74,7 @@ else{
 						$rszzz=mysql_fetch_array($sqlzzz);
 						$_SESSION['nama_kls']=$rszzz['nama_kls'];
 					}
-					else{
+					else{ 
 						$_SESSION['nama_kls']="";
 					}
 				header('location:admin.php?module=home');

@@ -74,7 +74,7 @@
         </div>
     </div>
 
-    </div><div class="main-container">
+    <div class="main-container">
   <div class="img img-1"></div>
   <div class="img img-2"></div>
   <div class="img img-3"></div>
@@ -98,7 +98,7 @@
   
 </div>
 <div class="preloaded"></div>
-  <script src='assets/js/preload.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/PreloadJS/1.0.1/preloadjs.js'></script>
 
   
 
