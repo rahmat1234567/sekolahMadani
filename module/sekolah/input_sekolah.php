@@ -21,15 +21,15 @@ if($_GET['act']=="input"){
                                 <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>Kode Sekolah</label>
-                                            <input class="form-control" placeholder="Kode" name="kode">
+                                            <input class="form-control" placeholder="Kode" name="id_sklh">
                                         </div>
                                         <div class="form-group">
                                             <label>Nama Sekolah</label>
-                                            <input class="form-control" placeholder="Nama sekolah" name="nama">
+                                            <input class="form-control" placeholder="Nama sekolah" name="nama_sklh">
                                         </div>
                                         <div class="form-group">
                                             <label>Alamat</label>
-                                            <textarea class="form-control" placeholder="Alamat" name="alamat" rows="3"></textarea>
+                                            <textarea class="form-control" placeholder="Alamat" name="alamat_sklh" rows="3"></textarea>
                                         </div>
 
                                         
@@ -71,28 +71,28 @@ if($_GET['act']=="edit_sekolah"){
                         <div class="panel-body">
                             <div class="row">
 <?php                            
-                            	$sql=mysql_query("select * from sekolah where id='$_GET[id]'");
+                            	$sql=mysql_query("select * from sekolah where id_sklh='$_GET[id_sklh]'");
 								$rs=mysql_fetch_array($sql);
 
 ?>
                                     <form method="post" role="form" action="././module/simpan.php?act=edit_sekolah">
-<input type="hidden" name="id" value="<?php echo $_GET['id'] ?>" />
+<input type="hidden" name="id_sklh" value="<?php echo $_GET['id_sklh'] ?>" />
 
                                 <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>Kode Sekolah</label>
-                                            <input class="form-control" placeholder="Kode" name="kode" value="<?php echo "$rs[kode]"; ?>">
+                                            <input class="form-control" placeholder="Kode" name="id_sklh" value="<?php echo "$rs[id_sklh]"; ?>">
 </div>
                                         <div class="form-group">
 
                                             <label>Nama Sekolah</label>
-                                            <input class="form-control" placeholder="Nama Sekolah" name="nama" value="<?php echo "$rs[nama]"; ?>">
+                                            <input class="form-control" placeholder="Nama Sekolah" name="nama_sklh" value="<?php echo "$rs[nama_sklh]"; ?>">
 
                                         </div>
                                         
                                         <div class="form-group">
                                             <label>Alamat</label>
-                                            <textarea class="form-control" placeholder="Alamat" name="alamat" rows="3"><?php echo "$rs[alamat]"; ?></textarea>
+                                            <textarea class="form-control" placeholder="Alamat" name="alamat_sklh" rows="3"><?php echo "$rs[alamat_sklh]"; ?></textarea>
                                         </div>
 
                                         <button type="submit" class="btn btn-default">Submit Button</button>

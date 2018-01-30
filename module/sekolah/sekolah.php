@@ -31,9 +31,9 @@ $no=1;
 	while($rs=mysql_fetch_array($sql)){
 
 ?>                                        <tr class="odd gradeX">
-                                            <td><?php echo"$rs[kode]";  ?></td>
-                                            <td ><?php echo"$rs[nama]";  ?></td>
-                                            <td ><?php echo"$rs[alamat]";  ?></td>
+                                            <td><?php echo"$rs[id_sklh]";  ?></td>
+                                            <td ><?php echo"$rs[nama_sklh]";  ?></td>
+                                            <td ><?php echo"$rs[alamat_sklh]";  ?></td>
 
                                         <td class="text-center"><a href="./././media.php?module=input_sekolah&act=edit_sekolah&id=<?php echo $rs['id'] ?>"><button type="button" class="btn btn-info">Edit</button> <a href="././module/simpan.php?act=hapus_sekolah&id=<?php echo $rs['id'] ?>"><button type="button" class="btn btn-danger">Hapus</button></a></td>
 

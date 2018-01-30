@@ -5,7 +5,7 @@ $db = new database();
 $aksi = $_GET['aksi'];
 if($aksi == "tambah"){
 	$db->input($_POST['nama_sklh'],$_POST['alamat_sklh'],$_POST['telp_sklh'],$_POST['jmlh_siswa']);
-	header("location:tampilsekolah.php");
+	header("location:sekolah.php");
 }
 elseif($aksi == "hapus"){
 	$db->hapus($_GET['id_sklh']);
