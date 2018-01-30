@@ -4,7 +4,13 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             Data Siswa <?php 
-							$sqlj=mysql_query("select * from kelas where id_kls='$_SESSION[id_kls]'");
+
+                            $nama_sklh=$_GET['nama']; 
+                            $sqlaaa=mysql_query("select id_sklh from sekolah where nama_sklh='$nama_sklh'");
+                            $countaaa=mysql_num_rows($sqlaaa);
+                            $rsaaa=mysql_fetch_array($sqlaaa);
+
+							$sqlj=mysql_query("select * from kelas where id_kls='$rsaaa[id_kls]'");
 							$rsj=mysql_fetch_array($sqlj);
 							
 							echo "Kelas $rsj[nama_kls]";
@@ -41,7 +47,7 @@ if($_GET['jam']==$rg){
 <?php
 $no=1;
 $tg=date("d-m-Y");
-	$sql=mysql_query("select * from siswa where id_kls='$_GET[kls]'");
+	$sql=mysql_query("select * from siswa where id_kls='$rsaaa[id_kls]'");
 	while($rs=mysql_fetch_array($sql)){
 	$sqla=mysql_query("select * from absensi where id_kls='$rs[id_kls]' and tgl='$dt' and jam='$_GET[jam]'");
 	$rsa=mysql_fetch_array($sqla);
