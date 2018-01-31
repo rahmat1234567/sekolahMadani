@@ -20,9 +20,6 @@
 
 .login-panel {
 	opacity: 0;
-}
-
-body:hover .login-panel{
   animation-name: up;
   animation-duration: 1s;
   animation-delay: 500ms;

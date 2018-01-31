@@ -58,11 +58,11 @@ if($rsb['id']==$_SESSION['id']){
 <?php
 if($rs['jk']=="L"){
 ?>
-                                            <td class="text-center">Laki - Laki</td>
+                                            <td class="text-center"><i class="fa-lg fa-male icon-2x"> </i></td>
 <?php
 }else{
 ?>
-                                            <td class="text-center">Perempuan</td>
+                                            <td class="text-center"><i class="fa-lg fa-female icon-2x"> </i></td>
 <?php
 }
 ?>
@@ -82,11 +82,11 @@ if($rs['jk']=="L"){
 <?php
 if($rs['jk']=="L"){
 ?>
-                                            <td class="text-center">Laki - Laki</td>
+                                            <td class="text-center"><i class="fa fa-male icon-2x"> </i></td>
 <?php
 }else{
 ?>
-                                            <td class="text-center">Perempuan</td>
+                                            <td class="text-center"><i class="fa fa-female icon-2x"> </i></td>
 <?php
 }
 ?>

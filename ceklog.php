@@ -82,7 +82,7 @@ else{
 
 		else{
 
-			$sqlx=mysql_query("select * from siswa where nis='$user' and pass_siswa='$pass'");
+			$sqlx=mysql_query("select * from siswa where nisn='$user' and pass_siswa='$pass'");
 			$countx=mysql_num_rows($sqlx);
 			$rsx=mysql_fetch_array($sqlx);
 
