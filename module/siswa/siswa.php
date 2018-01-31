@@ -20,7 +20,11 @@
                                             <th class="text-center">NIS</th>
                                             <th class="text-center" width="40%">Nama</th>
                                             <th class="text-center">JK</th>
-                                            <th class="text-center">No Telepon</th>
+											<th class="text-center">Alamat</th>
+                                            <th class="text-center">Nama Sekolah</th>
+											<th class="text-center">Nama Ayah</th>
+											<th class="text-center">Nama Ibu</th>
+											<th class="text-center">Telp</th>
                                             <th class="text-center">Aksi</th>
                                         </tr>
                                     </thead>
@@ -35,17 +39,17 @@ if($klas=="semua")
 }
 else
 {
-	$sql=mysql_query("select * from siswa where idk='$_GET[kls]'");	
+	$sql=mysql_query("select * from siswa where id_kls='$_GET[kls]'");	
 }
 
 	while($rs=mysql_fetch_array($sql))
 	{
-		$sqlw=mysql_query("select * from kelas where idk='$rs[idk]'");
+		$sqlw=mysql_query("select * from kelas where id_kls='$rs[id_kls]'");
 		$rsw=mysql_fetch_array($sqlw);
-		$sqlb=mysql_query("select * from sekolah where id='$rsw[id]'");
+		$sqlb=mysql_query("select * from sekolah where id_sklh='$rsw[id_sklh]'");
 		$rsb=mysql_fetch_array($sqlb);
 
-if($_SESSION['level']=="admin_guru"){
+//if($_SESSION['level']=="admin_guru"){
 
 if($rsb['id']==$_SESSION['id']){
 ?>                                        <tr class="odd gradeX">
@@ -62,23 +66,19 @@ if($rs['jk']=="L"){
 <?php
 }
 ?>
-                                            <td><?php echo"$rs[alamat]";  ?></td>
-                                            <td><?php echo"$rs[tlp]";  ?></td>
-
-                                        <td class="text-center">
-										<a href="./././media.php?module=input_siswa&act=edit&ids=<?php echo $rs['ids'] ?>">
-										<button type="button" class="btn btn-info">Edit
-										</button> <a href="././module/simpan.php?act=hapus&ids=<?php echo $rs['ids'] ?>">
-										<button type="button" class="btn btn-danger">Hapus</button></a></td>
-
+                                            <td><?php echo"$rs[alamat_siswa]";  ?></td>
+											<td><?php echo"$rs[id_sklh]";  ?></td>
+											<td><?php echo"$rs[nama_ayah]";  ?></td>
+											<td><?php echo"$rs[nama_ibu]";  ?></td>
+                                            <td><?php echo"$rs[telp_ortu]";  ?></td>
                                         </tr>
 <?php
-}
-}else{
+}/*
+}else{*/
 ?>	
                                         <tr class="odd gradeX">
-                                            <td><?php echo"$rs[nis]";  ?></td>
-                                            <td><?php echo"$rs[nama]";  ?></td>
+                                            <td><?php echo"$rs[nisn]";  ?></td>
+                                            <td><?php echo"$rs[nama_siswa]";  ?></td>
 <?php
 if($rs['jk']=="L"){
 ?>
@@ -90,26 +90,22 @@ if($rs['jk']=="L"){
 <?php
 }
 ?>
-
-                                        <td><?php echo"$rs[tlp]";  ?></td>
+										<td><?php echo"$rs[alamat_siswa]";  ?></td>
+										<td><?php echo"$rs[id_sklh]";  ?></td>
+										<td><?php echo"$rs[nama_ayah]";  ?></td>
+										<td><?php echo"$rs[nama_ibu]";  ?></td>
+                                        <td><?php echo"$rs[telp_ortu]";  ?></td>
                                         
 										<td class="text-center">
 										
-										<a href="./././media.php?module=detail_siswa&act=details&ids=<?php echo $rs['ids'] ?>">
+										<a href="./././admin.php?module=detail_siswa&act=details&ids=<?php echo $rs['ids'] ?>">
 										<button type="button" class="btn btn-warning">Details</button> </a>
-										
-										<a href="./././media.php?module=input_siswa&act=edit&ids=<?php echo $rs['ids'] ?>">
-										<button type="button" class="btn btn-info">Edit</button> </a>
-										
-										
-										<a href="././module/simpan.php?act=hapus&ids=<?php echo $rs['ids'] ?>">
-										<button type="button" class="btn btn-danger">Hapus</button></a>
 										
 										</td>
                                         </tr>
 <?php
 }
-}
+/*}*/
 ?>
                                     </tbody>
                                 </table>

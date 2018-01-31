@@ -13,7 +13,7 @@
                         </div>
                         <div class="panel-body">
                             <div class="row">
-                                    <form method="get" role="form" action="././media.php?module=siswa">
+                                    <form method="get" role="form" action="././admin.php?module=siswa">
 
 
                                 <div class="col-lg-6">
@@ -25,7 +25,7 @@
 
   <?php 
 if($_SESSION['level']=="guru"){
-	$sql=mysql_query("select * from kelas where idk='$_SESSION[idk]'");
+	$sql=mysql_query("select * from kelas where id_kls='$_SESSION[idk]'");
   }else{
 	$sql=mysql_query("select * from kelas");	
 ?>
@@ -33,7 +33,7 @@ if($_SESSION['level']=="guru"){
 
 <?php
   }	while($rs=mysql_fetch_array($sql)){
-	$sqla=mysql_query("select * from sekolah where id='$rs[id]'");
+	$sqla=mysql_query("select * from sekolah where id_sklh='$rs[id_sklh]'");
 	$rsa=mysql_fetch_array($sqla);
 
 	echo "<option value='$rs[idk]'>$rsa[nama] | $rs[nama]</option>";	
