@@ -16,34 +16,26 @@ if($_GET['act']=="input"){
                         </div>
                         <div class="panel-body">
                             <div class="row">
-                                    <form method="post" role="form" action="././module/simpan.php?act=input_kelas">
+                                    <form method="post" role="form" action="././module/kelas/proseskelas.php?aksi=tambah">
 
                                 <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label>Nama Sekolah</label>
-                                            <select class="form-control" name="id">
-  <?php 
-	$sql=mysql_query("select * from sekolah");
-	while($rs=mysql_fetch_array($sql)){
-if($_SESSION['level']=="admin_guru"){
-if($rs['id']==$_SESSION['id']){
-		
-	echo "<option value='$rs[id]'>$rs[nama]</option>";	
-}
-}else{
-		echo "<option value='$rs[id]'>$rs[nama]</option>";	
-
-	}
-}
-?>
-                                          </select>
+                                            <label>Kode Kelas</label>
+                                            <input  value="" class="form-control" placeholder="Kode Kelas" name="id_kls" disabled>
                                         </div>
                                         <div class="form-group">
                                             <label>Nama Kelas</label>
-                                            <input class="form-control" placeholder="Kelas" name="nama">
+                                            <input class="form-control" placeholder="Nama kelas" name="nama_kls">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Nama Wali Kelas</label>
+                                            <textarea class="form-control" placeholder="Nama Wali Kelas" name="id_wk" rows="3"></textarea>
+                                        </div>
+										<div class="form-group">
+                                            <label>Nama Sekolah</label>
+                                            <textarea class="form-control" placeholder="Nama Sekolah" name="id_sklh" rows="3"></textarea>
                                         </div>
 
-                                        
                                         <button type="submit" class="btn btn-default">Submit Button</button>
                                 </div>
                                 <!-- /.col-lg-6 (nested) -->
@@ -82,47 +74,29 @@ if($_GET['act']=="edit_kelas"){
                         <div class="panel-body">
                             <div class="row">
 <?php                            
-                            	$sql=mysql_query("select * from kelas where idk='$_GET[idk]'");
+                            	$sql=mysql_query("select * from kelas where id_kls='$_GET[id_kls]'");
 								$rs=mysql_fetch_array($sql);
 
 ?>
-                                    <form method="post" role="form" action="././module/simpan.php?act=edit_kelas">
-<input type="hidden" name="idk" value="<?php echo $_GET['idk'] ?>" />
+                                    <form method="post" role="form" action="././module/kelas/proseskelas.php?aksi=update">
+<input type="hidden" name="id_kls" value="<?php echo $_GET['id_kls'] ?>" />
 
                                 <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label>Kelas</label>
-                                            <select class="form-control" name="id">
-  <?php 
-	$sqla=mysql_query("select * from sekolah");
-	while($rsa=mysql_fetch_array($sqla)){
-if($_SESSION['level']=="admin_guru"){
-if($rsa['id']==$_SESSION['id']){
-
-if($rs['id']==$rsa['id']){
-
-	echo "<option value='$rsa[id]' selected='selected'>$rsa[nama]</option>";	
-}else{
-	echo "<option value='$rsa[id]'>$rsa[nama]</option>";		
-}
-
-}
-}else{
-if($rs['id']==$rsa['id']){
-
-	echo "<option value='$rsa[id]' selected='selected'>$rsa[nama]</option>";	
-}else{
-	echo "<option value='$rsa[id]'>$rsa[nama]</option>";		
-}
-
-}
-}
-?>
-                                          </select>
+                                            <label>Kode Kelas</label>
+                                            <input class="form-control" placeholder="Kode Kelas" name="id_kls" value="<?php echo "$rs[id_kls]"; ?>" disabled>
+										</div>
+                                        <div class="form-group">
+                                            <label>Nama Kelas</label>
+                                            <input class="form-control" placeholder="Nama kelas" name="nama_kls" value="<?php echo "$rs[nama_kls]"; ?>">
                                         </div>
                                         <div class="form-group">
+                                            <label>Nama Wali Kelas</label>
+                                            <textarea class="form-control" placeholder="Nama Wali Kelas" name="id_wk" rows="3"><?php echo "$rs[id_wk]"; ?></textarea>
+                                        </div>
+										<div class="form-group">
                                             <label>Nama Sekolah</label>
-                                            <input class="form-control" placeholder="Kelas" name="nama" value="<?php echo $rs['nama'] ?>">
+                                            <textarea class="form-control" placeholder="Nama Sekolah" name="id_sklh" rows="3"><?php echo "$rs[id_sklh]"; ?></textarea>
                                         </div>
 
                                         <button type="submit" class="btn btn-default">Submit Button</button>
