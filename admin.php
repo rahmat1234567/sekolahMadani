@@ -199,7 +199,7 @@ echo "User : $usre";
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Nilai Siswa<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="#">Input Nilai</a>
+                                    <a href="admin.php?module=input_nilai&act=input">Input Nilai</a>
                                 </li>
                                 <li>
                                     <a href="#">Laporan Nilai</a>
