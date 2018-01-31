@@ -1,37 +1,38 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" >
 
 <head>
+  <meta charset="UTF-8">
+  <title>CSS Gallery</title>
+  
+  
+  
+      <link rel="stylesheet" href="css/style.css">
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <!-- Core CSS - Include with every page -->
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/font-awesome/css/font-awesome.css" rel="stylesheet">
 
-    <title>Sekolah Madani</title>
-
-    <!-- Custom CSS - Include with every page -->
-    <link href="assets/css/custom-css.css" rel="stylesheet">
-    <link href="assets/css/style-animate.css" rel="stylesheet">
-
-    <!-- Core CSS - Include with every page -->
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
-    <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <!-- Page-Level Plugin CSS - Tables -->
+    <link href="../assets/css/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet">
 
     <!-- SB Admin CSS - Include with every page -->
-    <link href="assets/css/sb-admin.css" rel="stylesheet">
+    <link href="../assets/css/sb-admin.css" rel="stylesheet">
 
-
+  
 </head>
 
-<body id="custombg">
-    <div class="container">
+<body>
+
+<div class="container">
         <div class="row">
             <div class="col-md-4 col-md-offset-4">
                 <div class="login-panel panel panel-default">
-                    <div class="panel-heading">
+                    <div class="panel-heading" style="z-index:990;">
                         <center><h3 class="panel-title">Sekolah Smart Madani - Login</h3></center>
                     </div>
                     <div class="panel-body">
-                        <form method="post" name="loginform" action="ceklog.php" onSubmit="
+                        <form method="post" name="loginform" action="../ceklog.php" onSubmit="
 
                         var userValid = /^[0-9\-]*$/;
                         var user      = loginform.username.value;
@@ -73,8 +74,8 @@
             </div>
         </div>
     </div>
-
-    <div class="main-container">
+  
+<div class="main-container" style="z-index: -1;">
   <div class="img img-1"></div>
   <div class="img img-2"></div>
   <div class="img img-3"></div>
@@ -94,30 +95,34 @@
     <h4>Disappearing animations</h4>
     <p><a href="http://animista.net/play/exits/fade-out/fade-out" target="_blank">fade-out</a></p>
     <p><a href="http://animista.net/play/text/blur-out/text-blur-out" target="_blank">text-blur-out</a></p>
+    <p><a href="index.php?module=loginpanel">login</a></p>
   </div>
   
 </div>
 <div class="preloaded"></div>
+
+
+
+
   <script src='https://cdnjs.cloudflare.com/ajax/libs/PreloadJS/1.0.1/preloadjs.js'></script>
 
   
 
-    <script  src="assets/js/index.js"></script>
+    <script  src="js/index.js"></script>
 
+<!-- Core Scripts - Include with every page -->
+    <script src="../assets/js/jquery-1.10.2.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
+    <script src="../assets/js/plugins/metisMenu/jquery.metisMenu.js"></script>
 
-
-    <!-- Core Scripts - Include with every page -->
-    <script src="assets/js/jquery-1.10.2.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
-    <script src="assets/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <!-- Page-Level Plugin Scripts - Tables -->
+    <script src="../assets/js/plugins/dataTables/jquery.dataTables.js"></script>
+    <script src="../assets/js/plugins/dataTables/dataTables.bootstrap.js"></script>
 
     <!-- SB Admin Scripts - Include with every page -->
-    <script src="assets/js/sb-admin.js"></script>
-    
+    <script src="../assets/js/sb-admin.js"></script>
 
 
 </body>
-
-
 
 </html>

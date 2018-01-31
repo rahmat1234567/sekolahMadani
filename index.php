@@ -6,6 +6,6 @@
 
 	<body>
 		
-		<?php header('location:login.php'); ?>
+		<?php header('location:loginpage/index.php'); ?>
 
 	</body>
