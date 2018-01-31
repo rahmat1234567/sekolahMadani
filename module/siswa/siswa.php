@@ -18,12 +18,12 @@
                                     <thead>
                                         <tr>
                                             <th class="text-center">NIS</th>
-                                            <th class="text-center" width="40%">Nama</th>
+                                            <th class="text-center" width="20%">Nama</th>
                                             <th class="text-center">JK</th>
-											<th class="text-center">Alamat</th>
-                                            <th class="text-center">Nama Sekolah</th>
-											<th class="text-center">Nama Ayah</th>
-											<th class="text-center">Nama Ibu</th>
+											<th class="text-center" width="10%">Alamat</th>
+                                            <th class="text-center" width="15%">Nama Sekolah</th>
+											<th class="text-center" width="10%">Nama Ayah</th>
+											<th class="text-center" width="10%">Nama Ibu</th>
 											<th class="text-center">Telp</th>
                                             <th class="text-center">Aksi</th>
                                         </tr>
@@ -97,8 +97,9 @@ if($rs['jk']=="L"){
                                         <td><?php echo"$rs[telp_ortu]";  ?></td>
                                         
 										<td class="text-center">
-										
-										<a href="./././admin.php?module=detail_siswa&act=details&ids=<?php echo $rs['ids'] ?>">
+										<a href="./././admin.php?module=input_kelas&act=edit_kelas&nisn=<?php echo $rs['nisn'] ?>"><button type="button" class="btn btn-info">Edit</button></a> 
+										<a href="././module/kelas/prosessiswa.php?aksi=hapus&nisn=<?php echo $rs['nisn'] ?>"><button type="button" class="btn btn-danger">Hapus</button></a>
+										<a href="./././admin.php?module=detail_siswa&act=details&nisn=<?php echo $rs['nisn'] ?>">
 										<button type="button" class="btn btn-warning">Details</button> </a>
 										
 										</td>
