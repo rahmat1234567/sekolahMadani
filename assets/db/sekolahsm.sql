@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 30, 2018 at 04:33 AM
+-- Generation Time: Jan 31, 2018 at 04:08 AM
 -- Server version: 5.5.16
 -- PHP Version: 5.3.8
 
@@ -46,6 +46,7 @@ CREATE TABLE IF NOT EXISTS `admin` (
   `nama_adm` varchar(50) NOT NULL,
   `email` varchar(50) DEFAULT NULL,
   `telp_adm` varchar(30) DEFAULT NULL,
+  `alamat_adm` varchar(100) NOT NULL,
   `pass_login` varchar(100) NOT NULL,
   `status_akun` int(2) NOT NULL,
   `jk` varchar(2) NOT NULL,
@@ -57,11 +58,11 @@ CREATE TABLE IF NOT EXISTS `admin` (
 -- Dumping data for table `admin`
 --
 
-INSERT INTO `admin` (`id_login`, `nama_adm`, `email`, `telp_adm`, `pass_login`, `status_akun`, `jk`, `foto_adm`) VALUES
-('1507112346', 'Rahmat Wibowo', 'rahmatwibowo66@gmail.com', '082381169597', '16a30a734c46d35a6565fe576c8a5f9f', 1, 'L', ''),
-('1507115285', 'Nidya Nur Syafiqoh', 'nidya.nursyafiqoh5285@student.unri.ac.id', '081311442407', '99138fcf1f8adf450c68e09c118d4f9d', 1, 'P', ''),
-('1507115719', 'Lukmannil Hakim', 'lukmannil.hakim5719@student.unri.ac.id', '081371339605', '5a1f19006889410c9d7a2ca0e2cf6d76', 1, 'L', ''),
-('1507123530', 'M. Muflih Fikri', 'muhammad.muflihfikrialazdi@student.unri.ac.id', '083167841065', 'bd596c423d62002e9734d49c5aeeb181', 1, 'L', '');
+INSERT INTO `admin` (`id_login`, `nama_adm`, `email`, `telp_adm`, `alamat_adm`, `pass_login`, `status_akun`, `jk`, `foto_adm`) VALUES
+('1507112346', 'Rahmat Wibowo', 'rahmatwibowo66@gmail.com', '082381169597', 'Jl. Garuda Sakti Km 2', '16a30a734c46d35a6565fe576c8a5f9f', 1, 'L', ''),
+('1507115285', 'Nidya Nur Syafiqoh', 'nidya.nursyafiqoh5285@student.unri.ac.id', '081311442407', 'Jl. Enau no. 389', '99138fcf1f8adf450c68e09c118d4f9d', 1, 'P', ''),
+('1507115719', 'Lukmannil Hakim', 'lukmannil.hakim5719@student.unri.ac.id', '081371339605', 'Jl. Adi Sucipto Komplek Bangau no.17', '5a1f19006889410c9d7a2ca0e2cf6d76', 1, 'L', ''),
+('1507123530', 'M. Muflih Fikri', 'muhammad.muflihfikrialazdi@student.unri.ac.id', '083167841065', 'Jl. Pendawalima Blok B no.37', 'bd596c423d62002e9734d49c5aeeb181', 1, 'L', '');
 
 -- --------------------------------------------------------
 
@@ -96,7 +97,7 @@ CREATE TABLE IF NOT EXISTS `guru` (
   `nip` bigint(50) NOT NULL,
   `nama_guru` varchar(50) NOT NULL,
   `pass_guru` varchar(100) NOT NULL,
-  `alamat_guru` varchar(50) DEFAULT NULL,
+  `alamat_guru` varchar(100) DEFAULT NULL,
   `telp_guru` varchar(20) DEFAULT NULL,
   `id_sklh` int(20) DEFAULT NULL,
   `wk_status` int(2) NOT NULL,
@@ -140,7 +141,7 @@ CREATE TABLE IF NOT EXISTS `jadwal` (
 --
 
 INSERT INTO `jadwal` (`id_jadwal`, `hari`, `jam`, `id_matpel`, `nip`, `id_kls`) VALUES
-(1, 'Senin', '07:00:00', 105, 197409162008012005, 10007001);
+(1, '1', '07:00:00', 105, 197409162008012005, 10007001);
 
 -- --------------------------------------------------------
 
