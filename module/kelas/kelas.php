@@ -17,9 +17,10 @@
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                     <thead>
                                         <tr>
-                                            <th class="text-center">Kode Sekolah</th>
-                                            <th class="text-center">Nama Sekolah</th>
-                                            <th class="text-center">Kelas</th>
+                                            <th class="text-center">Kode Kelas</th>
+                                            <th class="text-center">Nama Kelas</th>
+                                            <th class="text-center">Nama Wali Kelas</th>
+											<th class="text-center">Nama Sekolah</th>
                                             <th class="text-center">Aksi</th>
 
                                         </tr>
@@ -27,37 +28,26 @@
                                     <tbody>
 <?php
 $no=1;
-	$sql=mysql_query("select * from kelas");
-	while($rs=mysql_fetch_array($sql)){
-	$sqla=mysql_query("select * from sekolah where id='$rs[id]'");
-	$rsa=mysql_fetch_array($sqla);
-if($_SESSION['level']=="admin_guru"){
-if($rsa['id']==$_SESSION['id']){
-
+include 'databasekelas.php';
+$db = new database();
+$sql=mysql_query("select * from kelas");
+	
+    foreach($db->tampil_data() as $rs)
+	{
 ?>                                        <tr class="odd gradeX">
-                                            <td><?php echo"$rsa[kode]";  ?></td>
-                                            <td><?php echo"$rsa[nama]";  ?></td>
-                                            <td class="text-center"><?php echo"$rs[nama]";  ?></td>
+                                            <td><?php echo"$rs[id_kls]";  ?></td>
+                                            <td><?php echo"$rs[nama_kls]";  ?></td>
+                                            <td class="text-center"><?php echo"$rs[id_wk]";  ?></td>
+											<td class="text-center"><?php echo"$rs[id_sklh]";  ?></td>
 
-                                        <td class="text-center"><a href="./././media.php?module=input_kelas&act=edit_kelas&idk=<?php echo $rs['idk'] ?>"><button type="button" class="btn btn-info">Edit</button> <a href="././module/simpan.php?act=hapus_kelas&idk=<?php echo $rs['idk'] ?>"><button type="button" class="btn btn-danger">Hapus</button></a></td>
-
-                                        </tr>
-<?php
-}
-}else{
-?>	
-                                        <tr class="odd gradeX">
-                                            <td><?php echo"$rsa[kode]";  ?></td>
-                                            <td><?php echo"$rsa[nama]";  ?></td>
-                                            <td class="text-center"><?php echo"$rs[nama]";  ?></td>
-
-                                        <td class="text-center"><a href="./././media.php?module=input_kelas&act=edit_kelas&idk=<?php echo $rs['idk'] ?>"><button type="button" class="btn btn-info">Edit</button> <a href="././module/simpan.php?act=hapus_kelas&idk=<?php echo $rs['idk'] ?>"><button type="button" class="btn btn-danger">Hapus</button></a></td>
+                                        <td class="text-center">
+										<a href="./././admin.php?module=input_kelas&act=edit_kelas&id_kls=<?php echo $rs['id_kls'] ?>"><button type="button" class="btn btn-info">Edit</button> 
+										<a href="././module/kelas/proseskelas.php?aksi=hapus&id_kls=<?php echo $rs['id_kls'] ?>"><button type="button" class="btn btn-danger">Hapus</button></a></td>
 
                                         </tr>
 
 <?php
 	}
-}
 ?>
                                     </tbody>
                                 </table>

@@ -86,13 +86,11 @@ if($_GET['act']=="edit_sekolah"){
                                         <div class="form-group">
                                             <label>Kode Sekolah</label>
                                             <input class="form-control" placeholder="Kode" name="id_sklh" value="<?php echo "$rs[id_sklh]"; ?>" disabled>
-</div>
+										</div>
                                         <div class="form-group">
                                             <label>Nama Sekolah</label>
                                             <input class="form-control" placeholder="Nama Sekolah" name="nama_sklh" value="<?php echo "$rs[nama_sklh]"; ?>">
-
                                         </div>
-                                        
                                         <div class="form-group">
                                             <label>Alamat</label>
                                             <textarea class="form-control" placeholder="Alamat" name="alamat_sklh" rows="3"><?php echo "$rs[alamat_sklh]"; ?></textarea>
