@@ -76,7 +76,6 @@ if($_GET['act']=="edit_kelas"){
 <?php                            
                             	$sql=mysql_query("select * from kelas where id_kls='$_GET[id_kls]'");
 								$rs=mysql_fetch_array($sql);
-
 ?>
                                     <form method="post" role="form" action="././module/kelas/proseskelas.php?aksi=update">
 <input type="hidden" name="id_kls" value="<?php echo $_GET['id_kls'] ?>" />
