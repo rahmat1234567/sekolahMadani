@@ -12,6 +12,7 @@
       <!-- Core CSS - Include with every page -->
     <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="../assets/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="../assets/css/custom-css.css" rel="stylesheet">
 
     <!-- Page-Level Plugin CSS - Tables -->
     <link href="../assets/css/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet">
@@ -81,21 +82,19 @@
   <div class="img img-3"></div>
   <div class="img img-4"></div>
   <div class="img img-5"></div>
-  <div class="title title-1">Lukmen</div>
-  <div class="title title-2">Bowok</div>
-  <div class="title title-3">Nidya</div>
-  <div class="title title-4">Fikri</div>
-  <div class="title title-5">Fii</div>
+  <div class="title title-1">SMP Negeri 1 Pekanbaru</div>
+  <div class="title title-2">SMP Negeri 2 Pekanbaru</div>
+  <div class="title title-3">SMP Negeri 3 Pekanbaru</div>
+  <div class="title title-4">SMP Negeri 5 Pekanbaru</div>
+  <div class="title title-5">SMP Negeri 6 Pekanbaru</div>
   <div class="info-container">
-    <h3>CSS gallery powered by <a href="http://animista.net" target="_blank">Animista.net</a></h3>
-    <h4>Appearing animations</h4>
-    <p><a href="http://animista.net/play/background/ken-burns/kenburns-top" target="_blank">kenburns-top</a>, <a href="http://animista.net/play/background/ken-burns/kenburns-bottom" target="_blank">kenburns-bottom</a>, <a href="http://animista.net/play/background/ken-burns/kenburns-left" target="_blank">kenburns-left</a>, <a href="http://animista.net/play/background/ken-burns/kenburns-right" target="_blank">kenburns-right</a></p>
-    <p><a href="http://animista.net/play/text/focus-in/focus-in-contract" target="_blank">focus-in-contract</a></p>
-    <p><a href="http://animista.net/play/entrances/slide-in/slide-in-bottom" target="_blank">slide-in-bottom</a></p>
-    <h4>Disappearing animations</h4>
-    <p><a href="http://animista.net/play/exits/fade-out/fade-out" target="_blank">fade-out</a></p>
-    <p><a href="http://animista.net/play/text/blur-out/text-blur-out" target="_blank">text-blur-out</a></p>
-    <p><a href="index.php?module=loginpanel">login</a></p>
+    <h3>Sekolah Smart Madani - Information System</h3>
+    <h4>Frontend Programmer</h4>
+    <p><a href="instagram.com/lukmention">Lukmannil</a> Hakim</p>
+    <p>M Muflih <a href="instagram.com/muflih_fikri">Fikri</a> Al Azdi</p>
+    <p><a href="instagram.com/rahmat_wib21">Rahmat</a> Wibowo</p>
+    <h4>Backend Programmer</h4>
+    <p><a href="instagram.com/nidyans">Nidya</a> Nur Syafiqoh</p>
   </div>
   
 </div>
