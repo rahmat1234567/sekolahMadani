@@ -75,7 +75,7 @@
             </div>
         </div>
     </div>
-  
+
 <div class="main-container" style="z-index: -1;">
   <div class="img img-1"></div>
   <div class="img img-2"></div>
@@ -99,8 +99,6 @@
   
 </div>
 <div class="preloaded"></div>
-
-
 
 
   <script src='https://cdnjs.cloudflare.com/ajax/libs/PreloadJS/1.0.1/preloadjs.js'></script>
