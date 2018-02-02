@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 31, 2018 at 04:08 AM
+-- Generation Time: Feb 02, 2018 at 04:35 AM
 -- Server version: 5.5.16
 -- PHP Version: 5.3.8
 
@@ -241,7 +241,7 @@ CREATE TABLE IF NOT EXISTS `sekolah` (
   `telp_sklh` varchar(50) DEFAULT NULL,
   `jmlh_siswa` int(10) DEFAULT NULL,
   PRIMARY KEY (`id_sklh`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10008 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10017 ;
 
 --
 -- Dumping data for table `sekolah`
@@ -254,7 +254,16 @@ INSERT INTO `sekolah` (`id_sklh`, `nama_sklh`, `alamat_sklh`, `telp_sklh`, `jmlh
 (10004, 'SMP Negeri 4 Pekanbaru', 'Jl. Dr. Sutomo 110', NULL, NULL),
 (10005, 'SMP Negeri 5 Pekanbaru', 'Jl. Sultan Syarif Qasim 155', NULL, NULL),
 (10006, 'SMP Negeri 6 Pekanbaru', 'Jl. Camp Rumbai Km 2.5 Tipe VI Rumbai', NULL, NULL),
-(10007, 'SMP Negeri 7 Pekanbaru', 'Jl. Lokomotif No.28', '(0761) 23979', NULL);
+(10007, 'SMP Negeri 7 Pekanbaru', 'Jl. Lokomotif No.28', '(0761) 23979', NULL),
+(10008, 'SMP Negeri 8 Pekanbaru', 'Jl.Adi Sucipto No.115', '(0761) 63745', NULL),
+(10009, 'SMP Negeri 9 Pekanbaru', 'Jl. Imam Munandar No.398', '0819-9304-2010', NULL),
+(10010, 'SMP Negeri 10 Pekanbaru', 'Jl. Dr. Sutomo No.108', '(0761) 35440', NULL),
+(10011, 'SMP Negeri 11 Pekanbaru', 'Jl.Bambu Kuning No.28', '(0627) 6126458', NULL),
+(10012, 'SMP Negeri 12 Pekanbaru', 'Jl. Guru Haji Sulaiman No.37', NULL, NULL),
+(10013, 'SMP Negeri 13 Pekanbaru', 'Jl. Ronggowarsito I No. 15', '(0761) 21194', NULL),
+(10014, 'SMP Negeri 14 Pekanbaru', 'Jl. Hang Tuah No.43', NULL, NULL),
+(10015, 'SMP Negeri 15 Pekanbaru', 'Jl. Lembah Sari Rumbai Pesisir', NULL, NULL),
+(10016, 'SMP Negeri 16 Pekanbaru', 'Jl. Cempaka Negeri 17', NULL, NULL);
 
 -- --------------------------------------------------------
 
