@@ -1,4 +1,7 @@
 <?php
+if($_GET['module']=="th_nilai"){
+include "module/nilai/th_nilai.php";
+}
 if($_GET['module']=="input_nilai"){
 include "module/nilai/input_nilai.php";
 }

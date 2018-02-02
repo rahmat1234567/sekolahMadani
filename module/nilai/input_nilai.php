@@ -1,205 +1,150 @@
 <?php
 if($_GET['act']=="input"){
 	?>
-<style type="text/css">
-    .navbar-brand { position: relative; z-index: 2; }
 
-.navbar-nav.navbar-left .btn { position: relative; z-index: 2; padding: 4px 20px; margin: 10px auto; }
 
-.navbar .navbar-collapse { position: relative; }
-.navbar .navbar-collapse .navbar-left > li:last-child { padding-left: 0px; }
-
-.navbar .nav-collapse { position: absolute; z-index: 1; top: 0; left: 0; right: 0; bottom: 0; margin: 0; padding-right: 0px; padding-left: 0px; width: 100%; }
-.navbar.navbar-default .nav-collapse { background-color: #f8f8f8; }
-.navbar.navbar-inverse .nav-collapse { background-color: #222; }
-.navbar .nav-collapse .navbar-form { border-width: 0; box-shadow: none; }
-.nav-collapse>li { float: left; }
-
-.btn.btn-circle { border-radius: 50px; }
-.btn.btn-outline { background-color: transparent; }
-
-@media screen and (max-width: 767px) {
-    .navbar .navbar-collapse .navbar-left > li:last-child { padding-left: 0px; padding-right: 0px; } 
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/bootstrap.js"></script> 
     
-    .navbar .nav-collapse { margin: 7.5px auto; padding: 0; }
-    .navbar .nav-collapse .navbar-form { margin: 0; }
-    .nav-collapse>li { float: none; }
-}
-</style>
-
-    <div class="container-fluid">
-    <!-- Second navbar for categories -->
-    <nav class="navbar navbar-default">
-      <div class="container">
-        <!-- Brand and toggle get grouped for better mobile display -->
+<div class="container">
+        <h1>Input Nilai Siswa</h1> 
+        <br/>
+        <ul class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab">Home</a></li>
+            <li><a data-toggle="tab" href="?#menu1">Menu 1</a></li>
+            <li><a data-toggle="tab" href="#menu2">Menu 2</a></li>
+        </ul>
         
-    
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="navbar-collapse">
-          <ul class="nav navbar-nav navbar-left">
-            <li>
-            <a  href="?page=th_nilai">Tugas Harian</a>
-            </li>
-            <li><a href="javascript:;">&raquo;</a></li>
-            <li>
-            <a  href="#">Ulangan Harian</a>
-            </li>
-            <li>
-            <a  href="#">Ujian Tengah Semester</a>
-            </li>
-            <li>
-            <a  href="#">Ujian Akhir Semester</a>
-            </li>
-            <li><a  href="#">R E M E D I A L</a>
-            </li>
-          </ul>
-        </div><!-- /.navbar-collapse -->
-      </div><!-- /.container -->
-    </nav><!-- /.navbar -->
-    
-    
+        <div class="tab-content">
+            <div id="home" class="tab-pane fade in active">
+                
+            <?php
 
-    </nav><!-- /.navbar -->
-</div><!-- /.container-fluid -->
-          <div class="row">
-                <div class="col-lg-12">
-					<h3 class="page-header"><strong>Input Nilai Siswa</strong></h3>
-                </div>
 
-                <!-- /.col-lg-12 -->
-            </div>
-            <!-- /.row -->
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            Input Data Kelas
-                        </div>
-                        <div class="panel-body">
-                            <div class="row">
-                                    <form method="post" role="form" action="././module/simpan.php?act=input_kelas">
+if(isset($_GET['nip'])){
+    
+    $nip=$_GET['nip'];
+    $id_kelas=$_GET['id_kelas'];
+    $id_mapel=$_GET['id_mapel'];
+    
+    $query=mysql_query("select * from tbl_nilai where nip='$nip' and id_kelas='$id_kelas' and id_mapel='$id_mapel'");
+    $cek=mysql_num_rows($query);
+    
+    if($cek=='0'){
+        //kalo belum ada mode input
+        ?><script language="javascript">document.location.href="?page=nilai_uh_input&nip=<?php echo $nip;?>&id_mapel=<?php echo $id_mapel;?>&id_kelas=<?php echo $id_kelas;?>";</script><?php
+    }else{
+        //kalo sudah ada mode update
+        ?><script language="javascript">document.location.href="?page=nilai_uh_update&nip=<?php echo $nip;?>&id_mapel=<?php echo $id_mapel;?>&id_kelas=<?php echo $id_kelas;?>";</script><?php
+    }
 
-                                <div class="col-lg-6">
-                                        <div class="form-group">
-                                            <label>Nama Sekolah</label>
-                                            <select class="form-control" name="id">
-  <?php 
-	$sql=mysql_query("select * from sekolah");
-	while($rs=mysql_fetch_array($sql)){
-if($_SESSION['level']=="admin_guru"){
-if($rs['id']==$_SESSION['id']){
-		
-	echo "<option value='$rs[id]'>$rs[nama]</option>";	
-}
 }else{
-		echo "<option value='$rs[id]'>$rs[nama]</option>";	
-
-	}
+    unset($_POST['nip']);
 }
-?>
-                                          </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Nama Kelas</label>
-                                            <input class="form-control" placeholder="Kelas" name="nama">
-                                        </div>
-
-                                        
-                                        <button type="submit" class="btn btn-default">Submit Button</button>
-                                </div>
-                                <!-- /.col-lg-6 (nested) -->
-                                    </form>
-
-                            </div>
-                            <!-- /.row (nested) -->
-                        </div>
-                        <!-- /.panel-body -->
-                    </div>
-                    <!-- /.panel -->
-                </div>
-                <!-- /.col-lg-12 -->
-            </div>
-            <!-- /.row -->
-           <?php } ?>
-           
-           
-           
-           <?php
-if($_GET['act']=="edit_kelas"){
-	?>
-          <div class="row">
-                <div class="col-lg-12">
-                    <h1 class="page-header">Edit Data Kelas</h1>
-                </div>
-                <!-- /.col-lg-12 -->
-            </div>
-            <!-- /.row -->
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            Edit Data Kelas
-                        </div>
-                        <div class="panel-body">
-                            <div class="row">
-<?php                            
-                            	$sql=mysql_query("select * from kelas where idk='$_GET[idk]'");
-								$rs=mysql_fetch_array($sql);
 
 ?>
-                                    <form method="post" role="form" action="././module/simpan.php?act=edit_kelas">
-<input type="hidden" name="idk" value="<?php echo $_GET['idk'] ?>" />
 
-                                <div class="col-lg-6">
-                                        <div class="form-group">
-                                            <label>Kelas</label>
-                                            <select class="form-control" name="id">
-  <?php 
-	$sqla=mysql_query("select * from sekolah");
-	while($rsa=mysql_fetch_array($sqla)){
-if($_SESSION['level']=="admin_guru"){
-if($rsa['id']==$_SESSION['id']){
+<!--  start page-heading -->
+<div id="page-heading">
+    <h1>Input Nilai Ulangan Harian</h1>
+</div>
+<!-- end page-heading -->
 
-if($rs['id']==$rsa['id']){
 
-	echo "<option value='$rsa[id]' selected='selected'>$rsa[nama]</option>";	
-}else{
-	echo "<option value='$rsa[id]'>$rsa[nama]</option>";		
-}
 
-}
-}else{
-if($rs['id']==$rsa['id']){
+<table border="0" width="100%" cellpadding="0" cellspacing="0" id="content-table">
+<tr>
+    <th rowspan="3" class="sized"><img src="images/shared/side_shadowleft.jpg" width="20" height="300" alt="" /></th>
+    <th class="topleft"></th>
+    <td id="tbl-border-top">&nbsp;</td>   
+    <th class="topright"></th>
+    <th rowspan="3" class="sized"><img src="images/shared/side_shadowright.jpg" width="20" height="300" alt="" /></th>
+</tr>
+<tr>
+    <td id="tbl-border-left"></td>
+    <td>
+    <!--  start content-table-inner ...................................................................... START -->
+    <div id="content-table-inner">
+            
+            
 
-	echo "<option value='$rsa[id]' selected='selected'>$rsa[nama]</option>";	
-}else{
-	echo "<option value='$rsa[id]'>$rsa[nama]</option>";		
-}
+        <!--  start product-table ..................................................................................... -->
+        
+        <!--  start step-holder -->
+        <div id="step-holder">
+            <div class="step-no">1</div>
+            <div class="step-dark-left">Pilih Mata Pelajaran</div>
+            <div class="step-dark-right">&nbsp;</div>
+            <div class="step-no-off">2</div>
+            <div class="step-light-left">Input Nilai Siswa</div>
+            <div class="step-light-right">&nbsp;</div>
+             <div class="step-no-off">3</div>
+            <div class="step-light-left">Selesai</div>
+            <div class="step-light-round">&nbsp;</div>
+            <div class="clear"></div>
+        </div>
+        <!--  end step-holder -->
+    
+        
+        
+        <form id="mainform" action="">
+        <table border="0" width="48%" cellpadding="0" cellspacing="0" id="product-table">
+        <tr>
+            <th width="10%" class="table-header-repeat line-left minwidth-1"><a href="">Nomor</a>   </th>
+            <th width="60%" class="table-header-repeat line-left minwidth-1"><a href="">Nama Mata Pelajaran</a></th>
+            <th width="15%" class="table-header-repeat line-left minwidth-1"><a href="">Kelas</a></th>
+            <th width="15%" class="table-header-repeat line-left minwidth-1"><a href="">Laporan</a></th>
+        </tr>
+        
+        
+        <?php
+        $nip=$_SESSION['nip'];
+        $view=mysql_query("select * from tbl_mapel mapel, tbl_kelas kelas where mapel.id_kelas=kelas.id_kelas and mapel.nip='$nip' order by id_mapel asc");
+        
+        $no=0;
+        while($row=mysql_fetch_array($view)){
+        ?>  
+        <tr>
+            <td><?php echo $no=$no+1;?></td>
+            <td><a href="?page=nilai_uh&nip=<?php echo $nip;?>&id_mapel=<?php echo $row['id_mapel'];?>&id_kelas=<?php echo $row['id_kelas'];?>" style="text-decoration:underline" title="Pilih Mata Pelajaran"><?php echo $row['nama_mapel'];?></a></td>
+            <td><?php echo $row['nama_kelas'];?></td>
+            <td><a href="?page=laporan_uh&nip=<?php echo $nip;?>&id_mapel=<?php echo $row['id_mapel'];?>&id_kelas=<?php echo $row['id_kelas'];?>" style="color:#0000CC; text-decoration:underline" title="Lihat laporan">Lihat</a></td>
+        </tr>
+        <?php
+        }
+        ?>
+        </table>
+        <!--  end product-table................................... --> 
+        </form>  
+        
+        
+        
+    <div class="clear"></div>
+     
+    </div>
+    <!--  end content-table-inner ............................................END  -->
+    </td>
+    <td id="tbl-border-right"></td>
+</tr>
+<tr>
+    <th class="sized bottomleft"></th>
+    <td id="tbl-border-bottom">&nbsp;</td>
+    <th class="sized bottomright"></th>
+</tr>
+</table>
 
-}
-}
-?>
-                                          </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Nama Sekolah</label>
-                                            <input class="form-control" placeholder="Kelas" name="nama" value="<?php echo $rs['nama'] ?>">
-                                        </div>
-
-                                        <button type="submit" class="btn btn-default">Submit Button</button>
-                                </div>
-                                <!-- /.col-lg-6 (nested) -->
-                                    </form>
-
-                            </div>
-                            <!-- /.row (nested) -->
-                        </div>
-                        <!-- /.panel-body -->
-                    </div>
-                    <!-- /.panel -->
-                </div>
-                <!-- /.col-lg-12 -->
             </div>
+            <div id="menu1" class="tab-pane fade">
+                <h3>Menu 1</h3>
+                <p>Tutorial pemrograman web, mobile dan design</p>
+            </div>
+            <div id="menu2" class="tab-pane fade">
+                <h3>Menu 2</h3>
+                <p>Membuat navigasi tabs dan pills bootstrap.</p>
+            </div>
+        </div>
+    </div>
             <!-- /.row -->
             <?php } ?>
              
