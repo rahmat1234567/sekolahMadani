@@ -25,7 +25,9 @@
                                             <th class="text-center">Nama Sekolah</th>
                                             <th class="text-center">Status Wali Kelas</th>
                                             <th class="text-center">Status Akun</th>
+                                            <?php if($level==2){ ?>
                                             <th class="text-center">Aksi</th>
+                                            <?php } ?>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -93,13 +95,14 @@ if($klas=="semua")
     <?php
     }
     ?>                                            
-
+                                               <?php if($level==2){ ?> 
                                              <td class="text-center"> 
     										 <a href="./././admin.php?module=input_guru&act=edit_guru&nip=<?php echo $rs['nip'] ?>">
     										 <button type="button" class="btn btn-info">Edit</button> 
     										 
     										 <a href="././module/guru/prosesguru.php?nip=<?php echo $rs['nip'] ?>&aksi=hapus">
     										 <button type="button" class="btn btn-danger">Hapus</button></a></td>
+                                             <?php } ?>
                                             </tr>
     <?php
     

@@ -122,9 +122,12 @@ echo "User : $usre";
                         <li>
                             <a href="#"><i class="fa fa-dashboard fa-fw"></i> Data Siswa<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
+                                
+                            	<?php if($level==2){ ?>
                                 <li>
                                     <a href="admin.php?module=input_siswa&act=input">Input Data</a>
                                 </li>
+                                <?php } ?>
                                 <li>
                                     <a href="admin.php?module=tampil">View Data</a>
                                 </li>
@@ -136,9 +139,11 @@ echo "User : $usre";
                             <a href="#"><i class="fa fa-dashboard fa-fw"></i> Data Guru<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
 
+                            	<?php if($level==2){ ?>
                                 <li>
                                     <a href="admin.php?module=input_guru&act=input">Input Data</a>
                                 </li>
+                                <?php } ?>
                                 <li>
                                     <a href="admin.php?module=guru&kls=semua">View Data</a>
                                 </li>

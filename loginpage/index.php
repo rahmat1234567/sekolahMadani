@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>CSS Gallery</title>
+  <title>Sekolah Smart Madani</title>
   
   
   
