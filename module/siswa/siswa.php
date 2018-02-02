@@ -51,29 +51,7 @@ else
 
 //if($_SESSION['level']=="admin_guru"){
 
-if($rsb['id']==$_SESSION['id']){
-?>                                        <tr class="odd gradeX">
-                                            <td><?php echo"$rs[nis]";  ?></td>
-                                            <td><?php echo"$rs[nama]";  ?></td>
-<?php
-if($rs['jk']=="L"){
-?>
-                                            <td class="text-center"><i class="fa-lg fa-male icon-2x"> </i></td>
-<?php
-}else{
-?>
-                                            <td class="text-center"><i class="fa-lg fa-female icon-2x"> </i></td>
-<?php
-}
-?>
-                                            <td><?php echo"$rs[alamat_siswa]";  ?></td>
-											<td><?php echo"$rs[id_sklh]";  ?></td>
-											<td><?php echo"$rs[nama_ayah]";  ?></td>
-											<td><?php echo"$rs[nama_ibu]";  ?></td>
-                                            <td><?php echo"$rs[telp_ortu]";  ?></td>
-                                        </tr>
-<?php
-}/*
+/*
 }else{*/
 ?>	
                                         <tr class="odd gradeX">
@@ -82,23 +60,31 @@ if($rs['jk']=="L"){
 <?php
 if($rs['jk']=="L"){
 ?>
-                                            <td class="text-center"><i class="fa fa-male icon-2x"> </i></td>
+                                            <td class="text-center"><i class="fa fa-male fa-3x"></i></td>
 <?php
 }else{
 ?>
-                                            <td class="text-center"><i class="fa fa-female icon-2x"> </i></td>
+                                            <td class="text-center"><i class="fa fa-female fa-3x"> </i></td>
 <?php
 }
 ?>
 										<td><?php echo"$rs[alamat_siswa]";  ?></td>
-										<td><?php echo"$rs[id_sklh]";  ?></td>
+                                        <?php 
+                                            $kode_sklh=$rs['id_sklh']; 
+                                            $dsql=mysql_query("select nama_sklh from sekolah where id_sklh='$kode_sklh'");
+                                            $dcount=mysql_num_rows($dsql);
+                                            $drs=mysql_fetch_array($dsql);
+                                        ?>
+										<td><?php echo"$drs[nama_sklh]";  ?></td>
 										<td><?php echo"$rs[nama_ayah]";  ?></td>
 										<td><?php echo"$rs[nama_ibu]";  ?></td>
                                         <td><?php echo"$rs[telp_ortu]";  ?></td>
                                         
 										<td class="text-center">
+                                            <?php if($level==2){ ?>
 										<a href="./././admin.php?module=input_kelas&act=edit_kelas&nisn=<?php echo $rs['nisn'] ?>"><button type="button" class="btn btn-info">Edit</button></a> 
 										<a href="././module/kelas/prosessiswa.php?aksi=hapus&nisn=<?php echo $rs['nisn'] ?>"><button type="button" class="btn btn-danger">Hapus</button></a>
+                                        <?php } ?>
 										<a href="./././admin.php?module=detail_siswa&act=details&nisn=<?php echo $rs['nisn'] ?>">
 										<button type="button" class="btn btn-warning">Details</button> </a>
 										
