@@ -60,11 +60,11 @@ else
 <?php
 if($rs['jk']=="L"){
 ?>
-                                            <td class="text-center"><i class="fa fa-male icon-2x"> </i></td>
+                                            <td class="text-center"><i class="fa fa-male fa-3x"></i></td>
 <?php
 }else{
 ?>
-                                            <td class="text-center"><i class="fa fa-female icon-2x"> </i></td>
+                                            <td class="text-center"><i class="fa fa-female fa-3x"> </i></td>
 <?php
 }
 ?>
@@ -74,7 +74,6 @@ if($rs['jk']=="L"){
                                             $dsql=mysql_query("select nama_sklh from sekolah where id_sklh='$kode_sklh'");
                                             $dcount=mysql_num_rows($dsql);
                                             $drs=mysql_fetch_array($dsql);
-
                                         ?>
 										<td><?php echo"$drs[nama_sklh]";  ?></td>
 										<td><?php echo"$rs[nama_ayah]";  ?></td>
