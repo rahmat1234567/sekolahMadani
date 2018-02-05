@@ -30,11 +30,7 @@
 $no=1;
 include 'databasematpel.php';
 $db = new database();
-$klas=$_GET['kls'];
-if($klas=="semua")
-{
 	$sql=mysql_query("select * from matpel");
-}
 
 	
     foreach($db->tampil_data() as $rs)
