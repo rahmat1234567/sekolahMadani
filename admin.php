@@ -204,6 +204,23 @@ echo "User : $usre";
 
 <?php } ?>
 
+<?php if($level==2){ ?>
+
+                          <li>
+                            <a href="#"><i class="fa fa-dashboard fa-fw"></i> Data Mata Pelajaran<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="#">Input Data Mata Pelajaran</a>
+                                </li>
+                                <li>
+                                    <a href="#">View Data Mata Pelajaran</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+
+<?php } ?>
+
 <?php if($level==3){ ?>
 
                         <li>
