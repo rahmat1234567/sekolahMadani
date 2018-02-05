@@ -24,7 +24,7 @@ class database{
 	}
 	
 	function hapus($nisn){
-		mysql_query("delete from siswa where nis='$nis'");
+		mysql_query("delete from siswa where nisn='$nisn'");
 	}
 	
 	function edit($nisn){
