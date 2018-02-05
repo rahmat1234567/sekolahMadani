@@ -16,16 +16,16 @@ if($_GET['act']=="input"){
                         </div>
                         <div class="panel-body">
                             <div class="row">
-                                    <form method="post" role="form" action="././module/simpan.php?act=input_siswa">
+                                    <form method="post" role="form" action="././module/siswa/prosessiswa.php?aksi=tambah">
 
                                 <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label>NIS</label>
-                                            <input class="form-control" placeholder="Nis" name="nis">
+                                            <label>NISN</label>
+                                            <input class="form-control" placeholder="NISN" name="nisn">
                                         </div>
                                         <div class="form-group">
                                             <label>Nama</label>
-                                            <input class="form-control" placeholder="Nama" name="nama">
+                                            <input class="form-control" placeholder="Nama" name="nama_siswa">
                                         </div>
                                         <div class="form-group">
                                             <label>Jenis Kelamin</label>
@@ -43,59 +43,70 @@ if($_GET['act']=="input"){
                                             </div>
                                         </div>
 
+                                        <?php
+                                            $sqlc=mysql_query("select id_sklh from sekolah where nama_sklh='$nmsklh'");
+                                            $countc=mysql_num_rows($sqlc);
+                                            $rsc=mysql_fetch_array($sqlc);
+                                            $idsk=$rsc['id_sklh'];
+                                        ?>
+
+                                        <input type="hidden" name="id_sklh" value="<?php echo '$idsk'; ?>">
+
                                         <div class="form-group">
                                             <label>Alamat</label>
                                             <textarea class="form-control" placeholder="Alamat" name="alamat" rows="3"></textarea>
                                         </div>
                                         <div class="form-group">
                                             <label>Kelas</label>
-                                            <select class="form-control" name="kelas">
-  <?php 
-	$sql=mysql_query("select * from kelas");
-	while($rs=mysql_fetch_array($sql)){
+                                            <select class="form-control" name="id_kls">
+                                                <option value="">--- Pilih Kelas ---</option>
+                                            <?php
 
-	$sqla=mysql_query("select * from sekolah where id='$rs[id]'");
-	$rsa=mysql_fetch_array($sqla);
-if($_SESSION['level']=="admin_guru"){
-if($rsa['id']==$_SESSION['id']){
-	echo "<option value='$rs[idk]'>$rsa[nama] | $rs[nama]</option>";	
-}
-}else{
-	echo "<option value='$rs[idk]'>$rsa[nama] | $rs[nama]</option>";		
-	}
-}
-?>
+                                                $ssql=mysql_query("select * from kelas where id_sklh='$idsk'");
+                                                $scount=mysql_num_rows($ssql);
+                                                while($srs=mysql_fetch_array($ssql))
+                                                {
+                                                        $idid=$srs['id_kls'];
+                                                        $nmnm=$srs['nama_kls'];
+                                                    ?>
+                                                    <option value="<?php echo '$idid'; ?>"> <?php echo $nmnm ?></option>
+                                                    <?php
+                                                }
+                                            ?>
                                             </select>
                                         </div>
                                         <div class="form-group input-group">
-                                            <span class="input-group-addon">+62</span>
-                                            <input type="text" class="form-control" placeholder="No Telepon" name="tlp">
+                                            <label>Nomor Telepon Orang Tua</label>
+                                            <input type="text" class="form-control" placeholder="No Telepon" name="telp_ortu">
                                         </div>
 </div>
 
                                 <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>Nama Ayah</label>
-                                            <input class="form-control" placeholder="Nama" name="bapak">
+                                            <input class="form-control" placeholder="Nama" name="nama_ayah">
                                         </div>
-                                        <div class="form-group">
-                                            <label>Pekerjaan</label>
-                                            <input class="form-control" placeholder="Pekerjaan" name="k_bapak">
-                                        </div>
+
                                         <div class="form-group">
                                             <label>Nama Ibu</label>
-                                            <input class="form-control" placeholder="Nama" name="ibu">
+                                            <input class="form-control" placeholder="Nama" name="nama_ibu">
                                         </div>
-                                        <div class="form-group">
-                                            <label>Pekerjaan</label>
-                                            <input class="form-control" placeholder="Pekerjaan" name="k_ibu">
-                                        </div>
+
                                         <div class="form-group">
                                             <label>Password</label>
-                                            <input class="form-control" placeholder="Password" name="k_password" type="password">
+                                            <input class="form-control" placeholder="Password" name="pass_siswa" type="password">
                                         </div>
-                                        
-                                        <button type="submit" class="btn btn-default">Submit Button</button>
+                                        <div class="form-group">
+                                            <label>Status Akun</label>
+                                            <div class="onoffswitch4">
+                                                <input type="checkbox" name="onoffswitch4" class="onoffswitch4-checkbox" id="myonoffswitch4" value="4">
+                                                <label class="onoffswitch4-label" for="myonoffswitch4">
+                                                    <span class="onoffswitch4-inner"></span>
+                                                    <span class="onoffswitch4-switch"></span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <button type="submit" class="btn btn-success">Submit</button>
                                 </div>
                                 <!-- /.col-lg-6 (nested) -->
                                     </form>

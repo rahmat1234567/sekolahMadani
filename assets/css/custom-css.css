@@ -1,3 +1,61 @@
+.onoffswitch4 {
+    position: relative; width: 90px;
+    -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
+}
+
+.onoffswitch4-checkbox {
+    display: none;
+}
+
+.onoffswitch4-label {
+    display: block; overflow: hidden; cursor: pointer;
+    border: 2px solid #d3d3d3; border-radius: 0px;
+}
+
+.onoffswitch4-inner {
+    display: block; width: 200%; margin-left: -100%;
+    -moz-transition: margin 0.3s ease-in 0s; -webkit-transition: margin 0.3s ease-in 0s;
+    -o-transition: margin 0.3s ease-in 0s; transition: margin 0.3s ease-in 0s;
+}
+
+.onoffswitch4-inner:before, .onoffswitch4-inner:after {
+    display: block; float: left; width: 50%; height: 30px; padding: 0; line-height: 26px;
+    font-size: 11px; color: white; font-family: Trebuchet, Arial, sans-serif; font-weight: bold;
+    -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+}
+
+.onoffswitch4-inner:before {
+    content: "Aktif";
+    padding-left: 10px;
+    background-color: #FFFFFF; color: #27A1CA;
+}
+
+.onoffswitch4-inner:after {
+    content: "Nonaktif";
+    padding-right: 10px;
+    background-color: #FFFFFF; color: #f44242;
+    text-align: right;
+}
+
+.onoffswitch4-switch {
+    display: block; width: 25px; margin: 0px;
+    background: #f44242;
+    position: absolute; top: 0; bottom: 0; right: 65px;
+    -moz-transition: all 0.3s ease-in 0s; -webkit-transition: all 0.3s ease-in 0s;
+    -o-transition: all 0.3s ease-in 0s; transition: all 0.3s ease-in 0s; 
+}
+
+.onoffswitch4-checkbox:checked + .onoffswitch4-label .onoffswitch4-inner {
+    margin-left: 0;
+}
+
+.onoffswitch4-checkbox:checked + .onoffswitch4-label .onoffswitch4-switch {
+    right: 0px; 
+    background: #27A1CA;
+}
+
 #custombg{
 	background-color:#b1d8d8;
 	background-image: linear-gradient(30deg, #99cccc 12%, transparent 12.5%, transparent 87%, #99cccc 87.5%, #99cccc),
