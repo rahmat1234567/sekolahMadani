@@ -39,7 +39,7 @@ if($klas=="semua")
 }
 else
 {
-	$sql=mysql_query("select * from siswa where id_kls='$_GET[kls]'");	
+	$sql=mysql_query("select * from siswa where id_sklh='$klas'");	
 }
 
 	while($rs=mysql_fetch_array($sql))
@@ -82,8 +82,8 @@ if($rs['jk']=="L"){
                                         
 										<td class="text-center">
                                             <?php if($level==2){ ?>
-										<a href="./././admin.php?module=input_kelas&act=edit_kelas&nisn=<?php echo $rs['nisn'] ?>"><button type="button" class="btn btn-info">Edit</button></a> 
-										<a href="././module/kelas/prosessiswa.php?aksi=hapus&nisn=<?php echo $rs['nisn'] ?>"><button type="button" class="btn btn-danger">Hapus</button></a>
+										<a href="./././admin.php?module=input_siswa&act=edit&nisn=<?php echo $rs['nisn'] ?>"><button type="button" class="btn btn-info">Edit</button></a> 
+										<a href="././module/siswa/prosessiswa.php?aksi=hapus&nisn=<?php echo $rs['nisn'] ?>"><button type="button" class="btn btn-danger">Hapus</button></a>
                                         <?php } ?>
 										<a href="./././admin.php?module=detail_siswa&act=details&nisn=<?php echo $rs['nisn'] ?>">
 										<button type="button" class="btn btn-warning">Details</button> </a>

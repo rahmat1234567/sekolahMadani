@@ -129,10 +129,27 @@ echo "User : $usre";
                                 <li>
                                     <a href="admin.php?module=input_siswa&act=input">Input Data</a>
                                 </li>
-                                <?php } ?>
+                                <?php } 
+
+                                if($level==2){
+                                            $nm_sklh=$nmsklh; 
+                                            $dsql=mysql_query("select id_sklh from sekolah where nama_sklh='$nm_sklh'");
+                                            $dcount=mysql_num_rows($dsql);
+                                            $drs=mysql_fetch_array($dsql);
+
+                                ?>
+
                                 <li>
-                                    <a href="admin.php?module=tampil">View Data</a>
+                                    <a href="admin.php?module=siswa&kls=<?php echo $drs['id_sklh']; ?>">View Data</a>
                                 </li>
+                                <?php } else { ?>
+
+                                <li>
+                                    <a href="admin.php?module=siswa&kls=semua">View Data</a>
+                                </li>
+                                <?php } ?>
+
+
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
