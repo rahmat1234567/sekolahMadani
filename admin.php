@@ -25,6 +25,8 @@ include "config/conn.php";
 
     <!-- Core CSS - Include with every page -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="assets/css/custom-css.css" rel="stylesheet">
     <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet">
 
     <!-- Page-Level Plugin CSS - Tables -->
