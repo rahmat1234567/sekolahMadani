@@ -12,7 +12,7 @@ class database{
 	}
 	
 	function tampil_data(){
-		$data=mysql_query("select * from matpel"); //untuk mengambil data dari database dengan tabel matpel
+		$data=mysql_query("select * from matpel");
 		while($d = mysql_fetch_array($data)){
 			$hasil[]=$d;
 		}

@@ -193,10 +193,10 @@ echo "User : $usre";
                             <a href="#"><i class="fa fa-dashboard fa-fw"></i> Data Mata Pelajaran<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="#">Input Data Mata Pelajaran</a>
+                                    <a href="admin.php?module=input_matpel&act=input">Input Data</a>
                                 </li>
                                 <li>
-                                    <a href="#">View Data Mata Pelajaran</a>
+                                    <a href="admin.php?module=matpel">View Data</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
