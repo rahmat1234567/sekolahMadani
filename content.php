@@ -82,4 +82,10 @@ include "module/matpel/input_matpel.php";
 if($_GET['module']=="matpel"){
 include "module/matpel/matpel.php";
 }
+if($_GET['module']=="input_staffit"){
+include "module/staffit/input_staffit.php";
+}
+if($_GET['module']=="staffit"){
+include "module/staffit/staffit.php";
+}
 ?>
