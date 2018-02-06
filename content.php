@@ -5,6 +5,7 @@ include "module/nilai/th_nilai.php";
 if($_GET['module']=="input_nilai"){
 include "module/nilai/input_nilai.php";
 }
+
 if($_GET['module']=="siswa"){
 include "module/siswa/siswa.php";
 }
@@ -74,5 +75,11 @@ include "module/sekolah/input_sekolah.php";
 }
 if($_GET['module']=="sekolah"){
 include "module/sekolah/sekolah.php";
+}
+if($_GET['module']=="input_matpel"){
+include "module/matpel/input_matpel.php";
+}
+if($_GET['module']=="matpel"){
+include "module/matpel/matpel.php";
 }
 ?>

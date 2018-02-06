@@ -17,10 +17,10 @@
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                     <thead>
                                         <tr>
-											<th class="text-center">NO</th>
+											<th class="text-center" width="6%">NO</th>
 											<th class="text-center">Nama Mata Pelajaran</th>
                                             <?php if($level==2){ ?>
-                                            <th class="text-center">Aksi</th>
+                                            <th class="text-center" width="15%">Aksi</th>
                                             <?php } ?>
                                         </tr>
                                     </thead>
