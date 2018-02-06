@@ -147,7 +147,7 @@ if($_GET['act']=="edit"){
                             	$sql=mysql_query("select * from siswa where nisn='$_GET[nisn]'");
 								$rs=mysql_fetch_array($sql);
 ?>
-                                    <form method="post" role="form" action="././module/prosessiswa.php?act=edit">
+                                    <form method="post" role="form" action="././module/siswa/prosessiswa.php?aksi=edit">
 
                                         <div class="col-lg-6">
                                         <div class="form-group">
@@ -191,18 +191,6 @@ if($rs['jk']=="L"){
 <?php
 }
 ?>
-                                            <div class="radio">
-                                                <label>
-                                                    <input type="radio" name="jk" value="L" 
-                                                    checked>Laki - Laki
-                                                </label>
-                                            </div>
-                                            <div class="radio">
-                                                <label>
-                                                    <input type="radio" name="jk" value="P">
-                                                    Perempuan
-                                                </label>
-                                            </div>
                                         </div>
 
                                         <?php
@@ -216,7 +204,8 @@ if($rs['jk']=="L"){
 
                                         <div class="form-group">
                                             <label>Alamat</label>
-                                            <textarea class="form-control" placeholder="Alamat" name="alamat_siswa" rows="3"></textarea>
+                                            <?php $almt=$rs["alamat_siswa"]; ?>
+                                            <textarea class="form-control" placeholder="Alamat" name="alamat_siswa" value="<?php echo $almt; ?>" rows="3"></textarea>
                                         </div>
                                         <div class="form-group">
                                             <label>Kelas</label>
@@ -231,7 +220,18 @@ if($rs['jk']=="L"){
                                                         $idid=$srs['id_kls'];
                                                         $nmnm=$srs['nama_kls'];
                                                     ?>
-                                                    <option value="<?php echo $idid; ?>"> <?php echo $nmnm ?></option>
+                                                    <option value="<?php echo $idid; ?>"
+
+                                                    <?php 
+                                                        if($idid==$rs['id_kls']){
+                                                            echo "selected";
+                                                        }
+                                                        else{
+                                                            echo"";
+                                                        }
+                                                    ?>
+
+                                                    > <?php echo $nmnm ?></option>
                                                     <?php
                                                 }
                                             ?>
@@ -239,149 +239,47 @@ if($rs['jk']=="L"){
                                         </div>
                                         <div class="form-group input-group">
                                             <label>Nomor Telepon Orang Tua</label>
-                                            <input type="text" class="form-control" placeholder="No Telepon" name="telp_ortu">
+                                            <input type="text" class="form-control" value="<?php echo $rs['telp_ortu']; ?>" placeholder="No Telepon" name="telp_ortu">
                                         </div>
 </div>
 
                                 <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>Nama Ayah</label>
-                                            <input class="form-control" placeholder="Nama" name="nama_ayah">
+                                            <input class="form-control" placeholder="Nama" name="nama_ayah" value="<?php echo $rs['nama_ayah']; ?>">
                                         </div>
 
                                         <div class="form-group">
                                             <label>Nama Ibu</label>
-                                            <input class="form-control" placeholder="Nama" name="nama_ibu">
+                                            <input class="form-control" placeholder="Nama" name="nama_ibu" value="<?php echo $rs['nama_ibu']; ?>">
                                         </div>
 
                                         <div class="form-group">
                                             <label>Password</label>
-                                            <input class="form-control" placeholder="Password" name="pass_siswa" type="password">
+                                            <input class="form-control" placeholder="Password" name="pass_siswa" type="password" value="">
                                         </div>
                                         <div class="form-group">
                                             <label>Status Akun</label>
-                                            <div class="onoffswitch4">
-                                                <input type="checkbox" name="status_akun" class="onoffswitch4-checkbox" id="myonoffswitch4" value="4">
+                                            <?php 
+                                                if($rs['status_akun']==0){ ?>
+                                                <div class="onoffswitch4">
+                                                    <input type="checkbox" name="status_akun" class="onoffswitch4-checkbox" id="myonoffswitch4" value="4">
+                                            <?php } 
+                                                else{
+                                            ?>
+                                                <div class="onoffswitch4">
+                                                    <input type="checkbox" name="status_akun" class="onoffswitch4-checkbox" id="myonoffswitch4" value="4" checked>
+                                            <?php } ?>
                                                 <label class="onoffswitch4-label" for="myonoffswitch4">
                                                     <span class="onoffswitch4-inner"></span>
                                                     <span class="onoffswitch4-switch"></span>
                                                 </label>
                                             </div>
                                         </div>
-                                        <button type="submit" class="btn btn-success">Submit</button>
+                                        <button type="submit" class="btn btn-success">Edit Data</button>
                                 </div>
 
 
-                                        <!--
-<input type="hidden" name="id" value="<?php echo $_GET['ids'] ?>" />
-                                <div class="col-lg-6">
-                                        <div class="form-group">
-                                            <label>NIS</label>
-                                            <input class="form-control" placeholder="Nis" name="nis" value="<?php echo "$rs[nis]"; ?>" >
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Nama</label>
-                                            <input class="form-control" placeholder="Nama" name="nama" value="<?php echo "$rs[nama]"; ?>">
-                                        </div>
-                                        <div class="form-group">
-         
-                                           <label>Jenis Kelamin</label>
-        <?php if($rs['jk']=="L"){ ?>
-                                            <div class="radio">
-                                                <label>
-                                                    <input type="radio" name="jk" value="L" 
-                                                    checked>Laki - Laki
-                                                </label>
-                                            </div>
-                                            <div class="radio">
-                                                <label>
-                                                    <input type="radio" name="jk" value="P">
-                                                    Perempuan
-                                                </label>
-                                            </div>
-                                        </div>
-<?php } ?>
-        <?php if($rs['jk']=="P"){ ?>
-                                            <div class="radio">
-                                                <label>
-                                                    <input type="radio" name="jk" value="L" 
-                                                    >Laki - Laki
-                                                </label>
-                                            </div>
-                                            <div class="radio">
-                                                <label>
-                                                    <input type="radio" name="jk" value="P" checked>
-                                                    Perempuan
-                                                </label>
-                                            </div>
-                                        </div>
-<?php } ?>
-
-
-                                        <div class="form-group">
-                                            <label>Alamat</label>
-                                            <textarea class="form-control" placeholder="Alamat" name="alamat" rows="3"><?php echo "$rs[alamat]"; ?></textarea>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Kelas</label>
-                                            <select class="form-control" name="kelas">
-  <?php 
- 	$sqlc=mysql_query("select * from kelas");
-	while($rsc=mysql_fetch_array($sqlc)){
-	$sqla=mysql_query("select * from sekolah where id='$rsc[id]'");
-	$rsa=mysql_fetch_array($sqla);
-if($_SESSION['level']=="admin_guru"){
-if($rsa['id']==$_SESSION['id']){
-
-if($rs['idk']==$rsc['idk']){
-	echo "<option value='$rsc[idk]' selected>$rsa[nama] | $rsc[nama]</option>";	
-}else{
-	echo "<option value='$rsc[idk]'>$rsa[nama] | $rsc[nama]</option>";	
-
-}
-}
-}else{
-if($rs['idk']==$rsc['idk']){
-	echo "<option value='$rsc[idk]' selected>$rsa[nama] | $rsc[nama]</option>";	
-}else{
-	echo "<option value='$rsc[idk]'>$rsa[nama] | $rsc[nama]</option>";	
-
-}
-	
-}
-}?>
-                                          </select>
-                                        </div>
-                                        <div class="form-group input-group">
-                                            <span class="input-group-addon">+62</span>
-                                            <input type="text" class="form-control" placeholder="No Telepon" name="tlp" value="<?php echo "$rs[tlp]"; ?>">
-                                        </div>
-</div>
-
-                                <div class="col-lg-6">
-                                        <div class="form-group">
-                                            <label>Nama Ayah</label>
-                                            <input class="form-control" placeholder="Nama" name="bapak" value="<?php echo "$rs[bapak]"; ?>">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Pekerjaan</label>
-                                            <input class="form-control" placeholder="Pekerjaan" name="k_bapak" value="<?php echo "$rs[k_bapak]"; ?>">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Nama Ibu</label>
-                                            <input class="form-control" placeholder="Nama" name="ibu" value="<?php echo "$rs[ibu]"; ?>">
-                                        </div>
-                                        
-                                        <div class="form-group">
-                                            <label>Pekerjaan</label>
-                                            <input class="form-control" placeholder="Pekerjaan" name="k_ibu" value="<?php echo "$rs[k_ibu]"; ?>">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Password</label>
-                                            <input class="form-control" placeholder="Password" name="k_password" value="" type="password">
-                                        </div>
-                                        <button type="submit" class="btn btn-default">Submit Button</button>
-                                </div>
                                 <!-- /.col-lg-6 (nested) -->
                                     </form>
 
