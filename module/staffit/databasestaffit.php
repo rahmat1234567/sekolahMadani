@@ -19,8 +19,8 @@ class database{
 		return $hasil;
 	}
 	
-	function input($nama_staffit,$jk,$pass_staffit,$alamat_staffit,$telp_staffit){
-		mysql_query("insert into staffit values('','$nama_staffit','$pass_staffit','','$telp_staffit','$alamat_staffit','','$jk')");
+	function input($foto_staffit,$nama_staffit,$jk,$alamat_staffit,$pass_staffit,$telp_staffit,$id_sklh,$status_akun){
+		mysql_query("insert into staffit values('','$nama_staffit','$pass_staffit','$id_sklh','$telp_staffit','$alamat_staffit','$status_akun','$jk','$foto_staffit')");
 	}
 	
 	function hapus($id_staffit){
@@ -35,8 +35,8 @@ class database{
 		return $hasil;
 	}
 	
-	function update($nama_staffit,$jk,$pass_staffit,$alamat_staffit,$telp_staffit){
-		mysql_query("update staffit set nama_staffit='$nama_staffit',pass_staffit='$pass_staffit', alamat_staffit='$alamat_staffit', telp_staffit='$telp_staffit',jk='$jk' where id_staffit='$id_staffit'");
+	function update($foto_staffit,$nama_staffit,$jk,$alamat_staffit,$pass_staffit,$telp_staffit,$id_sklh,$status_akun){
+		mysql_query("update staffit set foto_staffit='$foto_staffit',nama_staffit='$nama_staffit',jk='$jk',alamat_staffit='$alamat_staffit',pass_staffit='$pass_staffit',telp_staffit='$telp_staffit',id_sklh='$id_sklh',status_akun='$status_akun' where id_staffit='$id_staffit'");
 	}
 }
 ?>

@@ -211,10 +211,10 @@ echo "User : $usre";
                             <a href="#"><i class="fa fa-dashboard fa-fw"></i> Data Staff IT<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="#">Input Data</a>
+                                    <a href="admin.php?module=input_staffit&act=input">Input Data</a>
                                 </li>
                                 <li>
-                                    <a href="#">View Data</a>
+                                    <a href="admin.php?module=staffit">View Data</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
