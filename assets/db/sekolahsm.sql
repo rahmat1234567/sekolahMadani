@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Feb 02, 2018 at 10:37 AM
+-- Generation Time: Feb 06, 2018 at 04:27 AM
 -- Server version: 5.5.16
 -- PHP Version: 5.3.8
 
@@ -112,9 +112,23 @@ CREATE TABLE IF NOT EXISTS `guru` (
 --
 
 INSERT INTO `guru` (`nip`, `nama_guru`, `pass_guru`, `alamat_guru`, `telp_guru`, `id_sklh`, `wk_status`, `status_akun`, `jk`, `foto_guru`) VALUES
+(195703101980031017, 'Sumadiyono', 'b066ac44e26c7e25fd453574ca51ac10', 'Jl. Kartika Indah BTN BRP Blok G 8', '081805314580', 10013, 1, 3, 'L', ''),
+(195906111980032006, 'Indrawati Abdullah', '0d5cfdf5f9a6d8096303a2e10e77f5f4', 'Jl. Pemuda no.19', '0817470018', 10015, 1, 3, 'P', ''),
+(196103031987031011, 'Gede Erawan', 'b57b4c9a6b03d41130274b23cb4615e0', 'Jl. Melur no.77', '085237616542', 10016, 0, 3, 'L', ''),
 (196106161984031007, 'Safrudin', '6ab4520232a7e9862e0ae1befebcd2b1', 'Jl. Bantul no.7', '081222909178', 10007, 1, 3, 'L', ''),
+(196111081981122003, 'Rita Nurmaya', '31d58ca605fa973b82807d1710b81dba', 'Jl. Pepaya no. 34', '081805539392', 10014, 1, 3, 'P', ''),
 (196509112007011010, 'Daroni', 'af491529b1dd328d2ce21a0ad9700a5a', 'Jl. Jogjakarta no. 10', '081278455100', 10007, 0, 3, 'L', ''),
+(196701171998022004, 'Heppy Anggaryani Sri Wilujeng', '08c792faafa5e1e079cbdff4389c2d3a', 'Jl. Rajawali Sakti Ujung no. 308', '081121909132', 10008, 0, 3, 'P', ''),
+(196701172006041005, 'Hartono', '621a88d504c502176603a62ed2b17d48', 'Jl. Melur 3 no. 2', '085271777653', 10005, 0, 3, 'L', ''),
+(196910182007012014, 'Tin Rahayu Wigianti', 'd42e1ee1c3524c704e52c8c5a4c3f603', 'Jl. Subayang Gg. Buntu II no. 73', '081311217073', 10004, 1, 3, 'P', ''),
+(197004132008011009, 'Agus Suyadi', '2710e848c5df278047646b11f614c7db', 'Jl. Cipta Karya, gg. Belatuk, Tuah Karya', '085382831010', 10006, 1, 3, 'L', ''),
+(197004252005012011, 'Endah Saraswati', '4b921e013acf7f2b7417329273274c98', 'Jl. Tanjung Gg. Abadi no. 120', '081900701923', 10002, 0, 3, 'P', ''),
+(197007122001122001, 'Sunarningsih', 'b3c22dc81b88534c80b17d680ec64e02', 'Jl. Jambu Ujung no. 9A', '081220310021', 10010, 0, 3, 'P', ''),
+(197008221998021002, 'Agust Winarno', '468ae8215164d6cc851fe0215d380cae', 'Jl. Giam Gg. Kapur II A no. 73', '087871778090', 10011, 1, 3, 'L', ''),
+(197105101993031005, 'Arif Saifudin', 'fddca158a400eed5f430ad2cf57664f8', 'Jl. Utama no.50', '081390992810', 10012, 0, 3, 'L', ''),
+(197409052005012002, 'Ni Made Cahyani', 'c9ccc376de5e025f1e226b293e0bc650', 'Jl. Siak no.38 B', '085320718865', 10009, 1, 3, 'P', ''),
 (197409162008012005, 'Nining Widuri', '00fa5751a3c4c8812ce5d8a29a6284da', 'Jl. Selamat no. 74', '089877191077', 10007, 1, 3, 'P', ''),
+(197702152008011008, 'Sapto Winarno', '6053bd0cf0d3bf4b65d41fe341903759', 'Jl. Sumatera no.20', '081253557178', 10001, 1, 3, 'L', ''),
 (198503302003122002, 'Riva Eka Putri', '7f15e383b9621dc01eee9c0506c56f67', 'JL. Kartama No. 27', '081324067905', 10003, 0, 3, 'P', '');
 
 -- --------------------------------------------------------
@@ -212,14 +226,20 @@ INSERT INTO `matpel` (`id_matpel`, `nama_matpel`) VALUES
 
 CREATE TABLE IF NOT EXISTS `n_tugas` (
   `id_ntugas` int(20) NOT NULL AUTO_INCREMENT,
-  `id_kls` int(10) NOT NULL,
-  `id_matpel` int(20) NOT NULL,
+  `id_jadwal` int(20) NOT NULL,
   `nisn` varchar(30) NOT NULL,
   `nilai_tugas` int(10) NOT NULL,
   `ket` varchar(30) NOT NULL,
   `nama_tugas` varchar(100) NOT NULL,
   PRIMARY KEY (`id_ntugas`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `n_tugas`
+--
+
+INSERT INTO `n_tugas` (`id_ntugas`, `id_jadwal`, `nisn`, `nilai_tugas`, `ket`, `nama_tugas`) VALUES
+(1, 1, '9990579707', 90, '-', 'PR Trigonometri');
 
 -- --------------------------------------------------------
 
@@ -229,13 +249,20 @@ CREATE TABLE IF NOT EXISTS `n_tugas` (
 
 CREATE TABLE IF NOT EXISTS `n_ulanganharian` (
   `id_nuh` int(20) NOT NULL AUTO_INCREMENT,
-  `id_kls` int(10) NOT NULL,
-  `id_matpel` int(20) NOT NULL,
+  `id_jadwal` int(20) NOT NULL,
   `nisn` varchar(30) NOT NULL,
   `nilai_uh` int(10) NOT NULL,
   `ket_uh` varchar(100) NOT NULL,
   PRIMARY KEY (`id_nuh`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `n_ulanganharian`
+--
+
+INSERT INTO `n_ulanganharian` (`id_nuh`, `id_jadwal`, `nisn`, `nilai_uh`, `ket_uh`) VALUES
+(1, 0, '9965589833', 95, '-'),
+(2, 1, '9965589833', 95, '-');
 
 -- --------------------------------------------------------
 
@@ -325,7 +352,7 @@ CREATE TABLE IF NOT EXISTS `staffit` (
   `jk` varchar(2) NOT NULL,
   `foto_staffit` varchar(100) NOT NULL,
   PRIMARY KEY (`id_staffit`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=123005 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=123006 ;
 
 --
 -- Dumping data for table `staffit`
@@ -335,7 +362,8 @@ INSERT INTO `staffit` (`id_staffit`, `nama_staffit`, `pass_staffit`, `id_sklh`, 
 (123001, 'Muhammad Iqbal Nasution', 'fe34bd483a283bfa1331f5e65625553c', 10001, '085271667019', 'Jl. Pemuda No.11', 2, 'L', ''),
 (123002, 'Fira Dwi Putri', 'bbc23ed229f45f4a0bf869441f3578b9', 10002, '087811818729', 'Jl. Kenanga No. 21', 2, 'P', ''),
 (123003, 'Sani Ismanta', 'f3e22d3287391e82d6f6b017887359fd', 10007, '081171779007', 'Jl. Selamat no. 68', 2, 'L', ''),
-(123004, 'Aryasih Banowati', '3e8d19b1246637afc543e201b1059b77', 10007, '081126379007', 'Jl. Jogjakarta no. 9', 2, 'P', '');
+(123004, 'Aryasih Banowati', '3e8d19b1246637afc543e201b1059b77', 10007, '081126379007', 'Jl. Jogjakarta no. 9', 2, 'P', ''),
+(123005, 'Abu Hurairah', '8616a99c38252281690dcdb90006e261', 10016, NULL, NULL, 2, 'L', '');
 
 -- --------------------------------------------------------
 
