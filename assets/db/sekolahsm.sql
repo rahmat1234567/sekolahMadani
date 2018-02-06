@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Feb 06, 2018 at 04:27 AM
+-- Generation Time: Feb 06, 2018 at 08:37 AM
 -- Server version: 5.5.16
 -- PHP Version: 5.3.8
 
@@ -352,7 +352,7 @@ CREATE TABLE IF NOT EXISTS `staffit` (
   `jk` varchar(2) NOT NULL,
   `foto_staffit` varchar(100) NOT NULL,
   PRIMARY KEY (`id_staffit`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=123006 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=123018 ;
 
 --
 -- Dumping data for table `staffit`
@@ -363,7 +363,19 @@ INSERT INTO `staffit` (`id_staffit`, `nama_staffit`, `pass_staffit`, `id_sklh`, 
 (123002, 'Fira Dwi Putri', 'bbc23ed229f45f4a0bf869441f3578b9', 10002, '087811818729', 'Jl. Kenanga No. 21', 2, 'P', ''),
 (123003, 'Sani Ismanta', 'f3e22d3287391e82d6f6b017887359fd', 10007, '081171779007', 'Jl. Selamat no. 68', 2, 'L', ''),
 (123004, 'Aryasih Banowati', '3e8d19b1246637afc543e201b1059b77', 10007, '081126379007', 'Jl. Jogjakarta no. 9', 2, 'P', ''),
-(123005, 'Abu Hurairah', '8616a99c38252281690dcdb90006e261', 10016, NULL, NULL, 2, 'L', '');
+(123005, 'Abu Hurairah', '8616a99c38252281690dcdb90006e261', 10016, '081276807301', 'Jl. Cipta Karya Ujung no.1', 2, 'L', ''),
+(123006, 'Bedjo', 'e1bb9607c4c629f2efeed7cb98418fa1', 10003, '081365789533', 'Jl. Suka Karya (Kualu) no. 68 D, Panam', 2, 'L', ''),
+(123007, 'Djoko Riyanto', '971773ab3dc541ff47818a5dd92b0ffe', 10004, '081223537108', 'Jl. Nanas no. 102', 2, 'L', ''),
+(123008, 'Eko Purwanto', 'b047304e65854754025c5803f5a797d4', 10005, '082321778980', 'Jl. Serayu gg. Serayu II no. 2', 2, 'L', ''),
+(123009, 'Kandar Hariyadi', '0489c929161a22d12d5b6ef5f75b77de', 10006, '082271789099', 'Jl. HR. Soebrantas km 9, Panam', 2, 'L', ''),
+(123010, 'Kusnandar', 'a24fcc366e495f2e746b0b6630add76e', 10008, '087876102634', 'Jl. Riau no. 149 F', 2, 'L', ''),
+(123011, 'Natalia Mundayani', '7f86d88701034c600c10c7771dc86b56', 10009, '082128980019', 'Jl. Kakap II Gg. Filosofi no. 10', 2, 'P', ''),
+(123012, 'Ralin Suhayati', 'bcd3b9ca986faaffb07dc3bbb1b78da6', 10010, '081278890123', 'Jl. Mawar no. 88', 2, 'P', ''),
+(123013, 'Ratna Tri Setyo Dewi', 'a97366ce5082518a56bdb10d8f08e2fd', 10011, '081266168544', 'Jl. Bandeng no. 117', 2, 'P', ''),
+(123014, 'Bambang Setiyono', '0ba44d8b332f02f1935175344a0d7955', 10012, '082322189017', 'Jl. Neraca no. 27', 2, 'L', ''),
+(123015, 'Dumaria Pasaribu', '7541af23024cd2645b8cb8cd725b26da', 10013, '081388733710', 'Jl. Angkasa gg. Raya no. 77 B', 2, 'P', ''),
+(123016, 'Edi Budi Kristanto', '99b6ec62c46c715e4dcb2861e1818339', 10014, '081621887650', 'Jl. Nelayan no. 101', 2, 'L', ''),
+(123017, 'Siti Kylie Jenner', 'e7cc9826af044c5243dcc2daffcd0a28', 10015, '085355745800', 'Jl. Ronggo Warsito II no. 5', 2, 'P', '');
 
 -- --------------------------------------------------------
 
