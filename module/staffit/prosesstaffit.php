@@ -16,7 +16,7 @@ if($aksi == "tambah"){
 		header("location:http://localhost/sekolahMadani/admin.php");
 	}
 	else {
-		header("location:http://http://localhost/smsku/sekolahMadani/admin.php?module=staffit");
+		header("location:http://localhost/smsku/sekolahMadani/admin.php?module=staffit");
 	}
 }
 elseif($aksi == "hapus"){
@@ -29,7 +29,7 @@ elseif($aksi == "hapus"){
 		header("location:http://localhost/sekolahMadani/admin.php");
 	}
 	else {
-		header("location:http://http://localhost/smsku/sekolahMadani/admin.php?module=staffit");
+		header("location:http://localhost/smsku/sekolahMadani/admin.php?module=staffit");
 	}
 }
 elseif($aksi == "edit"){
@@ -55,7 +55,7 @@ elseif($aksi == "edit"){
 		header("location:http://localhost/sekolahMadani/admin.php");
 	}
 	else {
-		header("location:http://http://localhost/smsku/sekolahMadani/admin.php?module=staffit");
+		header("location:http://localhost/smsku/sekolahMadani/admin.php?module=staffit");
 	}
 }
 ?>

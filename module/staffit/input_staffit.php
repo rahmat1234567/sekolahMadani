@@ -56,7 +56,7 @@ if($_GET['act']=="input"){
                                         
                                         <div class="form-group">
                                             <label>No Telepon</label>
-                                            <input class="form-control" placeholder="No Telp" name="telp_guru">
+                                            <input class="form-control" placeholder="No Telp" name="telp_staffit">
                                         </div>
 										<div class="form-group">
                                             <label>Sekolah</label>
