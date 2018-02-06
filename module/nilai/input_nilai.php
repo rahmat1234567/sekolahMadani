@@ -11,9 +11,10 @@ if($_GET['act']=="input"){
         <h1>Input Nilai Siswa</h1> 
         <br/>
         <ul class="nav nav-tabs">
-            <li class="active"><a data-toggle="tab">Home</a></li>
-            <li><a data-toggle="tab" href="?#menu1">Menu 1</a></li>
-            <li><a data-toggle="tab" href="#menu2">Menu 2</a></li>
+            <li class="active"><a data-toggle="tab">Tugas Harian</a></li>
+            <li><a data-toggle="tab" href="?#menu1">Ulangan Harian</a></li>
+            <li><a data-toggle="tab" href="#menu2">Ujian Tengas Semester</a></li>
+            <li><a data-toggle="tab" href="#menu2">Ujian Akhir Semester</a></li>
         </ul>
         
         <div class="tab-content">
@@ -25,10 +26,10 @@ if($_GET['act']=="input"){
 if(isset($_GET['nip'])){
     
     $nip=$_GET['nip'];
-    $id_kelas=$_GET['id_kelas'];
-    $id_mapel=$_GET['id_mapel'];
+    $id_kls=$_GET['id_kls'];
+    $id_matpel=$_GET['matpel'];
     
-    $query=mysql_query("select * from tbl_nilai where nip='$nip' and id_kelas='$id_kelas' and id_mapel='$id_mapel'");
+    $query=mysql_query("select * from jadwal where nip='$nip' and id_kls='$id_kls' and id_matpel='$id_matpel'");
     $cek=mysql_num_rows($query);
     
     if($cek=='0'){
@@ -100,9 +101,9 @@ if(isset($_GET['nip'])){
         
         <?php
         $nip=$_SESSION['nip'];
-        $view=mysql_query("select * from tbl_mapel mapel, tbl_kelas kelas where mapel.id_kelas=kelas.id_kelas and mapel.nip='$nip' order by id_mapel asc");
-        
+        $view=mysql_query("select * from matpel matpel, kelas kelas where matpel.id_kls=kelas.id_kls and matpel.nip='$nip' order by id_matpel asc");
         $no=0;
+        if($view=== FALSE) { die(mysql_error()); }
         while($row=mysql_fetch_array($view)){
         ?>  
         <tr>

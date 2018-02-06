@@ -204,6 +204,25 @@ echo "User : $usre";
 
 <?php } ?>
 
+
+<?php if($level==1){ ?>
+
+                          <li>
+                            <a href="#"><i class="fa fa-dashboard fa-fw"></i> Data Staff IT<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="#">Input Data</a>
+                                </li>
+                                <li>
+                                    <a href="#">View Data</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+
+<?php } ?>
+
+
 <?php if($level==2){ ?>
 
                           <li>
