@@ -66,7 +66,7 @@ if($_GET['act']=="edit_matpel"){
 								$rs=mysql_fetch_array($sql);
 ?>
                                     <form method="post" role="form" action="././module/matpel/prosesmatpel.php?aksi=update">
-<input type="hidden" name="nip" value="<?php echo $_GET['id_matpel'] ?>" />
+<input type="hidden" name="id_matpel" value="<?php echo $_GET['id_matpel'] ?>" />
                                 <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>Nama Mata Pelajaran</label>
