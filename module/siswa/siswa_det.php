@@ -14,22 +14,22 @@
                         <div class="panel-body">
                             <div class="row">
 <?php                            
-                            	$sql=mysql_query("select * from siswa where nis='$_SESSION[idu]'");
+                            	$sql=mysql_query("select * from siswa where nisn='$_SESSION[idu]'");
 								$rs=mysql_fetch_array($sql);
 ?>
                                     <form method="post" role="form" action="././module/simpan.php?act=siswa_det">
-<input type="hidden" name="id" value="<?php echo $rs['ids'] ?>" />
+<input type="hidden" name="nisn" value="<?php echo $rs['nisn'] ?>" />
 
                                 <div class="col-lg-6">
                                         <fieldset disabled>
 
                                         <div class="form-group">
                                             <label>NIS</label>
-                                            <input class="form-control"  placeholder="Nis" name="nis" value="<?php echo "$rs[nis]"; ?>" >
+                                            <input class="form-control"  placeholder="Nisn" name="nisn" value="<?php echo "$rs[nisn]"; ?>" >
                                         </div>
                                         <div class="form-group">
                                             <label>Nama</label>
-                                            <input class="form-control" placeholder="Nama" name="nama" value="<?php echo "$rs[nama]"; ?>">
+                                            <input class="form-control" placeholder="Nama" name="nama_siswa" value="<?php echo "$rs[nama_siswa]"; ?>">
                                         </div>
                                         <div class="form-group">
          
@@ -68,7 +68,7 @@
 
                                         <div class="form-group">
                                             <label>Alamat</label>
-                                            <textarea class="form-control" placeholder="Alamat" name="alamat" rows="3"><?php echo "$rs[alamat]"; ?></textarea>
+                                            <textarea class="form-control" placeholder="Alamat" name="alamat" rows="3"><?php echo "$rs[alamat_siswa]"; ?></textarea>
                                         </div>
                                         <div class="form-group">
                                             <label>Kelas</label>
@@ -76,7 +76,7 @@
   <?php 
  	$sqlc=mysql_query("select * from kelas");
 	while($rsc=mysql_fetch_array($sqlc)){
-	$sqla=mysql_query("select * from sekolah where id='$rsc[id]'");
+	$sqla=mysql_query("select * from sekolah where id_sklh='$rsc[id]'");
 	$rsa=mysql_fetch_array($sqla);
 if($_SESSION['level']=="admin_guru"){
 if($rsa['id']==$_SESSION['id']){
