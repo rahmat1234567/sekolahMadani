@@ -19,17 +19,17 @@
 							<input type="hidden" name="jam" value="1">
                                         <div class="form-group">
                                             <label>Kelas</label>
-                                            <select class="form-control" name="kls">
+                                            <select class="form-control" name="id_kls">
 
 											<?php 
-											if($_SESSION['level']=="guru"){
-												$sql=mysql_query("select * from kelas where idk='$_SESSION[idk]'");
+											if($_SESSION['level']==3){
+												$sql=mysql_query("select * from kelas where id_kls='$_SESSION[id_kls]'");
 											}
 											else{
 												$sql=mysql_query("select * from kelas");	
 											}
 											while($rs=mysql_fetch_array($sql)){
-											$sqla=mysql_query("select * from sekolah where id='$rs[id]'");
+											$sqla=mysql_query("select * from sekolah where id_sklh='$rs[id_sklh]'");
 											$rsa=mysql_fetch_array($sqla);
 
 											echo "<option value='$rs[idk]'>$rsa[nama] | $rs[nama]</option>";	

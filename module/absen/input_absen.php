@@ -49,7 +49,7 @@ $no=1;
 $tg=date("d-m-Y");
 	$sql=mysql_query("select * from siswa where id_kls='$rsaaa[id_kls]'");
 	while($rs=mysql_fetch_array($sql)){
-	$sqla=mysql_query("select * from absensi where id_kls='$rs[id_kls]' and tgl='$dt' and jam='$_GET[jam]'");
+	$sqla=mysql_query("select * from absensi where id_kls='$rs[id_kls]' and tgl='$tgl' and jam='$_GET[jam]'");
 	$rsa=mysql_fetch_array($sqla);
 	$conk=mysql_num_rows($sqla);
 	$sqlw=mysql_query("select * from kelas where id_kls='$rs[id_kls]'");
