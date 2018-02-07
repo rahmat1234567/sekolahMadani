@@ -19,6 +19,16 @@ if($_GET['act']=="input"){
                                     <form method="post" role="form" action="././module/siswa/prosessiswa.php?aksi=tambah">
 
                                 <div class="col-lg-6">
+
+                                        <div class="form-group">
+                                            <input type="hidden" name="level" value="<?php echo "$level"; ?>">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Foto</label>
+                                            <input type="file" name="foto_siswa">
+                                        </div>
+
                                         <div class="form-group">
                                             <label>NISN</label>
                                             <input class="form-control" placeholder="NISN" name="nisn">
@@ -148,9 +158,9 @@ if($_GET['act']=="edit"){
 								$rs=mysql_fetch_array($sql);
 ?>
                                     <form method="post" role="form" action="././module/siswa/prosessiswa.php?aksi=edit">
-
                                         <div class="col-lg-6">
                                             <input type="hidden" name="level" value="<?php echo "$level"; ?>">
+
                                         <div class="form-group">
                                             <label>NISN</label>
                                             <input class="form-control" value="<?php echo "$rs[nisn]"; ?>" placeholder="NISN" name="nisn">
