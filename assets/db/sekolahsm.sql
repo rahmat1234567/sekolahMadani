@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Feb 06, 2018 at 08:37 AM
+-- Generation Time: Feb 07, 2018 at 08:24 AM
 -- Server version: 5.5.16
 -- PHP Version: 5.3.8
 
@@ -77,15 +77,29 @@ CREATE TABLE IF NOT EXISTS `ekskul` (
   `jadwal_ekskul` text NOT NULL,
   `id_sklh` int(20) NOT NULL,
   PRIMARY KEY (`id_ekskul`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=99003 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=99017 ;
 
 --
 -- Dumping data for table `ekskul`
 --
 
 INSERT INTO `ekskul` (`id_ekskul`, `nama_ekskul`, `nip`, `jadwal_ekskul`, `id_sklh`) VALUES
-(99001, 'Basket', 198503302003122002, 'Sabtu(15.30-17.30)', 10003),
-(99002, 'Cheerleader', 198503302003122002, 'Sabtu (15.30-17.30)', 10001);
+(99001, 'Pramuka SMPN 3 Pekanbaru', 198503302003122002, 'Sabtu (15.30-17.30)', 10003),
+(99002, 'Futsal Spansa', 197702152008011008, 'Sabtu (15.30-17.30)', 10001),
+(99003, 'Basket Putri SMPN 2 Pekanbaru', 197004252005012011, 'Senin (16.00-17.30)', 10002),
+(99004, 'Drum Band SpanFour', 196910182007012014, 'Selasa (15.30-17.30)', 10004),
+(99005, 'Pencak Silat SMPN 5 Pekanbaru', 196701172006041005, 'Rabu (16.00-17.30)', 10005),
+(99006, 'Passus SMPN 6 Pekanbaru', 197004132008011009, 'Kamis & Jumat (16.00-17.30)', 10006),
+(99007, 'Sanggar Tari SMPN 7 Pekanbaru', 197409162008012005, 'Minggu (10.00-12.00)', 10007),
+(99008, 'Palang Merah Remaja SMPN 8 Pekanbaru', 196701171998022004, 'Senin (16.00-17.30)', 10008),
+(99009, 'Drum Band SMPN 9 Pekanbaru', 197409052005012002, 'Selasa (16.00-17.30)', 10009),
+(99010, 'Pramuka SMPN 10 Pekanbaru', 197007122001122001, 'Rabu & Kamis (16.00-17.30)', 10010),
+(99011, 'Sepakbola SMPN 11 Pekanbaru', 197008221998021002, 'Jumat (16.00-17.30)', 10011),
+(99012, 'Basket Spandubel', 197105101993031005, 'Sabtu (13.30-15.30)', 10012),
+(99013, 'Drum Band Spantibel', 195703101980031017, 'Sabtu-Minggu (13.30-15.30)', 10013),
+(99014, 'Pramuka SMPN 14 Pekanbaru', 196111081981122003, 'Sabtu-Minggu (13.00-15.30)', 10014),
+(99015, 'Volley SMPN 15 Pekanbaru', 195906111980032006, 'Rabu (15.30-17.30)', 10015),
+(99016, 'Basket Putra SMPN 16 Pekanbaru', 196103031987031011, 'Kamis & Sabtu (15.30-17.30)', 10016);
 
 -- --------------------------------------------------------
 
@@ -254,15 +268,14 @@ CREATE TABLE IF NOT EXISTS `n_ulanganharian` (
   `nilai_uh` int(10) NOT NULL,
   `ket_uh` varchar(100) NOT NULL,
   PRIMARY KEY (`id_nuh`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Dumping data for table `n_ulanganharian`
 --
 
 INSERT INTO `n_ulanganharian` (`id_nuh`, `id_jadwal`, `nisn`, `nilai_uh`, `ket_uh`) VALUES
-(1, 0, '9965589833', 95, '-'),
-(2, 1, '9965589833', 95, '-');
+(1, 1, '9965589833', 95, '-');
 
 -- --------------------------------------------------------
 

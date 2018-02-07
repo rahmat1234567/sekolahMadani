@@ -35,7 +35,7 @@
                     <div class="panel-body">
                         <form method="post" name="loginform" action="../ceklog.php" onSubmit="
 
-                        var userValid = /^[0-9\-]*$/;
+                        var userValid = /^[0-9]*$/;
                         var user      = loginform.username.value;
                         var pass      = loginform.password.value;
                         var pesan = '';

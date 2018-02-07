@@ -8,12 +8,11 @@ if($aksi == "tambah"){
 	$pass=md5($_POST['pass_siswa']);
 	$db->input($_POST['nisn'],$_POST['nama_siswa'],$pass,$_POST['alamat_siswa'],$_POST['id_sklh'],$_POST['id_kls'],$_POST['nama_ayah'],$_POST['nama_ibu'],$_POST['status_akun'],$_POST['jk'],$_POST['id_ekskul'],$_POST['foto_siswa'],$_POST['telp_ortu']);
 
-    if($level==2){
-        $nm_sklh=$nmsklh; 
-        $dsql=mysql_query("select id_sklh from sekolah where nama_sklh='$nm_sklh'");
-        $dcount=mysql_num_rows($dsql);
-        $drs=mysql_fetch_array($dsql);
-		header("location:http://localhost/sekolahMadani/admin.php");
+    if($_POST['level']==2){
+        $test=$_POST['id_sklh'];
+        $link = 'http://localhost/sekolahMadani/admin.php?module=siswa&kls=';
+        $link .= $test;
+		header("location:$link");
 	}
 	else {
 		header("location:http://localhost/sekolahMadani/admin.php?module=siswa&kls=semua");
@@ -23,12 +22,11 @@ if($aksi == "tambah"){
 elseif($aksi == "hapus"){
 	$db->hapus($_GET['nisn']);
 	
-    if($level==2){
-        $nm_sklh=$nmsklh; 
-        $dsql=mysql_query("select id_sklh from sekolah where nama_sklh='$nm_sklh'");
-        $dcount=mysql_num_rows($dsql);
-        $drs=mysql_fetch_array($dsql);
-		header("location:http://localhost/sekolahMadani/admin.php");
+    if($_GET['level']==2){
+        $test=$_POST['id_sklh'];
+        $link = 'http://localhost/sekolahMadani/admin.php?module=siswa&kls=';
+        $link .= $test;
+		header("location:$link");
 	}
 	else {
 		header("location:http://localhost/sekolahMadani/admin.php?module=siswa&kls=semua");
@@ -50,12 +48,11 @@ elseif($aksi == "edit"){
 
 	$db->update($_POST['nisn'],$_POST['nama_siswa'],$passs,$_POST['alamat_siswa'],$_POST['id_kls'],$_POST['nama_ayah'],$_POST['nama_ibu'],$_POST['status_akun'],$_POST['jk'],$_POST['id_ekskul'],$_POST['foto_siswa'],$_POST['telp_ortu']);
 	
-    if($level==2){
-        $nm_sklh=$nmsklh; 
-        $dsql=mysql_query("select id_sklh from sekolah where nama_sklh='$nm_sklh'");
-        $dcount=mysql_num_rows($dsql);
-        $drs=mysql_fetch_array($dsql);
-		header("location:http://localhost/sekolahMadani/admin.php");
+    if($_POST['level']==2){
+        $test=$_POST['id_sklh'];
+        $link = 'http://localhost/sekolahMadani/admin.php?module=siswa&kls=';
+        $link1 = $link.$test;
+		header("location:$link1");
 	}
 	else {
 		header("location:http://localhost/sekolahMadani/admin.php?module=siswa&kls=semua");
