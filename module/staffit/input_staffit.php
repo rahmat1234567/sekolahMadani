@@ -56,7 +56,7 @@ if($_GET['act']=="input"){
                                         
                                         <div class="form-group">
                                             <label>No Telepon</label>
-                                            <input class="form-control" placeholder="No Telp" name="telp_guru">
+                                            <input class="form-control" placeholder="No Telp" name="telp_staffit">
                                         </div>
 										<div class="form-group">
                                             <label>Sekolah</label>
@@ -129,12 +129,12 @@ if($_GET['act']=="edit"){
                             	$sql=mysql_query("select * from staffit where id_staffit='$_GET[id_staffit]'");
 								$rs=mysql_fetch_array($sql);
 ?>
-                                    <form method="post" role="form" action="././module/staffit/prosesstaffit.php?aksi=update">
+                                    <form method="post" role="form" action="././module/staffit/prosesstaffit.php?aksi=edit">
 <input type="hidden" name="id_staffit" value="<?php echo $_GET['id_staffit'] ?>" />
                                 <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>FOTO</label>
-                                            <input style="padding-bottom:3%;" class="form-control" type="file" name="foto_staffit" value="<?php echo "$rs[foto_staffit]"; ?>" >
+                                            <input style="padding-bottom:3%;" type="file" name="foto_staffit" value="<?php echo "$rs[foto_staffit]"; ?>" >
                                         </div>
                                         <div class="form-group">
                                             <label>Nama</label>

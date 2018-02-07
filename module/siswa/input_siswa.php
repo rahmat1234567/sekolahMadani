@@ -150,6 +150,7 @@ if($_GET['act']=="edit"){
                                     <form method="post" role="form" action="././module/siswa/prosessiswa.php?aksi=edit">
 
                                         <div class="col-lg-6">
+                                            <input type="hidden" name="level" value="<?php echo "$level"; ?>">
                                         <div class="form-group">
                                             <label>NISN</label>
                                             <input class="form-control" value="<?php echo "$rs[nisn]"; ?>" placeholder="NISN" name="nisn">
