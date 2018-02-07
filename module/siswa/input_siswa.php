@@ -214,9 +214,9 @@ if($rs['jk']=="L"){
                                         <input type="hidden" name="id_sklh" value="<?php echo $idsk; ?>">
 
                                         <div class="form-group">
-                                            <label>Alamat</label>
                                             <?php $almt=$rs["alamat_siswa"]; ?>
-                                            <textarea class="form-control" placeholder="Alamat" name="alamat_siswa" value="<?php echo $almt; ?>" rows="3"></textarea>
+                                            <label>Alamat</label>
+                                            <textarea class="form-control" placeholder="Alamat" name="alamat_siswa" rows="3"><?php echo $rs['alamat_siswa']; ?></textarea>
                                         </div>
                                         <div class="form-group">
                                             <label>Kelas</label>

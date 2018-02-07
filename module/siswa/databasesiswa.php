@@ -36,7 +36,7 @@ class database{
 	}
 	
 	function update($nisn,$nama_siswa,$pass_siswa,$alamat_siswa,$id_kls,$nama_ayah,$nama_ibu,$status_akun,$jk,$id_ekskul,$foto_siswa,$telp_ortu){
-		mysql_query("update siswa set nama_siswa='$nama_siswa',jk='$jk',pass_siswa='$pass_siswa', alamat_siswa='$alamat_siswa',nama_ayah='$nama_ayah',nama_ibu='$nama_ibu', status_akun='$status_akun', jk='$jk', foto_siswa='$foto_siswa', id_kls='$id_kls', telp_ortu='$telp_ortu' where nis='$nis'");
+		mysql_query("update siswa set nama_siswa='$nama_siswa',jk='$jk',pass_siswa='$pass_siswa', alamat_siswa='$alamat_siswa',nama_ayah='$nama_ayah',nama_ibu='$nama_ibu', status_akun='$status_akun', jk='$jk', foto_siswa='$foto_siswa', id_kls='$id_kls', telp_ortu='$telp_ortu' where nisn='$nisn'");
 	}
 }
 ?>
