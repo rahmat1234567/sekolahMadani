@@ -291,6 +291,11 @@ echo "User : $usre";
                             <a href="#"><i class="fa fa-dashboard fa-fw"></i> Aktifitas Siswa</a>
                         </li>
 <?php } ?>
+<?php if($level==4){ ?>
+                        <li>
+                            <a href="#"><i class="fa fa-dashboard fa-fw"></i> Data Nilai</a>
+                        </li>
+<?php } ?>
       
                     </ul>
                     <!-- /#side-menu -->
