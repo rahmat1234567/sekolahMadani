@@ -16,9 +16,9 @@
                             <div class="table-responsive">
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                     <thead>
-                                        <tr>
-											<th class="text-center">NO</th>
+                                        <tr>											
 											<th class="text-center">FOTO</th>
+											<th class="text-center">ID</th>
                                             <th class="text-center" width="30%">Nama</th>
                                             <th class="text-center">JK</th>
 											<th class="text-center">Telp</th>
@@ -41,9 +41,9 @@ $db = new database();
 
 //if($level==1 and $level==2){
 
-    ?>                                        <tr class="odd gradeX">
-												<td><?php echo $no++; ?></td>
+    ?>                                        <tr class="odd gradeX">											
 												<td><?php echo"$rs[foto_staffit]";  ?></td>
+												<td><?php echo"$rs[id_staffit]"; ?></td>
                                                 <td><?php echo"$rs[nama_staffit]";  ?></td>
     <?php
     if($rs['jk']=="L"){
