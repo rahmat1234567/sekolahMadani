@@ -88,4 +88,10 @@ include "module/staffit/input_staffit.php";
 if($_GET['module']=="staffit"){
 include "module/staffit/staffit.php";
 }
+if($_GET['module']=="tugassiswa"){
+include "module/tugas/tugassiswa.php";
+}
+if($_GET['module']=="ulanganharian"){
+include "module/uh/ulanganharian.php";
+}
 ?>

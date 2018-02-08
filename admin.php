@@ -294,6 +294,15 @@ echo "User : $usre";
 <?php if($level==4){ ?>
                         <li>
                             <a href="#"><i class="fa fa-dashboard fa-fw"></i> Data Nilai</a>
+							<ul class="nav nav-second-level">
+                                <li>
+                                    <a href="admin.php?module=tugassiswa">View Tugas</a>
+                                </li>
+                                <li>
+                                    <a href="admin.php?module=ulanganharian">View Ulangan Harian</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
                         </li>
 <?php } ?>
       
