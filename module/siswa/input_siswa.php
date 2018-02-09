@@ -212,7 +212,7 @@ if($_GET['act']=="edit"){
                             	$sql=mysql_query("select * from siswa where nisn='$_GET[nisn]'");
 								$rs=mysql_fetch_array($sql);
 ?>
-                                    <form method="post" role="form" action="././module/siswa/prosessiswa.php?aksi=edit"
+                                    <form method="post" name="formin" role="form" action="././module/siswa/prosessiswa.php?aksi=edit"
                                     onSubmit="
 
                                     var nohpValid = /^[0-9\-]*$/;
