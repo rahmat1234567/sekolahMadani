@@ -17,6 +17,7 @@
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                     <thead>
                                         <tr>
+                                            <th class="text-center">Foto</th>
                                             <th class="text-center">NIS</th>
                                             <th class="text-center" width="20%">Nama</th>
                                             <th class="text-center">JK</th>
@@ -55,6 +56,7 @@ else
 }else{*/
 ?>	
                                         <tr class="odd gradeX">
+                                            <td><?php echo"$rs[foto_siswa]";  ?></td>
                                             <td><?php echo"$rs[nisn]";  ?></td>
                                             <td><?php echo"$rs[nama_siswa]";  ?></td>
 <?php
@@ -82,9 +84,22 @@ if($rs['jk']=="L"){
                                         
 										<td class="text-center">
                                             <?php if($level==2){ ?>
-										<a href="./././admin.php?module=input_siswa&act=edit&nisn=<?php echo $rs['nisn'] ?>"><button type="button" class="btn btn-info">Edit</button></a> 
-										<a href="././module/siswa/prosessiswa.php?aksi=hapus&nisn=<?php echo $rs['nisn']; ?>&level=<?php echo $level; ?>"><button type="button" class="btn btn-danger">Hapus</button></a>
+										<a href="./././admin.php?module=input_siswa&act=edit&nisn=<?php echo $rs['nisn'] ?>&level=<?php echo $level; ?>"><button type="button" class="btn btn-info">Edit</button></a> 
+
+                                        <form method="post" action="././module/siswa/prosessiswa.php?aksi=hapus&ids=<?php echo $rs['id_sklh'] ?>&nisn=<?php echo $rs['nisn']; ?>&leve=<?php echo $level; ?>" 
+                                        onSubmit="
+
+                                        var txt;
+                                        var r = confirm('Apa anda yakin ingin menghapus <?php $rs[nama_siswa] ?> dari daftar?');
+                                        if (r == true) {
+                                            return true;
+                                        } else {
+                                            return false;
+                                        }"
+                                        >
+									       <button type="submit" class="btn btn-danger" >Hapus</button>
                                         <?php } ?>
+                                        </form>
 										<a href="./././admin.php?module=detail_siswa&act=details&nisn=<?php echo $rs['nisn'] ?>">
 										<button type="button" class="btn btn-warning">Details</button> </a>
 										

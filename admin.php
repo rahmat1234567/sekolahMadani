@@ -136,7 +136,7 @@ echo "User : $usre";
                                             $dsql=mysql_query("select id_sklh from sekolah where nama_sklh='$nm_sklh'");
                                             $dcount=mysql_num_rows($dsql);
                                             $drs=mysql_fetch_array($dsql);
-
+                                            $crypt=md5($drs['id_sklh']);
                                 ?>
 
                                 <li>
@@ -294,7 +294,7 @@ echo "User : $usre";
 <?php if($level==4){ ?>
                         <li>
                             <a href="#"><i class="fa fa-dashboard fa-fw"></i> Data Nilai</a>
-							<ul class="nav nav-second-level">
+                            <ul class="nav nav-second-level">
                                 <li>
                                     <a href="admin.php?module=tugassiswa">View Tugas</a>
                                 </li>
