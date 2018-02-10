@@ -1,13 +1,13 @@
     <?php include '../conn/koneksi.php'; ?>
     <!-- menu tengah -->
 	<div id="menu-tengah">
-    	<div id="bg_menu">Data Buku
+    	<div id="bg_menu">Data Anggota
     	</div>
     	<div id="content_menu">
         <div id="menu_header">
         	<table width="100%" height="100%" style="background-color:#9cc;">
             	<tr>
-                	<td align="center">Buku Detail</td>
+                	<td align="center">Anggota Detail</td>
                 </tr>
             
             </table>
