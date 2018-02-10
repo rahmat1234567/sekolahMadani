@@ -11,8 +11,8 @@ if($aksi == "tambah"){
     if($_POST['level']==2){
         $test=$_POST['id_sklh'];
         $link = 'http://localhost/sekolahMadani/admin.php?module=siswa&kls=';
-        $link .= $test;
-		header("location:$link");
+        $link1 = $link.$test;
+		header("location:$link1");
 	}
 	else {
 		header("location:http://localhost/sekolahMadani/admin.php?module=siswa&kls=semua");
@@ -21,12 +21,14 @@ if($aksi == "tambah"){
 
 elseif($aksi == "hapus"){
 	$db->hapus($_GET['nisn']);
+	$niiis = $_GET['nisn'];
 	
-    if($_GET['level']==2){
-        $test=$_POST['id_sklh'];
+    $test=$_GET['ids'];
+
+    if($_GET['leve']==2){
         $link = 'http://localhost/sekolahMadani/admin.php?module=siswa&kls=';
-        $link .= $test;
-		header("location:$link");
+        $link1 = $link.$test;
+		header("location:$link1");
 	}
 	else {
 		header("location:http://localhost/sekolahMadani/admin.php?module=siswa&kls=semua");
@@ -36,8 +38,8 @@ elseif($aksi == "hapus"){
 elseif($aksi == "edit"){
 	$niis=$_POST['nisn'];
 	$asql=mysql_query("select pass_siswa from siswa where nisn='$niis'");
-    $acount=mysql_num_rows($dsql);
-    $ars=mysql_fetch_array($dsql);
+    $acount=mysql_num_rows($asql);
+    $ars=mysql_fetch_array($asql);
 
     if($_POST['pass_siswa']==""){
     	$passs=$ars['pass_siswa'];

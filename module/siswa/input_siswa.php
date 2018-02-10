@@ -16,7 +16,58 @@ if($_GET['act']=="input"){
                         </div>
                         <div class="panel-body">
                             <div class="row">
-                                    <form method="post" role="form" action="././module/siswa/prosessiswa.php?aksi=tambah">
+                                    <form method="post" name="formin" role="form" action="././module/siswa/prosessiswa.php?aksi=tambah"
+                                    onSubmit="
+
+                                    var nohpValid = /^[0-9\-]*$/;
+                                    var nohp      = formin.telp_ortu.value;
+                                    var pass      = formin.pass_siswa.value;
+                                    var pass1     = formin.pass_siswa1.value;
+                                    var namaValid = /^[a-zA-Z]+(([\'\,\.\- ][a-zA-Z ])?[a-zA-Z]*)*$/;
+                                    var nama      = formin.nama_siswa.value;
+                                    var nisnValid = /^[0-9]*$/;
+                                    var nisn      = formin.nisn.value;
+                                    var kelas     = formin.id_kls.value;
+                                    var ibu       = formin.nama_ibu.value;
+                                    var ayah      = formin.nama_ayah.value;
+                                    var minchar   = 6;
+                                    var pesan = '';
+                                     
+                                    if (pass != pass1) {
+                                        pesan = '> Password harus sama\n';
+                                    }
+                                    
+                                    if (kelas == '') {
+                                        pesan = '> Harus pilih kelas\n';
+                                    } 
+
+                                    if (nisn != '' && !nisn.match(nisnValid)) {
+                                        pesan = '> Masukkan NISN valid\n';
+                                    }
+                                     
+                                    if (nama != '' && !nama.match(namaValid)) {
+                                        pesan += '> Nama tidak valid\n';
+                                    }
+
+                                    if (ibu != '' && !ibu.match(namaValid)) {
+                                        pesan += '> Nama Ibu tidak valid\n';
+                                    }
+
+                                    if (ayah != '' && !ayah.match(namaValid)) {
+                                        pesan += '> Nama Ayah tidak valid\n';
+                                    }
+
+                                    if (formin.pass_siswa.value.length < minchar) {
+                                        pesan += '> Password minimal 6 karakter\n';
+                                    }
+                                    
+                                    if (pesan != '') {
+                                        alert('Maaf, ada kesalahan saat submit: \n'+pesan);
+                                        return false;
+                                    }
+                                    return true;
+
+                                    ">
 
                                 <div class="col-lg-6">
 
@@ -31,11 +82,11 @@ if($_GET['act']=="input"){
 
                                         <div class="form-group">
                                             <label>NISN</label>
-                                            <input class="form-control" placeholder="NISN" name="nisn">
+                                            <input class="form-control" placeholder="NISN" name="nisn" required>
                                         </div>
                                         <div class="form-group">
                                             <label>Nama</label>
-                                            <input class="form-control" placeholder="Nama" name="nama_siswa">
+                                            <input class="form-control" placeholder="Nama" name="nama_siswa" required>
                                         </div>
                                         <div class="form-group">
                                             <label>Jenis Kelamin</label>
@@ -87,24 +138,28 @@ if($_GET['act']=="input"){
                                         </div>
                                         <div class="form-group input-group">
                                             <label>Nomor Telepon Orang Tua</label>
-                                            <input type="text" class="form-control" placeholder="No Telepon" name="telp_ortu">
+                                            <input type="text" class="form-control" placeholder="No Telepon" name="telp_ortu" required>
                                         </div>
 </div>
 
                                 <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>Nama Ayah</label>
-                                            <input class="form-control" placeholder="Nama" name="nama_ayah">
+                                            <input class="form-control" placeholder="Nama" name="nama_ayah" required>
                                         </div>
 
                                         <div class="form-group">
                                             <label>Nama Ibu</label>
-                                            <input class="form-control" placeholder="Nama" name="nama_ibu">
+                                            <input class="form-control" placeholder="Nama" name="nama_ibu" value="" required>
                                         </div>
 
                                         <div class="form-group">
                                             <label>Password</label>
-                                            <input class="form-control" placeholder="Password" name="pass_siswa" type="password">
+                                            <input class="form-control" placeholder="Password" name="pass_siswa" value="" type="password" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Ulangi Password</label>
+                                            <input class="form-control" placeholder="Password" name="pass_siswa1" type="password" required>
                                         </div>
                                         <div class="form-group">
                                             <label>Status Akun</label>
@@ -157,17 +212,68 @@ if($_GET['act']=="edit"){
                             	$sql=mysql_query("select * from siswa where nisn='$_GET[nisn]'");
 								$rs=mysql_fetch_array($sql);
 ?>
-                                    <form method="post" role="form" action="././module/siswa/prosessiswa.php?aksi=edit">
+                                    <form method="post" name="formin" role="form" action="././module/siswa/prosessiswa.php?aksi=edit"
+                                    onSubmit="
+
+                                    var nohpValid = /^[0-9\-]*$/;
+                                    var nohp      = formin.telp_ortu.value;
+                                    var pass      = formin.pass_siswa.value;
+                                    var pass1     = formin.pass_siswa1.value;
+                                    var namaValid = /^[a-zA-Z]+(([\'\,\.\- ][a-zA-Z ])?[a-zA-Z]*)*$/;
+                                    var nama      = formin.nama_siswa.value;
+                                    var nisnValid = /^[0-9]*$/;
+                                    var nisn      = formin.nisn.value;
+                                    var kelas     = formin.id_kls.value;
+                                    var ibu       = formin.nama_ibu.value;
+                                    var ayah      = formin.nama_ayah.value;
+                                    var minchar   = 6;
+                                    var pesan = '';
+                                     
+                                    if (pass != pass1) {
+                                        pesan = '> Password harus sama\n';
+                                    }
+                                    
+                                    if (kelas == '') {
+                                        pesan = '> Harus pilih kelas\n';
+                                    } 
+
+                                    if (nisn != '' && !nisn.match(nisnValid)) {
+                                        pesan = '> Masukkan NISN valid\n';
+                                    }
+                                     
+                                    if (nama != '' && !nama.match(namaValid)) {
+                                        pesan += '> Nama tidak valid\n';
+                                    }
+
+                                    if (ibu != '' && !ibu.match(namaValid)) {
+                                        pesan += '> Nama Ibu tidak valid\n';
+                                    }
+
+                                    if (ayah != '' && !ayah.match(namaValid)) {
+                                        pesan += '> Nama Ayah tidak valid\n';
+                                    }
+
+                                    if (pass != '' && formin.pass_siswa.value.length < minchar) {
+                                        pesan += '> Password minimal 6 karakter\n';
+                                    }
+                                    
+                                    if (pesan != '') {
+                                        alert('Maaf, ada kesalahan saat submit: \n'+pesan);
+                                        return false;
+                                    }
+                                    return true;
+
+                                    ">
                                         <div class="col-lg-6">
                                             <input type="hidden" name="level" value="<?php echo "$level"; ?>">
 
                                         <div class="form-group">
                                             <label>NISN</label>
-                                            <input class="form-control" value="<?php echo "$rs[nisn]"; ?>" placeholder="NISN" name="nisn">
+                                            <input class="form-control" value="<?php echo "$rs[nisn]"; ?>" placeholder="NISN" name="nisn" required>
                                         </div>
                                         <div class="form-group">
                                             <label>Nama</label>
-                                            <input class="form-control" value="<?php echo "$rs[nama_siswa]"; ?>" placeholder="Nama" name="nama_siswa">
+                                            <input class="form-control" value="<?php echo "$rs[nama_siswa]"; ?>" placeholder="Nama" name="nama_siswa" required>
                                         </div>
                                         <div class="form-group">
                                             <label>Jenis Kelamin</label>
@@ -250,24 +356,28 @@ if($rs['jk']=="L"){
                                         </div>
                                         <div class="form-group input-group">
                                             <label>Nomor Telepon Orang Tua</label>
-                                            <input type="text" class="form-control" value="<?php echo $rs['telp_ortu']; ?>" placeholder="No Telepon" name="telp_ortu">
+                                            <input type="text" class="form-control" value="<?php echo $rs['telp_ortu']; ?>" placeholder="No Telepon" name="telp_ortu" required>
                                         </div>
 </div>
 
                                 <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>Nama Ayah</label>
-                                            <input class="form-control" placeholder="Nama" name="nama_ayah" value="<?php echo $rs['nama_ayah']; ?>">
+                                            <input class="form-control" placeholder="Nama" name="nama_ayah" value="<?php echo $rs['nama_ayah']; ?>" required>
                                         </div>
 
                                         <div class="form-group">
                                             <label>Nama Ibu</label>
-                                            <input class="form-control" placeholder="Nama" name="nama_ibu" value="<?php echo $rs['nama_ibu']; ?>">
+                                            <input class="form-control" placeholder="Nama" name="nama_ibu" value="<?php echo $rs['nama_ibu']; ?>" required>
                                         </div>
 
                                         <div class="form-group">
                                             <label>Password</label>
                                             <input class="form-control" placeholder="Password" name="pass_siswa" type="password" value="">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Ulangi Password</label>
+                                            <input class="form-control" placeholder="Password" name="pass_siswa1" type="password" value="">
                                         </div>
                                         <div class="form-group">
                                             <label>Status Akun</label>
