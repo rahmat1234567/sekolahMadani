@@ -16,7 +16,7 @@ if($_GET['act']=="input"){
                         </div>
                         <div class="panel-body">
                             <div class="row">
-                                    <form method="post" name="formin" role="form" action="././module/siswa/prosessiswa.php?aksi=tambah"
+                                    <form method="post" enctype="multipart/form-data" name="formin" role="form" action="././module/siswa/prosessiswa.php?aksi=tambah"
                                     onSubmit="
 
                                     var nohpValid = /^[0-9\-]*$/;
@@ -30,6 +30,7 @@ if($_GET['act']=="input"){
                                     var kelas     = formin.id_kls.value;
                                     var ibu       = formin.nama_ibu.value;
                                     var ayah      = formin.nama_ayah.value;
+                                    var alamat    = formin.alamat_siswa.value;
                                     var minchar   = 6;
                                     var pesan = '';
                                      
@@ -39,6 +40,10 @@ if($_GET['act']=="input"){
                                     
                                     if (kelas == '') {
                                         pesan = '> Harus pilih kelas\n';
+                                    } 
+
+                                    if (alamat == '') {
+                                        pesan = '> Alamat harus diisi\n';
                                     } 
 
                                     if (nisn != '' && !nisn.match(nisnValid)) {
@@ -78,7 +83,40 @@ if($_GET['act']=="input"){
                                         <div class="form-group">
                                             <label>Foto</label>
                                             <input type="file" name="foto_siswa">
+                                        
+                                        <?php
+
+                                            if($_FILES['foto_siswa']['name'])
+                                            {
+                                                if(!$_FILES['foto_siswa']['error'])
+                                                {
+                                                    $new_file_name = strtolower($_FILES['foto_siswa']['tmp_name']);
+                                                    if($_FILES['foto_siswa']['size'] > (1024000)) //can't be larger than 1 MB
+                                                    {
+                                                        $valid_file = false;
+                                                        $message = 'Oops!  Your file\'s size is to large.';
+                                                    }
+                                                    
+                                                    //if the file has passed the test
+                                                    if($valid_file)
+                                                    {
+                                                        //move it to where we want it to be
+                                                        move_uploaded_file($_FILES['foto_siswa']['tmp_name'], 'uploads/'.$new_file_name);
+                                                        $message = 'Congratulations!  Your file was accepted.';
+                                                    }
+                                                }
+                                                //if there is an error...
+                                                else
+                                                {
+                                                    //set that to be the returned message
+                                                    $message = 'Ooops!  Your upload triggered the following error:  '.$_FILES['foto_siswa']['error'];
+                                                }
+                                            }
+
+                                        ?>
+
                                         </div>
+
 
                                         <div class="form-group">
                                             <label>NISN</label>
@@ -221,6 +259,7 @@ if($_GET['act']=="edit"){
                                     var pass1     = formin.pass_siswa1.value;
                                     var namaValid = /^[a-zA-Z]+(([\'\,\.\- ][a-zA-Z ])?[a-zA-Z]*)*$/;
                                     var nama      = formin.nama_siswa.value;
+                                    var alamat    = formin.alamat_siswa.value;
                                     var nisnValid = /^[0-9]*$/;
                                     var nisn      = formin.nisn.value;
                                     var kelas     = formin.id_kls.value;
@@ -235,6 +274,10 @@ if($_GET['act']=="edit"){
                                     
                                     if (kelas == '') {
                                         pesan = '> Harus pilih kelas\n';
+                                    } 
+
+                                    if (alamat == '') {
+                                        pesan = '> Alamat harus diisi\n';
                                     } 
 
                                     if (nisn != '' && !nisn.match(nisnValid)) {
