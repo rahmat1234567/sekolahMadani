@@ -78,7 +78,7 @@ body {
 }
 
 #bg_menu {
-	background-color: #ccc;
+	background-color: blue;
 	background-image:url(../images/menu-biru.gif);
 	border:1px solid #333;
 	border-bottom:0px;
