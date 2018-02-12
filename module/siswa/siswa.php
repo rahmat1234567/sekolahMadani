@@ -97,20 +97,18 @@ if($rs['jk']=="L"){
                                             <?php if($level==2){ ?>
 										<a href="./././admin.php?module=input_siswa&act=edit&nisn=<?php echo $rs['nisn'] ?>&level=<?php echo $level; ?>"><button type="button" class="btn btn-info">Edit</button></a> 
 
-                                        <form method="post" action="././module/siswa/prosessiswa.php?aksi=hapus&ids=<?php echo $rs['id_sklh'] ?>&nisn=<?php echo $rs['nisn']; ?>&leve=<?php echo $level; ?>" 
+                                        <form method="post" action="././module/siswa/prosessiswa.php?aksi=hapus&ids=<?php echo $rs['id_sklh'] ?>&nisn=<?php echo $rs['nisn']; ?>&leve=<?php echo $level; ?> 
+                                            "
+
+                                            onSubmit="
+                                            confirm('Apa anda yakin ingin menghapus <?php $rs[nama_siswa] ?> dari daftar?');
+                                            " 
                                         >
 									       <button type="submit" class="btn btn-danger" >Hapus</button>
                                         <?php } ?>
                                         </form>
 										<a href="./././admin.php?module=detail_siswa&act=details&nisn=<?php echo $rs['nisn'] ?>">
 										<button type="button" class="btn btn-warning" 
-                                        onClick="
-                                        var r = confirm('Apa anda yakin ingin menghapus <?php $rs[nama_siswa] ?> dari daftar?');
-                                        if (r == true) {
-                                            return true;
-                                        } else {
-                                            return false;
-                                        }"
                                         >Details</button> </a>
 										
 										</td>
