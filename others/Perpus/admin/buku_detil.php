@@ -1,4 +1,12 @@
     <?php include '../conn/koneksi.php'; ?>
+
+    <style>
+        .asem{
+
+            padding:5px 20px;
+            border:1px solid #ccc;
+        }
+    </style>
     <!-- menu tengah -->
 	<div id="menu-tengah">
     	<div id="bg_menu">Data Buku
@@ -16,6 +24,12 @@
     	</div>
         
    	    <div class="table_input">
+            <table width="100%">
+            <tr>
+                <td>
+                    <img src="../images/avatar5.png">
+                </td>
+                <td>
    	      <table width="100%" height="80%" align="center" cellspacing="0" cellpadding="5">
 			<?php
             $judul	= isset($_GET['judul']) ? $_GET['judul'] : "";
@@ -65,11 +79,22 @@
                     <td><?php echo $data[8]; ?></td>
                 </tr>
                 <tr>
-                    <td><a href="?page=buku">Kembali</td>
+                    <td><a href="?page=buku">Kembali</a></td>
                 </tr>
             
             </tbody>
           </table>
+            </td>
+            </tr>
+            <tr>
+                <td colspan="2" class="asem">
+                    <h3>Keterangan :</h3>
+                    <p>
+                        heheheheh
+                    </p>
+                </td>
+            </tr>
+            </table>
  	      </div>
    	  </div>
     </div>
