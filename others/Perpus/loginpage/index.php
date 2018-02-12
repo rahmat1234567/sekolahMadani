@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Sekolah Smart Madani</title>
+  <title>Perpustakaan Smart Madani</title>
   
   
   
@@ -30,7 +30,7 @@
             <div class="col-md-4 col-md-offset-4">
                 <div class="login-panel panel panel-default">
                     <div class="panel-heading" style="z-index:990;">
-                        <center><h3 class="panel-title">Sekolah Smart Madani - Login</h3></center>
+                        <center><h3 class="panel-title">Perpustakaan Smart Madani - Login</h3></center>
                     </div>
                     <div class="panel-body">
                         <form method="post" name="loginform" action="../cek-login.php">
