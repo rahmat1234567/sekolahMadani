@@ -65,6 +65,11 @@ if($_GET['act']=="input"){
                                     if (formin.pass_siswa.value.length < minchar) {
                                         pesan += '> Password minimal 6 karakter\n';
                                     }
+
+
+                                    if (formin.alamat.value.length < minchar) {
+                                        pesan += '> Alamat terlalu singkat\n';
+                                    }
                                     
                                     if (pesan != '') {
                                         alert('Maaf, ada kesalahan saat submit: \n'+pesan);
@@ -80,12 +85,41 @@ if($_GET['act']=="input"){
                                             <input type="hidden" name="level" value="<?php echo "$level"; ?>">
                                         </div>
 
-                                        <div class="form-group">
-                                            <label>Foto</label>
-                                            <input type="file" name="foto_siswa">
-                                        
-                                        <?php
+                                        <script>
+                                            function preview_photo(imgg,idpreview){
+                                                var gb = imgg.files;
+                                                
+                                                for (var i = 0; i < gb.length; i++){
+                                                    var gbPreview = gb[i];
+                                                    var imageType = /image.*/;
+                                                    var preview=document.getElementById(idpreview);            
+                                                    var reader = new FileReader();
+                                                    
+                                                    if (gbPreview.type.match(imageType)) {
+                                                        preview.file = gbPreview;
+                                                        reader.onload = (function(element) { 
+                                                            return function(e) { 
+                                                                element.src = e.target.result; 
+                                                            }; 
+                                                        })(preview);
+                                                        reader.readAsDataURL(gbPreview);
+                                                    }else{
+                                                        alert("Type file tidak sesuai. Khusus image.");
+                                                    }
+                                                   
+                                                }    
+                                            }
+                                        </script>
 
+                                        <div class="form-group" data-provides="fileupload" style="border-bottom: ">
+                                            <label>Foto</label>
+                                            <center><img id="preview" src="" alt="" height="200px" style="padding-bottom: 10px;" /></center>
+                                            <input type="file" name='foto_siswa' accept="image/*" onchange="preview_photo(this,'preview')">
+                                        </div>
+
+
+                                        <?php
+/*
                                             if($_FILES['foto_siswa']['name'])
                                             {
                                                 if(!$_FILES['foto_siswa']['error'])
@@ -112,10 +146,9 @@ if($_GET['act']=="input"){
                                                     $message = 'Ooops!  Your upload triggered the following error:  '.$_FILES['foto_siswa']['error'];
                                                 }
                                             }
-
+*/
                                         ?>
 
-                                        </div>
 
 
                                         <div class="form-group">
@@ -148,13 +181,17 @@ if($_GET['act']=="input"){
                                             $rsc=mysql_fetch_array($sqlc);
                                             $idsk=$rsc['id_sklh'];
                                         ?>
-
                                         <input type="hidden" name="id_sklh" value="<?php echo $idsk; ?>">
 
                                         <div class="form-group">
                                             <label>Alamat</label>
-                                            <textarea class="form-control" placeholder="Alamat" name="alamat_siswa" rows="3"></textarea>
+                                            <textarea class="form-control" placeholder="Alamat" name="alamat_siswa" rows="3" required="required"></textarea>
                                         </div>
+
+</div>
+
+                                <div class="col-lg-6">
+                                        
                                         <div class="form-group">
                                             <label>Kelas</label>
                                             <select class="form-control" name="id_kls">
@@ -178,9 +215,7 @@ if($_GET['act']=="input"){
                                             <label>Nomor Telepon Orang Tua</label>
                                             <input type="text" class="form-control" placeholder="No Telepon" name="telp_ortu" required>
                                         </div>
-</div>
 
-                                <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>Nama Ayah</label>
                                             <input class="form-control" placeholder="Nama" name="nama_ayah" required>
