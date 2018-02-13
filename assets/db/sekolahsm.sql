@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Feb 09, 2018 at 05:26 AM
+-- Generation Time: Feb 13, 2018 at 09:45 AM
 -- Server version: 5.5.16
 -- PHP Version: 5.3.8
 
@@ -100,19 +100,6 @@ INSERT INTO `ekskul` (`id_ekskul`, `nama_ekskul`, `nip`, `jadwal_ekskul`, `id_sk
 (99014, 'Pramuka SMPN 14 Pekanbaru', 196111081981122003, 'Sabtu-Minggu (13.00-15.30)', 10014),
 (99015, 'Volley SMPN 15 Pekanbaru', 195906111980032006, 'Rabu (15.30-17.30)', 10015),
 (99016, 'Basket Putra SMPN 16 Pekanbaru', 196103031987031011, 'Kamis & Sabtu (15.30-17.30)', 10016);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `foto`
---
-
-CREATE TABLE IF NOT EXISTS `foto` (
-  `id_foto` varchar(100) NOT NULL,
-  `nama_foto` varchar(100) NOT NULL,
-  `file_foto` blob,
-  PRIMARY KEY (`id_foto`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
