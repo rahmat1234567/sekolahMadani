@@ -1,10 +1,10 @@
 <?php                            
-	$sql=mysql_query("select * from siswa where nisn='$_GET[ids]'");
+	$sql=mysql_query("select * from siswa where nisn='$_GET[nisn]'");
 	$rs=mysql_fetch_array($sql);
 ?>
           <div class="row">
                 <div class="col-lg-12">
-					<h3 class="page-header"><strong>Detail Siswa : <?php echo "$rs[nama]"; ?></strong></h3>
+					<h3 class="page-header"><strong><?php echo "$rs[nama_siswa]"; ?></strong></h3>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -20,46 +20,45 @@
 
                                
                                 <div class="col-lg-6">
-                                        <fieldset disabled>
+                                        <fieldset>
+
+                                        <div class="form-group" data-provides="fileupload" style="border-bottom: " >
+                                            <label>Foto</label>
+                                            <?php 
+                                                if($rs['foto_siswa']==""){
+                                                    $foto = "default.jpg";
+                                                }
+                                                else{
+                                                    $foto = $rs['foto_siswa'];
+                                                }
+                                            ?>
+                                            <center><img class="gambar" src="assets/img/<?php echo $foto; ?>" alt="" height="200px" style="padding-bottom: 10px;" /></center>
+                                            </div>
 
                                         <div class="form-group">
-                                            <label>NIS</label>
-                                            <input class="form-control"  placeholder="Nis" name="nis" value="<?php echo "$rs[nis]"; ?>" >
+                                            <label>NISN</label>
+                                            <p class="form-control"><?php echo "$rs[nisn]"; ?></p>
                                         </div>
                                         <div class="form-group">
                                             <label>Nama</label>
-                                            <input class="form-control" placeholder="Nama" name="nama" value="<?php echo "$rs[nama]"; ?>">
+                                            <p class="form-control"><?php echo "$rs[nama_siswa]"; ?></p>
                                         </div>
+</fieldset>
+</div>
+
+                                <div class="col-lg-6">
+                              <fieldset readonly>
                                         <div class="form-group">
          
                                            <label>Jenis Kelamin</label>
         <?php if($rs['jk']=="L"){ ?>
-                                            <div class="radio">
-                                                <label>
-                                                    <input type="radio" name="jk" value="L" 
-                                                    checked>Laki - Laki
-                                                </label>
+                                            <div class="form-group">
+                                                <p class="form-control">Laki-laki</p>
                                             </div>
-                                            <div class="radio">
-                                                <label>
-                                                    <input type="radio" name="jk" value="P">
-                                                    Perempuan
-                                                </label>
-                                            </div>
-                                        </div>
 <?php } ?>
         <?php if($rs['jk']=="P"){ ?>
-                                            <div class="radio">
-                                                <label>
-                                                    <input type="radio" name="jk" value="L" 
-                                                    >Laki - Laki
-                                                </label>
-                                            </div>
-                                            <div class="radio">
-                                                <label>
-                                                    <input type="radio" name="jk" value="P" checked>
-                                                    Perempuan
-                                                </label>
+                                            <div class="form-group">
+                                                <p class="form-control">Perempuan</p>
                                             </div>
                                         </div>
 <?php } ?>
@@ -67,63 +66,38 @@
 
                                         <div class="form-group">
                                             <label>Alamat</label>
-                                            <textarea class="form-control" placeholder="Alamat" name="alamat" rows="3"><?php echo "$rs[alamat]"; ?></textarea>
+                                            <p class="form-control" style="height: 400%;"><?php echo "$rs[alamat_siswa]"; ?></p>
+                                        </div>
+                                         <div class="form-group">
+                                            <label>Kelas</label>
+                                            <p class="form-control" name="id_kls">
+                                            <?php
+
+                                                $ssql=mysql_query("select * from kelas where id_sklh='$rs[id_sklh]'");
+                                                $scount=mysql_num_rows($ssql);
+                                                while($srs=mysql_fetch_array($ssql))
+                                                {
+                                                        $idid=$srs['id_kls'];
+                                                        $nmnm=$srs['nama_kls'];
+                                                        
+                                                        if($idid==$rs['id_kls']){
+                                                            echo $nmnm;
+                                                        }
+                                                }
+                                            ?>
+                                            </p>
                                         </div>
                                         <div class="form-group">
-                                            <label>Kelas</label>
-                                            <select class="form-control" name="kelas">
-  <?php 
- 	$sqlc=mysql_query("select * from kelas");
-	while($rsc=mysql_fetch_array($sqlc)){
-	$sqla=mysql_query("select * from sekolah where id='$rsc[id]'");
-	$rsa=mysql_fetch_array($sqla);
-if($_SESSION['level']=="admin_guru"){
-if($rsa['id']==$_SESSION['id']){
-
-if($rs['idk']==$rsc['idk']){
-	echo "<option value='$rsc[idk]' selected>$rsa[nama] | $rsc[nama]</option>";	
-}else{
-	echo "<option value='$rsc[idk]'>$rsa[nama] | $rsc[nama]</option>";	
-
-}
-}
-}else{
-if($rs['idk']==$rsc['idk']){
-	echo "<option value='$rsc[idk]' selected>$rsa[nama] | $rsc[nama]</option>";	
-}else{
-	echo "<option value='$rsc[idk]'>$rsa[nama] | $rsc[nama]</option>";	
-
-}
-	
-}
-}?>
-                                          </select>
+                                            <label>Nomor Telepon Orang Tua</label>
+                                            <p class="form-control"><?php echo $rs['telp_ortu']; ?></p>
                                         </div>
-                                        <div class="form-group input-group">
-                                            <span class="input-group-addon">+62</span>
-                                            <input type="text" class="form-control" placeholder="No Telepon" name="tlp" value="<?php echo "$rs[tlp]"; ?>">
-                                        </div>
-</fieldset>
-</div>
-
-                                <div class="col-lg-6">
-                              <fieldset disabled>
-
                                         <div class="form-group">
                                             <label>Nama Ayah</label>
-                                            <input class="form-control" placeholder="Nama" name="bapak" value="<?php echo "$rs[bapak]"; ?>">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Pekerjaan</label>
-                                            <input class="form-control" placeholder="Pekerjaan" name="k_bapak" value="<?php echo "$rs[k_bapak]"; ?>">
+                                            <p class="form-control"><?php echo "$rs[nama_ayah]"; ?></p>
                                         </div>
                                         <div class="form-group">
                                             <label>Nama Ibu</label>
-                                            <input class="form-control" placeholder="Nama" name="ibu" value="<?php echo "$rs[ibu]"; ?>">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Pekerjaan</label>
-                                            <input class="form-control" placeholder="Pekerjaan" name="k_ibu" value="<?php echo "$rs[k_ibu]"; ?>">
+                                            <p class="form-control"><?php echo "$rs[nama_ibu]"; ?></p>
                                         </div>
 </fieldset>                                        
                                 </div>

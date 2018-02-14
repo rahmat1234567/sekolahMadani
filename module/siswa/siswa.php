@@ -19,15 +19,15 @@
                                         <tr>
                                             <th class="text-center">Foto</th>
                                             <th class="text-center">NIS</th>
-                                            <th class="text-center" width="20%">Nama</th>
+                                            <th class="text-center" width="30%">Nama</th>
                                             <th class="text-center">JK</th>
-											<th class="text-center" width="10%">Alamat</th>
+                                            <?php if($level!=2){?>
                                             <th class="text-center" width="15%">Nama Sekolah</th>
+                                            <?php } ?>
                                             <th class="text-center">Kelas</th>
-											<th class="text-center" width="10%">Nama Ayah</th>
-											<th class="text-center" width="10%">Nama Ibu</th>
 											<th class="text-center">Telp</th>
-                                            <th class="text-center">Aksi</th>
+                                            <th class="text-center">Status Akun</th>
+                                            <th class="text-center" width="10%">Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -86,14 +86,14 @@ if($rs['jk']=="L"){
 <?php
 }
 ?>
-										<td><?php echo"$rs[alamat_siswa]";  ?></td>
                                         <?php 
                                             $kode_sklh=$rs['id_sklh']; 
                                             $dsql=mysql_query("select nama_sklh from sekolah where id_sklh='$kode_sklh'");
                                             $dcount=mysql_num_rows($dsql);
                                             $drs=mysql_fetch_array($dsql);
                                         ?>
-										<td><?php echo"$drs[nama_sklh]";  ?></td>
+                                        <?php if($level!=2){?>
+										<td><?php echo"$drs[nama_sklh]";  ?></td><?php } ?>
 
                                         <?php 
                                             $kode_kls=$rs['id_kls']; 
@@ -103,11 +103,15 @@ if($rs['jk']=="L"){
                                         ?>
                                         <td><?php echo"$ers[nama_kls]";  ?></td>
 
-
-										<td><?php echo"$rs[nama_ayah]";  ?></td>
-										<td><?php echo"$rs[nama_ibu]";  ?></td>
                                         <td><?php echo"$rs[telp_ortu]";  ?></td>
-                                        
+                                        <td><?php 
+                                            if ($rs['status_akun']==0){
+                                                echo "Non-aktif";
+                                            }
+                                            else{
+                                                echo "Aktif";
+                                            }  
+                                        ?></td>
 										<td class="text-center">
                                             <?php if($level==2){ ?>
 										<a href="./././admin.php?module=input_siswa&act=edit&nisn=<?php echo $rs['nisn'] ?>&level=<?php echo $level; ?>"><button type="button" class="btn btn-info">Edit</button></a> 
