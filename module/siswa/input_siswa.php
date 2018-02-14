@@ -1,3 +1,4 @@
+
 <?php
 if($_GET['act']=="input"){
 	?>
@@ -16,6 +17,38 @@ if($_GET['act']=="input"){
                         </div>
                         <div class="panel-body">
                             <div class="row">
+                                    <script>
+                                        function preview_photo(imgg,idpreview){
+                                            var gb = imgg.files;
+                                            
+                                            for (var i = 0; i < gb.length; i++){
+                                                var gbPreview = gb[i];
+                                                var imageType = /image.*/;
+                                                var preview=document.getElementById(idpreview);            
+                                                var reader = new FileReader();
+                                                
+                                                if (gbPreview.type.match(imageType)) {
+
+                                                    if(file_size>512000){
+                                                        alert("File maksimal berukuran 512kb");
+                                                        document.getElementById("file").value = "";
+                                                        return false;
+                                                    }
+
+                                                    preview.file = gbPreview;
+                                                    reader.onload = (function(element) { 
+                                                        return function(e) { 
+                                                            element.src = e.target.result; 
+                                                        }; 
+                                                    })(preview);
+                                                    reader.readAsDataURL(gbPreview);
+                                                }else{
+                                                    alert("Type file tidak sesuai. Khusus image.");
+                                                }
+                                               
+                                            }    
+                                        }
+                                    </script>
                                     <form method="post" enctype="multipart/form-data" name="formin" role="form" action="././module/siswa/prosessiswa.php?aksi=tambah"
                                     onSubmit="
 
@@ -85,71 +118,13 @@ if($_GET['act']=="input"){
                                             <input type="hidden" name="level" value="<?php echo "$level"; ?>">
                                         </div>
 
-                                        <script>
-                                            function preview_photo(imgg,idpreview){
-                                                var gb = imgg.files;
-                                                
-                                                for (var i = 0; i < gb.length; i++){
-                                                    var gbPreview = gb[i];
-                                                    var imageType = /image.*/;
-                                                    var preview=document.getElementById(idpreview);            
-                                                    var reader = new FileReader();
-                                                    
-                                                    if (gbPreview.type.match(imageType)) {
-                                                        preview.file = gbPreview;
-                                                        reader.onload = (function(element) { 
-                                                            return function(e) { 
-                                                                element.src = e.target.result; 
-                                                            }; 
-                                                        })(preview);
-                                                        reader.readAsDataURL(gbPreview);
-                                                    }else{
-                                                        alert("Type file tidak sesuai. Khusus image.");
-                                                    }
-                                                   
-                                                }    
-                                            }
-                                        </script>
+                                        
 
                                         <div class="form-group" data-provides="fileupload" style="border-bottom: ">
                                             <label>Foto</label>
                                             <center><img id="preview" src="" alt="" height="200px" style="padding-bottom: 10px;" /></center>
                                             <input type="file" name='foto_siswa' accept="image/*" onchange="preview_photo(this,'preview')">
                                         </div>
-
-
-                                        <?php
-/*
-                                            if($_FILES['foto_siswa']['name'])
-                                            {
-                                                if(!$_FILES['foto_siswa']['error'])
-                                                {
-                                                    $new_file_name = strtolower($_FILES['foto_siswa']['tmp_name']);
-                                                    if($_FILES['foto_siswa']['size'] > (1024000)) //can't be larger than 1 MB
-                                                    {
-                                                        $valid_file = false;
-                                                        $message = 'Oops!  Your file\'s size is to large.';
-                                                    }
-                                                    
-                                                    //if the file has passed the test
-                                                    if($valid_file)
-                                                    {
-                                                        //move it to where we want it to be
-                                                        move_uploaded_file($_FILES['foto_siswa']['tmp_name'], 'uploads/'.$new_file_name);
-                                                        $message = 'Congratulations!  Your file was accepted.';
-                                                    }
-                                                }
-                                                //if there is an error...
-                                                else
-                                                {
-                                                    //set that to be the returned message
-                                                    $message = 'Ooops!  Your upload triggered the following error:  '.$_FILES['foto_siswa']['error'];
-                                                }
-                                            }
-*/
-                                        ?>
-
-
 
                                         <div class="form-group">
                                             <label>NISN</label>
@@ -285,7 +260,41 @@ if($_GET['act']=="edit"){
                             	$sql=mysql_query("select * from siswa where nisn='$_GET[nisn]'");
 								$rs=mysql_fetch_array($sql);
 ?>
-                                    <form method="post" name="formin" role="form" action="././module/siswa/prosessiswa.php?aksi=edit"
+                                    <script>
+                                        function preview_photo(imgg,idpreview){
+                                            var gb = imgg.files;
+                                            
+                                            for (var i = 0; i < gb.length; i++){
+                                                var gbPreview = gb[i];
+                                                var imageType = /image.*/;
+                                                var preview=document.getElementById(idpreview);            
+                                                var reader = new FileReader();
+                                                var file_size = $('#file')[0].files[0].size;
+                                                
+                                                if (gbPreview.type.match(imageType)) {
+
+                                                    if(file_size>512000){
+                                                        alert("File maksimal berukuran 512kb");
+                                                        document.getElementById("file").value = "";
+                                                        return false;
+                                                    }
+
+                                                    preview.file = gbPreview;
+                                                    reader.onload = (function(element) { 
+                                                        return function(e) { 
+                                                            element.src = e.target.result; 
+                                                        }; 
+                                                    })(preview);
+                                                    reader.readAsDataURL(gbPreview);
+                                                }
+                                                else{
+                                                    alert("Type file tidak sesuai. Khusus image.");
+                                                }
+                                               
+                                            }    
+                                        }
+                                    </script>
+                                    <form method="post" name="formin" enctype="multipart/form-data" role="form" action="././module/siswa/prosessiswa.php?aksi=edit"
                                     onSubmit="
 
                                     var nohpValid = /^[0-9\-]*$/;
@@ -344,6 +353,17 @@ if($_GET['act']=="edit"){
                                     ">
                                         <div class="col-lg-6">
                                             <input type="hidden" name="level" value="<?php echo "$level"; ?>">
+
+
+                                        <div class="form-group" data-provides="fileupload" style="border-bottom: " >
+                                            <label>Foto</label>
+
+                                            <center><img class="gambar" src="assets/img/<?php echo $rs['foto_siswa']; ?>" alt="" height="200px" style="padding-bottom: 10px;" /></center>
+                                            <center><img id="previews" src="" alt="" height="200px" style="padding-bottom: 10px;" /></center>
+                                            <input id="file" type="file" name='foto_siswa' accept="image/*" onchange="$('.gambar').hide();preview_photo(this,'previews');">
+                                        </div>
+
+                                        <input type="hidden" name="foto_lama" value="<?php $rs[foto_siswa] ?>">
 
                                         <div class="form-group">
                                             <label>NISN</label>
