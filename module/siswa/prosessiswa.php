@@ -53,6 +53,9 @@ elseif($aksi == "edit"){
 
 	if($namaa==""){
 		$namaa=$_POST['foto_lama'];
+		if($namaa==""){
+			$namaa="default.jpg";
+		}
 	}
 
 	$niis=$_POST['nisn'];

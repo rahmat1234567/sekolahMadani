@@ -186,7 +186,7 @@ if($_GET['act']=="input"){
                                             ?>
                                             </select>
                                         </div>
-                                        <div class="form-group input-group">
+                                        <div class="form-group">
                                             <label>Nomor Telepon Orang Tua</label>
                                             <input type="text" class="form-control" placeholder="No Telepon" name="telp_ortu" required>
                                         </div>
@@ -452,7 +452,7 @@ if($rs['jk']=="L"){
                                             ?>
                                             </select>
                                         </div>
-                                        <div class="form-group input-group">
+                                        <div class="form-group">
                                             <label>Nomor Telepon Orang Tua</label>
                                             <input type="text" class="form-control" value="<?php echo $rs['telp_ortu']; ?>" placeholder="No Telepon" name="telp_ortu" required>
                                         </div>
