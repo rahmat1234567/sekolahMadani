@@ -1,8 +1,72 @@
    <?php
    include '../conn/koneksi.php';
    ?>
-   
-   <!-- menu tengah -->
+  <div class="content-wrapper">
+    <div class="container-fluid">
+      <!-- Breadcrumbs-->
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="#">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item active">Tables</li>
+      </ol>
+      <!-- Example DataTables Card-->
+      <div class="card mb-3">
+        <div class="card-header">
+          <i class="fa fa-table"></i> Data Table Example</div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+              <thead>
+                 <tr>
+                <th align="center" width="5%" >No</th>
+                <th width="30%">Judul Buku</th>
+                <th width="20%">Pengarang</th>
+                <th width="15%">Penerbit</th>
+                <th width="15%">Jumlah</th>
+                <th width="8%">Edit</th>
+                <th width="8%">Hapus</th>
+              </tr>
+            </thead>
+            <?php
+        $query = "SELECT * FROM tbl_buku ORDER by judul";
+        $sql = mysql_query($query);
+        $total = mysql_num_rows($sql);
+        $no = 1;
+        
+        while ($data=mysql_fetch_array($sql)) {
+      ?>
+            <tbody>
+              <tr>
+                <td align="center"><?php echo $no; ?></td>
+                <td><a href="?page=detil-buku&judul=<?php echo $data['judul']; ?>" class="detil"><?php echo $data['judul']; ?></a></td>
+                <td align="center"><?php echo $data['pengarang']; ?></td>
+                <td align="center"><?php echo $data['penerbit']; ?></td>
+                <td align="center"><?php echo $data['jumlah_buku']; ?></td>
+                <td align="center"><a href="?page=buku_edit&id=<?php echo $data['id']; ?>"><img src="../images/edit.png"/ width="15px" height="15px"></a></td>
+                <td align="center"><a href="?page=buku_hapus&id=<?php echo $data['id']; ?>" onclick="return confirm('Anda yakin ingin menghapus data buku <?php echo $data['judul']; ?> ?')"><img src="../images/delete.png"/ width="15px" height="15px"></a></td>
+                
+              </tr>
+              
+            <?php $no++; } ?>
+            
+            </tbody>
+          </table>
+          </div>
+          <div id="menu_bottom">
+          <table width="100%" style="border:0px solid #9cc;">
+              <tr>
+                  <td width="50%">Jumlah : <?php echo $total; ?> buku</td>
+                    
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
 	<div id="menu-tengah">
     	<div id="bg_menu">Data Buku
     	</div>
