@@ -20,11 +20,26 @@
     <!-- SB Admin CSS - Include with every page -->
     <link href="../assets/css/sb-admin.css" rel="stylesheet">
 
-  
+    <style>
+      #loading {
+        position: fixed;
+        left: 0px;
+        top: 0px;
+        width: 100%;
+        height: 100%;
+        z-index: 9999;
+    </style>
 </head>
 
 <body>
-
+ <!-- <script type="text/javascript">
+      $(window).load(function() { $("#loading").fadeOut("slow"); })
+  </script>
+<div id="loading">
+  <?php 
+      include "../others/prism-loading-screen/index.html";
+  ?>
+</div> -->
 <div class="container">
         <div class="row">
             <div class="col-md-4 col-md-offset-4">

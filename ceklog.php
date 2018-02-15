@@ -61,7 +61,7 @@ else{
 					$_SESSION['alamat']=$rsz['alamat_guru'];
 					$_SESSION['status']=$rsz['status_akun'];
 						$kode_sklhz=$rsz['id_sklh']; 
-						$sqlzz=mysql_query("select nama_sklh from sekolah where id_sklh='$kode_sklh'");
+						$sqlzz=mysql_query("select nama_sklh from sekolah where id_sklh='$kode_sklhz'");
 						$countzz=mysql_num_rows($sqlzz);
 						$rszz=mysql_fetch_array($sqlzz);
 					$_SESSION['nama_sklh']=$rszz['nama_sklh'];

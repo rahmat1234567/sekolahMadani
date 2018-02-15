@@ -76,9 +76,9 @@ echo "User : $usre";
     }
 
     if($level==3){
-        echo "Guru $nmsklh, ";
+        echo "Guru $nmsklh";
         if($nmkls!=""){
-            echo "Wali Kelas $nmkls";
+            echo ", Wali Kelas $nmkls";
         }
     }
 

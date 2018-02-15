@@ -37,7 +37,20 @@ $sql=mysql_query("select * from kelas");
 ?>                                        <tr class="odd gradeX">
                                             <td><?php echo"$rs[id_kls]";  ?></td>
                                             <td><?php echo"$rs[nama_kls]";  ?></td>
-                                            <td class="text-center"><?php echo"$rs[id_wk]";  ?></td>
+                                            <td>
+                                                <?php
+                                                    if($rs['id_wk']!=0){
+                                                        $kode_wk=$rs['id_wk']; 
+                                                        $sqlzz=mysql_query("select nama_guru from guru, walikelas where walikelas.id_wk='$kode_wk' and walikelas.nip=guru.nip");
+                                                        $countzz=mysql_num_rows($sqlzz);
+                                                        $rszz=mysql_fetch_array($sqlzz);
+                                                        echo "$rszz[nama_guru]";
+                                                    }
+                                                    else{
+                                                        echo "<span class='text-danger'>Belum Ada</span>";
+                                                    }  
+                                                ?>
+                                            </td>
 											<td class="text-center"><?php echo"$rs[id_sklh]";  ?></td>
 
                                         <td class="text-center">
