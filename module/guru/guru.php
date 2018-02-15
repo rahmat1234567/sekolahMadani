@@ -33,22 +33,30 @@
                                     <tbody>
                                                                         
 <?php
+if(isset($_POST['hapusin'])){
+    $nip    = $_POST['nip'];
+    $hapusinxx  = mysql_query("delete from guru where nip='$nip'");
+}
+
+
 $no=1;
-include 'databaseguru.php';
-$db = new database();
 $klas=$_GET['kls'];
 if($klas=="semua")
 {
 	$sql=mysql_query("select * from guru");
 }
-
-	
-    foreach($db->tampil_data() as $rs)
+else
+{
+	$sql=mysql_query("select * from guru where nip='$klas'");	
+}
+    $noxxx = 1;
+	while($rs=mysql_fetch_array($sql))
 	{
 
 //if($level==1 and $level==2){
 
-    ?>                                        <tr class="odd gradeX">
+    ?>                                        
+											<tr class="odd gradeX">
 												<td><?php echo"$rs[foto_guru]";  ?></td>
                                                 <td><?php echo"$rs[nip]";  ?></td>
                                                 <td><?php echo"$rs[nama_guru]";  ?></td>
@@ -97,17 +105,42 @@ if($klas=="semua")
     ?>                                            
                                                <?php if($level==2){ ?> 
                                              <td class="text-center"> 
-    										 <a href="./././admin.php?module=input_guru&act=edit_guru&nip=<?php echo $rs['nip'] ?>">
-    										 <button type="button" class="btn btn-info">Edit</button> 
-    										 
-    										 <a href="././module/guru/prosesguru.php?nip=<?php echo $rs['nip'] ?>&aksi=hapus">
-    										 <button type="button" class="btn btn-danger">Hapus</button></a></td>
-                                             <?php } ?>
+												<a href="./././admin.php?module=input_guru&act=edit&nip=<?php echo $rs['nip'] ?>&level=<?php echo $level; ?>"><button type="button" class="btn btn-info">Edit</button></a> 
+												<a data-toggle="modal" data-target="#modalHapus<?php echo $noxxx;?>" class="btn btn-danger" >Hapus</a>
+												<?php } ?>
+												<a href="./././admin.php?module=detail_guru&act=details&nip=<?php echo $rs['nip'] ?>">
+												<button type="button" class="btn btn-warning" 
+												>Details</button> </a>
+											</td>
                                             </tr>
-    <?php
-    
-//}
 
+				<!-- Modal -->
+<div class="modal fade" id="modalHapus<?php echo $noxxx;?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <form method="post">
+            <input type="hidden" name="nisn" value="<?php echo $rs['nisn'];?>">
+      <div class="modal-header bg-default">
+        <h5 class="modal-title" id="exampleModalLabel">Konfirmasi Hapus</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="alert alert-danger">Anda yakin akan menghapus data siswa <?php echo $rs['nama_siswa'] ?> ?</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-danger" name="hapusin">Ya! Hapus Data</button>
+      </div>
+  </form>
+    </div>
+  </div>
+</div>
+
+<?php
+$noxxx++;
+//}
 }
 ?>
                                     </tbody>

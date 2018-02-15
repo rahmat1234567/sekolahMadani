@@ -19,8 +19,8 @@ class database{
 		return $hasil;
 	}
 	
-	function input($foto_guru,$nip,$nama_guru,$jk,$pass_guru,$alamat_guru,$telp_guru){
-		mysql_query("insert into guru values('$nip','$nama_guru','$pass_guru','$alamat_guru','$telp_guru','','','','$jk','$foto_guru')");
+	function input($foto_guru,$nip,$nama_guru,$jk,$alamat_guru,$telp_guru,$pass_guru,$status_akun){
+		mysql_query("insert into guru values('$nip','$nama_guru','$pass_guru','$alamat_guru','$telp_guru','','','$status_akun','$jk','$foto_guru')");
 	}
 	
 	function hapus($nip){
@@ -35,8 +35,8 @@ class database{
 		return $hasil;
 	}
 	
-	function update($foto_guru,$nip,$nama_guru,$jk,$pass_guru,$alamat_guru,$telp_guru){
-		mysql_query("update guru set foto_guru='$foto_guru',nama_guru='$nama_guru',jk='$jk',pass_guru='$pass_guru', alamat_guru='$alamat_guru', telp_guru='$telp_guru' where nip='$nip'");
+	function update($foto_guru,$nip,$nama_guru,$jk,$alamat_guru,$telp_guru,$pass_guru,$status_akun){
+		mysql_query("update guru set foto_guru='$foto_guru',nama_guru='$nama_guru',jk='$jk',alamat_guru='$alamat_guru',telp_guru='$telp_guru',pass_guru='$pass_guru',status_akun='$status_akun' where nip='$nip'");
 	}
 }
 ?>
