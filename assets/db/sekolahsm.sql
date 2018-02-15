@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Feb 15, 2018 at 04:47 AM
+-- Generation Time: Feb 15, 2018 at 04:55 AM
 -- Server version: 5.5.16
 -- PHP Version: 5.3.8
 
@@ -132,7 +132,7 @@ INSERT INTO `guru` (`nip`, `nama_guru`, `pass_guru`, `alamat_guru`, `telp_guru`,
 (196106161984031007, 'Safrudin', '6ab4520232a7e9862e0ae1befebcd2b1', 'Jl. Bantul no.7', '081222909178', 10007, 1, 3, 'L', ''),
 (196111081981122003, 'Rita Nurmaya', '31d58ca605fa973b82807d1710b81dba', 'Jl. Pepaya no. 34', '081805539392', 10014, 1, 3, 'P', ''),
 (196509112007011010, 'Daroni', 'af491529b1dd328d2ce21a0ad9700a5a', 'Jl. Jogjakarta no. 10', '081278455100', 10007, 0, 3, 'L', ''),
-(196701171998022004, 'Heppy Anggaryani Sri Wilujeng', '08c792faafa5e1e079cbdff4389c2d3a', 'Jl. Rajawali Sakti Ujung no. 308', '081121909132', 10008, 0, 3, 'P', ''),
+(196701171998022004, 'Heppy Anggaryani Sri Wilujeng', '08c792faafa5e1e079cbdff4389c2d3a', 'Jl. Rajawali Sakti Ujung no. 308', '081121909132', 10008, 1, 3, 'P', ''),
 (196701172006041005, 'Hartono', '621a88d504c502176603a62ed2b17d48', 'Jl. Melur 3 no. 2', '085271777653', 10005, 0, 3, 'L', ''),
 (196910182007012014, 'Tin Rahayu Wigianti', 'd42e1ee1c3524c704e52c8c5a4c3f603', 'Jl. Subayang Gg. Buntu II no. 73', '081311217073', 10004, 1, 3, 'P', ''),
 (197004132008011009, 'Agus Suyadi', '2710e848c5df278047646b11f614c7db', 'Jl. Cipta Karya, gg. Belatuk, Tuah Karya', '085382831010', 10006, 1, 3, 'L', ''),
@@ -432,12 +432,20 @@ INSERT INTO `staffit` (`id_staffit`, `nama_staffit`, `pass_staffit`, `id_sklh`, 
 --
 
 CREATE TABLE IF NOT EXISTS `walikelas` (
-  `id_wk` int(10) NOT NULL,
+  `id_wk` int(10) NOT NULL AUTO_INCREMENT,
   `nip` bigint(10) NOT NULL,
   `id_kls` int(10) NOT NULL,
   `id_sklh` int(20) NOT NULL,
   PRIMARY KEY (`id_wk`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=55003 ;
+
+--
+-- Dumping data for table `walikelas`
+--
+
+INSERT INTO `walikelas` (`id_wk`, `nip`, `id_kls`, `id_sklh`) VALUES
+(55001, 196701171998022004, 10008001, 10008),
+(55002, 197702152008011008, 10001003, 10001);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
