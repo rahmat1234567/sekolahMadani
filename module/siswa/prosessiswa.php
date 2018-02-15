@@ -11,9 +11,6 @@ if($aksi == "tambah"){
 	$namaa = $_POST['nisn'].$foto;
 	$path  = "../../assets/img/".$namaa;
 	$sss = move_uploaded_file($tmp, $path);
-	if($sss){
-		$nama_gambar=$namaa;
-	}
 
 
 	$pass=md5($_POST['pass_siswa']);
@@ -47,6 +44,20 @@ elseif($aksi == "hapus"){
 }
 
 elseif($aksi == "edit"){
+
+		$foto  = $_FILES['foto_siswa']['name'];
+		$tmp   = $_FILES['foto_siswa']['tmp_name'];
+		$namaa = $_POST['nisn'];
+		$path  = "../../assets/img/".$namaa;
+		$sss = move_uploaded_file($tmp, $path);
+
+	if($namaa==""){
+		$namaa=$_POST['foto_lama'];
+		if($namaa==""){
+			$namaa="default.jpg";
+		}
+	}
+
 	$niis=$_POST['nisn'];
 	$asql=mysql_query("select pass_siswa from siswa where nisn='$niis'");
     $acount=mysql_num_rows($asql);
@@ -59,7 +70,7 @@ elseif($aksi == "edit"){
     	$passs=md5($_POST['pass_siswa']);
     }
 
-	$db->update($_POST['nisn'],$_POST['nama_siswa'],$passs,$_POST['alamat_siswa'],$_POST['id_kls'],$_POST['nama_ayah'],$_POST['nama_ibu'],$_POST['status_akun'],$_POST['jk'],$_POST['id_ekskul'],$_POST['foto_siswa'],$_POST['telp_ortu']);
+	$db->update($_POST['nisn'],$_POST['nama_siswa'],$passs,$_POST['alamat_siswa'],$_POST['id_kls'],$_POST['nama_ayah'],$_POST['nama_ibu'],$_POST['status_akun'],$_POST['jk'],$_POST['id_ekskul'],$namaa,$_POST['telp_ortu']);
 	
     if($_POST['level']==2){
         $test=$_POST['id_sklh'];
