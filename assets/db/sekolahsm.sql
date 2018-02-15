@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Feb 13, 2018 at 09:45 AM
+-- Generation Time: Feb 15, 2018 at 04:47 AM
 -- Server version: 5.5.16
 -- PHP Version: 5.3.8
 
@@ -162,14 +162,17 @@ CREATE TABLE IF NOT EXISTS `jadwal` (
   KEY `fk_jadwal_kls` (`id_kls`),
   KEY `fk_jadwal_matpel` (`id_matpel`),
   KEY `fk_jadwal_guru` (`nip`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `jadwal`
 --
 
 INSERT INTO `jadwal` (`id_jadwal`, `hari`, `jam`, `id_matpel`, `nip`, `id_kls`) VALUES
-(1, '1', '07:00:00', 105, 197409162008012005, 10007001);
+(1, '1', '07:00:00', 105, 197409162008012005, 10007001),
+(2, '3', '10:00:00', 101, 196701171998022004, 10008002),
+(3, '2', '13:00:00', 101, 196701171998022004, 10008001),
+(4, '4', '07:00:00', 101, 196701171998022004, 10008003);
 
 -- --------------------------------------------------------
 
