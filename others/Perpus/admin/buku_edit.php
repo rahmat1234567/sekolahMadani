@@ -20,19 +20,14 @@
 ?>
 
 <!-- menu tengah -->
-	<div id="menu-tengah">
-    	<div id="bg_menu">Data Buku
-    	</div>
-    	<div id="content_menu">
-        <div id="menu_header">
-        	<table width="100%" height="100%" style="background-color:#9cc;">
-            	<tr>
-                	<td align="center">Edit Buku</td>
-                </tr>
-            </table>
-            
-    	</div>
-   	    <div class="table_input">
+	<div class="content-wrapper">
+    <div class="container-fluid">
+        <div class="card mb-3">
+            <div class="card-header">
+            <i class="fa fa-area-chart"></i> Area Chart Example
+            </div>
+
+        <div class="table_input">----------------------------------------------------
         <form action="?page=buku_proses_edit" method="post">
         <input type="hidden" name="id" value="<?php echo $id; ?>" />
         <input type="hidden" name="tgl_input" value="<?php echo $tgl_input; ?>"  />
@@ -116,5 +111,9 @@
           </table>
           </form>
  	      </div>
-   	  </div>
+
+            <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+        </div>
+        </div>
     </div>
+ </div>   
