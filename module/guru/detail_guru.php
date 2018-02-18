@@ -72,7 +72,7 @@
                                             <label>Kelas</label>
                                             <p class="form-control" name="id_kls"><!--
                                             <?php
-
+                                                /*
                                                 $ssql=mysql_query("select * from kelas where id_sklh='$rs[id_sklh]'");
                                                 $scount=mysql_num_rows($ssql);
                                                 while($srs=mysql_fetch_array($ssql))
@@ -83,7 +83,7 @@
                                                         if($idid==$rs['id_kls']){
                                                             echo $nmnm;
                                                         }
-                                                }
+                                                }*/
                                             ?>
                                             -->
                                             </p>

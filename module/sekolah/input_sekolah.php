@@ -21,7 +21,17 @@ if($_GET['act']=="input"){
                                 <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>Kode Sekolah</label>
-                                            <input  value="" class="form-control" placeholder="Kode" name="id_sklh" disabled>
+                                            <?php
+                                                $ssql=mysql_query("select * from sekolah");
+                                                $scount=mysql_num_rows($ssql);
+                                                while($srs=mysql_fetch_array($ssql))
+                                                {
+                                                        $idid=$srs['id_sklh'];
+                                                }
+                                                $xx = 0;
+                                                $xx = $idid + 1;
+                                            ?>
+                                            <input class="form-control" placeholder="Kode" name="id_sklh" value="<?php echo $xx; ?>" readonly>
                                         </div>
                                         <div class="form-group">
                                             <label>Nama Sekolah</label>
