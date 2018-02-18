@@ -35,19 +35,19 @@ if($_GET['act']=="input"){
                                         </div>
                                         <div class="form-group">
                                             <label>Nama Sekolah</label>
-                                            <input class="form-control" placeholder="Nama sekolah" name="nama_sklh">
+                                            <input class="form-control" placeholder="Nama sekolah" name="nama_sklh" required>
                                         </div>
                                         <div class="form-group">
                                             <label>Alamat</label>
-                                            <textarea class="form-control" placeholder="Alamat" name="alamat_sklh" rows="3"></textarea>
+                                            <textarea class="form-control" placeholder="Alamat" name="alamat_sklh" rows="3" required="required"></textarea>
                                         </div>
 										<div class="form-group">
                                             <label>Telp</label>
-                                            <textarea class="form-control" placeholder="Telp" name="telp_sklh" rows="3"></textarea>
+                                            <input class="form-control" placeholder="Telp" name="telp_sklh" required>
                                         </div>
 
                                         
-                                        <button type="submit" class="btn btn-default">Submit Button</button>
+                                        <button type="submit" class="btn btn-default">Submit</button>
                                 </div>
                                 <!-- /.col-lg-6 (nested) -->
                                     </form>
