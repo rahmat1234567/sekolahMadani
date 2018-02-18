@@ -179,9 +179,11 @@ echo "User : $usre";
                         <li>
                             <a href="#"><i class="fa fa-dashboard fa-fw"></i> Data Kelas<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
-                                <li>
+                                <?php if($level!=3) { ?>
+								<li>
                                     <a href="admin.php?module=input_kelas&act=input">Input Data</a>
                                 </li>
+								<?php } ?>
                                 <li>
                                     <a href="admin.php?module=kelas">View Data</a>
                                 </li>
