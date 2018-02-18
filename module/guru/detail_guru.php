@@ -89,7 +89,7 @@
                                             </p>
                                         </div>
                                         <div class="form-group">
-                                            <label>Nomor Telepon Orang Tua</label>
+                                            <label>Nomor Telepon</label>
                                             <p class="form-control"><?php echo $rs['telp_guru']; ?></p>
                                         </div>
 </fieldset>                                        
