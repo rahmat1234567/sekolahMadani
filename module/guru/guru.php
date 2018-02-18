@@ -123,7 +123,7 @@ else
   <div class="modal-dialog" role="document">
     <div class="modal-content">
         <form method="post">
-            <input type="hidden" name="nisn" value="<?php echo $rs['nisn'];?>">
+            <input type="hidden" name="nip" value="<?php echo $rs['nip'];?>">
       <div class="modal-header bg-default">
         <h5 class="modal-title" id="exampleModalLabel">Konfirmasi Hapus</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -131,7 +131,7 @@ else
         </button>
       </div>
       <div class="modal-body">
-        <div class="alert alert-danger">Anda yakin akan menghapus data siswa <?php echo $rs['nama_siswa'] ?> ?</div>
+        <div class="alert alert-danger">Anda yakin akan menghapus data siswa <?php echo $rs['nama_guru'] ?> ?</div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
