@@ -1,6 +1,9 @@
 <?php
 session_start();
-if(!empty($_SESSION['nama'])){
+if(empty($_SESSION['nama'])){
+    header('location:index.php');
+}
+else{
 $uidi=$_SESSION['id'];	
 $usre=$_SESSION['nama'];
 $level=$_SESSION['status'];

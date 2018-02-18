@@ -9,6 +9,7 @@ unset($_SESSION['telp']);
 unset($_SESSION['jk']);
 unset($_SESSION['nama_sklh']); 
 unset($_SESSION['nama_kls']);
+unset($_SESSION['id_sklh']);
 
 session_destroy();
 
