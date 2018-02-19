@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 19, 2018 at 12:27 PM
+-- Generation Time: Feb 19, 2018 at 02:57 PM
 -- Server version: 10.1.8-MariaDB
 -- PHP Version: 5.6.14
 
@@ -290,6 +290,7 @@ CREATE TABLE `n_ulanganharian` (
   `id_nuh` int(20) NOT NULL,
   `id_jadwal` int(20) NOT NULL,
   `nisn` varchar(30) NOT NULL,
+  `id_kls` int(10) NOT NULL,
   `nilai_uh1` int(10) NOT NULL,
   `nilai_uh2` int(10) NOT NULL,
   `nilai_uh3` int(10) NOT NULL,
@@ -305,8 +306,8 @@ CREATE TABLE `n_ulanganharian` (
 -- Dumping data for table `n_ulanganharian`
 --
 
-INSERT INTO `n_ulanganharian` (`id_nuh`, `id_jadwal`, `nisn`, `nilai_uh1`, `nilai_uh2`, `nilai_uh3`, `nilai_uh4`, `nilai_uh5`, `nilai_uh6`, `nilai_uh7`, `nilai_uh8`, `ket_uh`) VALUES
-(1, 1, '9965589833', 95, 0, 0, 0, 0, 0, 0, 0, '-');
+INSERT INTO `n_ulanganharian` (`id_nuh`, `id_jadwal`, `nisn`, `id_kls`, `nilai_uh1`, `nilai_uh2`, `nilai_uh3`, `nilai_uh4`, `nilai_uh5`, `nilai_uh6`, `nilai_uh7`, `nilai_uh8`, `ket_uh`) VALUES
+(1, 1, '9965589833', 0, 95, 0, 0, 0, 0, 0, 0, 0, '-');
 
 -- --------------------------------------------------------
 
