@@ -21,6 +21,7 @@ if($_GET['act']=="input"){
                             Input Nilai Tugas Harian Siswa
                         </div>
                         <!-- /.panel-heading -->
+						<form method="post" role="form" action="././module/nilai/prosestugas.php?aksi=tambah">
                         <div class="panel-body">
                             <div class="table-responsive">
 							<a href="#" class="btn btn-sm btn-info pull-right" style="margin-bottom: 1rem;">Tambah</a>
@@ -60,8 +61,9 @@ $noxxx++;
                                 </table>
                             </div>
                             <!-- /.table-responsive --><center>
-							<button class="btn btn-sm btn-info" style="background: green;">Simpan</button></center>
+							<button type="submit" class="btn btn-sm btn-info" style="background: green;">Simpan</button></center>
                         </div>
+						</form>
                         <!-- /.panel-body -->
                     </div>
                     <!-- /.panel -->
