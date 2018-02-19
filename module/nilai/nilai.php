@@ -43,7 +43,7 @@ $db = new database();
     ?>                                      <tr class="odd gradeX">
 												<td><?php echo $no++; ?></td>
 												<td><a href="admin.php?module=input_nilai"><?php echo"$rs[id_jadwal]";  ?></a></td>
-                                                <td><?php echo"$rs[id_kls]";  ?></td>
+                                                <td><?php echo"$rs[id_kls]"; ?></td>
                                             </tr>
     <?php
     
