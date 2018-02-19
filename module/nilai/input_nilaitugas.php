@@ -14,7 +14,7 @@
                 <div class="col-lg-11">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Input Nilai Ulangan Harian
+                            Input Nilai Tugas Harian
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
@@ -25,7 +25,9 @@
                                         <tr>
 											<th class="text-center" style="width: 10px;">NO</th>
                                             <th class="text-center" >Nama</th>
-                                            <th class="text-center" style="width: 80px;">Nilai UH1</th>
+											<th class="text-center" >Nama Tugas</th>
+											<th class="text-center" >Keterangan</th>
+                                            <th class="text-center" style="width: 80px;">Nilai Tugas1</th>
 											
                                         </tr>
                                     </thead>
@@ -33,7 +35,7 @@
                                                                         
 <?php
 $no=1;
-include 'databasenilaiulangan.php';
+include 'databasenilaitugas.php';
 $db = new database();
     foreach($db->tampil_data() as $rs)
 	{
@@ -43,7 +45,9 @@ $db = new database();
     ?>                                      <tr class="odd gradeX">
 												<td><?php echo $no++; ?></td>
                                                 <td><?php echo"$rs[nisn]";  ?></td>
-												<td><input type="text" pattern="[0-9]" value="<?php echo"$rs[nilai_uh]";?>" required/></td>
+												<td><?php echo"$rs[nama_tugas]";  ?></td>
+												<td><?php echo"$rs[ket]";  ?></td>
+												<td><input type="text" pattern="[0-9]" value="<?php echo"$rs[nilai_tugas]";?>" required/></td>
                                             </tr>
     <?php
     

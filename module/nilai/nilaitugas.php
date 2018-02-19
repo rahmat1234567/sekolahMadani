@@ -3,10 +3,12 @@
     <script type="text/javascript" src="js/bootstrap.js"></script> 
     
         <div class="container">
-        <h1>Input Nilai Siswa</h1> 
         <div class="tab-content">
-            <div class="tab-pane fade in active">
+            <div id="tugas_harian" class="tab-pane fade in active">
             <div class="row">
+                <div class="col-lg-12">
+					<h3 class="page-header"><strong>Jadwal Nilai Tugas Harian</strong></h3>
+                </div>
                 <!-- /.col-lg-12 -->
             </div>
             <!-- /.row -->
@@ -14,26 +16,24 @@
                 <div class="col-lg-11">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Input Nilai Ulangan Harian
+                            Pilih Jadwal Nilai Tugas Harian
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                             <div class="table-responsive">
-							<a href="#" class="btn btn-sm btn-info pull-right" style="margin-bottom: 1rem;">Tambah</a>
-                                <table class="table table-striped table-bordered table-hover" id="input-nilai">
+                                <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                     <thead>
                                         <tr>
-											<th class="text-center" style="width: 10px;">NO</th>
-                                            <th class="text-center" >Nama</th>
-                                            <th class="text-center" style="width: 80px;">Nilai UH1</th>
-											
+											<th class="text-center">NO</th>
+                                            <th class="text-center">Nama Mata Pelajaran</th>
+                                            <th class="text-center">Kelas</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                                                         
 <?php
 $no=1;
-include 'databasenilaiulangan.php';
+include 'databasenilaitugas.php';
 $db = new database();
     foreach($db->tampil_data() as $rs)
 	{
@@ -42,8 +42,8 @@ $db = new database();
 
     ?>                                      <tr class="odd gradeX">
 												<td><?php echo $no++; ?></td>
-                                                <td><?php echo"$rs[nisn]";  ?></td>
-												<td><input type="text" pattern="[0-9]" value="<?php echo"$rs[nilai_uh]";?>" required/></td>
+												<td><a href="admin.php?module=input_nilaitugas"><?php echo"$rs[id_jadwal]";  ?></a></td>
+                                                <td><?php echo"$rs[id_kls]";  ?></td>
                                             </tr>
     <?php
     
@@ -54,13 +54,12 @@ $db = new database();
                                     </tbody>
                                 </table>
                             </div>
-                            <!-- /.table-responsive --><center>
-							<button class="btn btn-sm btn-info" style="background: green;">Simpan</button></center>
+                            <!-- /.table-responsive -->
                         </div>
                         <!-- /.panel-body -->
                     </div>
                     <!-- /.panel -->
                 </div>
-                <!-- /.col-lg-11 -->
+                <!-- /.col-lg-12 -->
             </div>
             <!-- /.row -->
