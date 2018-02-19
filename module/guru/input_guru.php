@@ -104,7 +104,7 @@ if($_GET['act']=="input"){
 										<div class="form-group" data-provides="fileupload" style="border-bottom: ">
                                             <label>FOTO</label>
 											<center><img id="preview" src="" alt="" height="200px" style="padding-bottom: 10px;"/></center>
-                                            <input type="file" name='foto_guru' accept="image/*" onchange="preview_photo(this,'preview')">
+                                            <input id="file" type="file" name='foto_guru' accept="image/*" onchange="preview_photo(this,'preview');">
                                         </div>
                                         <div class="form-group">
                                             <label>NIP</label>

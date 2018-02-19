@@ -1,3 +1,39 @@
+                                    <script>
+                                        function preview_photo(imgg,idpreview){
+                                            var gb = imgg.files;
+                                            
+                                            for (var i = 0; i < gb.length; i++){
+                                                var gbPreview = gb[i];
+                                                var imageType = /image.*/;
+                                                var preview=document.getElementById(idpreview);            
+                                                var reader = new FileReader();
+                                                var file_size = $('#file')[0].files[0].size;
+                                                
+                                                if (gbPreview.type.match(imageType)) {
+
+                                                    if(file_size>512000){
+                                                        alert("File maksimal berukuran 512kb");
+                                                        document.getElementById("file").value = "";
+                                                        return false;
+                                                    }
+
+                                                    preview.file = gbPreview;
+                                                    reader.onload = (function(element) { 
+                                                        return function(e) { 
+                                                            element.src = e.target.result; 
+                                                        }; 
+                                                    })(preview);
+                                                    reader.readAsDataURL(gbPreview);
+                                                }
+                                                else{
+                                                    alert("Type file tidak sesuai. Khusus image.");
+                                                    document.getElementById("file").value = "";
+                                                    return false;
+                                                }
+                                               
+                                            }    
+                                        }
+                                    </script>
 <?php
 if($_GET['act']=="input"){
 	?>
@@ -16,42 +52,6 @@ if($_GET['act']=="input"){
                         </div>
                         <div class="panel-body">
                             <div class="row">
-
-                                    <script>
-                                        function preview_photo(imgg,idpreview){
-                                            var gb = imgg.files;
-                                            
-                                            for (var i = 0; i < gb.length; i++){
-                                                var gbPreview = gb[i];
-                                                var imageType = /image.*/;
-                                                var preview=document.getElementById(idpreview);            
-                                                var reader = new FileReader();
-                                                
-                                                if (gbPreview.type.match(imageType)) {
-
-                                                    if(file_size>512000){
-                                                        alert("File maksimal berukuran 512kb");
-                                                        document.getElementById("file").value = "";
-                                                        return false;
-                                                    }
-
-                                                    preview.file = gbPreview;
-                                                    reader.onload = (function(element) { 
-                                                        return function(e) { 
-                                                            element.src = e.target.result; 
-                                                        }; 
-                                                    })(preview);
-                                                    reader.readAsDataURL(gbPreview);
-                                                }else{
-                                                    alert("Type file tidak sesuai. Khusus image.");
-                                                    document.getElementById("file").value = "";
-                                                    return false;
-                                                }
-                                               
-                                            }    
-                                        }
-                                    </script>
-
                                     <form method="post" name="formin" enctype="multipart/form-data" role="form" action="././module/staffit/prosesstaffit.php?aksi=edit"
                                     onSubmit="
 
@@ -106,9 +106,8 @@ if($_GET['act']=="input"){
                                         <div class="form-group" data-provides="fileupload" style="border-bottom: " >
                                             <label>Foto</label>
 
-                                            <center><img class="gambar" src="assets/img/<?php echo $rs['foto_siswa']; ?>" alt="" height="200px" style="padding-bottom: 10px;" /></center>
                                             <center><img id="previews" src="" alt="" height="200px" style="padding-bottom: 10px;" /></center>
-                                            <input id="file" type="file" name='foto_staffit' accept="image/*" onchange="$('.gambar').hide();preview_photo(this,'previews');">
+                                            <input id="file" type="file" name='foto_staffit' accept="image/*" onchange="preview_photo(this,'previews');">
                                         </div>
                                         <div class="form-group">
                                             <label>Nama</label>

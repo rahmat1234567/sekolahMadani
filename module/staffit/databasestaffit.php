@@ -19,8 +19,8 @@ class database{
 		return $hasil;
 	}
 	
-	function input($foto_staffit,$nama_staffit,$jk,$alamat_staffit,$pass_staffit,$telp_staffit,$id_sklh,$status_akun){
-		mysql_query("insert into staffit values('','$nama_staffit','$pass_staffit','$id_sklh','$telp_staffit','$alamat_staffit','$status_akun','$jk','$foto_staffit')");
+	function input($id_staffit,$foto_staffit,$nama_staffit,$jk,$alamat_staffit,$pass_staffit,$telp_staffit,$id_sklh,$status_akun){
+		mysql_query("insert into staffit values('$id_staffit','$nama_staffit','$pass_staffit','$id_sklh','$telp_staffit','$alamat_staffit','$status_akun','$jk','$foto_staffit')");
 	}
 	
 	function hapus($id_staffit){
