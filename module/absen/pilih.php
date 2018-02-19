@@ -23,16 +23,16 @@
 
 											<?php 
 											if($_SESSION['level']==3){
-												$sql=mysql_query("select * from kelas where id_kls='$_SESSION[id_kls]'");
-											}
-											else{
-												$sql=mysql_query("select * from kelas");	
+                                                $sqls=mysql_query("select * from sekolah where id_sklh='$rs[id_sklh]'");
+                                                $rss=mysql_fetch_array($sqls);
+
+												$sql=mysql_query("select * from kelas where id_sklh='$_SESSION[id_kls]' ");
 											}
 											while($rs=mysql_fetch_array($sql)){
 											$sqla=mysql_query("select * from sekolah where id_sklh='$rs[id_sklh]'");
 											$rsa=mysql_fetch_array($sqla);
 
-											echo "<option value='$rs[idk]'>$rsa[nama] | $rs[nama]</option>";	
+											echo "<option value='$rs[id_kls]'>$rs[nama_kelas]</option>";	
 											}
 											?>
                                          

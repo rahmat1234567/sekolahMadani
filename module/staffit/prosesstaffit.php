@@ -4,6 +4,12 @@ $db = new database();
 
 $aksi = $_GET['aksi'];
 if($aksi == "tambah"){
+
+	$foto  = $_FILES['foto_staffit']['name'];
+	$tmp   = $_FILES['foto_staffit']['tmp_name'];
+	$namaa = $_POST['id_staffit'];
+	$path  = "../../assets/img/".$namaa;
+	$sss = move_uploaded_file($tmp, $path);
 	
 	$pass=md5($_POST['pass_staffit']);
 	$db->input($_POST['foto_staffit'],$_POST['nama_staffit'],$_POST['jk'],$_POST['alamat_staffit'],$_POST['pass_staffit'],$_POST['telp_staffit'],$_POST['id_sklh'],$_POST['status_akun']);

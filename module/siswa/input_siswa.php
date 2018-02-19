@@ -1,4 +1,39 @@
+                                    <script>
+                                        function preview_photo(imgg,idpreview){
+                                            var gb = imgg.files;
+                                            
+                                            for (var i = 0; i < gb.length; i++){
+                                                var gbPreview = gb[i];
+                                                var imageType = /image.*/;
+                                                var preview=document.getElementById(idpreview);            
+                                                var reader = new FileReader();
+                                                var file_size = $('#file')[0].files[0].size;
+                                                
+                                                if (gbPreview.type.match(imageType)) {
 
+                                                    if(file_size>512000){
+                                                        alert("File maksimal berukuran 512kb");
+                                                        document.getElementById("file").value = "";
+                                                        return false;
+                                                    }
+
+                                                    preview.file = gbPreview;
+                                                    reader.onload = (function(element) { 
+                                                        return function(e) { 
+                                                            element.src = e.target.result; 
+                                                        }; 
+                                                    })(preview);
+                                                    reader.readAsDataURL(gbPreview);
+                                                }
+                                                else{
+                                                    alert("Type file tidak sesuai. Khusus image.");
+                                                    document.getElementById("file").value = "";
+                                                    return false;
+                                                }
+                                               
+                                            }    
+                                        }
+                                    </script>
 <?php
 if($_GET['act']=="input"){
 	?>
@@ -17,38 +52,7 @@ if($_GET['act']=="input"){
                         </div>
                         <div class="panel-body">
                             <div class="row">
-                                    <script>
-                                        function preview_photo(imgg,idpreview){
-                                            var gb = imgg.files;
-                                            
-                                            for (var i = 0; i < gb.length; i++){
-                                                var gbPreview = gb[i];
-                                                var imageType = /image.*/;
-                                                var preview=document.getElementById(idpreview);            
-                                                var reader = new FileReader();
-                                                
-                                                if (gbPreview.type.match(imageType)) {
-
-                                                    if(file_size>512000){
-                                                        alert("File maksimal berukuran 512kb");
-                                                        document.getElementById("file").value = "";
-                                                        return false;
-                                                    }
-
-                                                    preview.file = gbPreview;
-                                                    reader.onload = (function(element) { 
-                                                        return function(e) { 
-                                                            element.src = e.target.result; 
-                                                        }; 
-                                                    })(preview);
-                                                    reader.readAsDataURL(gbPreview);
-                                                }else{
-                                                    alert("Type file tidak sesuai. Khusus image.");
-                                                }
-                                               
-                                            }    
-                                        }
-                                    </script>
+                                    
                                     <form method="post" enctype="multipart/form-data" name="formin" role="form" action="././module/siswa/prosessiswa.php?aksi=tambah"
                                     onSubmit="
 
@@ -81,6 +85,10 @@ if($_GET['act']=="input"){
 
                                     if (nisn != '' && !nisn.match(nisnValid)) {
                                         pesan = '> Masukkan NISN valid\n';
+                                    }
+
+                                    if (nohp != '' && !nohp.match(nohpValid)) {
+                                        pesan = '> Masukkan No HP valid\n';
                                     }
                                      
                                     if (nama != '' && !nama.match(namaValid)) {
@@ -122,8 +130,9 @@ if($_GET['act']=="input"){
 
                                         <div class="form-group" data-provides="fileupload" style="border-bottom: ">
                                             <label>Foto</label>
+
                                             <center><img id="preview" src="" alt="" height="200px" style="padding-bottom: 10px;" /></center>
-                                            <input type="file" name='foto_siswa' accept="image/*" onchange="preview_photo(this,'preview')">
+                                            <input id="file" type="file" name="foto_siswa" accept="image/*" onchange="preview_photo(this,'preview');">
                                         </div>
 
                                         <div class="form-group">
@@ -260,40 +269,6 @@ if($_GET['act']=="edit"){
                             	$sql=mysql_query("select * from siswa where nisn='$_GET[nisn]'");
 								$rs=mysql_fetch_array($sql);
 ?>
-                                    <script>
-                                        function preview_photo(imgg,idpreview){
-                                            var gb = imgg.files;
-                                            
-                                            for (var i = 0; i < gb.length; i++){
-                                                var gbPreview = gb[i];
-                                                var imageType = /image.*/;
-                                                var preview=document.getElementById(idpreview);            
-                                                var reader = new FileReader();
-                                                var file_size = $('#file')[0].files[0].size;
-                                                
-                                                if (gbPreview.type.match(imageType)) {
-
-                                                    if(file_size>512000){
-                                                        alert("File maksimal berukuran 512kb");
-                                                        document.getElementById("file").value = "";
-                                                        return false;
-                                                    }
-
-                                                    preview.file = gbPreview;
-                                                    reader.onload = (function(element) { 
-                                                        return function(e) { 
-                                                            element.src = e.target.result; 
-                                                        }; 
-                                                    })(preview);
-                                                    reader.readAsDataURL(gbPreview);
-                                                }
-                                                else{
-                                                    alert("Type file tidak sesuai. Khusus image.");
-                                                }
-                                               
-                                            }    
-                                        }
-                                    </script>
                                     <form method="post" name="formin" enctype="multipart/form-data" role="form" action="././module/siswa/prosessiswa.php?aksi=edit"
                                     onSubmit="
 
@@ -326,6 +301,10 @@ if($_GET['act']=="edit"){
 
                                     if (nisn != '' && !nisn.match(nisnValid)) {
                                         pesan = '> Masukkan NISN valid\n';
+                                    }
+
+                                    if (nohp != '' && !nohp.match(nohpValid)) {
+                                        pesan = '> Masukkan No HP valid\n';
                                     }
                                      
                                     if (nama != '' && !nama.match(namaValid)) {
