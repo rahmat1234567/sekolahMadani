@@ -20,6 +20,7 @@
                         <div class="panel-body">
                             <div class="table-responsive">
 							<a href="#" class="btn btn-sm btn-info pull-right" style="margin-bottom: 1rem;">Tambah</a>
+							<form name="form">
                                 <table class="table table-striped table-bordered table-hover" id="input-nilai">
                                     <thead>
                                         <tr>
@@ -39,11 +40,11 @@ $db = new database();
 	{
 
 //if($level==1 and $level==2){
-
+										
     ?>                                      <tr class="odd gradeX">
 												<td><?php echo $no++; ?></td>
                                                 <td><?php echo"$rs[nisn]";  ?></td>
-												<td><input type="text" pattern="[0-9]" value="<?php echo"$rs[nilai_uh]";?>" required/></td>
+												<td><input type="number" name="nilai_uh" min="0" max="100" step="5" type="text" pattern="[0-9]" value="<?php echo"$rs[nilai_uh]";?>" required/></td>
                                             </tr>
     <?php
     
@@ -55,7 +56,8 @@ $db = new database();
                                 </table>
                             </div>
                             <!-- /.table-responsive --><center>
-							<button class="btn btn-sm btn-info" style="background: green;">Simpan</button></center>
+							<button type="submit" class="btn btn-sm btn-info" style="background: green;">Simpan</button></center>
+							</form>
                         </div>
                         <!-- /.panel-body -->
                     </div>

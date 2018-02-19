@@ -270,10 +270,10 @@ echo "User : $usre";
                                     <a href="admin.php?module=nilaitugas">Input Nilai Tugas</a>
                                 </li>
                                 <li>
-                                    <a href="#">View Nilai Ulangan</a>
+                                    <a href="admin.php?module=tampil_ulangan">View Nilai Ulangan</a>
                                 </li>
 								<li>
-                                    <a href="#">View Nilai Tugas</a>
+                                    <a href="admin.php?module=tampil_tugas">View Nilai Tugas</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->

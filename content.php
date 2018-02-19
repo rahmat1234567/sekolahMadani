@@ -103,4 +103,10 @@ include "module/nilai/nilaitugas.php";
 if($_GET['module']=="input_nilaitugas"){
 include "module/nilai/input_nilaitugas.php";
 }
+if($_GET['module']=="tampil_tugas"){
+include "module/nilai/tampil_tugas.php";
+}
+if($_GET['module']=="tampil_ulangan"){
+include "module/nilai/tampil_ulangan.php";
+}
 ?>
