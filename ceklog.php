@@ -67,7 +67,7 @@ else{
 						$rszz=mysql_fetch_array($sqlzz);
 					$_SESSION['nama_sklh']=$rszz['nama_sklh'];
 					if($rsz['wk_status']==1){
-						$kode_wk=$rsz['nip'];					
+						$kode_wk=$rsz['nip'];
 						$sqlzzz=mysql_query("
 							select nama_kls from kelas, walikelas where walikelas.nip=$kode_wk and kelas.id_kls=walikelas.id_kls
 						");

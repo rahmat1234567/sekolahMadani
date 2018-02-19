@@ -44,6 +44,8 @@ if($_GET['act']=="input"){
                                                     reader.readAsDataURL(gbPreview);
                                                 }else{
                                                     alert("Type file tidak sesuai. Khusus image.");
+                                                    document.getElementById("file").value = "";
+                                                    return false;
                                                 }
                                                
                                             }    
@@ -81,6 +83,10 @@ if($_GET['act']=="input"){
 
                                     if (nisn != '' && !nisn.match(nisnValid)) {
                                         pesan = '> Masukkan NISN valid\n';
+                                    }
+
+                                    if (nohp != '' && !nohp.match(nohpValid)) {
+                                        pesan = '> Masukkan No HP valid\n';
                                     }
                                      
                                     if (nama != '' && !nama.match(namaValid)) {
@@ -289,6 +295,8 @@ if($_GET['act']=="edit"){
                                                 }
                                                 else{
                                                     alert("Type file tidak sesuai. Khusus image.");
+                                                    document.getElementById("file").value = "";
+                                                    return false;
                                                 }
                                                
                                             }    
@@ -326,6 +334,10 @@ if($_GET['act']=="edit"){
 
                                     if (nisn != '' && !nisn.match(nisnValid)) {
                                         pesan = '> Masukkan NISN valid\n';
+                                    }
+
+                                    if (nohp != '' && !nohp.match(nohpValid)) {
+                                        pesan = '> Masukkan No HP valid\n';
                                     }
                                      
                                     if (nama != '' && !nama.match(namaValid)) {

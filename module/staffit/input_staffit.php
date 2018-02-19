@@ -16,16 +16,103 @@ if($_GET['act']=="input"){
                         </div>
                         <div class="panel-body">
                             <div class="row">
-                                    <form method="post" role="form" action="././module/staffit/prosesstaffit.php?aksi=tambah">
+
+                                    <script>
+                                        function preview_photo(imgg,idpreview){
+                                            var gb = imgg.files;
+                                            
+                                            for (var i = 0; i < gb.length; i++){
+                                                var gbPreview = gb[i];
+                                                var imageType = /image.*/;
+                                                var preview=document.getElementById(idpreview);            
+                                                var reader = new FileReader();
+                                                
+                                                if (gbPreview.type.match(imageType)) {
+
+                                                    if(file_size>512000){
+                                                        alert("File maksimal berukuran 512kb");
+                                                        document.getElementById("file").value = "";
+                                                        return false;
+                                                    }
+
+                                                    preview.file = gbPreview;
+                                                    reader.onload = (function(element) { 
+                                                        return function(e) { 
+                                                            element.src = e.target.result; 
+                                                        }; 
+                                                    })(preview);
+                                                    reader.readAsDataURL(gbPreview);
+                                                }else{
+                                                    alert("Type file tidak sesuai. Khusus image.");
+                                                    document.getElementById("file").value = "";
+                                                    return false;
+                                                }
+                                               
+                                            }    
+                                        }
+                                    </script>
+
+                                    <form method="post" name="formin" enctype="multipart/form-data" role="form" action="././module/staffit/prosesstaffit.php?aksi=edit"
+                                    onSubmit="
+
+                                    var nohpValid = /^[0-9\-]*$/;
+                                    var nohp      = formin.telp_staffit.value;
+                                    var pass      = formin.pass_staffit.value;
+                                    var pass1     = formin.pass_staffit1.value;
+                                    var namaValid = /^[a-zA-Z]+(([\'\,\.\- ][a-zA-Z ])?[a-zA-Z]*)*$/;
+                                    var nama      = formin.nama_staffit.value;
+                                    var alamat    = formin.alamat_siswa.value;
+                                    var nisnValid = /^[0-9]*$/;
+                                    var sklh     = formin.id_sklh.value;
+                                    var minchar   = 6;
+                                    var pesan = '';
+                                     
+                                    if (pass != pass1) {
+                                        pesan = '> Password harus sama\n';
+                                    }
+                                    
+                                    if (sklh == '') {
+                                        pesan = '> Harus pilih Sekolah\n';
+                                    } 
+
+                                    if (alamat == '') {
+                                        pesan = '> Alamat harus diisi\n';
+                                    } 
+
+                                    if (nohp != '' && !nohp.match(nohpValid)) {
+                                        pesan = '> Masukkan No HP valid\n';
+                                    }
+                                     
+                                    if (nama != '' && !nama.match(namaValid)) {
+                                        pesan += '> Nama tidak valid\n';
+                                    }
+
+                                    if (pass != '' && formin.pass_siswa.value.length < minchar) {
+                                        pesan += '> Password minimal 6 karakter\n';
+                                    }
+                                    
+                                    if (pesan != '') {
+                                        alert('Maaf, ada kesalahan saat submit: \n'+pesan);
+                                        return false;
+                                    }
+                                    return true;
+
+                                    ">
 
                                 <div class="col-lg-6">
-										<div class="form-group">
-                                            <label>FOTO</label>
-                                            <input style="padding-bottom:3%;" type="file" name="foto_staffit">
+										<input type="hidden" name="level" value="<?php echo "$level"; ?>">
+
+
+                                        <div class="form-group" data-provides="fileupload" style="border-bottom: " >
+                                            <label>Foto</label>
+
+                                            <center><img class="gambar" src="assets/img/<?php echo $rs['foto_siswa']; ?>" alt="" height="200px" style="padding-bottom: 10px;" /></center>
+                                            <center><img id="previews" src="" alt="" height="200px" style="padding-bottom: 10px;" /></center>
+                                            <input id="file" type="file" name='foto_staffit' accept="image/*" onchange="$('.gambar').hide();preview_photo(this,'previews');">
                                         </div>
                                         <div class="form-group">
                                             <label>Nama</label>
-                                            <input class="form-control" placeholder="Nama" name="nama_staffit">
+                                            <input class="form-control" placeholder="Nama" name="nama_staffit" required>
                                         </div>
                                         <div class="form-group">
                                             <label>Jenis Kelamin</label>
@@ -44,19 +131,24 @@ if($_GET['act']=="input"){
                                         </div>
 										<div class="form-group">
                                             <label>Alamat</label>
-                                            <textarea class="form-control" placeholder="Alamat" name="alamat_staffit" rows="3"></textarea>
+                                            <textarea class="form-control" placeholder="Alamat" name="alamat_staffit" rows="3" required="required"></textarea>
                                         </div>
 								</div>
 
                                 <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>Password</label>
-                                            <input class="form-control" placeholder="Password" name="pass_staffit" type="password">
+                                            <input class="form-control" placeholder="Password" name="pass_staffit" type="password" required>
                                         </div>
                                         
                                         <div class="form-group">
+                                            <label>Ulangi Password</label>
+                                            <input class="form-control" placeholder="Password" name="pass_staffit1" type="password" required>
+                                        </div>
+
+                                        <div class="form-group">
                                             <label>No Telepon</label>
-                                            <input class="form-control" placeholder="No Telp" name="telp_staffit">
+                                            <input class="form-control" placeholder="No Telp" name="telp_staffit" required>
                                         </div>
 										<div class="form-group">
                                             <label>Sekolah</label>
@@ -80,7 +172,7 @@ if($_GET['act']=="input"){
                                         <div class="form-group">
                                             <label>Status Akun</label>
                                             <div class="onoffswitch4">
-                                                <input type="checkbox" name="status_akun" class="onoffswitch4-checkbox" id="myonoffswitch4" value="4">
+                                                <input type="checkbox" name="status_akun" class="onoffswitch4-checkbox" id="myonoffswitch4" value="2">
                                                 <label class="onoffswitch4-label" for="myonoffswitch4">
                                                     <span class="onoffswitch4-inner"></span>
                                                     <span class="onoffswitch4-switch"></span>
@@ -88,7 +180,7 @@ if($_GET['act']=="input"){
                                             </div>
                                         </div>
                                         
-                                        <button type="submit" value"simpan" class="btn btn-default">Submit Button</button>
+                                        <button type="submit" value="simpan" class="btn btn-default">Submit Button</button>
                                 </div>
                                 <!-- /.col-lg-6 (nested) -->
                                     </form>
@@ -226,12 +318,12 @@ if($_GET['act']=="edit"){
                                             <?php 
                                                 if($rs['status_akun']==0){ ?>
                                                 <div class="onoffswitch4">
-                                                    <input type="checkbox" name="status_akun" class="onoffswitch4-checkbox" id="myonoffswitch4" value="4">
+                                                    <input type="checkbox" name="status_akun" class="onoffswitch4-checkbox" id="myonoffswitch4" value="2">
                                             <?php } 
                                                 else{
                                             ?>
                                                 <div class="onoffswitch4">
-                                                    <input type="checkbox" name="status_akun" class="onoffswitch4-checkbox" id="myonoffswitch4" value="4" checked>
+                                                    <input type="checkbox" name="status_akun" class="onoffswitch4-checkbox" id="myonoffswitch4" value="2" checked>
                                             <?php } ?>
                                                 <label class="onoffswitch4-label" for="myonoffswitch4">
                                                     <span class="onoffswitch4-inner"></span>
