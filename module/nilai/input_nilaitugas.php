@@ -95,6 +95,7 @@ if($_GET['act']=="edit"){
                         <div class="panel-body">
                             <div class="table-responsive">
 							<a href="#" class="btn btn-sm btn-info pull-right" style="margin-bottom: 1rem;">Tambah</a>
+							<form method="post" name="formin" action="././module/sekolah/prosesnilaitugas.php?aksi=tambah">
                                 <table class="table table-striped table-bordered table-hover" id="input-nilai">
                                     <thead>
                                         <tr>
@@ -129,6 +130,7 @@ $noxxx++;
 ?>
                                     </tbody>
                                 </table>
+								</form>
                             </div>
                             <!-- /.table-responsive --><center>
 							<button class="btn btn-sm btn-info" style="background: green;">Simpan</button></center>
