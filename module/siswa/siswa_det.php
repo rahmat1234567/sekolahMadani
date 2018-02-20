@@ -14,17 +14,17 @@
                         <div class="panel-body">
                             <div class="row">
 <?php                            
-                            	$sql=mysql_query("select * from siswa where nisn='$_SESSION[idu]'");
+                            	$sql=mysql_query("select * from siswa where nisn='$_SESSION[id]'");
 								$rs=mysql_fetch_array($sql);
 ?>
                                     <form method="post" role="form" action="././module/simpan.php?act=siswa_det">
 <input type="hidden" name="nisn" value="<?php echo $rs['nisn'] ?>" />
 
                                 <div class="col-lg-6">
-                                        <fieldset disabled>
+                                        <fieldset>
 
                                         <div class="form-group">
-                                            <label>NIS</label>
+                                            <label>NISN</label>
                                             <input class="form-control"  placeholder="Nisn" name="nisn" value="<?php echo "$rs[nisn]"; ?>" >
                                         </div>
                                         <div class="form-group">

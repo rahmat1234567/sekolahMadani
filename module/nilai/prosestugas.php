@@ -8,7 +8,7 @@ if($aksi == "tambah"){
 	header("location:http://localhost/sekolahMadani/admin.php?module=tampil_tugas");
 }
 elseif($aksi == "hapus"){
-	$db->hapus($_GET['nisn']);
+	$db->hapus($_GET['id_ntugas']);
 	header("location:http://localhost/sekolahMadani/admin.php?module=tampil_tugas");
 }
 elseif($aksi == "update"){
