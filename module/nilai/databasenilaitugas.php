@@ -19,24 +19,24 @@ class database{
 		return $hasil;
 	}
 	
-	function input($foto_staffit,$nama_staffit,$jk,$alamat_staffit,$pass_staffit,$telp_staffit,$id_sklh,$status_akun){
-		mysql_query("insert into staffit values('','$nama_staffit','$pass_staffit','$id_sklh','$telp_staffit','$alamat_staffit','$status_akun','$jk','$foto_staffit')");
+	function input($nisn,$nama_tugas,$nilai_tugas,$ket){
+		mysql_query("insert into n_tugas values('','$id_jadwal','$nisn','$nilai_tugas','$ket','$nama_tugas')");
 	}
 	
-	function hapus($id_staffit){
-		mysql_query("delete from staffit where id_staffit='$id_staffit'");
+	function hapus($id_ntugas){
+		mysql_query("delete from n_tugas where nisn='$nisn'");
 	}
 	
-	function edit($id_staffit){
-		$data = mysql_query("select * from staffit where id_staffit='$id_staffit'");
+	function edit($id_ntugas){
+		$data = mysql_query("select * from n_tugas where nisn='$nisn'");
 		while($d = mysql_fetch_array($data)){
 			$hasil[] = $d;
 		}
 		return $hasil;
 	}
 	
-	function update($foto_staffit,$nama_staffit,$jk,$alamat_staffit,$pass_staffit,$telp_staffit,$id_sklh,$status_akun){
-		mysql_query("update staffit set foto_staffit='$foto_staffit',nama_staffit='$nama_staffit',jk='$jk',alamat_staffit='$alamat_staffit',pass_staffit='$pass_staffit',telp_staffit='$telp_staffit',id_sklh='$id_sklh',status_akun='$status_akun' where id_staffit='$id_staffit'");
+	function update($nisn,$nama_tugas,$nilai_tugas,$ket){
+		mysql_query("update n_tugas set nisn='$nisn',nama_tugas='$nama_tugas',ket='$ket' where id_staffit='$id_staffit'");
 	}
 }
 ?>

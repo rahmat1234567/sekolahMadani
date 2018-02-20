@@ -1,4 +1,4 @@
-<?php 
+<?php
 	include '../conn/koneksi.php';
 	$tanggal = date('Y-m-d');
 	$jam = date('H:i:s');
@@ -27,7 +27,7 @@
             <i class="fa fa-area-chart"></i> Area Chart Example
             </div>
 
-        <div class="table_input">----------------------------------------------------
+        <div class="table_input">
         <form action="?page=buku_proses_edit" method="post">
         <input type="hidden" name="id" value="<?php echo $id; ?>" />
         <input type="hidden" name="tgl_input" value="<?php echo $tgl_input; ?>"  />
@@ -62,15 +62,15 @@
                             <option value="2005" <?php if( $thn_terbit=='2005'){echo "selected"; } ?>>2005</option>
                             <option value="2004" <?php if( $thn_terbit=='2004'){echo "selected"; } ?>>2004</option>
                             <option value="2003" <?php if( $thn_terbit=='2003'){echo "selected"; } ?>>2003</option>
-                            <option value="2002" <?php if( $thn_terbit=='2002'){echo "selected"; } ?>>2002</option>
                             <option value="2001" <?php if( $thn_terbit=='2001'){echo "selected"; } ?>>2001</option>
+                            <option value="2002" <?php if( $thn_terbit=='2002'){echo "selected"; } ?>>2002</option>
                             <option value="2000" <?php if( $thn_terbit=='2000'){echo "selected"; } ?>>2000</option>
                             <option value="2010" <?php if( $thn_terbit=='1999'){echo "selected"; } ?>>1999</option>
                             <option value="2009" <?php if( $thn_terbit=='1998'){echo "selected"; } ?>>1998</option>
                             <option value="2008" <?php if( $thn_terbit=='1997'){echo "selected"; } ?>>1997</option>
                             <option value="2007" <?php if( $thn_terbit=='1996'){echo "selected"; } ?>>1996</option>
-                            <option value="2006" <?php if( $thn_terbit=='1995'){echo "selected"; } ?>>1995</option>
                             <option value="2005" <?php if( $thn_terbit=='1994'){echo "selected"; } ?>>1994</option>
+                            <option value="2006" <?php if( $thn_terbit=='1995'){echo "selected"; } ?>>1995</option>
                             <option value="2004" <?php if( $thn_terbit=='1993'){echo "selected"; } ?>>1993</option>
                             <option value="2003" <?php if( $thn_terbit=='1992'){echo "selected"; } ?>>1992</option>
                             <option value="2002" <?php if( $thn_terbit=='1991'){echo "selected"; } ?>>1991</option>
