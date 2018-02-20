@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Feb 20, 2018 at 09:19 AM
+-- Generation Time: Feb 20, 2018 at 09:42 AM
 -- Server version: 5.5.16
 -- PHP Version: 5.3.8
 
@@ -375,6 +375,14 @@ CREATE TABLE IF NOT EXISTS `sekolah` (
   `alamat_sklh` varchar(100) DEFAULT NULL,
   `telp_sklh` varchar(50) DEFAULT NULL,
   `jmlh_siswa` int(10) DEFAULT NULL,
+  `lokasi` text NOT NULL,
+  `luas_sklh` int(20) NOT NULL,
+  `jmlh_ruang_kls` int(10) NOT NULL,
+  `laboratorium` varchar(2) NOT NULL,
+  `musholla` varchar(2) NOT NULL,
+  `aula` varchar(2) NOT NULL,
+  `lap_basket` varchar(2) NOT NULL,
+  `lap_sepakbola` varchar(2) NOT NULL,
   PRIMARY KEY (`id_sklh`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10019 ;
 
@@ -382,24 +390,24 @@ CREATE TABLE IF NOT EXISTS `sekolah` (
 -- Dumping data for table `sekolah`
 --
 
-INSERT INTO `sekolah` (`id_sklh`, `nama_sklh`, `alamat_sklh`, `telp_sklh`, `jmlh_siswa`) VALUES
-(10001, 'SMP Negeri 1 Pekanbaru', 'Jl. Sultan Syarif Qasim 157', NULL, NULL),
-(10002, 'SMP Negeri 2 Pekanbaru', 'Jl.Prof.M.Yamin SH No.65', NULL, NULL),
-(10003, 'SMP Negeri 3 Pekanbaru', 'Jl. Dahlia No. 102', NULL, NULL),
-(10004, 'SMP Negeri 4 Pekanbaru', 'Jl. Dr. Sutomo 110', NULL, NULL),
-(10005, 'SMP Negeri 5 Pekanbaru', 'Jl. Sultan Syarif Qasim 155', NULL, NULL),
-(10006, 'SMP Negeri 6 Pekanbaru', 'Jl. Camp Rumbai Km 2.5 Tipe VI Rumbai', NULL, NULL),
-(10007, 'SMP Negeri 7 Pekanbaru', 'Jl. Lokomotif No.28', '(0761) 23979', NULL),
-(10008, 'SMP Negeri 8 Pekanbaru', 'Jl.Adi Sucipto No.115', '(0761) 63745', NULL),
-(10009, 'SMP Negeri 9 Pekanbaru', 'Jl. Imam Munandar No.398', '0819-9304-2010', NULL),
-(10010, 'SMP Negeri 10 Pekanbaru', 'Jl. Dr. Sutomo No.108', '(0761) 35440', NULL),
-(10011, 'SMP Negeri 11 Pekanbaru', 'Jl.Bambu Kuning No.28', '(0627) 6126458', NULL),
-(10012, 'SMP Negeri 12 Pekanbaru', 'Jl. Guru Haji Sulaiman No.37', NULL, NULL),
-(10013, 'SMP Negeri 13 Pekanbaru', 'Jl. Ronggowarsito I No. 15', '(0761) 21194', NULL),
-(10014, 'SMP Negeri 14 Pekanbaru', 'Jl. Hang Tuah No.43', NULL, NULL),
-(10015, 'SMP Negeri 15 Pekanbaru', 'Jl. Lembah Sari Rumbai Pesisir', NULL, NULL),
-(10016, 'SMP Negeri 16 Pekanbaru', 'Jl. Cempaka Negeri 17', NULL, NULL),
-(10018, 'smp ada ajah', 'siak', '0823516374858', 0);
+INSERT INTO `sekolah` (`id_sklh`, `nama_sklh`, `alamat_sklh`, `telp_sklh`, `jmlh_siswa`, `lokasi`, `luas_sklh`, `jmlh_ruang_kls`, `laboratorium`, `musholla`, `aula`, `lap_basket`, `lap_sepakbola`) VALUES
+(10001, 'SMP Negeri 1 Pekanbaru', 'Jl. Sultan Syarif Qasim 157', NULL, NULL, '', 0, 0, '', '', '', '', ''),
+(10002, 'SMP Negeri 2 Pekanbaru', 'Jl.Prof.M.Yamin SH No.65', NULL, NULL, '', 0, 0, '', '', '', '', ''),
+(10003, 'SMP Negeri 3 Pekanbaru', 'Jl. Dahlia No. 102', NULL, NULL, '', 0, 0, '', '', '', '', ''),
+(10004, 'SMP Negeri 4 Pekanbaru', 'Jl. Dr. Sutomo 110', NULL, NULL, '', 0, 0, '', '', '', '', ''),
+(10005, 'SMP Negeri 5 Pekanbaru', 'Jl. Sultan Syarif Qasim 155', NULL, NULL, '', 0, 0, '', '', '', '', ''),
+(10006, 'SMP Negeri 6 Pekanbaru', 'Jl. Camp Rumbai Km 2.5 Tipe VI Rumbai', NULL, NULL, '', 0, 0, '', '', '', '', ''),
+(10007, 'SMP Negeri 7 Pekanbaru', 'Jl. Lokomotif No.28', '(0761) 23979', NULL, '', 0, 0, '', '', '', '', ''),
+(10008, 'SMP Negeri 8 Pekanbaru', 'Jl.Adi Sucipto No.115', '(0761) 63745', NULL, '', 0, 0, '', '', '', '', ''),
+(10009, 'SMP Negeri 9 Pekanbaru', 'Jl. Imam Munandar No.398', '0819-9304-2010', NULL, '', 0, 0, '', '', '', '', ''),
+(10010, 'SMP Negeri 10 Pekanbaru', 'Jl. Dr. Sutomo No.108', '(0761) 35440', NULL, '', 0, 0, '', '', '', '', ''),
+(10011, 'SMP Negeri 11 Pekanbaru', 'Jl.Bambu Kuning No.28', '(0627) 6126458', NULL, '', 0, 0, '', '', '', '', ''),
+(10012, 'SMP Negeri 12 Pekanbaru', 'Jl. Guru Haji Sulaiman No.37', NULL, NULL, '', 0, 0, '', '', '', '', ''),
+(10013, 'SMP Negeri 13 Pekanbaru', 'Jl. Ronggowarsito I No. 15', '(0761) 21194', NULL, '', 0, 0, '', '', '', '', ''),
+(10014, 'SMP Negeri 14 Pekanbaru', 'Jl. Hang Tuah No.43', NULL, NULL, '', 0, 0, '', '', '', '', ''),
+(10015, 'SMP Negeri 15 Pekanbaru', 'Jl. Lembah Sari Rumbai Pesisir', NULL, NULL, '', 0, 0, '', '', '', '', ''),
+(10016, 'SMP Negeri 16 Pekanbaru', 'Jl. Cempaka Negeri 17', NULL, NULL, '', 0, 0, '', '', '', '', ''),
+(10018, 'smp ada ajah', 'siak', '0823516374858', 0, '', 0, 0, '', '', '', '', '');
 
 -- --------------------------------------------------------
 
