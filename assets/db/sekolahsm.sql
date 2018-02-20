@@ -1,20 +1,20 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
+-- version 3.4.5
 -- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: Feb 19, 2018 at 02:57 PM
--- Server version: 10.1.8-MariaDB
--- PHP Version: 5.6.14
+-- Host: localhost
+-- Generation Time: Feb 20, 2018 at 09:19 AM
+-- Server version: 5.5.16
+-- PHP Version: 5.3.8
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
 
 --
 -- Database: `sekolahsm`
@@ -26,12 +26,13 @@ SET time_zone = "+00:00";
 -- Table structure for table `absensi`
 --
 
-CREATE TABLE `absensi` (
+CREATE TABLE IF NOT EXISTS `absensi` (
   `id_abs` int(100) NOT NULL,
   `id_kls` int(10) NOT NULL,
   `tgl` date NOT NULL,
   `jam` time NOT NULL,
-  `ket` varchar(3) NOT NULL
+  `ket` varchar(3) NOT NULL,
+  PRIMARY KEY (`id_abs`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -40,7 +41,7 @@ CREATE TABLE `absensi` (
 -- Table structure for table `admin`
 --
 
-CREATE TABLE `admin` (
+CREATE TABLE IF NOT EXISTS `admin` (
   `id_login` varchar(20) NOT NULL,
   `nama_adm` varchar(50) NOT NULL,
   `email` varchar(50) DEFAULT NULL,
@@ -49,7 +50,8 @@ CREATE TABLE `admin` (
   `pass_login` varchar(100) NOT NULL,
   `status_akun` int(2) NOT NULL,
   `jk` varchar(2) NOT NULL,
-  `foto_adm` varchar(100) NOT NULL
+  `foto_adm` varchar(100) NOT NULL,
+  PRIMARY KEY (`id_login`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -68,13 +70,14 @@ INSERT INTO `admin` (`id_login`, `nama_adm`, `email`, `telp_adm`, `alamat_adm`, 
 -- Table structure for table `ekskul`
 --
 
-CREATE TABLE `ekskul` (
-  `id_ekskul` int(20) NOT NULL,
+CREATE TABLE IF NOT EXISTS `ekskul` (
+  `id_ekskul` int(20) NOT NULL AUTO_INCREMENT,
   `nama_ekskul` varchar(100) NOT NULL,
   `nip` bigint(50) NOT NULL,
   `jadwal_ekskul` text NOT NULL,
-  `id_sklh` int(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `id_sklh` int(20) NOT NULL,
+  PRIMARY KEY (`id_ekskul`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=99017 ;
 
 --
 -- Dumping data for table `ekskul`
@@ -104,7 +107,7 @@ INSERT INTO `ekskul` (`id_ekskul`, `nama_ekskul`, `nip`, `jadwal_ekskul`, `id_sk
 -- Table structure for table `guru`
 --
 
-CREATE TABLE `guru` (
+CREATE TABLE IF NOT EXISTS `guru` (
   `nip` bigint(50) NOT NULL,
   `nama_guru` varchar(50) NOT NULL,
   `pass_guru` varchar(100) NOT NULL,
@@ -114,7 +117,8 @@ CREATE TABLE `guru` (
   `wk_status` int(2) NOT NULL,
   `status_akun` int(2) NOT NULL,
   `jk` varchar(2) NOT NULL,
-  `foto_guru` varchar(100) NOT NULL
+  `foto_guru` varchar(100) NOT NULL,
+  PRIMARY KEY (`nip`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -147,14 +151,18 @@ INSERT INTO `guru` (`nip`, `nama_guru`, `pass_guru`, `alamat_guru`, `telp_guru`,
 -- Table structure for table `jadwal`
 --
 
-CREATE TABLE `jadwal` (
-  `id_jadwal` int(20) NOT NULL,
+CREATE TABLE IF NOT EXISTS `jadwal` (
+  `id_jadwal` int(20) NOT NULL AUTO_INCREMENT,
   `hari` varchar(30) NOT NULL,
   `jam` time NOT NULL,
   `id_matpel` int(20) NOT NULL,
   `nip` bigint(50) NOT NULL,
-  `id_kls` int(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `id_kls` int(10) NOT NULL,
+  PRIMARY KEY (`id_jadwal`),
+  KEY `fk_jadwal_kls` (`id_kls`),
+  KEY `fk_jadwal_matpel` (`id_matpel`),
+  KEY `fk_jadwal_guru` (`nip`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `jadwal`
@@ -172,11 +180,12 @@ INSERT INTO `jadwal` (`id_jadwal`, `hari`, `jam`, `id_matpel`, `nip`, `id_kls`) 
 -- Table structure for table `kelas`
 --
 
-CREATE TABLE `kelas` (
+CREATE TABLE IF NOT EXISTS `kelas` (
   `id_kls` int(10) NOT NULL,
   `nama_kls` varchar(30) NOT NULL,
   `id_wk` int(10) NOT NULL,
-  `id_sklh` int(20) NOT NULL
+  `id_sklh` int(20) NOT NULL,
+  PRIMARY KEY (`id_kls`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -239,10 +248,11 @@ INSERT INTO `kelas` (`id_kls`, `nama_kls`, `id_wk`, `id_sklh`) VALUES
 -- Table structure for table `matpel`
 --
 
-CREATE TABLE `matpel` (
-  `id_matpel` int(20) NOT NULL,
-  `nama_matpel` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+CREATE TABLE IF NOT EXISTS `matpel` (
+  `id_matpel` int(20) NOT NULL AUTO_INCREMENT,
+  `nama_matpel` varchar(50) NOT NULL,
+  PRIMARY KEY (`id_matpel`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=108 ;
 
 --
 -- Dumping data for table `matpel`
@@ -263,15 +273,16 @@ INSERT INTO `matpel` (`id_matpel`, `nama_matpel`) VALUES
 -- Table structure for table `n_tugas`
 --
 
-CREATE TABLE `n_tugas` (
-  `id_ntugas` int(20) NOT NULL,
+CREATE TABLE IF NOT EXISTS `n_tugas` (
+  `id_ntugas` int(20) NOT NULL AUTO_INCREMENT,
   `id_jadwal` int(20) NOT NULL,
   `nisn` varchar(30) NOT NULL,
   `nilai_tugas` int(10) NOT NULL,
   `ket` varchar(30) NOT NULL,
   `nama_tugas` varchar(100) NOT NULL,
-  `id_kls` int(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `id_kls` int(10) NOT NULL,
+  PRIMARY KEY (`id_ntugas`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Dumping data for table `n_tugas`
@@ -286,8 +297,8 @@ INSERT INTO `n_tugas` (`id_ntugas`, `id_jadwal`, `nisn`, `nilai_tugas`, `ket`, `
 -- Table structure for table `n_ulanganharian`
 --
 
-CREATE TABLE `n_ulanganharian` (
-  `id_nuh` int(20) NOT NULL,
+CREATE TABLE IF NOT EXISTS `n_ulanganharian` (
+  `id_nuh` int(20) NOT NULL AUTO_INCREMENT,
   `id_jadwal` int(20) NOT NULL,
   `nisn` varchar(30) NOT NULL,
   `id_kls` int(10) NOT NULL,
@@ -299,8 +310,9 @@ CREATE TABLE `n_ulanganharian` (
   `nilai_uh6` int(10) NOT NULL,
   `nilai_uh7` int(10) NOT NULL,
   `nilai_uh8` int(10) NOT NULL,
-  `ket_uh` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `ket_uh` varchar(100) NOT NULL,
+  PRIMARY KEY (`id_nuh`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Dumping data for table `n_ulanganharian`
@@ -312,16 +324,59 @@ INSERT INTO `n_ulanganharian` (`id_nuh`, `id_jadwal`, `nisn`, `id_kls`, `nilai_u
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `pegawai`
+--
+
+CREATE TABLE IF NOT EXISTS `pegawai` (
+  `nik` int(30) NOT NULL AUTO_INCREMENT,
+  `nama_pgw` varchar(50) NOT NULL,
+  `pass_pgw` varchar(100) NOT NULL,
+  `id_sklh` int(20) NOT NULL,
+  `telp_pgw` varchar(20) DEFAULT NULL,
+  `alamat_pgw` varchar(100) DEFAULT NULL,
+  `status_akun` int(2) NOT NULL,
+  `jk` varchar(2) NOT NULL,
+  `foto_pgw` varchar(100) NOT NULL,
+  PRIMARY KEY (`nik`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=123018 ;
+
+--
+-- Dumping data for table `pegawai`
+--
+
+INSERT INTO `pegawai` (`nik`, `nama_pgw`, `pass_pgw`, `id_sklh`, `telp_pgw`, `alamat_pgw`, `status_akun`, `jk`, `foto_pgw`) VALUES
+(123001, 'Muhammad Iqbal Nasution', 'fe34bd483a283bfa1331f5e65625553c', 10001, '085271667019', 'Jl. Pemuda No.11', 2, 'L', ''),
+(123002, 'Fira Dwi Putri', 'bbc23ed229f45f4a0bf869441f3578b9', 10002, '087811818729', 'Jl. Kenanga No. 21', 2, 'P', ''),
+(123003, 'Sani Ismanta', 'f3e22d3287391e82d6f6b017887359fd', 10007, '081171779007', 'Jl. Selamat no. 68', 2, 'L', ''),
+(123004, 'Aryasih Banowati', '3e8d19b1246637afc543e201b1059b77', 10007, '081126379007', 'Jl. Jogjakarta no. 9', 2, 'P', ''),
+(123005, 'Abu Hurairah', '8616a99c38252281690dcdb90006e261', 10016, '081276807301', 'Jl. Cipta Karya Ujung no.1', 2, 'L', ''),
+(123006, 'Bedjo', 'e1bb9607c4c629f2efeed7cb98418fa1', 10003, '081365789533', 'Jl. Suka Karya (Kualu) no. 68 D, Panam', 2, 'L', ''),
+(123007, 'Djoko Riyanto', '971773ab3dc541ff47818a5dd92b0ffe', 10004, '081223537108', 'Jl. Nanas no. 102', 2, 'L', ''),
+(123008, 'Eko Purwanto', 'b047304e65854754025c5803f5a797d4', 10005, '082321778980', 'Jl. Serayu gg. Serayu II no. 2', 2, 'L', ''),
+(123009, 'Kandar Hariyadi', '0489c929161a22d12d5b6ef5f75b77de', 10006, '082271789099', 'Jl. HR. Soebrantas km 9, Panam', 2, 'L', ''),
+(123010, 'Kusnandar', 'a24fcc366e495f2e746b0b6630add76e', 10008, '087876102634', 'Jl. Riau no. 149 F', 2, 'L', ''),
+(123011, 'Natalia Mundayani', '7f86d88701034c600c10c7771dc86b56', 10009, '082128980019', 'Jl. Kakap II Gg. Filosofi no. 10', 2, 'P', ''),
+(123012, 'Ralin Suhayati', 'bcd3b9ca986faaffb07dc3bbb1b78da6', 10010, '081278890123', 'Jl. Mawar no. 88', 2, 'P', ''),
+(123013, 'Ratna Tri Setyo Dewi', 'a97366ce5082518a56bdb10d8f08e2fd', 10011, '081266168544', 'Jl. Bandeng no. 117', 2, 'P', ''),
+(123014, 'Bambang Setiyono', '0ba44d8b332f02f1935175344a0d7955', 10012, '082322189017', 'Jl. Neraca no. 27', 2, 'L', ''),
+(123015, 'Dumaria Pasaribu', '7541af23024cd2645b8cb8cd725b26da', 10013, '081388733710', 'Jl. Angkasa gg. Raya no. 77 B', 2, 'P', ''),
+(123016, 'Edi Budi Kristanto', '99b6ec62c46c715e4dcb2861e1818339', 10014, '081621887650', 'Jl. Nelayan no. 101', 2, 'L', ''),
+(123017, 'Siti Kylie Jenner', 'e7cc9826af044c5243dcc2daffcd0a28', 10015, '085355745800', 'Jl. Ronggo Warsito II no. 5', 2, 'P', '');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `sekolah`
 --
 
-CREATE TABLE `sekolah` (
-  `id_sklh` int(20) NOT NULL,
+CREATE TABLE IF NOT EXISTS `sekolah` (
+  `id_sklh` int(20) NOT NULL AUTO_INCREMENT,
   `nama_sklh` varchar(50) NOT NULL,
   `alamat_sklh` varchar(100) DEFAULT NULL,
   `telp_sklh` varchar(50) DEFAULT NULL,
-  `jmlh_siswa` int(10) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `jmlh_siswa` int(10) DEFAULT NULL,
+  PRIMARY KEY (`id_sklh`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10019 ;
 
 --
 -- Dumping data for table `sekolah`
@@ -352,7 +407,7 @@ INSERT INTO `sekolah` (`id_sklh`, `nama_sklh`, `alamat_sklh`, `telp_sklh`, `jmlh
 -- Table structure for table `siswa`
 --
 
-CREATE TABLE `siswa` (
+CREATE TABLE IF NOT EXISTS `siswa` (
   `nisn` varchar(30) NOT NULL,
   `nama_siswa` varchar(50) NOT NULL,
   `pass_siswa` varchar(100) NOT NULL,
@@ -365,7 +420,8 @@ CREATE TABLE `siswa` (
   `jk` varchar(2) NOT NULL,
   `id_ekskul` int(20) DEFAULT NULL,
   `foto_siswa` varchar(100) NOT NULL,
-  `telp_ortu` varchar(50) NOT NULL
+  `telp_ortu` varchar(50) NOT NULL,
+  PRIMARY KEY (`nisn`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -382,56 +438,16 @@ INSERT INTO `siswa` (`nisn`, `nama_siswa`, `pass_siswa`, `alamat_siswa`, `id_skl
 -- --------------------------------------------------------
 
 --
--- Table structure for table `staffit`
---
-
-CREATE TABLE `staffit` (
-  `id_staffit` int(30) NOT NULL,
-  `nama_staffit` varchar(50) NOT NULL,
-  `pass_staffit` varchar(100) NOT NULL,
-  `id_sklh` int(20) NOT NULL,
-  `telp_staffit` varchar(20) DEFAULT NULL,
-  `alamat_staffit` varchar(100) DEFAULT NULL,
-  `status_akun` int(2) NOT NULL,
-  `jk` varchar(2) NOT NULL,
-  `foto_staffit` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `staffit`
---
-
-INSERT INTO `staffit` (`id_staffit`, `nama_staffit`, `pass_staffit`, `id_sklh`, `telp_staffit`, `alamat_staffit`, `status_akun`, `jk`, `foto_staffit`) VALUES
-(123001, 'Muhammad Iqbal Nasution', 'fe34bd483a283bfa1331f5e65625553c', 10001, '085271667019', 'Jl. Pemuda No.11', 2, 'L', ''),
-(123002, 'Fira Dwi Putri', 'bbc23ed229f45f4a0bf869441f3578b9', 10002, '087811818729', 'Jl. Kenanga No. 21', 2, 'P', ''),
-(123003, 'Sani Ismanta', 'f3e22d3287391e82d6f6b017887359fd', 10007, '081171779007', 'Jl. Selamat no. 68', 2, 'L', ''),
-(123004, 'Aryasih Banowati', '3e8d19b1246637afc543e201b1059b77', 10007, '081126379007', 'Jl. Jogjakarta no. 9', 2, 'P', ''),
-(123005, 'Abu Hurairah', '8616a99c38252281690dcdb90006e261', 10016, '081276807301', 'Jl. Cipta Karya Ujung no.1', 2, 'L', ''),
-(123006, 'Bedjo', 'e1bb9607c4c629f2efeed7cb98418fa1', 10003, '081365789533', 'Jl. Suka Karya (Kualu) no. 68 D, Panam', 2, 'L', ''),
-(123007, 'Djoko Riyanto', '971773ab3dc541ff47818a5dd92b0ffe', 10004, '081223537108', 'Jl. Nanas no. 102', 2, 'L', ''),
-(123008, 'Eko Purwanto', 'b047304e65854754025c5803f5a797d4', 10005, '082321778980', 'Jl. Serayu gg. Serayu II no. 2', 2, 'L', ''),
-(123009, 'Kandar Hariyadi', '0489c929161a22d12d5b6ef5f75b77de', 10006, '082271789099', 'Jl. HR. Soebrantas km 9, Panam', 2, 'L', ''),
-(123010, 'Kusnandar', 'a24fcc366e495f2e746b0b6630add76e', 10008, '087876102634', 'Jl. Riau no. 149 F', 2, 'L', ''),
-(123011, 'Natalia Mundayani', '7f86d88701034c600c10c7771dc86b56', 10009, '082128980019', 'Jl. Kakap II Gg. Filosofi no. 10', 2, 'P', ''),
-(123012, 'Ralin Suhayati', 'bcd3b9ca986faaffb07dc3bbb1b78da6', 10010, '081278890123', 'Jl. Mawar no. 88', 2, 'P', ''),
-(123013, 'Ratna Tri Setyo Dewi', 'a97366ce5082518a56bdb10d8f08e2fd', 10011, '081266168544', 'Jl. Bandeng no. 117', 2, 'P', ''),
-(123014, 'Bambang Setiyono', '0ba44d8b332f02f1935175344a0d7955', 10012, '082322189017', 'Jl. Neraca no. 27', 2, 'L', ''),
-(123015, 'Dumaria Pasaribu', '7541af23024cd2645b8cb8cd725b26da', 10013, '081388733710', 'Jl. Angkasa gg. Raya no. 77 B', 2, 'P', ''),
-(123016, 'Edi Budi Kristanto', '99b6ec62c46c715e4dcb2861e1818339', 10014, '081621887650', 'Jl. Nelayan no. 101', 2, 'L', ''),
-(123017, 'Siti Kylie Jenner', 'e7cc9826af044c5243dcc2daffcd0a28', 10015, '085355745800', 'Jl. Ronggo Warsito II no. 5', 2, 'P', '');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `walikelas`
 --
 
-CREATE TABLE `walikelas` (
-  `id_wk` int(10) NOT NULL,
+CREATE TABLE IF NOT EXISTS `walikelas` (
+  `id_wk` int(10) NOT NULL AUTO_INCREMENT,
   `nip` bigint(10) NOT NULL,
   `id_kls` int(10) NOT NULL,
-  `id_sklh` int(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `id_sklh` int(20) NOT NULL,
+  PRIMARY KEY (`id_wk`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=55003 ;
 
 --
 -- Dumping data for table `walikelas`
@@ -441,135 +457,6 @@ INSERT INTO `walikelas` (`id_wk`, `nip`, `id_kls`, `id_sklh`) VALUES
 (55001, 196701171998022004, 10008001, 10008),
 (55002, 197702152008011008, 10001003, 10001);
 
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `absensi`
---
-ALTER TABLE `absensi`
-  ADD PRIMARY KEY (`id_abs`);
-
---
--- Indexes for table `admin`
---
-ALTER TABLE `admin`
-  ADD PRIMARY KEY (`id_login`);
-
---
--- Indexes for table `ekskul`
---
-ALTER TABLE `ekskul`
-  ADD PRIMARY KEY (`id_ekskul`);
-
---
--- Indexes for table `guru`
---
-ALTER TABLE `guru`
-  ADD PRIMARY KEY (`nip`);
-
---
--- Indexes for table `jadwal`
---
-ALTER TABLE `jadwal`
-  ADD PRIMARY KEY (`id_jadwal`),
-  ADD KEY `fk_jadwal_kls` (`id_kls`),
-  ADD KEY `fk_jadwal_matpel` (`id_matpel`),
-  ADD KEY `fk_jadwal_guru` (`nip`);
-
---
--- Indexes for table `kelas`
---
-ALTER TABLE `kelas`
-  ADD PRIMARY KEY (`id_kls`);
-
---
--- Indexes for table `matpel`
---
-ALTER TABLE `matpel`
-  ADD PRIMARY KEY (`id_matpel`);
-
---
--- Indexes for table `n_tugas`
---
-ALTER TABLE `n_tugas`
-  ADD PRIMARY KEY (`id_ntugas`);
-
---
--- Indexes for table `n_ulanganharian`
---
-ALTER TABLE `n_ulanganharian`
-  ADD PRIMARY KEY (`id_nuh`);
-
---
--- Indexes for table `sekolah`
---
-ALTER TABLE `sekolah`
-  ADD PRIMARY KEY (`id_sklh`);
-
---
--- Indexes for table `siswa`
---
-ALTER TABLE `siswa`
-  ADD PRIMARY KEY (`nisn`);
-
---
--- Indexes for table `staffit`
---
-ALTER TABLE `staffit`
-  ADD PRIMARY KEY (`id_staffit`);
-
---
--- Indexes for table `walikelas`
---
-ALTER TABLE `walikelas`
-  ADD PRIMARY KEY (`id_wk`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `ekskul`
---
-ALTER TABLE `ekskul`
-  MODIFY `id_ekskul` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=99017;
---
--- AUTO_INCREMENT for table `jadwal`
---
-ALTER TABLE `jadwal`
-  MODIFY `id_jadwal` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
---
--- AUTO_INCREMENT for table `matpel`
---
-ALTER TABLE `matpel`
-  MODIFY `id_matpel` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=108;
---
--- AUTO_INCREMENT for table `n_tugas`
---
-ALTER TABLE `n_tugas`
-  MODIFY `id_ntugas` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT for table `n_ulanganharian`
---
-ALTER TABLE `n_ulanganharian`
-  MODIFY `id_nuh` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT for table `sekolah`
---
-ALTER TABLE `sekolah`
-  MODIFY `id_sklh` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10019;
---
--- AUTO_INCREMENT for table `staffit`
---
-ALTER TABLE `staffit`
-  MODIFY `id_staffit` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=123018;
---
--- AUTO_INCREMENT for table `walikelas`
---
-ALTER TABLE `walikelas`
-  MODIFY `id_wk` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55003;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
