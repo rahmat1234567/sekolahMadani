@@ -1,8 +1,13 @@
 
 <!-- menu tengah -->
-	<div id="menu-tengah">
-    	<div id="bg_menu">Data Anggota
-    	</div>
+	
+    <div class="content-wrapper">
+    <div class="container-fluid">
+
+    <div class="card mb-3">
+        <div class="card-header">
+          <i class="fa fa-area-chart"></i> Area Chart Example</div>
+        <div class="card-body">
     	<div id="content_menu">
         <div id="menu_header">
         	<table width="100%" height="100%" style="background-color:#9cc;">
@@ -58,12 +63,18 @@
                     <td><input type="submit" value="Simpan"></td>
                 </tr>
                 <tr>
-                    <td><a href="?page=anggota">Kembali</td>
+                    <td><a href="?page=anggota">Kembali</a></td>
                 </tr>
             
             </tbody>
           </table>
           </form>
  	      </div>
+          </div>
+           </div>
+        <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+      </div>
+     </div>
+</div>      
    	  </div>
     </div>
