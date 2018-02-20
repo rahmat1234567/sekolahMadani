@@ -12,7 +12,7 @@ if($aksi == "tambah"){
 	$sss = move_uploaded_file($tmp, $path);
 	
 	$pass=md5($_POST['pass_staffit']);
-	$db->input($_POST['foto_staffit'],$_POST['nama_staffit'],$_POST['jk'],$_POST['alamat_staffit'],$_POST['pass_staffit'],$_POST['telp_staffit'],$_POST['id_sklh'],$_POST['status_akun']);
+	$db->input($namaa,$_POST['nama_staffit'],$_POST['jk'],$_POST['alamat_staffit'],$_POST['pass_staffit'],$_POST['telp_staffit'],$_POST['id_sklh'],$_POST['status_akun']);
 	
 	if($level==1){
         $nm_sklh=$nmsklh; 
@@ -39,6 +39,20 @@ elseif($aksi == "hapus"){
 	}
 }
 elseif($aksi == "edit"){
+
+	$foto  = $_FILES['foto_siswa']['name'];
+		$tmp   = $_FILES['foto_siswa']['tmp_name'];
+		$namaa = $_POST['nisn'];
+		$path  = "../../assets/img/".$namaa;
+		$sss = move_uploaded_file($tmp, $path);
+
+	if($namaa==""){
+		$namaa=$_POST['foto_lama'];
+		if($namaa==""){
+			$namaa="default.jpg";
+		}
+	}
+
 	$niis=$_POST['id_staffit'];
 	$asql=mysql_query("select pass_staffit from staffit where id_staffit='$niis'");
     $acount=mysql_num_rows($dsql);
@@ -51,7 +65,7 @@ elseif($aksi == "edit"){
     	$passs=md5($_POST['pass_staffit']);
     }
 
-	$db->update($_POST['foto_staffit'],$_POST['nama_staffit'],$_POST['jk'],$_POST['alamat_staffit'],$_POST['pass_staffit'],$_POST['telp_staffit'],$_POST['id_sklh'],$_POST['status_akun']);
+	$db->update($namaa,$_POST['foto_staffit'],$_POST['nama_staffit'],$_POST['jk'],$_POST['alamat_staffit'],$_POST['pass_staffit'],$_POST['telp_staffit'],$_POST['id_sklh'],$_POST['status_akun']);
 	
     if($level==1){
         $nm_sklh=$nmsklh; 
