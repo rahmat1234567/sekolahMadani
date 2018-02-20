@@ -8,7 +8,7 @@ if($aksi == "tambah"){
 
 	$foto  = $_FILES['foto_siswa']['name'];
 	$tmp   = $_FILES['foto_siswa']['tmp_name'];
-	$namaa = $_POST['nisn'].$foto;
+	$namaa = $_POST['nisn'];
 	$path  = "../../assets/img/".$namaa;
 	$sss = move_uploaded_file($tmp, $path);
 

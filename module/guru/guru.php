@@ -22,12 +22,14 @@
                                             <th class="text-center" width="40%">Nama</th>
                                             <th class="text-center">JK</th>
                                             <th class="text-center">Alamat</th>
+                                            <?php
+                                                if($level!=2){
+                                            ?>
                                             <th class="text-center">Nama Sekolah</th>
+                                            <?php } ?>
                                             <th class="text-center">Status Wali Kelas</th>
                                             <th class="text-center">Status Akun</th>
-                                            <?php if($level==2){ ?>
                                             <th class="text-center">Aksi</th>
-                                            <?php } ?>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -77,8 +79,9 @@ else
                                                     $countzz=mysql_num_rows($sqlzz);
                                                     $rszz=mysql_fetch_array($sqlzz);
                                                 ?>
+                                                <?php if($level!=2){ ?>
                                                 <td><?php echo"$rszz[nama_sklh]";  ?></td>
-
+                                                <?php } ?>
                                                 <?php if($rs['wk_status']==1){
                                                     $kode_wk=$rs['nip'];                   
                                                     $sqlzzz=mysql_query("
@@ -103,8 +106,9 @@ else
     <?php
     }
     ?>                                            
+                                                <td class="text-center"> 
                                                <?php if($level==2){ ?> 
-                                             <td class="text-center"> 
+                                             
 												<a href="./././admin.php?module=input_guru&act=edit&nip=<?php echo $rs['nip'] ?>&level=<?php echo $level; ?>"><button type="button" class="btn btn-info">Edit</button></a> 
 												<a data-toggle="modal" data-target="#modalHapus<?php echo $noxxx;?>" class="btn btn-danger" >Hapus</a>
 												<?php } ?>
@@ -119,7 +123,7 @@ else
   <div class="modal-dialog" role="document">
     <div class="modal-content">
         <form method="post">
-            <input type="hidden" name="nisn" value="<?php echo $rs['nisn'];?>">
+            <input type="hidden" name="nip" value="<?php echo $rs['nip'];?>">
       <div class="modal-header bg-default">
         <h5 class="modal-title" id="exampleModalLabel">Konfirmasi Hapus</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -127,7 +131,7 @@ else
         </button>
       </div>
       <div class="modal-body">
-        <div class="alert alert-danger">Anda yakin akan menghapus data siswa <?php echo $rs['nama_siswa'] ?> ?</div>
+        <div class="alert alert-danger">Anda yakin akan menghapus data siswa <?php echo $rs['nama_guru'] ?> ?</div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

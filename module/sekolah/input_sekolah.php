@@ -21,23 +21,33 @@ if($_GET['act']=="input"){
                                 <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>Kode Sekolah</label>
-                                            <input  value="" class="form-control" placeholder="Kode" name="id_sklh" disabled>
+                                            <?php
+                                                $ssql=mysql_query("select * from sekolah");
+                                                $scount=mysql_num_rows($ssql);
+                                                while($srs=mysql_fetch_array($ssql))
+                                                {
+                                                        $idid=$srs['id_sklh'];
+                                                }
+                                                $xx = 0;
+                                                $xx = $idid + 1;
+                                            ?>
+                                            <input class="form-control" placeholder="Kode" name="id_sklh" value="<?php echo $xx; ?>" readonly>
                                         </div>
                                         <div class="form-group">
                                             <label>Nama Sekolah</label>
-                                            <input class="form-control" placeholder="Nama sekolah" name="nama_sklh">
+                                            <input class="form-control" placeholder="Nama sekolah" name="nama_sklh" required>
                                         </div>
                                         <div class="form-group">
                                             <label>Alamat</label>
-                                            <textarea class="form-control" placeholder="Alamat" name="alamat_sklh" rows="3"></textarea>
+                                            <textarea class="form-control" placeholder="Alamat" name="alamat_sklh" rows="3" required="required"></textarea>
                                         </div>
 										<div class="form-group">
                                             <label>Telp</label>
-                                            <textarea class="form-control" placeholder="Telp" name="telp_sklh" rows="3"></textarea>
+                                            <input class="form-control" placeholder="Telp" name="telp_sklh" required>
                                         </div>
 
                                         
-                                        <button type="submit" class="btn btn-default">Submit Button</button>
+                                        <button type="submit" class="btn btn-default">Submit</button>
                                 </div>
                                 <!-- /.col-lg-6 (nested) -->
                                     </form>

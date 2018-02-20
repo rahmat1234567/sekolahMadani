@@ -104,7 +104,7 @@ if($_GET['act']=="input"){
 										<div class="form-group" data-provides="fileupload" style="border-bottom: ">
                                             <label>FOTO</label>
 											<center><img id="preview" src="" alt="" height="200px" style="padding-bottom: 10px;"/></center>
-                                            <input type="file" name='foto_guru' accept="image/*" onchange="preview_photo(this,'preview')">
+                                            <input id="file" type="file" name='foto_guru' accept="image/*" onchange="preview_photo(this,'preview');">
                                         </div>
                                         <div class="form-group">
                                             <label>NIP</label>
@@ -161,7 +161,7 @@ if($_GET['act']=="input"){
 										<div class="form-group">
                                             <label>Status Akun</label>
                                             <div class="onoffswitch4">
-                                                <input type="checkbox" name="status_akun" class="onoffswitch4-checkbox" id="myonoffswitch4" value="4">
+                                                <input type="checkbox" name="status_akun" class="onoffswitch4-checkbox" id="myonoffswitch4" value="3">
                                                 <label class="onoffswitch4-label" for="myonoffswitch4">
                                                     <span class="onoffswitch4-inner"></span>
                                                     <span class="onoffswitch4-switch"></span>
@@ -383,12 +383,12 @@ if($_GET['act']=="edit_guru"){
                                             <?php 
                                                 if($rs['status_akun']==0){ ?>
                                                 <div class="onoffswitch4">
-                                                    <input type="checkbox" name="status_akun" class="onoffswitch4-checkbox" id="myonoffswitch4" value="4">
+                                                    <input type="checkbox" name="status_akun" class="onoffswitch4-checkbox" id="myonoffswitch4" value="3">
                                             <?php } 
                                                 else{
                                             ?>
                                                 <div class="onoffswitch4">
-                                                    <input type="checkbox" name="status_akun" class="onoffswitch4-checkbox" id="myonoffswitch4" value="4" checked>
+                                                    <input type="checkbox" name="status_akun" class="onoffswitch4-checkbox" id="myonoffswitch4" value="3" checked>
                                             <?php } ?>
                                                 <label class="onoffswitch4-label" for="myonoffswitch4">
                                                     <span class="onoffswitch4-inner"></span>

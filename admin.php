@@ -1,6 +1,9 @@
 <?php
 session_start();
-if(!empty($_SESSION['nama'])){
+if(empty($_SESSION['nama'])){
+    header('location:index.php');
+}
+else{
 $uidi=$_SESSION['id'];	
 $usre=$_SESSION['nama'];
 $level=$_SESSION['status'];
@@ -176,9 +179,11 @@ echo "User : $usre";
                         <li>
                             <a href="#"><i class="fa fa-dashboard fa-fw"></i> Data Kelas<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
-                                <li>
+                                <?php if($level!=3) { ?>
+								<li>
                                     <a href="admin.php?module=input_kelas&act=input">Input Data</a>
                                 </li>
+								<?php } ?>
                                 <li>
                                     <a href="admin.php?module=kelas">View Data</a>
                                 </li>
@@ -259,10 +264,16 @@ echo "User : $usre";
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Nilai Siswa<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="admin.php?module=input_nilai&act=input">Input Nilai</a>
+                                    <a href="admin.php?module=nilai">Input Nilai Ulangan</a>
+                                </li>
+								<li>
+                                    <a href="admin.php?module=nilaitugas">Input Nilai Tugas</a>
                                 </li>
                                 <li>
-                                    <a href="#">Laporan Nilai</a>
+                                    <a href="admin.php?module=tampil_ulangan">View Nilai Ulangan</a>
+                                </li>
+								<li>
+                                    <a href="admin.php?module=tampil_tugas">View Nilai Tugas</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->

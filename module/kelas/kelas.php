@@ -17,10 +17,9 @@
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                     <thead>
                                         <tr>
-                                            <th class="text-center">Kode Kelas</th>
+                                            <th class="text-center" width="13%">Kode Kelas</th>
                                             <th class="text-center">Nama Kelas</th>
                                             <th class="text-center">Nama Wali Kelas</th>
-											<th class="text-center">Nama Sekolah</th>
                                             <th class="text-center">Aksi</th>
 
                                         </tr>
@@ -51,8 +50,6 @@ $sql=mysql_query("select * from kelas");
                                                     }  
                                                 ?>
                                             </td>
-											<td class="text-center"><?php echo"$rs[id_sklh]";  ?></td>
-
                                         <td class="text-center">
 										<a href="./././admin.php?module=input_kelas&act=edit_kelas&id_kls=<?php echo $rs['id_kls'] ?>"><button type="button" class="btn btn-info">Edit</button></a>
 										<a href="././module/kelas/proseskelas.php?aksi=hapus&id_kls=<?php echo $rs['id_kls'] ?>"><button type="button" class="btn btn-danger">Hapus</button></a>
