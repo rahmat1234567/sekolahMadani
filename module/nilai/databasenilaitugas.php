@@ -24,11 +24,11 @@ class database{
 	}
 	
 	function hapus($id_ntugas){
-		mysql_query("delete from n_tugas where nisn='$nisn'");
+		mysql_query("delete from n_tugas where id_ntugas='$id_ntugas'");
 	}
 	
 	function edit($id_ntugas){
-		$data = mysql_query("select * from n_tugas where nisn='$nisn'");
+		$data = mysql_query("select * from n_tugas where id_ntugas='$id_ntugas'");
 		while($d = mysql_fetch_array($data)){
 			$hasil[] = $d;
 		}
@@ -36,7 +36,7 @@ class database{
 	}
 	
 	function update($nisn,$nama_tugas,$nilai_tugas,$ket){
-		mysql_query("update n_tugas set nisn='$nisn',nama_tugas='$nama_tugas',ket='$ket' where id_staffit='$id_staffit'");
+		mysql_query("update n_tugas set nisn='$nisn',nama_tugas='$nama_tugas',ket='$ket' where id_ntugas='$id_ntugas'");
 	}
 }
 ?>

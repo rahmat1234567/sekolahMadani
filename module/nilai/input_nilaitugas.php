@@ -25,7 +25,7 @@ if($_GET['act']=="input"){
                         <div class="panel-body">
                             <div class="table-responsive">
 							<a href="#" class="btn btn-sm btn-info pull-right" style="margin-bottom: 1rem;">Tambah</a>
-                                <table class="table table-striped table-bordered table-hover" id="input-nilai">
+                                <table class="table table-striped table-bordered table-hover">
                                     <thead>
                                         <tr>
 											<th class="text-center" style="width: 10px;">NO</th>
@@ -61,7 +61,7 @@ $noxxx++;
                                 </table>
                             </div>
                             <!-- /.table-responsive --><center>
-							<button type="submit" class="btn btn-sm btn-info" style="background: green;">Simpan</button></center>
+							<button type="submit" class="btn btn-sm btn-info" style="background: #2e2e2e;">Simpan</button></center>
                         </div>
 						</form>
                         <!-- /.panel-body -->
