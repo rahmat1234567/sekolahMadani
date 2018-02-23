@@ -1,12 +1,29 @@
 <?php
 include"config/conn.php";
 
+session_start();
+
+$sql1=mysql_query("select * from enc");
+	$count1=mysql_num_rows($sql1);
+	$rs1=mysql_fetch_array($sql1);
+$zz = $rs1['encr'];
+
+
+$_SESSION['enc']="";
+if($_POST['a26u7d9cg6l1I4w']!=$zz){
+    $_SESSION['enc']=0;
+    header('location:https://www.youtube.com/watch?v=PWmfNeLs7fA');
+}
+else{
+	$_SESSION['enc']=1;
+}
+$_POST['a26u7d9cg6l1I4w']="";
+
 $pass=md5($_POST['password']);
 $passw=$_POST['password'];
 
 $user=$_POST['username'];
 
-session_start();
 $_SESSION['id']="";
 $_SESSION['nama']="";
 $_SESSION['status']="";
@@ -105,12 +122,13 @@ else{
 					$countxxx=mysql_num_rows($sqlxxx);
 					$rsxxx=mysql_fetch_array($sqlxxx);
 				$_SESSION['nama_sklh']=$rsxxx['nama_sklh'];
-				header('location:admin.php?module=home');	
+				header('location:admin.php?module=home');
 			}
 
-			else{	
-				echo"<center><h2>ID atau Password anda salah.</h2><br>
-				<a href=index.php><b>Ulangi Lagi</b></a></center>";	
+			else{
+				header('location:index.php?e=0&error=1');
+				//echo"<center><h2>ID atau Password anda salah.</h2><br>
+				//<a href=index.php><b>Ulangi Lagi</b></a></center>";	
 			}
 
 		}

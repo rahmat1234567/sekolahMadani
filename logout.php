@@ -10,6 +10,7 @@ unset($_SESSION['jk']);
 unset($_SESSION['nama_sklh']); 
 unset($_SESSION['nama_kls']);
 unset($_SESSION['id_sklh']);
+unset($_SESSION['enc']);
 
 session_destroy();
 

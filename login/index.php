@@ -28,6 +28,7 @@
         width: 100%;
         height: 100%;
         z-index: 9999;
+      }
     </style>
 </head>
 
@@ -48,6 +49,20 @@
                         <center><h3 class="panel-title">Sekolah Smart Madani - Login</h3></center>
                     </div>
                     <div class="panel-body">
+                      <?php 
+                      if(!isset($_GET['error'])){
+                        $_GET['error']=0;
+                      }
+                      else{
+                        $_GET['error']=1;
+                      }
+                      if($_GET['error']==1){ ?>
+                        <div class="alert alert-danger">
+                          <p>
+                            Username atau Password Salah!
+                          </p>
+                        </div>
+                      <?php } ?>
                         <form method="post" name="loginform" action="../ceklog.php" onSubmit="
 
                         var userValid = /^[0-9]*$/;
@@ -74,9 +89,15 @@
                         return true;
 
                         ">
+                        <?php 
+                          $xx  = "sMarT_scHoOL"; 
+                          $xxx = md5($xx);
+                        ?>
                             <fieldset>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="NIP/NIS" name="username"  autofocus>
+
+                                    <input type="hidden" name="a26u7d9cg6l1I4w" value="<?php echo $xxx; ?>">
+                                    <input class="form-control" placeholder="NIP/NISN" name="username"  autofocus>
                                 </div>
                                 <div class="form-group">
                                     <input class="form-control" placeholder="Password" name="password" type="password" value="">

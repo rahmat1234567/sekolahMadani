@@ -1,7 +1,7 @@
 <?php
 session_start();
-if($_SESSION['enc']==""){
-    header('location:https://www.google.com/search?q=cara+menghack&ie=utf-8&oe=utf-8&client=firefox-b-ab');
+if($_SESSION['enc']==0){
+    header('location:https://www.youtube.com/watch?v=PWmfNeLs7fA');
 }
 if(empty($_SESSION['nama'])){
     header('location:index.php');
