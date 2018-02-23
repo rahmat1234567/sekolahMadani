@@ -40,7 +40,16 @@ $db = new database();
 
     ?>                                      <tr class="odd gradeX">
 												<td><?php echo $no++; ?></td>
-												<td><a href="admin.php?module=input_nilaitugas&act=input"><?php echo"$rs[id_jadwal]"; ?></a></td>
+												<?php  
+													$asql=mysql_query("select nama_matpel from n_tugas,jadwal,matpel where n_tugas.id_ntugas='$rs[id_ntugas]' and n_tugas.id_jadwal=jadwal.id_jadwal and jadwal.id_matpel=matpel.id_matpel");
+													$acount=mysql_num_rows($asql);
+													$ars=mysql_fetch_array($asql);													
+												?>
+												<td><a href="admin.php?module=input_nilaitugas&act=input&id_jadwal=<?php echo $rs['id_jadwal']; ?>">
+												<?php
+													echo $ars['nama_matpel'];
+												?>
+												</a></td>
                                                 <td><?php echo"$rs[id_kls]";  ?></td>
                                             </tr>
     <?php
