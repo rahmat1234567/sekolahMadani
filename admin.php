@@ -1,7 +1,7 @@
 <?php
 session_start();
 if($_SESSION['enc']==""){
-    header('location:http://sakamoto.vacau.com');
+    header('location:https://www.google.com/search?q=cara+menghack&ie=utf-8&oe=utf-8&client=firefox-b-ab');
 }
 if(empty($_SESSION['nama'])){
     header('location:index.php');
