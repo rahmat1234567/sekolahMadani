@@ -1,5 +1,8 @@
 <?php
 session_start();
+if($_SESSION['enc']==""){
+    header('location:http://sakamoto.vacau.com');
+}
 if(empty($_SESSION['nama'])){
     header('location:index.php');
 }
