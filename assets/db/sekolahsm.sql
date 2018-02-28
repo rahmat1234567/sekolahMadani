@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Feb 23, 2018 at 09:41 AM
+-- Generation Time: Feb 28, 2018 at 10:13 AM
 -- Server version: 5.5.16
 -- PHP Version: 5.3.8
 
@@ -44,7 +44,7 @@ CREATE TABLE IF NOT EXISTS `absensi` (
 CREATE TABLE IF NOT EXISTS `admin` (
   `id_login` varchar(20) NOT NULL,
   `nama_adm` varchar(50) NOT NULL,
-  `email` varchar(50) DEFAULT NULL,
+  `email_adm` varchar(50) DEFAULT NULL,
   `telp_adm` varchar(30) DEFAULT NULL,
   `alamat_adm` varchar(100) NOT NULL,
   `pass_login` varchar(100) NOT NULL,
@@ -58,7 +58,7 @@ CREATE TABLE IF NOT EXISTS `admin` (
 -- Dumping data for table `admin`
 --
 
-INSERT INTO `admin` (`id_login`, `nama_adm`, `email`, `telp_adm`, `alamat_adm`, `pass_login`, `status_akun`, `jk`, `foto_adm`) VALUES
+INSERT INTO `admin` (`id_login`, `nama_adm`, `email_adm`, `telp_adm`, `alamat_adm`, `pass_login`, `status_akun`, `jk`, `foto_adm`) VALUES
 ('1507112346', 'Rahmat Wibowo', 'rahmatwibowo66@gmail.com', '082381169597', 'Jl. Garuda Sakti Km 2', '16a30a734c46d35a6565fe576c8a5f9f', 1, 'L', ''),
 ('1507115285', 'Nidya Nur Syafiqoh', 'nidya.nursyafiqoh5285@student.unri.ac.id', '081311442407', 'Jl. Enau no. 389', '99138fcf1f8adf450c68e09c118d4f9d', 1, 'P', ''),
 ('1507115719', 'Lukmannil Hakim', 'lukmannil.hakim5719@student.unri.ac.id', '081371339605', 'Jl. Adi Sucipto Komplek Bangau no.17', '5a1f19006889410c9d7a2ca0e2cf6d76', 1, 'L', ''),
@@ -405,6 +405,7 @@ CREATE TABLE IF NOT EXISTS `sekolah` (
   `nama_sklh` varchar(50) NOT NULL,
   `alamat_sklh` varchar(100) DEFAULT NULL,
   `telp_sklh` varchar(50) DEFAULT NULL,
+  `email_sklh` varchar(100) NOT NULL,
   `jmlh_siswa` int(10) DEFAULT NULL,
   `id_lok` int(10) NOT NULL,
   `luas_sklh` int(20) NOT NULL,
@@ -412,33 +413,61 @@ CREATE TABLE IF NOT EXISTS `sekolah` (
   `laboratorium` varchar(2) NOT NULL,
   `musholla` varchar(2) NOT NULL,
   `aula` varchar(2) NOT NULL,
+  `perpustakaan` varchar(2) NOT NULL,
   `lap_basket` varchar(2) NOT NULL,
   `lap_sepakbola` varchar(2) NOT NULL,
   PRIMARY KEY (`id_sklh`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10019 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10045 ;
 
 --
 -- Dumping data for table `sekolah`
 --
 
-INSERT INTO `sekolah` (`id_sklh`, `nama_sklh`, `alamat_sklh`, `telp_sklh`, `jmlh_siswa`, `id_lok`, `luas_sklh`, `jmlh_ruang_kls`, `laboratorium`, `musholla`, `aula`, `lap_basket`, `lap_sepakbola`) VALUES
-(10001, 'SMP Negeri 1 Pekanbaru', 'Jl. Sultan Syarif Qasim 157', NULL, NULL, 0, 0, 0, '', '', '', '', ''),
-(10002, 'SMP Negeri 2 Pekanbaru', 'Jl.Prof.M.Yamin SH No.65', NULL, NULL, 0, 0, 0, '', '', '', '', ''),
-(10003, 'SMP Negeri 3 Pekanbaru', 'Jl. Dahlia No. 102', NULL, NULL, 0, 0, 0, '', '', '', '', ''),
-(10004, 'SMP Negeri 4 Pekanbaru', 'Jl. Dr. Sutomo 110', NULL, NULL, 0, 0, 0, '', '', '', '', ''),
-(10005, 'SMP Negeri 5 Pekanbaru', 'Jl. Sultan Syarif Qasim 155', NULL, NULL, 0, 0, 0, '', '', '', '', ''),
-(10006, 'SMP Negeri 6 Pekanbaru', 'Jl. Camp Rumbai Km 2.5 Tipe VI Rumbai', NULL, NULL, 0, 0, 0, '', '', '', '', ''),
-(10007, 'SMP Negeri 7 Pekanbaru', 'Jl. Lokomotif No.28', '(0761) 23979', NULL, 0, 0, 0, '', '', '', '', ''),
-(10008, 'SMP Negeri 8 Pekanbaru', 'Jl.Adi Sucipto No.115', '(0761) 63745', NULL, 0, 0, 0, '', '', '', '', ''),
-(10009, 'SMP Negeri 9 Pekanbaru', 'Jl. Imam Munandar No.398', '0819-9304-2010', NULL, 0, 0, 0, '', '', '', '', ''),
-(10010, 'SMP Negeri 10 Pekanbaru', 'Jl. Dr. Sutomo No.108', '(0761) 35440', NULL, 0, 0, 0, '', '', '', '', ''),
-(10011, 'SMP Negeri 11 Pekanbaru', 'Jl.Bambu Kuning No.28', '(0627) 6126458', NULL, 0, 0, 0, '', '', '', '', ''),
-(10012, 'SMP Negeri 12 Pekanbaru', 'Jl. Guru Haji Sulaiman No.37', NULL, NULL, 0, 0, 0, '', '', '', '', ''),
-(10013, 'SMP Negeri 13 Pekanbaru', 'Jl. Ronggowarsito I No. 15', '(0761) 21194', NULL, 0, 0, 0, '', '', '', '', ''),
-(10014, 'SMP Negeri 14 Pekanbaru', 'Jl. Hang Tuah No.43', NULL, NULL, 0, 0, 0, '', '', '', '', ''),
-(10015, 'SMP Negeri 15 Pekanbaru', 'Jl. Lembah Sari Rumbai Pesisir', NULL, NULL, 0, 0, 0, '', '', '', '', ''),
-(10016, 'SMP Negeri 16 Pekanbaru', 'Jl. Cempaka Negeri 17', NULL, NULL, 0, 0, 0, '', '', '', '', ''),
-(10018, 'smp ada ajah', 'siak', '0823516374858', 0, 0, 0, 0, '', '', '', '', '');
+INSERT INTO `sekolah` (`id_sklh`, `nama_sklh`, `alamat_sklh`, `telp_sklh`, `email_sklh`, `jmlh_siswa`, `id_lok`, `luas_sklh`, `jmlh_ruang_kls`, `laboratorium`, `musholla`, `aula`, `perpustakaan`, `lap_basket`, `lap_sepakbola`) VALUES
+(10001, 'SMP Negeri 1 Pekanbaru', 'Jl. Sultan Syarif Qasim 157', NULL, '', 756, 0, 0, 0, '', '1', '', '', '', ''),
+(10002, 'SMP Negeri 2 Pekanbaru', 'Jl.Prof.M.Yamin SH No.65', NULL, '', 569, 0, 0, 0, '', '', '', '', '', ''),
+(10003, 'SMP Negeri 3 Pekanbaru', 'Jl. Dahlia No. 102', '(0761) 22485', 'smpn3pku@gmail.com', 592, 0, 2307, 15, '1', '', '', '1', '', ''),
+(10004, 'SMP Negeri 4 Pekanbaru', 'Jl. Dr. Sutomo 110', NULL, '', 1009, 0, 0, 0, '', '', '', '', '', ''),
+(10005, 'SMP Negeri 5 Pekanbaru', 'Jl. Sultan Syarif Qasim 155', '', '', 852, 0, 0, 0, '', '', '', '', '', ''),
+(10006, 'SMP Negeri 6 Pekanbaru', 'Jl. Camp Rumbai Km 2.5 Tipe VI Rumbai', '(0761) 53335', 'smpnegeri6pekanbaru@gmail.com', 1019, 0, 39000, 34, '1', '', '', '1', '', ''),
+(10007, 'SMP Negeri 7 Pekanbaru', 'Jl. Lokomotif No.28', '(0761) 23979', '', 644, 0, 0, 0, '', '', '', '', '', ''),
+(10008, 'SMP Negeri 8 Pekanbaru', 'Jl.Adi Sucipto No.115', '(0761) 63745', 'smpn8pekanbaru@gmail.com', 1136, 0, 14650, 30, '1', '', '', '1', '', ''),
+(10009, 'SMP Negeri 9 Pekanbaru', 'Jl. Imam Munandar No.398', '(0761) 27332', 'smpnegeri9.pku@gmail.com', 1256, 0, 16345, 27, '1', '', '', '1', '', ''),
+(10010, 'SMP Negeri 10 Pekanbaru', 'Jl. Dr. Sutomo No.108', '(0761) 35440', '', 1024, 0, 0, 0, '', '', '', '', '', ''),
+(10011, 'SMP Negeri 11 Pekanbaru', 'Jl.Bambu Kuning No.28', '(0761) 26458', 'smpn11pku@yahoo.com', 768, 0, 9207, 24, '1', '', '', '0', '', ''),
+(10012, 'SMP Negeri 12 Pekanbaru', 'Jl. Guru Haji Sulaiman No.37', NULL, '', 891, 0, 0, 0, '', '', '', '', '', ''),
+(10013, 'SMP Negeri 13 Pekanbaru', 'Jl. Ronggowarsito I No. 15', '(0761) 21194', '', 1194, 0, 0, 0, '', '', '', '', '', ''),
+(10014, 'SMP Negeri 14 Pekanbaru', 'Jl. Hang Tuah No.43', NULL, '', 828, 0, 0, 0, '', '', '', '', '', ''),
+(10015, 'SMP Negeri 15 Pekanbaru', 'Jl. Lembah Sari Rumbai Pesisir', '(0761) 52304', 'smpn15pekanbaru@gmail.com', 728, 0, 10000, 21, '1', '', '', '1', '', ''),
+(10016, 'SMP Negeri 16 Pekanbaru', 'Jl. Cempaka Negeri 17', '(0761) 26329', 'smpenambelaspku@gmail.com', 712, 0, 3102, 19, '0', '', '', '1', '', ''),
+(10017, 'SMP Negeri 17 Pekanbaru', 'Jl. Balam Ujung No. 21', '(0761) 33880', 'smpn17pekanbaru@gmail.com', 630, 0, 6940, 14, '1', '', '', '1', '', ''),
+(10018, 'SMP Negeri 18 Pekanbaru', 'Jl. Lili I No. 95', '(0761) 26442', '', 670, 0, 0, 0, '', '', '', '', '', ''),
+(10019, 'SMP Negeri 19 Pekanbaru', 'Jl. Yos Sudarso Km 18', '', '', 399, 0, 0, 0, '', '', '', '', '', ''),
+(10020, 'SMP Negeri 20 Pekanbaru', 'Jl. Abadi No. 9', '(0761) 61063', 'SMPN20PEKANBARU@GMAIL.COM', 1082, 0, 9395, 27, '1', '', '', '1', '', ''),
+(10021, 'SMP Negeri 21 Pekanbaru', 'Jl. Soekarno Hatta No, 639', '(0761) 63521', 'smpn21pekanbaru@yahoo.co.id', 1087, 0, 17792, 28, '1', '', '', '1', '', ''),
+(10022, 'SMP Negeri 22 Pekanbaru', 'Jl. Sidodadi No. 32', NULL, '', 859, 0, 0, 0, '', '', '', '', '', ''),
+(10023, 'SMP Negeri 23 Pekanbaru', 'Jl. Garuda Sakti Km. 3', '(0761) 7875384', 'smpnegeri23pekanbaru@yahoo.com', 1051, 0, 11495, 27, '1', '', '', '1', '', ''),
+(10024, 'SMP Negeri 24 Pekanbaru', 'Jl. Sri Amanah, Rumbai Bukit', NULL, '', 579, 0, 0, 0, '', '', '', '', '', ''),
+(10025, 'SMP Negeri 25 Pekanbaru', 'Jl. Kartama, Maharatu', '(0761) 562804', 'smpnegeri25.pku@gmail.com', 1100, 0, 10000, 29, '1', '', '', '1', '', ''),
+(10026, 'SMP Negeri 26 Pekanbaru', 'Jl. Kenanga, Sail', '(0761) 7872388', 'smp26pekanbaru@yahoo.co.id', 734, 0, 1000, 22, '1', '', '', '1', '', ''),
+(10027, 'SMP Negeri 27 Pekanbaru', 'Jl. Nelayan No. 221', NULL, '', 502, 0, 0, 0, '', '', '', '', '', ''),
+(10028, 'SMP Negeri 28 Pekanbaru', 'Jl. Raja Panjang Okura', '(0761) 7000348', 'dualapans@yahoo.co.id', 136, 0, 9570, 6, '1', '', '', '0', '', ''),
+(10029, 'SMP Negeri 29 Pekanbaru', 'Jl. Tegal Sari, Umban Sari', NULL, '', 642, 0, 0, 0, '', '', '', '', '', ''),
+(10030, 'SMP Negeri 30 Pekanbaru', 'Jl. Kelly Raya, Limbungan Baru', '(0761) 51478', 'smpn30_pku@yahoo.co.id', 685, 0, 2665, 15, '1', '', '', '1', '', ''),
+(10031, 'SMP Negeri 31 Pekanbaru', 'Jl. Bencah Basung, Sail', '(0761) 7770925', 'smpn31pku@gmail.com', 298, 0, 4320, 9, '1', '', '', '0', '', ''),
+(10032, 'SMP Negeri 32 Pekanbaru', 'Jl. Balam No. 18', '(0761) 572743', 'smpnegeri32pekanbaru@yahoo.co.id', 632, 0, 10020, 13, '1', '', '', '1', '', ''),
+(10033, 'SMP Negeri 33 Pekanbaru', 'Jl. Sidorukun Ujung', NULL, 'smpn33pekanbaru@yahoo.com', 454, 0, 9907, 9, '0', '', '', '1', '', ''),
+(10034, 'SMP Negeri 34 Pekanbaru', 'Jl. Kartama No. 68', '(0761) 56243', 'www.spantipat34@yahoo.com', 644, 0, 15000, 11, '0', '', '', '1', '', ''),
+(10035, 'SMP Negeri 35 Pekanbaru', 'Jl. T. Bey / Reformasi II', '(0761) 787600', '', 771, 0, 0, 0, '', '', '', '', '', ''),
+(10036, 'SMP Negeri 36 Pekanbaru', 'Jl. Repelita I, Tampan', '(0761) 880629', 'SMPN36PEKANBARU.RIAU@GMAIL.COM', 485, 0, 2000, 11, '0', '', '', '0', '', ''),
+(10037, 'SMP Negeri 37 Pekanbaru', 'Jl. Garuda, Tangkerang Tengah', NULL, 'smpn37pku@gmail.com', 628, 0, 9900, 11, '0', '', '', '0', '', ''),
+(10038, 'SMP Negeri 38 Pekanbaru', 'Jl. Tuah Sekata, Rejosari', '(0761) 26458', 'smp38pku@yahoo.com', 386, 0, 10000, 7, '0', '', '', '1', '', ''),
+(10039, 'SMP Negeri 39 Pekanbaru', 'Jl. Seroja, Sialang Rampai', NULL, 'smp39pekanbaru@yahoo.co.id', 550, 0, 10500, 15, '0', '', '', '0', '', ''),
+(10040, 'SMP Negeri 40 Pekanbaru', 'Jl. Garuda Sakti, Simpang Baru', '(0761) 8417947', 'smpn40.pekanbaru@gmail.com', 544, 0, 750, 13, '1', '', '', '0', '', ''),
+(10041, 'SMP Negeri Madani Pekanbaru', 'Jl. Kasah, Maharatu', '(0761) 21085', 'sugengbw@yahoo.com', 81, 0, 2000, 4, '1', '', '', '1', '', ''),
+(10042, 'SMP Negeri 42 Pekanbaru', 'Jl. Dt. Tunggul, Sidomulyo Barat', NULL, 'smpn42pku@gmail.com', 148, 0, 8568, 4, '', '', '', '', '', ''),
+(10043, 'SMP Negeri 43 Pekanbaru', 'Jl. Pemudi, Payung Sekaki', NULL, '', 56, 0, 1000, 2, '0', '', '', '0', '', ''),
+(10044, 'SMP Negeri 44 Pekanbaru', 'Jl. Damai, Rumbai', NULL, '', 62, 0, 0, 0, '', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
