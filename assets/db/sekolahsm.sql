@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Feb 28, 2018 at 10:13 AM
+-- Generation Time: Feb 28, 2018 at 01:41 PM
 -- Server version: 5.5.16
 -- PHP Version: 5.3.8
 
@@ -502,6 +502,18 @@ INSERT INTO `siswa` (`nisn`, `nama_siswa`, `pass_siswa`, `alamat_siswa`, `id_skl
 ('9971848276', 'Ahmad Syukri', '1a067be8e9641193d9f8d4712a1d48c2', '', 0, 0, 'Bukhairi', 'Asni', 4, 'L', NULL, '', '081277828011'),
 ('9982583332', 'Rifdha Tambusai', 'f32369e992295b97337560732a2ab07d', '', 10035, 0, NULL, NULL, 4, 'P', NULL, '', '081910001866'),
 ('9990579707', 'Nurul Aini Supriyadi', '666ebf7600d770d789b01547700dd786', 'Jl. Adi Sucipto Komplek Bangau no.17', 10008, 0, 'Supriyadi Sukarna', 'Isbadria', 4, 'P', NULL, '', '081377081982');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `s_pegawai`
+--
+
+CREATE TABLE IF NOT EXISTS `s_pegawai` (
+  `status_akun` int(10) NOT NULL DEFAULT '0',
+  `nama_status` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`status_akun`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
