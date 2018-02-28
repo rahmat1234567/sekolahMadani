@@ -21,10 +21,10 @@ if($_GET['act']=="input"){
                             Input Nilai Ulangan Harian Siswa
                         </div>
                         <!-- /.panel-heading -->
-                        <div class="panel-body">
+                        <form method="post" role="form" action="././module/nilai/prosesulangan.php?aksi=tambah">
+						<div class="panel-body">
                             <div class="table-responsive">
 							<a href="#" class="btn btn-sm btn-info pull-right" style="margin-bottom: 1rem;">Tambah</a>
-							<form name="form">
                                 <table class="table table-striped table-bordered table-hover" id="input-nilai">
                                     <thead>
                                         <tr>
@@ -60,8 +60,8 @@ $noxxx++;
                             </div>
                             <!-- /.table-responsive --><center>
 							<button type="submit" class="btn btn-sm btn-info" style="background: green;">Simpan</button></center>
-							</form>
                         </div>
+						</form>
                         <!-- /.panel-body -->
                     </div>
                     <!-- /.panel -->
@@ -92,8 +92,7 @@ if($_GET['act']=="edit"){
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                             <div class="table-responsive">
-							<a href="#" class="btn btn-sm btn-info pull-right" style="margin-bottom: 1rem;">Tambah</a>
-							<form name="form">
+							<form method="post" name="formin" action="././module/nilai/prosestugas.php?aksi=update">
                                 <table class="table table-striped table-bordered table-hover" id="input-nilai">
                                     <thead>
                                         <tr>
@@ -115,7 +114,7 @@ $sql=mysql_query("select * from n_ulanganharian");
 									<tr class="odd gradeX">
 										<td><?php echo $no++; ?></td>
 										<td><?php echo"$rs[nisn]"; ?></td>
-										<td><input type="number" name="nilai_uh<?php echo $noxxx; ?>" min="0" max="100" type="text" pattern="[0-9]" value="<?php echo "$rs[nilai_uh]"; ?>" required/></td>
+										<td><input type="number" name="nilai_uh<?php echo $noxxx; ?>" min="0" max="100" type="text" pattern="[0-9]" value="<?php echo "$rs[nilai_uh1]"; ?>" required/></td>
 										<td><textarea class="form-control" placeholder="Keterangan" name="ket_uh" rows="2" value="<?php echo "$rs[ket_uh]"; ?>"></textarea></td>
 									</tr>
 

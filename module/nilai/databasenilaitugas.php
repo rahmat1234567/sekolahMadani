@@ -19,7 +19,7 @@ class database{
 		return $hasil;
 	}
 	
-	function input($nisn,$nama_tugas,$nilai_tugas,$ket){
+	function input($id_jadwal,$nisn,$nama_tugas,$nilai_tugas,$ket){
 		mysql_query("insert into n_tugas values('','$id_jadwal','$nisn','$nilai_tugas','$ket','$nama_tugas','')");
 	}
 	

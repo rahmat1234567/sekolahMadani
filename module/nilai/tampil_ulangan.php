@@ -45,8 +45,8 @@ $db = new database();
 											<td><?php echo"$rs[nilai_uh1]";  ?></td>
 											<td><?php echo"$rs[ket_uh]";  ?></td>
 											<td class="text-center">
-												<a href="./././admin.php?module=input_nilai&act=edit=<?php echo $rs['nisn'] ?>&level=<?php echo $level; ?>"><button type="button" class="btn btn-info">Edit</button></a> 
-												   <a data-toggle="modal" data-target="#modalHapus<?php echo $noxxx;?>" class="btn btn-danger" >Hapus</a>
+												<a href="./././admin.php?module=input_nilai&act=edit&id_nuh<?php echo $rs['id_nuh'] ?>&level=<?php echo $level; ?>"><button type="button" class="btn btn-info">Edit</button></a> 
+												<a href="././module/nilai/prosesulangan.php?aksi=hapus&id_nuh=<?php echo $rs['id_nuh'] ?>"><button type="button" class="btn btn-danger">Hapus</button></a>
 											</td>
                                         </tr>
 	<?php

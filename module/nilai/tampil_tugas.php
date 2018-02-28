@@ -47,8 +47,8 @@ $db = new database();
 											<td><?php echo"$rs[nilai_tugas]";  ?></td>
 											<td><?php echo"$rs[ket]";  ?></td>
 											<td class="text-center">
-												<a href="./././admin.php?module=input_nilaitugas&act=edit&nisn<?php echo $rs['nisn'] ?>&level=<?php echo $level; ?>"><button type="button" class="btn btn-info">Edit</button></a> 
-												<a href="././module/nilai/prosestugas.php?aksi=hapus&nisn=<?php echo $rs['nisn'] ?>"><button type="button" class="btn btn-danger">Hapus</button></a>
+												<a href="./././admin.php?module=input_nilaitugas&act=edit&id_ntugas<?php echo $rs['id_ntugas'] ?>&level=<?php echo $level; ?>"><button type="button" class="btn btn-info">Edit</button></a> 
+												<a href="././module/nilai/prosestugas.php?aksi=hapus&id_ntugas=<?php echo $rs['id_ntugas'] ?>"><button type="button" class="btn btn-danger">Hapus</button></a>
 											</td>
                                         </tr>
 	<?php

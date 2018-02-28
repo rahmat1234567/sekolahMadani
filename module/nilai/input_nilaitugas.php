@@ -94,12 +94,11 @@ if($_GET['act']=="edit"){
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                             <div class="table-responsive">
-							<a href="#" class="btn btn-sm btn-info pull-right" style="margin-bottom: 1rem;">Tambah</a>
-							<form method="post" name="formin" action="././module/sekolah/prosesnilaitugas.php?aksi=tambah">
+							<form method="post" name="formin" action="././module/nilai/prosestugas.php?aksi=update&id_jadwal=<?php echo $_GET['id_jadwal']; ?>">
                                 <table class="table table-striped table-bordered table-hover" id="input-nilai">
                                     <thead>
                                         <tr>
-											<th class="text-center" style="width: 10px;">NO</th>
+											<th class="text-center" style="width: 5%;">NO</th>
                                             <th class="text-center" >Nama</th>
 											<th class="text-center" >Nama Tugas</th>										
                                             <th class="text-center" style="width: 80px;">Nilai Tugas1</th>
@@ -111,7 +110,8 @@ if($_GET['act']=="edit"){
                                                                         
 <?php
 $no=1;
-$sql=mysql_query("select * from n_tugas");
+$p = $_GET['id_jadwal'];
+$sql=mysql_query("select * from n_tugas where id_jadwal=$p");
 
     $noxxx = 1;
 	while($rs=mysql_fetch_array($sql))
@@ -130,10 +130,11 @@ $noxxx++;
 ?>
                                     </tbody>
                                 </table>
-								</form>
+								
                             </div>
                             <!-- /.table-responsive --><center>
 							<button class="btn btn-sm btn-info" style="background: green;">Simpan</button></center>
+							</form>
                         </div>
                         <!-- /.panel-body -->
                     </div>
