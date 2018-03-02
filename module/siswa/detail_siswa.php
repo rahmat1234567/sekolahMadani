@@ -33,7 +33,7 @@
                                                 }
                                             ?>
                                             <center><img class="gambar" src="assets/img/<?php echo $foto; ?>" alt="" height="200px" style="padding-bottom: 10px;" /></center>
-                                            </div>
+                                        </div>
 
                                         <div class="form-group">
                                             <label>NISN</label>

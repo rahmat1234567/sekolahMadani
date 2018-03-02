@@ -48,14 +48,14 @@ if($rs['status_akun']==1){
 
 else{
 
-	$sqla=mysql_query("select * from staffit where id_staffit='$user' and pass_staffit='$pass'");
+	$sqla=mysql_query("select * from pegawai where nik='$user' and pass_pgw='$pass'");
 		$counta=mysql_num_rows($sqla);
 		$rsa=mysql_fetch_array($sqla);
 
 	if($rsa['status_akun']==2){
-				$_SESSION['id']=$rsa['id_staffit'];
-				$_SESSION['nama']=$rsa['nama_staffit'];
-				$_SESSION['telp']=$rsa['telp_staffit'];
+				$_SESSION['id']=$rsa['id_pgw'];
+				$_SESSION['nama']=$rsa['nama_pgw'];
+				$_SESSION['telp']=$rsa['telp_pgw'];
 				$_SESSION['jk']=$rsa['jk'];
 				$_SESSION['status']=$rsa['status_akun'];
 					$kode_sklh=$rsa['id_sklh']; 

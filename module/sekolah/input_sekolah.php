@@ -19,8 +19,6 @@ if($_GET['act']=="input"){
                                     <form method="post" role="form" action="././module/sekolah/prosessekolah.php?aksi=tambah">
 
                                 <div class="col-lg-6">
-                                        <div class="form-group">
-                                            <label>Kode Sekolah</label>
                                             <?php
                                                 $ssql=mysql_query("select * from sekolah");
                                                 $scount=mysql_num_rows($ssql);
@@ -31,7 +29,10 @@ if($_GET['act']=="input"){
                                                 $xx = 0;
                                                 $xx = $idid + 1;
                                             ?>
-                                            <input class="form-control" placeholder="Kode" name="id_sklh" value="<?php echo $xx; ?>" readonly>
+                                            <input class="form-control" type="hidden" name="id_sklh" value="<?php echo $xx; ?>">
+                                        <div class="form-group">
+                                            <label>Kode Sekolah</label>
+                                            <p class="form-control"><?php echo $xx; ?></p>
                                         </div>
                                         <div class="form-group">
                                             <label>Nama Sekolah</label>

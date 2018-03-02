@@ -7,7 +7,7 @@ if(empty($_SESSION['nama'])){
     header('location:index.php');
 }
 else{
-$uidi=$_SESSION['id'];	
+$uidi=$_SESSION['id'];  
 $usre=$_SESSION['nama'];
 $level=$_SESSION['status'];
 
@@ -55,24 +55,55 @@ include "config/conn.php";
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="admin.php?module=home">SEKOLAH SMART MADANI</a>
+                <center><a class="navbar-brand" href="admin.php?module=home">SEKOLAH SMART MADANI</a></center>
             </div>
             <!-- /.navbar-header -->
-
+<center>
             <ul class="nav navbar-top-links navbar-right">
+               
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                    <i class="fa fa-user">
-<?php 
-echo "User : $usre"; 
+<?php
+    $nama_hari = array("Minggu","Senin","Selasa","Rabu","Kamis","Jum\'at","Sabtu");
+    $hari      = date("w");
+    $hari_ini  = $nama_hari[$hari];
+    echo $hari_ini.", ".date("d-m-Y");
 ?> 
-
-                   </i></a>
+                   </a>
                 </li>
-       <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="" href="logout.php">
+                    <i class="fa fa-sign-out">
+<?php echo "Logout"; ?> 
+                   </i></a>
+                </li>  
+                <!-- /.dropdown -->
+            </ul>              
+</center>
+            <!-- /.navbar-top-links -->
+
+            <div class="navbar-default navbar-static-side" role="navigation">
+                <div class="sidebar-collapse">
+                    <ul class="nav" id="side-menu">
+                        <li class="nav nav-second-level" style="padding-top: 10px; padding-bottom: 10px; background-color: rgba(0,0,0,.04)"><center>
+                            <a style="font-family: helvetica; text-decoration: none; padding-right: 15px;" href="#">
 <?php 
-    echo "Login as - ";
+    date_default_timezone_set('Asia/Jakarta');
+    $hour = date("H");
+    $now  = "";
+    if(($hour>=19 && $hour<=24) || ($hour<4 && $hour>=0)){
+        $now = "Malam";
+    }
+    else if($hour>=4 && $hour<11){
+        $now = "Pagi";
+    }
+    else if($hour>=11 && $hour<15){
+        $now = "Siang";
+    }
+    else if($hour>=15 && $hour<19){
+        $now = "Sore";
+    }
+    echo "Selamat ".$now."<br>";
     if($level==1){
         echo "Admin";
     }
@@ -84,54 +115,28 @@ echo "User : $usre";
     if($level==3){
         echo "Guru $nmsklh";
         if($nmkls!=""){
-            echo ", Wali Kelas $nmkls";
+            echo ",<br>Wali Kelas $nmkls";
         }
     }
 
     if($level==4){
         echo "Siswa $nmsklh";
     }
-?> 
-                   </a>
+?>
+<br> 
+<i class="fa fa-user" style="font-size:130%; padding-left: 25px; padding-right: 15px;">
+<?php 
+echo "<span style='font-family: helvetica;'>$usre</span>"; 
+?> </i>
+                   </a></center>
                 </li>
-
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-<?php echo "Tanggal : ".date("d-m-Y"); ?> 
-                   </a>
-                </li>
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="" href="logout.php">
-                    <i class="fa fa-sign-out">
-<?php echo "Logout"; ?> 
-                   </i></a>
-                </li>                
-
-                <!-- /.dropdown -->
-            </ul>
-            <!-- /.navbar-top-links -->
-
-            <div class="navbar-default navbar-static-side" role="navigation">
-                <div class="sidebar-collapse">
-                    <ul class="nav" id="side-menu">
-                        <li class="sidebar-search">
-                            <div class="input-group custom-search-form">
-                                <input type="text" class="form-control" placeholder="Search...">
-                                <span class="input-group-btn">
-                                <button class="btn btn-default" type="button">
-                                    <i class="fa fa-search"></i>
-                                </button>
-                            </span>
-                            </div>
-                            <!-- /input-group -->
-                        </li>
 <?php if($level==1 or $level==2){ ?>
 
                         <li>
                             <a href="#"><i class="fa fa-dashboard fa-fw"></i> Data Siswa<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 
-                            	<?php if($level==2){ ?>
+                                <?php if($level==2){ ?>
                                 <li>
                                     <a href="admin.php?module=input_siswa&act=input">Input Data</a>
                                 </li>
@@ -164,7 +169,7 @@ echo "User : $usre";
                             <a href="#"><i class="fa fa-dashboard fa-fw"></i> Data Guru<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
 
-                            	<?php if($level==2){ ?>
+                                <?php if($level==2){ ?>
                                 <li>
                                     <a href="admin.php?module=input_guru&act=input">Input Data</a>
                                 </li>
@@ -183,10 +188,10 @@ echo "User : $usre";
                             <a href="#"><i class="fa fa-dashboard fa-fw"></i> Data Kelas<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <?php if($level!=3) { ?>
-								<li>
+                                <li>
                                     <a href="admin.php?module=input_kelas&act=input">Input Data</a>
                                 </li>
-								<?php } ?>
+                                <?php } ?>
                                 <li>
                                     <a href="admin.php?module=kelas">View Data</a>
                                 </li>
@@ -269,13 +274,13 @@ echo "User : $usre";
                                 <li>
                                     <a href="admin.php?module=nilai">Input Nilai Ulangan</a>
                                 </li>
-								<li>
+                                <li>
                                     <a href="admin.php?module=nilaitugas">Input Nilai Tugas</a>
                                 </li>
                                 <li>
                                     <a href="admin.php?module=tampil_ulangan">View Nilai Ulangan</a>
                                 </li>
-								<li>
+                                <li>
                                     <a href="admin.php?module=tampil_tugas">View Nilai Tugas</a>
                                 </li>
                             </ul>
@@ -310,10 +315,10 @@ echo "User : $usre";
                             <a href="#"><i class="fa fa-dashboard fa-fw"></i> Data Nilai</a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="admin.php?module=tampil_tugas">View Tugas</a>
+                                    <a href="admin.php?module=tugassiswa">View Tugas</a>
                                 </li>
                                 <li>
-                                    <a href="admin.php?module=tampil_ulangan">View Ulangan Harian</a>
+                                    <a href="admin.php?module=ulanganharian">View Ulangan Harian</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
