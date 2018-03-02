@@ -64,7 +64,7 @@ include "config/conn.php";
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
 <?php
-    $nama_hari = array("Minggu","Senin","Selasa","Rabu","Kamis","Jum\'at","Sabtu");
+    $nama_hari = array("Minggu","Senin","Selasa","Rabu","Kamis","Jum'at","Sabtu");
     $hari      = date("w");
     $hari_ini  = $nama_hari[$hari];
     echo $hari_ini.", ".date("d-m-Y");

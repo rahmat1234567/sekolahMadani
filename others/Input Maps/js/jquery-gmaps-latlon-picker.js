@@ -27,7 +27,7 @@ var GMapsLatLonPicker = (function() {
 		mapOptions : {
 			mapTypeId: google.maps.MapTypeId.ROADMAP,
 			mapTypeControl: true,
-			disableDoubleClickZoom: true,
+			disableDoubleClickZoom: false,
 			clickableIcons: false,
 			zoomControlOptions: true,
 			streetViewControl: false
