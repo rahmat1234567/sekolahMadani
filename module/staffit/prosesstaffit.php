@@ -5,14 +5,14 @@ $db = new database();
 $aksi = $_GET['aksi'];
 if($aksi == "tambah"){
 
-	$foto  = $_FILES['foto_staffit']['name'];
-	$tmp   = $_FILES['foto_staffit']['tmp_name'];
-	$namaa = $_POST['id_staffit'];
+	$foto  = $_FILES['foto_pgw']['name'];
+	$tmp   = $_FILES['foto_pgw']['tmp_name'];
+	$namaa = $_POST['nik'];
 	$path  = "../../assets/img/".$namaa;
 	$sss = move_uploaded_file($tmp, $path);
 	
-	$pass=md5($_POST['pass_staffit']);
-	$db->input($namaa,$_POST['nama_staffit'],$_POST['jk'],$_POST['alamat_staffit'],$_POST['pass_staffit'],$_POST['telp_staffit'],$_POST['id_sklh'],$_POST['status_akun']);
+	$pass=md5($_POST['pass_pgw']);
+	$db->input($namaa,$_POST['nama_pgw'],$_POST['jk'],$_POST['alamat_pgw'],$_POST['pass_pgw'],$_POST['telp_pgw'],$_POST['id_sklh'],$_POST['status_akun']);
 	
 	if($level==1){
         $nm_sklh=$nmsklh; 
@@ -22,11 +22,11 @@ if($aksi == "tambah"){
 		header("location:http://localhost/sekolahMadani/admin.php");
 	}
 	else {
-		header("location:http://localhost/smsku/sekolahMadani/admin.php?module=staffit");
+		header("location:http://localhost/smsku/sekolahMadani/admin.php?module=pgw");
 	}
 }
 elseif($aksi == "hapus"){
-	$db->hapus($_GET['id_staffit']);
+	$db->hapus($_GET['nik']);
 	if($level==1){
         $nm_sklh=$nmsklh; 
         $dsql=mysql_query("select id_sklh from sekolah where nama_sklh='$nm_sklh'");
@@ -35,7 +35,7 @@ elseif($aksi == "hapus"){
 		header("location:http://localhost/sekolahMadani/admin.php");
 	}
 	else {
-		header("location:http://localhost/smsku/sekolahMadani/admin.php?module=staffit");
+		header("location:http://localhost/smsku/sekolahMadani/admin.php?module=pgw");
 	}
 }
 elseif($aksi == "edit"){
@@ -53,19 +53,19 @@ elseif($aksi == "edit"){
 		}
 	}
 
-	$niis=$_POST['id_staffit'];
-	$asql=mysql_query("select pass_staffit from staffit where id_staffit='$niis'");
+	$niis=$_POST['nik'];
+	$asql=mysql_query("select pass_pgw from pgw where nik='$niis'");
     $acount=mysql_num_rows($dsql);
     $ars=mysql_fetch_array($dsql);
 
-    if($_POST['pass_staffit']==""){
-    	$passs=$ars['pass_staffit'];
+    if($_POST['pass_pgw']==""){
+    	$passs=$ars['pass_pgw'];
     }
     else{
-    	$passs=md5($_POST['pass_staffit']);
+    	$passs=md5($_POST['pass_pgw']);
     }
 
-	$db->update($namaa,$_POST['foto_staffit'],$_POST['nama_staffit'],$_POST['jk'],$_POST['alamat_staffit'],$_POST['pass_staffit'],$_POST['telp_staffit'],$_POST['id_sklh'],$_POST['status_akun']);
+	$db->update($namaa,$_POST['foto_pgw'],$_POST['nama_pgw'],$_POST['jk'],$_POST['alamat_pgw'],$_POST['pass_pgw'],$_POST['telp_pgw'],$_POST['id_sklh'],$_POST['status_akun']);
 	
     if($level==1){
         $nm_sklh=$nmsklh; 
@@ -75,7 +75,7 @@ elseif($aksi == "edit"){
 		header("location:http://localhost/sekolahMadani/admin.php");
 	}
 	else {
-		header("location:http://localhost/smsku/sekolahMadani/admin.php?module=staffit");
+		header("location:http://localhost/smsku/sekolahMadani/admin.php?module=pgw");
 	}
 }
 ?>

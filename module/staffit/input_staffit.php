@@ -39,7 +39,7 @@ if($_GET['act']=="input"){
 	?>
           <div class="row">
                 <div class="col-lg-12">
-					<h3 class="page-header"><strong>Input Data Staff IT</strong></h3>
+					<h3 class="page-header"><strong>Input Data Pegawai IT</strong></h3>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -48,7 +48,7 @@ if($_GET['act']=="input"){
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Input Data Staff IT
+                            Input Data Pegawai IT
                         </div>
                         <div class="panel-body">
                             <div class="row">
@@ -56,11 +56,11 @@ if($_GET['act']=="input"){
                                     onSubmit="
 
                                     var nohpValid = /^[0-9\-]*$/;
-                                    var nohp      = formin.telp_staffit.value;
-                                    var pass      = formin.pass_staffit.value;
-                                    var pass1     = formin.pass_staffit1.value;
+                                    var nohp      = formin.telp_pgw.value;
+                                    var pass      = formin.pass_pgw.value;
+                                    var pass1     = formin.pass_pgw1.value;
                                     var namaValid = /^[a-zA-Z]+(([\'\,\.\- ][a-zA-Z ])?[a-zA-Z]*)*$/;
-                                    var nama      = formin.nama_staffit.value;
+                                    var nama      = formin.nama_pgw.value;
                                     var alamat    = formin.alamat_siswa.value;
                                     var nisnValid = /^[0-9]*$/;
                                     var sklh     = formin.id_sklh.value;
@@ -107,11 +107,11 @@ if($_GET['act']=="input"){
                                             <label>Foto</label>
 
                                             <center><img id="previews" src="" alt="" height="200px" style="padding-bottom: 10px;" /></center>
-                                            <input id="file" type="file" name='foto_staffit' accept="image/*" onchange="preview_photo(this,'previews');">
+                                            <input id="file" type="file" name='foto_pgw' accept="image/*" onchange="preview_photo(this,'previews');">
                                         </div>
                                         <div class="form-group">
                                             <label>Nama</label>
-                                            <input class="form-control" placeholder="Nama" name="nama_staffit" required>
+                                            <input class="form-control" placeholder="Nama" name="nama_pgw" required>
                                         </div>
                                         <div class="form-group">
                                             <label>Jenis Kelamin</label>
@@ -130,24 +130,24 @@ if($_GET['act']=="input"){
                                         </div>
 										<div class="form-group">
                                             <label>Alamat</label>
-                                            <textarea class="form-control" placeholder="Alamat" name="alamat_staffit" rows="3" required="required"></textarea>
+                                            <textarea class="form-control" placeholder="Alamat" name="alamat_pgw" rows="3" required="required"></textarea>
                                         </div>
 								</div>
 
                                 <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>Password</label>
-                                            <input class="form-control" placeholder="Password" name="pass_staffit" type="password" required>
+                                            <input class="form-control" placeholder="Password" name="pass_pgw" type="password" required>
                                         </div>
                                         
                                         <div class="form-group">
                                             <label>Ulangi Password</label>
-                                            <input class="form-control" placeholder="Password" name="pass_staffit1" type="password" required>
+                                            <input class="form-control" placeholder="Password" name="pass_pgw1" type="password" required>
                                         </div>
 
                                         <div class="form-group">
                                             <label>No Telepon</label>
-                                            <input class="form-control" placeholder="No Telp" name="telp_staffit" required>
+                                            <input class="form-control" placeholder="No Telp" name="telp_pgw" required>
                                         </div>
 										<div class="form-group">
                                             <label>Sekolah</label>
@@ -217,24 +217,26 @@ if($_GET['act']=="edit"){
                         <div class="panel-body">
                             <div class="row">
 <?php                            
-                            	$sql=mysql_query("select * from staffit where id_staffit='$_GET[id_staffit]'");
+                            	$sql=mysql_query("select * from pegawai where nik='$_GET[nik]'");
 								$rs=mysql_fetch_array($sql);
 ?>
                                     <form method="post" role="form" action="././module/staffit/prosesstaffit.php?aksi=edit">
-<input type="hidden" name="id_staffit" value="<?php echo $_GET['id_staffit'] ?>" />
+<input type="hidden" name="nik" value="<?php echo $_GET['nik'] ?>" />
                                 <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>FOTO</label>
-                                            <input style="padding-bottom:3%;" type="file" name="foto_staffit" value="<?php echo "$rs[foto_staffit]"; ?>" >
+                                            <input style="padding-bottom:3%;" type="file" name="foto_pgw" value="<?php echo "$rs[foto_pgw]"; ?>" >
                                         </div>
                                         <div class="form-group">
                                             <label>Nama</label>
-                                            <input class="form-control" placeholder="Nama" name="nama_staffit" value="<?php echo "$rs[nama_staffit]"; ?>">
+                                            <input class="form-control" placeholder="Nama" name="nama_pgw" value="<?php echo "$rs[nama_pgw]"; ?>">
                                         </div>
                                         <div class="form-group">
-         
-                                           <label>Jenis Kelamin</label>
-        <?php if($rs['jk']=="L"){ ?>
+                                             <label>Jenis Kelamin</label>
+
+                                        <?php 
+if($rs['jk']=="L"){
+?>
                                             <div class="radio">
                                                 <label>
                                                     <input type="radio" name="jk" value="L" 
@@ -266,21 +268,21 @@ if($_GET['act']=="edit"){
 <?php } ?>
 										<div class="form-group">
                                             <label>Alamat</label>
-                                            <?php $almt=$rs["alamat_staffit"]; ?>
-                                            <textarea class="form-control" placeholder="Alamat" name="alamat_staffit" value="<?php echo $almt; ?>" rows="3"></textarea>
+                                            <?php $almt=$rs["alamat_pgw"]; ?>
+                                            <textarea class="form-control" placeholder="Alamat" name="alamat_pgw" value="<?php echo $almt; ?>" rows="3"></textarea>
                                         </div>
 </div>
 
                                 <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>Password</label>
-                                            <input class="form-control" placeholder="Password" name="pass_staffit" type="password" value="">
-                                            <input class="form-control" type="hidden" name="pass_lama" value="<?php echo "$rs[pass_staffit]"; ?>">
+                                            <input class="form-control" placeholder="Password" name="pass_pgw" type="password" value="">
+                                            <input class="form-control" type="hidden" name="pass_lama" value="<?php echo "$rs[pass_pgw]"; ?>">
                                         </div>
                                         
                                         <div class="form-group">
                                             <label>No Telepon</label>
-                                            <input class="form-control" placeholder="No Telp" name="telp_staffit" value="<?php echo "$rs[telp_staffit]"; ?>">
+                                            <input class="form-control" placeholder="No Telp" name="telp_pgw" value="<?php echo "$rs[telp_pgw]"; ?>">
                                         </div>
 										<div class="form-group">
                                             <label>Sekolah</label>

@@ -7,14 +7,14 @@ $db = new database();
 
 <form action="prosesstaffit.php?aksi=update" method="post">
 <?php
-foreach($db->edit($_GET['id_staffit']) as $d){
+foreach($db->edit($_GET['nik']) as $d){
 	?>
 	<table>
 	<tr>
 		<td>Nama Staff IT</td>
 		<td>
-			<input type="hidden" name="id_staffit" value="<?php echo $d['id_staffit'] ?>">
-			<input type="text" name="nama_staffit" value="<?php echo $d['nama_staffit'] ?>">
+			<input type="hidden" name="nik" value="<?php echo $d['nik'] ?>">
+			<input type="text" name="nama_pgw" value="<?php echo $d['nama_pgw'] ?>">
 		</td>
 	</tr>
 	<tr>
@@ -26,17 +26,17 @@ foreach($db->edit($_GET['id_staffit']) as $d){
 	<tr>
 		<td>Password</td>
 		<td>
-			<input type="text" name="pass_staffit">
-			<input type="hidden" name="pass_lama" value="<?php echo $d['pass_staffit'] ?>">
+			<input type="text" name="pass_pgw">
+			<input type="hidden" name="pass_lama" value="<?php echo $d['pass_pgw'] ?>">
 		</td>
 	</tr>
 	<tr>
 		<td>Alamat</td>
-		<td><input type="text" name="alamat_staffit" value="<?php echo $d['alamat_staffit'] ?>"></td>
+		<td><input type="text" name="alamat_pgw" value="<?php echo $d['alamat_pgw'] ?>"></td>
 	</tr>
 	<tr>
 		<td>Telp Staff IT</td>
-		<td><input type="text" name="telp_staffit" value="<?php echo $d['telp_staffit'] ?>"></td>
+		<td><input type="text" name="telp_pgw" value="<?php echo $d['telp_pgw'] ?>"></td>
 	</tr>
 		<tr>
 			<td></td>

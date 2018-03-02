@@ -12,31 +12,31 @@ class database{
 	}
 	
 	function tampil_data(){
-		$data=mysql_query("select * from staffit");
+		$data=mysql_query("select * from pegawai");
 		while($d = mysql_fetch_array($data)){
 			$hasil[]=$d;
 		}
 		return $hasil;
 	}
 	
-	function input($id_staffit,$foto_staffit,$nama_staffit,$jk,$alamat_staffit,$pass_staffit,$telp_staffit,$id_sklh,$status_akun){
-		mysql_query("insert into staffit values('$id_staffit','$nama_staffit','$pass_staffit','$id_sklh','$telp_staffit','$alamat_staffit','$status_akun','$jk','$foto_staffit')");
+	function input($nik,$foto_pgw,$nama_pgw,$jk,$alamat_pgw,$pass_pgw,$telp_pgw,$id_sklh,$status_akun){
+		mysql_query("insert into pgw values('$nik','$nama_pgw','$pass_pgw','$id_sklh','$telp_pgw','$alamat_pgw','$status_akun','$jk','$foto_pgw')");
 	}
 	
-	function hapus($id_staffit){
-		mysql_query("delete from staffit where id_staffit='$id_staffit'");
+	function hapus($nik){
+		mysql_query("delete from pgw where nik='$nik'");
 	}
 	
-	function edit($id_staffit){
-		$data = mysql_query("select * from staffit where id_staffit='$id_staffit'");
+	function edit($nik){
+		$data = mysql_query("select * from pgw where nik='$nik'");
 		while($d = mysql_fetch_array($data)){
 			$hasil[] = $d;
 		}
 		return $hasil;
 	}
 	
-	function update($foto_staffit,$nama_staffit,$jk,$alamat_staffit,$pass_staffit,$telp_staffit,$id_sklh,$status_akun){
-		mysql_query("update staffit set foto_staffit='$foto_staffit',nama_staffit='$nama_staffit',jk='$jk',alamat_staffit='$alamat_staffit',pass_staffit='$pass_staffit',telp_staffit='$telp_staffit',id_sklh='$id_sklh',status_akun='$status_akun' where id_staffit='$id_staffit'");
+	function update($foto_pgw,$nama_pgw,$jk,$alamat_pgw,$pass_pgw,$telp_pgw,$id_sklh,$status_akun){
+		mysql_query("update pgw set foto_pgw='$foto_pgw',nama_pgw='$nama_pgw',jk='$jk',alamat_pgw='$alamat_pgw',pass_pgw='$pass_pgw',telp_pgw='$telp_pgw',id_sklh='$id_sklh',status_akun='$status_akun' where nik='$nik'");
 	}
 }
 ?>
