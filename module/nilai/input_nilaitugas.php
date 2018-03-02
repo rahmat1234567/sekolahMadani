@@ -85,7 +85,7 @@ $noxxx++;
 		$(document).on('click', '.add', function() {
 			var html = '';
 			html += '<div class="panel panel-default">';
-				html += '<div class="panel-heading">Mengisi Nilai Tugas Harian Siswa <button class="btn btn-sm btn-danger pull-right remove" name="remove" style="margin-top: -0.5rem;"><i class="fa fa-minus"></i></button></div>';
+				html += '<div class="panel-heading">Mengisi Nilai Tugas <button class="btn btn-sm btn-danger pull-right remove" name="remove" style="margin-top: -0.5rem;"><i class="fa fa-minus"></i></button></div>';
 				
 				html += '<div class="col-md-5">'
 					html += '<input type="text" class="form-control pull-left" style="margin-bottom: 15px; margin-top: 15px;" placeholder="Nama Tugas" name="nama_tugas"/>';

@@ -2,6 +2,11 @@
 <html>
 	<head>
 		<title>Contoh Script Input Koordinat Google Map dengan Cara Geser Marker</title>
+		<?php if($x==""){ ?>
+			<script type="text/javascript" src="../../../assets/js/jquery-1.10.2.js"></script>
+			<link rel="stylesheet" type="text/css" href="../../../assets/css/jquery-gmaps-latlon-picker.css"/>
+			<script type="text/javascript" src="../../../assets/js/jquery-gmaps-latlon-picker.js"></script>
+		<?php } ?>
 		<script src="http://maps.googleapis.com/maps/api/js?sensor=false&file=api&v=2&key=AIzaSyDAfxPmcZmE6WBOWH_OjUjFqFvSdPtXWaQ"></script>
 	</head>
 	<style type="text/css">

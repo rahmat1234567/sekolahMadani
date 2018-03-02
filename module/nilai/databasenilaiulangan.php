@@ -12,14 +12,14 @@ class database{
 	}
 	
 	function tampil_data(){
-		$data=mysql_query("select * from n_ulanganharian");
+		$data=mysql_query("SELECT * FROM n_ulanganharian WHERE nilai_uh1 IS NOT NULL OR nilai_uh2 IS NOT NULL OR nilai_uh3 IS NOT NULL OR nilai_uh4 IS NOT NULL OR nilai_uh5 IS NOT NULL OR nilai_uh6 IS NOT NULL  OR nilai_uh7 IS NOT NULL OR nilai_uh8 IS NOT NULL ");
 		while($d = mysql_fetch_array($data)){
 			$hasil[]=$d;
 		}
 		return $hasil;
 	}
 	
-	function input($nisn,$nilai_uh1,$ket_uh){
+	function input($id_jadwal,$nisn,$nilai_uh1,$nilai_uh2,$nilai_uh3,$nilai_uh4,$nilai_uh5,$nilai_uh6,$nilai_uh7,$nilai_uh8,$ket_uh){
 		mysql_query("insert into n_ulanganharian values('','$id_jadwal','$nisn','$id_kls','$nilai_uh1','$nilai_uh2','$nilai_uh3','$nilai_uh4','$nilai_uh5','$nilai_uh6','$nilai_uh7','$nilai_uh8','$ket_uh')");
 	}
 	
@@ -35,7 +35,7 @@ class database{
 		return $hasil;
 	}
 	
-	function update($nisn,$nilai_uh1,$ket_uh){
+	function update($id_jadwal,$nisn,$nilai_uh1,$nilai_uh2,$nilai_uh3,$nilai_uh4,$nilai_uh5,$nilai_uh6,$nilai_uh7,$nilai_uh8,$ket_uh){
 		mysql_query("update n_ulanganharian set nisn='$nisn',nilai_uh1='$nilai_uh1',nilai_uh2='$nilai_uh2',nilai_uh3='$nilai_uh3',nilai_uh4='$nilai_uh4',nilai_uh5='$nilai_uh5',nilai_uh6='$nilai_uh6',nilai_uh7='$nilai_uh7',nilai_uh8='$nilai_uh8',ket_uh='$ket_uh' where id_nuh='$id_nuh'");
 	}
 }
