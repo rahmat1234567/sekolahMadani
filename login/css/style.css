@@ -97,57 +97,67 @@ body {
 .info-container a:hover {
   opacity: 1;
 }
-.main-container.loaded .loader-container {
+.main-container .loader-container {
   display: none;
 }
-.main-container.loaded .img,
-.main-container.loaded .info-container {
+.main-container .img,
+.main-container .info-container {
   opacity: 1;
 }
-.main-container.loaded .title {
+.main-container.title {
   opacity: 0;
 }
-.main-container.loaded .img-1 {
-  background-image: url(https://i.imgur.com/E979fYD.jpg);
+.main-container .img-1 {
+  background: url('../img/smp2.jpg');
+  background-size: cover;
+  background-position: 50% 50%;
   animation: kenburns-top 6s linear both reverse 0.5s, fade-out 2s ease-in forwards 5.5s;
   z-index: 5;
 }
-.main-container.loaded .img-2 {
-  background-image: url(https://i.imgur.com/bPMOXRj.jpg);
+.main-container .img-2 {
+  background: url('../img/smp3.jpg');
+  background-size: cover;
+  background-position: 50% 50%;
   animation: kenburns-bottom 6s linear both 5.5s, fade-out 2s ease-in forwards 10.5s;
   z-index: 4;
 }
-.main-container.loaded .img-3 {
-  background-image: url(https://i.imgur.com/jBcdUow.jpg);
+.main-container .img-3 {
+  background: url('../img/smp5.jpg');
+  background-size: cover;
+  background-position: 50% 50%;
   animation: kenburns-right 6s linear both reverse 10.5s, fade-out 2s ease-in forwards 15.5s;
   z-index: 3;
 }
-.main-container.loaded .img-4 {
-  background-image: url(https://i.imgur.com/4vMEDIf.jpg);
+.main-container .img-4 {
+  background: url('../img/smp6.jpg');
+  background-size: cover;
+  background-position: 50% 50%;
   animation: kenburns-left 6s linear both 15.5s, fade-out 2s ease-in forwards 20.5s;
   z-index: 2;
 }
-.main-container.loaded .img-5 {
-  background-image: url(https://i.imgur.com/VHHfdZH.jpg);
+.main-container .img-5 {
+  background: url('../img/smp25.jpg');
+  background-size: cover;
+  background-position: 50% 50%;
   animation: kenburns-right 7s linear both reverse 20.5s, fade-out 3s ease-in forwards 24.5s;
   z-index: 1;
 }
-.main-container.loaded .title-1 {
+.main-container .title-1 {
   animation: focus-in-contract 1.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards 1.8s, text-blur-out 1.2s ease-in forwards 5.5s;
 }
-.main-container.loaded .title-2 {
+.main-container .title-2 {
   animation: focus-in-contract 1.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards 6.8s, text-blur-out 1.2s ease-in forwards 10.5s;
 }
-.main-container.loaded .title-3 {
+.main-container .title-3 {
   animation: focus-in-contract 1.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards 11.8s, text-blur-out 1.2s ease-in forwards 15.5s;
 }
-.main-container.loaded .title-4 {
+.main-container .title-4 {
   animation: focus-in-contract 1.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards 16.8s, text-blur-out 1.2s ease-in forwards 20.5s;
 }
-.main-container.loaded .title-5 {
+.main-container .title-5 {
   animation: focus-in-contract 1.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards 21.8s, text-blur-out 1.6s ease-in forwards 25.5s;
 }
-.main-container.loaded .info-container {
+.main-container .info-container {
   opacity: 0;
   animation: slide-in-bottom 12s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards 26.5s;
 }
