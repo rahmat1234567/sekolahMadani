@@ -31,7 +31,7 @@ include "config/conn.php";
 
     <!-- Core CSS - Include with every page -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
-
+    <link href="assets/css/jquery-gmaps-latlon-picker.css" rel="stylesheet">
     <link href="assets/css/custom-css.css" rel="stylesheet">
     <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet">
 
@@ -40,6 +40,7 @@ include "config/conn.php";
 
     <!-- SB Admin CSS - Include with every page -->
     <link href="assets/css/sb-admin.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="assets/css/jquery-gmaps-latlon-picker.css">
 
 </head>
 
@@ -64,7 +65,7 @@ include "config/conn.php";
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
 <?php
-    $nama_hari = array("Minggu","Senin","Selasa","Rabu","Kamis","Jum\'at","Sabtu");
+    $nama_hari = array("Minggu","Senin","Selasa","Rabu","Kamis","Jum'at","Sabtu");
     $hari      = date("w");
     $hari_ini  = $nama_hari[$hari];
     echo $hari_ini.", ".date("d-m-Y");
@@ -343,8 +344,12 @@ echo "<span style='font-family: helvetica;'>$usre</span>";
 
     <!-- Core Scripts - Include with every page -->
     <script src="assets/js/jquery-1.10.2.js"></script>
+    <script src="assets/js/jquery-gmaps-latlon-picker.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
     <script src="assets/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+
+        <script type="text/javascript" src="assets/js/jquery-1.10.2.js"></script>
+        <script type="text/javascript" src="assets/js/jquery-gmaps-latlon-picker.js"></script>
 
     <!-- Page-Level Plugin Scripts - Tables -->
     <script src="assets/js/plugins/dataTables/jquery.dataTables.js"></script>

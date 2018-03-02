@@ -1,3 +1,9 @@
+<!--
+<script type="text/javascript" src="maps/js/jquery-1.7.2.min.js"></script>
+<link rel="stylesheet" type="text/css" href="maps/css/jquery-gmaps-latlon-picker.css"/>
+<script type="text/javascript" src="maps/js/jquery-gmaps-latlon-picker.js"></script>
+<script src="http://maps.googleapis.com/maps/api/js?sensor=false&file=api&v=2&key=AIzaSyAXI2z-oCbyiz4Q21xANCbfU6oByBydmaM"></script>
+-->
 <?php
 if($_GET['act']=="input"){
 	?>
@@ -112,6 +118,16 @@ if($_GET['act']=="edit_sekolah"){
                                         </div>
 
                                         <button type="submit" class="btn btn-default">Submit Button</button>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <fieldset class="gllpLatlonPicker">
+                                            <div class="gllpMap">Google Maps</div>
+                                            Latitude : <input type="text" name="lati" class="gllpLatitude" value="0.5070628154890728" readonly/>
+                                            Longitude : <input type="text" name="longi" class="gllpLongitude" value="101.44805035605714" readonly/>
+                                            Zoom : <input type="hidden" name="zoom" class="gllpZoom" value="11"/>
+                                        </fieldset>
+                                    </div>
                                 </div>
                                 <!-- /.col-lg-6 (nested) -->
                                     </form>
