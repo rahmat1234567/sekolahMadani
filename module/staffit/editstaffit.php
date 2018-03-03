@@ -35,7 +35,7 @@ foreach($db->edit($_GET['nik']) as $d){
 		<td><input type="text" name="alamat_pgw" value="<?php echo $d['alamat_pgw'] ?>"></td>
 	</tr>
 	<tr>
-		<td>Telp Staff IT</td>
+		<td>Telp Pegawai IT</td>
 		<td><input type="text" name="telp_pgw" value="<?php echo $d['telp_pgw'] ?>"></td>
 	</tr>
 		<tr>

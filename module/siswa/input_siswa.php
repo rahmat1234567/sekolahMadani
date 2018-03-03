@@ -360,7 +360,8 @@ if($rs['jk']=="L"){
 ?>
                                             <div class="radio">
                                                 <label>
-                                                    <input type="radio" name="jk" value="L" checked>Laki - Laki
+                                                    <input type="radio" name="jk" value="L" 
+                                                    checked>Laki - Laki
                                                 </label>
                                             </div>
                                             <div class="radio">

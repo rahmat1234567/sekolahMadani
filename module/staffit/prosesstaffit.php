@@ -7,7 +7,7 @@ if($aksi == "tambah"){
 
 	$foto  = $_FILES['foto_pgw']['name'];
 	$tmp   = $_FILES['foto_pgw']['tmp_name'];
-	$namaa = $_POST['nik'];
+	$namaa = $_POST['id_pgw'];
 	$path  = "../../assets/img/".$namaa;
 	$sss = move_uploaded_file($tmp, $path);
 	
@@ -22,7 +22,7 @@ if($aksi == "tambah"){
 		header("location:http://localhost/sekolahMadani/admin.php");
 	}
 	else {
-		header("location:http://localhost/smsku/sekolahMadani/admin.php?module=pgw");
+		header("location:http://localhost/smsku/sekolahMadani/admin.php?module=staffit");
 	}
 }
 elseif($aksi == "hapus"){
@@ -35,7 +35,7 @@ elseif($aksi == "hapus"){
 		header("location:http://localhost/sekolahMadani/admin.php");
 	}
 	else {
-		header("location:http://localhost/smsku/sekolahMadani/admin.php?module=pgw");
+		header("location:http://localhost/smsku/sekolahMadani/admin.php?module=staffit");
 	}
 }
 elseif($aksi == "edit"){
@@ -54,7 +54,7 @@ elseif($aksi == "edit"){
 	}
 
 	$niis=$_POST['nik'];
-	$asql=mysql_query("select pass_pgw from pgw where nik='$niis'");
+	$asql=mysql_query("select pass_pgw from pegawai where nik='$niis'");
     $acount=mysql_num_rows($dsql);
     $ars=mysql_fetch_array($dsql);
 
@@ -75,7 +75,7 @@ elseif($aksi == "edit"){
 		header("location:http://localhost/sekolahMadani/admin.php");
 	}
 	else {
-		header("location:http://localhost/smsku/sekolahMadani/admin.php?module=pgw");
+		header("location:http://localhost/smsku/sekolahMadani/admin.php?module=staffit");
 	}
 }
 ?>
