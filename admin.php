@@ -348,15 +348,14 @@ echo "<span style='font-family: helvetica;'>$usre</span>";
     <script src="assets/js/bootstrap.min.js"></script>
     <script src="assets/js/plugins/metisMenu/jquery.metisMenu.js"></script>
 
-        <script type="text/javascript" src="assets/js/jquery-1.10.2.js"></script>
-        <script type="text/javascript" src="assets/js/jquery-gmaps-latlon-picker.js"></script>
-
     <!-- Page-Level Plugin Scripts - Tables -->
     <script src="assets/js/plugins/dataTables/jquery.dataTables.js"></script>
     <script src="assets/js/plugins/dataTables/dataTables.bootstrap.js"></script>
 
     <!-- SB Admin Scripts - Include with every page -->
     <script src="assets/js/sb-admin.js"></script>
+
+        <script type="text/javascript" src="assets/js/jquery-gmaps-latlon-picker.js"></script>
 
     <!-- Page-Level Demo Scripts - Tables - Use for reference -->
     <script>
