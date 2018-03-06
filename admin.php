@@ -3,9 +3,30 @@ session_start();
 if($_SESSION['enc']==0){
     header('location:https://www.youtube.com/watch?v=PWmfNeLs7fA');
 }
-if(empty($_SESSION['nama'])){
-    header('location:index.php');
+
+$timeout = 10;
+$logout_dir = "logout.php";
+
+$timeout = $timeout * 60;
+if (isset($_SESSION['_start'])) {
+    $elaps = time() - $_SESSION['_start'];
+    if($elaps > $timeout){
+        echo "
+        <script>
+            alert('Anda terlalu lama AFK, silakan login kembali');
+            window.location = '$logout_dir';
+        </script>";
+    }
 }
+
+$_SESSION['_start'] = time();
+
+if(empty($_SESSION['nama'])){
+    header('location:logout.php');
+}
+
+
+
 else{
 $uidi=$_SESSION['id'];  
 $usre=$_SESSION['nama'];
@@ -297,12 +318,12 @@ echo "<span style='font-family: helvetica;'>$usre</span>";
 <?php } ?>
 <?php if($level==3){ ?>
                         <li>
-                            <a href="admin.php?module=guru_det"><i class="fa fa-dashboard fa-fw"></i> Data Guru</a>
+                            <a href="admin.php?module=detail_guru&act=details&nip=<?php echo $uidi; ?>"><i class="fa fa-dashboard fa-fw"></i> Data Guru</a>
                         </li>
 <?php } ?>
 <?php if($level==4){ ?>
                         <li>
-                            <a href="admin.php?module=siswa_det"><i class="fa fa-dashboard fa-fw"></i> Data Siswa</a>
+                            <a href="admin.php?module=detail_siswa&act=details&nisn=<?php echo $uidi; ?>"><i class="fa fa-dashboard fa-fw"></i> Data Siswa</a>
                         </li>
 <?php } ?>
 
@@ -348,15 +369,14 @@ echo "<span style='font-family: helvetica;'>$usre</span>";
     <script src="assets/js/bootstrap.min.js"></script>
     <script src="assets/js/plugins/metisMenu/jquery.metisMenu.js"></script>
 
-        <script type="text/javascript" src="assets/js/jquery-1.10.2.js"></script>
-        <script type="text/javascript" src="assets/js/jquery-gmaps-latlon-picker.js"></script>
-
     <!-- Page-Level Plugin Scripts - Tables -->
     <script src="assets/js/plugins/dataTables/jquery.dataTables.js"></script>
     <script src="assets/js/plugins/dataTables/dataTables.bootstrap.js"></script>
 
     <!-- SB Admin Scripts - Include with every page -->
     <script src="assets/js/sb-admin.js"></script>
+
+        <script type="text/javascript" src="assets/js/jquery-gmaps-latlon-picker.js"></script>
 
     <!-- Page-Level Demo Scripts - Tables - Use for reference -->
     <script>
