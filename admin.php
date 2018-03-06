@@ -243,7 +243,7 @@ echo "<span style='font-family: helvetica;'>$usre</span>";
 <?php if($level==1){ ?>
 
                           <li>
-                            <a href="#"><i class="fa fa-dashboard fa-fw"></i> Data Staff IT<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-dashboard fa-fw"></i> Data Pegawai<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
                                     <a href="admin.php?module=input_staffit&act=input">Input Data</a>
