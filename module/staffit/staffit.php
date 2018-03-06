@@ -1,6 +1,6 @@
             <div class="row">
                 <div class="col-lg-12">
-					<h3 class="page-header"><strong>Data Staff IT</strong></h3>
+					<h3 class="page-header"><strong>Data Pegawai Sekolah</strong></h3>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -9,7 +9,7 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Data Staff IT
+                            Data Pegawai Sekolah
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
@@ -42,9 +42,9 @@ $db = new database();
 //if($level==1 and $level==2){
 
     ?>                                        <tr class="odd gradeX">											
-												<td><?php echo"$rs[foto_staffit]";  ?></td>
-												<td><?php echo"$rs[id_staffit]"; ?></td>
-                                                <td><?php echo"$rs[nama_staffit]";  ?></td>
+												<td><?php echo"$rs[foto_pgw]";  ?></td>
+												<td><?php echo"$rs[nik]"; ?></td>
+                                                <td><?php echo"$rs[nama_pgw]";  ?></td>
     <?php
     if($rs['jk']=="L"){
     ?>
@@ -56,8 +56,8 @@ $db = new database();
     <?php
     }
     ?>
-												<td><?php echo"$rs[telp_staffit]";  ?></td>
-                                                <td><?php echo"$rs[alamat_staffit]";  ?></td>
+												<td><?php echo"$rs[telp_pgw]";  ?></td>
+                                                <td><?php echo"$rs[alamat_pgw]";  ?></td>
                                                 <?php $kode_sklh=$rs['id_sklh']; 
                                                     $sqlzz=mysql_query("select nama_sklh from sekolah where id_sklh='$kode_sklh'");
                                                     $countzz=mysql_num_rows($sqlzz);
@@ -77,10 +77,10 @@ $db = new database();
     ?>                                            
                                                <?php if($level==1){ ?> 
                                              <td class="text-center"> 
-    										 <a href="./././admin.php?module=input_staffit&act=edit&id_staffit=<?php echo $rs['id_staffit'] ?>">
+    										 <a href="./././admin.php?module=input_staffit&act=edit&nik=<?php echo $rs['nik'] ?>">
     										 <button type="button" class="btn btn-info">Edit</button> 
     										 
-    										 <a href="././module/staffit/prosesstaffit.php?id_staffit=<?php echo $rs['id_staffit'] ?>&aksi=hapus">
+    										 <a href="././module/staffit/prosesstaffit.php?nik=<?php echo $rs['nik'] ?>&aksi=hapus">
     										 <button type="button" class="btn btn-danger">Hapus</button></a></td>
                                              <?php } ?>
                                             </tr>
