@@ -203,7 +203,7 @@ if($_GET['act']=="edit"){
 	?>
           <div class="row">
                 <div class="col-lg-12">
-					<h3 class="page-header"><strong>Edit Data Staff IT</strong></h3>
+					<h3 class="page-header"><strong>Edit Data Pegawai Sekolah</strong></h3>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -212,7 +212,7 @@ if($_GET['act']=="edit"){
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Edit Data Staff IT
+                            Edit Data pegawai Sekolah
                         </div>
                         <div class="panel-body">
                             <div class="row">
