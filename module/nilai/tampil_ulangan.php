@@ -21,7 +21,7 @@
 											<th class="text-center">Nama Siswa</th>
                                             <th class="text-center">Nama Mata Pelajaran</th>
 											<th class="text-center">Kelas</th>
-											<th class="text-center" style="width: 2px;">Nilai</th>
+											<th class="text-center" width="15%">Nilai</th>
 											<th class="text-center">Keterangan</th>
 											<th class="text-center" width="10%">Aksi</th>
                                         </tr>
@@ -40,13 +40,27 @@ $db = new database();
                                         <tr class="odd gradeX">
                                             <td><?php echo $no++; ?></td>
 											<td><?php echo"$rs[nisn]";  ?></td>
-											<td><?php echo"$rs[id_jadwal]";  ?></td>
+                                            <?php  
+                                                $asql=mysql_query("select nama_matpel from n_ulanganharian,jadwal,matpel where n_ulanganharian.id_nuh='$rs[id_nuh]' and n_ulanganharian.id_jadwal=jadwal.id_jadwal and jadwal.id_matpel=matpel.id_matpel");
+                                                $acount=mysql_num_rows($asql);
+                                                $ars=mysql_fetch_array($asql);                                                  
+                                            ?>
+                                            <td><?php echo"$rs[id_jadwal]";  ?>
+                                                <?php
+                                                    echo $ars['nama_matpel'];
+                                                ?>                                 
+                                            </td>
 											<td><?php echo"$rs[id_kls]";  ?></td>
 											<td>
                                                 <?php  
                                                     echo ($rs['nilai_uh1'] == '0' ? '' : '<input type="text" class="form-control" name="uh_1" value="Nilai UH 1: '.$rs['nilai_uh1'].'">');   
                                                     echo ($rs['nilai_uh2'] == '0' ? '' : '<input type="text" class="form-control" name="uh_2" value="Nilai UH 2: '.$rs['nilai_uh2'].'">');
-                                                     echo ($rs['nilai_uh3'] == '0' ? '' : '<input type="text" class="form-control" name="uh_3" value="Nilai UH 3: '.$rs['nilai_uh3'].'">');
+                                                    echo ($rs['nilai_uh3'] == '0' ? '' : '<input type="text" class="form-control" name="uh_3" value="Nilai UH 3: '.$rs['nilai_uh3'].'">');
+                                                    echo ($rs['nilai_uh4'] == '0' ? '' : '<input type="text" class="form-control" name="uh_3" value="Nilai UH 4: '.$rs['nilai_uh4'].'">');
+                                                    echo ($rs['nilai_uh5'] == '0' ? '' : '<input type="text" class="form-control" name="uh_3" value="Nilai UH 5: '.$rs['nilai_uh5'].'">');
+                                                    echo ($rs['nilai_uh6'] == '0' ? '' : '<input type="text" class="form-control" name="uh_3" value="Nilai UH 6: '.$rs['nilai_uh6'].'">');
+                                                    echo ($rs['nilai_uh7'] == '0' ? '' : '<input type="text" class="form-control" name="uh_3" value="Nilai UH 7: '.$rs['nilai_uh7'].'">');
+                                                    echo ($rs['nilai_uh8'] == '0' ? '' : '<input type="text" class="form-control" name="uh_3" value="Nilai UH 8: '.$rs['nilai_uh8'].'">');
                                                 ?>
                                             </td>
 											<td><?php echo"$rs[ket_uh]";  ?></td>

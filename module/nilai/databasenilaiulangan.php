@@ -18,8 +18,16 @@ class database{
 		}
 		return $hasil;
 	}
+
+	function data_mpelajaran() {
+		$data=mysql_query("SELECT * FROM `jadwal` WHERE `nip`='$_SESSION[id]' ");
+		while($d = mysql_fetch_array($data)) {
+			$hasil[]=$d;
+		}
+		return $hasil;
+	}
 	
-	function input($id_jadwal,$nisn,$nilai_uh1,$nilai_uh2,$nilai_uh3,$nilai_uh4,$nilai_uh5,$nilai_uh6,$nilai_uh7,$nilai_uh8,$ket_uh){
+	function input($id_jadwal,$nisn,$id_kls,$nilai_uh1,$nilai_uh2,$nilai_uh3,$nilai_uh4,$nilai_uh5,$nilai_uh6,$nilai_uh7,$nilai_uh8,$ket_uh){
 		mysql_query("insert into n_ulanganharian values('','$id_jadwal','$nisn','$id_kls','$nilai_uh1','$nilai_uh2','$nilai_uh3','$nilai_uh4','$nilai_uh5','$nilai_uh6','$nilai_uh7','$nilai_uh8','$ket_uh')");
 	}
 	

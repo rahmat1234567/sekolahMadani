@@ -42,20 +42,20 @@ if($_GET['act']=="input"){
                                                                         
 <?php
 $no=1;
-$sql=mysql_query("select * from n_ulanganharian");
+$sql=mysql_query("SELECT * FROM `siswa` WHERE `id_kls`='$_GET[id_kelas]' ");
 
     $noxxx = 1;
     while($rs=mysql_fetch_array($sql))
     {
-        $qSiswa = mysql_query("SELECT `nama_siswa` FROM `siswa` WHERE `nisn`='$rs[nisn]' ");
-        $dSiswa = mysql_fetch_array($qSiswa);
+
 ?>  
                                             <tr class="odd gradeX">
                                                 <td><?php echo $no++; ?></td>
-                                                <td><?php echo"$dSiswa[nama_siswa]";  ?></td>
+                                                <td><?php echo"$rs[nama_siswa]";  ?></td>
                                                 <td>
                                                     <input type="hidden" name="no_induk" value="<?php echo $rs['nisn']; ?>">
                                                     <input type="hidden" name="id_jadwal" value="<?php echo $_GET['id_jadwal']; ?>">
+                                                    <input type="hidden" name="id_kelas" value="<?php echo $_GET['id_kelas']; ?>">
                                                     <input type="text" class="form-control" type="text" placeholder="Nilai UH 1 0 - 100" pattern="[0-9]{0,3}" name="uh1"/>
                                                     <input type="text" class="form-control" type="text" placeholder="Nilai UH 2 0 - 100" pattern="[0-9]{0,3}" name="uh2"/>
                                                     <input type="text" class="form-control" type="text" placeholder="Nilai UH 3 0 - 100" pattern="[0-9]{0,3}" name="uh3"/>

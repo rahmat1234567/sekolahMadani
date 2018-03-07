@@ -37,18 +37,21 @@ $db = new database();
 
 ?>                              <tr class="odd gradeX">
 									<td><?php echo $no++; ?></td>
-									<?php  
-										$asql=mysql_query("select nama_matpel from n_tugas,jadwal,matpel where n_tugas.id_ntugas='$rs[id_ntugas]' and n_tugas.id_jadwal=jadwal.id_jadwal and jadwal.id_matpel=matpel.id_matpel");
-										$acount=mysql_num_rows($asql);
-										$ars=mysql_fetch_array($asql);													
-									?>
-									<td><a href="admin.php?module=input_nilaitugas&act=input&id_jadwal=<?php echo $rs['id_jadwal']; ?>">
-									<?php
-										echo $ars['nama_matpel'];
-									?>
-									</a></td>
-									<td><?php echo"$rs[id_kls]";  ?></td>
-								</tr>
+
+                                    <td><a href="admin.php?module=input_nilaitugas&act=input&id_kelas=<?php echo $rs['id_kls']; ?>">
+                                        <?php
+                                            $qmapel = mysql_query("SELECT `nama_matpel` FROM `matpel` WHERE `id_matpel`='$rs[id_matpel]' ");
+                                            $dmapel = mysql_fetch_array($qmapel);
+                                            echo $dmapel['nama_matpel'];
+                                        ?>
+                                    </a></td>
+                                    <td><?php 
+                                            $qkelas = mysql_query("SELECT `nama_kls` FROM `kelas` WHERE `id_kls`='$rs[id_kls]' ");
+                                            $dkelas = mysql_fetch_array($qkelas);
+                                            echo $dkelas['nama_kls']; 
+                                        ?>
+                                    </td>
+                                </tr>
     <?php
 }
 ?>

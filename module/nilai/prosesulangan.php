@@ -11,7 +11,7 @@ if($aksi == "tambah"){
 			}
 		}
 	}
-	$db->input($_POST['id_jadwal'],$_POST['no_induk'],$_POST['uh1'],$_POST['uh2'],$_POST['uh3'],$_POST['uh4'],$_POST['uh5'],$_POST['uh6'],$_POST['uh7'],$_POST['uh8'],$_POST['ket_uh']);
+	$db->input($_POST['id_jadwal'],$_POST['no_induk'],$_POST['id_kelas'],$_POST['uh1'],$_POST['uh2'],$_POST['uh3'],$_POST['uh4'],$_POST['uh5'],$_POST['uh6'],$_POST['uh7'],$_POST['uh8'],$_POST['ket_uh']);
 	header("location:http://localhost/sekolahMadani/admin.php?module=tampil_ulangan");
 }
 elseif($aksi == "hapus"){

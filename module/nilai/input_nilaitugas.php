@@ -44,18 +44,16 @@ if($_GET['act']=="input"){
                                                                         
 <?php
 $no=1;
-$sql=mysql_query("select * from n_tugas");
+$sql=mysql_query("SELECT * FROM `siswa` WHERE `id_kls`='$_GET[id_kelas]' ");
 
     $noxxx = 1;
 	while($rs=mysql_fetch_array($sql))
 	{
-		$qSiswa = mysql_query("SELECT `nama_siswa` FROM `siswa` WHERE `nisn`='$rs[nisn]' ");
-		$dSiswa = mysql_fetch_array($qSiswa);
 ?>	
 											<tr class="odd gradeX">
 												<td><?php echo $no++; ?></td>
-                                                <td><?php echo"$dSiswa[nama_siswa]";  ?></td>
-												<td><input type="text" class="form-control" type="text" placeholder="Nilai 0 - 100" pattern="[0-9]{0,3}" required/></td>
+                                                <td><?php echo"$rs[nama_siswa]";  ?></td>
+												<td><input type="text" class="form-control" name="nilai_tugas" type="text" placeholder="Nilai 0 - 100" pattern="[0-9]{0,3}" required/></td>
 												<td><textarea class="form-control" placeholder="Keterangan" name="ket" rows="2" style="resize: vertical;"></textarea></td>
                                             </tr>
 <?php
