@@ -38,7 +38,7 @@ $db = new database();
 ?>                              <tr class="odd gradeX">
 									<td><?php echo $no++; ?></td>
 
-                                    <td><a href="admin.php?module=input_nilaitugas&act=input&id_kelas=<?php echo $rs['id_kls']; ?>">
+                                    <td><a href="admin.php?module=input_nilaitugas&act=input&id_kelas=<?php echo $rs['id_kls']; ?>&id_jadwal=<?php echo $rs['id_jadwal']; ?>">
                                         <?php
                                             $qmapel = mysql_query("SELECT `nama_matpel` FROM `matpel` WHERE `id_matpel`='$rs[id_matpel]' ");
                                             $dmapel = mysql_fetch_array($qmapel);

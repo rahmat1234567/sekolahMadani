@@ -25,7 +25,7 @@ if($_GET['act']=="input"){
                             Mengisi Nilai Tugas <span class="judul_tugas"></span>
                         </div>
 						<div class="col-md-5">
-							<input type="text" class="form-control pull-left nama_tugas" id="nama_tugas" style="margin-bottom: 15px; margin-top: 15px;" placeholder="Nama Tugas" name="nama_tugas"/>
+							<input type="text" class="form-control pull-left nama_tugas" id="nama_tugas_0" style="margin-bottom: 15px; margin-top: 15px;" placeholder="Nama Tugas" name="nama_tugas"/>
 						</div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
@@ -52,9 +52,12 @@ $sql=mysql_query("SELECT * FROM `siswa` WHERE `id_kls`='$_GET[id_kelas]' ");
 ?>	
 											<tr class="odd gradeX">
 												<td><?php echo $no++; ?></td>
+												<input type="hidden" name="nisn[]" value="<?php echo $rs['nisn']; ?>">
+												<input type="hidden" name="id_kelas" value="<?php echo $_GET['id_kelas']; ?>">
+												<input type="hidden" name="id_jadwal" value="<?php echo $_GET['id_jadwal']; ?>">
                                                 <td><?php echo"$rs[nama_siswa]";  ?></td>
-												<td><input type="text" class="form-control" name="nilai_tugas" type="text" placeholder="Nilai 0 - 100" pattern="[0-9]{0,3}" required/></td>
-												<td><textarea class="form-control" placeholder="Keterangan" name="ket" rows="2" style="resize: vertical;"></textarea></td>
+												<td><input type="text" class="form-control" name="nilai_tugas[]" id="nilai_tugas_0" type="text" placeholder="Nilai 0 - 100" pattern="[0-9]{0,3}" required/></td>
+												<td><textarea class="form-control" placeholder="Keterangan" name="ket[]" id="ket_0" rows="2" style="resize: vertical;"></textarea></td>
                                             </tr>
 <?php
 $noxxx++;
@@ -80,13 +83,14 @@ $noxxx++;
 
 <script language="javascript" type="text/javascript">
 	$(document).ready(function() {
+		let i = 1;
 		$(document).on('click', '.add', function() {
 			var html = '';
 			html += '<div class="panel panel-default">';
 				html += '<div class="panel-heading">Mengisi Nilai Tugas <button class="btn btn-sm btn-danger pull-right remove" name="remove" style="margin-top: -0.5rem;"><i class="fa fa-minus"></i></button></div>';
 				
 				html += '<div class="col-md-5">'
-					html += '<input type="text" class="form-control pull-left" style="margin-bottom: 15px; margin-top: 15px;" placeholder="Nama Tugas" name="nama_tugas"/>';
+					html += '<input type="text" class="form-control pull-left" id="nama_tugas_' + i + '" style="margin-bottom: 15px; margin-top: 15px;" placeholder="Nama Tugas" name="nama_tugas[]"/>';
 				html += '</div>';
 				
 				html += '<div class="panel-body">';
@@ -105,19 +109,17 @@ $noxxx++;
 								<?php
 								$no=1;
 								$p = $_GET['id_jadwal'];
-								$sql=mysql_query("select * from n_tugas where id_jadwal=$p");
+								$sql=mysql_query("SELECT * FROM `siswa` WHERE `id_kls`='$_GET[id_kelas]' ");
 
 									$noxxx = 1;
 									while($rs=mysql_fetch_array($sql))
 									{
-										$qSiswa = mysql_query("SELECT `nama_siswa` FROM `siswa` WHERE `nisn`='$rs[nisn]' ");
-										$dSiswa = mysql_fetch_array($qSiswa);
 								?>
 									html += '<tr class="odd gradeX">';
 										html += '<td><?php echo $no++; ?></td>';
-										html += '<td><?php echo"$dSiswa[nama_siswa]";  ?></td>';
-										html += '<td><input type="text" class="form-control" type="text" placeholder="Nilai 0 - 100" pattern="[0-9]{0,3}" required/></td>';
-										html += '<td><textarea class="form-control" placeholder="Keterangan" name="ket" rows="2" style="resize: vertical;"></textarea></td>';
+										html += '<td><?php echo $rs['nama_siswa'];  ?></td>';
+										html += '<td><input type="text" class="form-control" name="nilai_tugas[]" id="nilai_tugas_' + i + '" placeholder="Nilai 0 - 100" pattern="[0-9]{0,3}" required/></td>';
+										html += '<td><textarea class="form-control" placeholder="Keterangan[]" name="ket" id="ket_' + i + '" rows="2" style="resize: vertical;"></textarea></td>';
 									html += '</tr>';
 								<?php $noxxx++;} ?>
 							html += '</tbody>';
@@ -128,10 +130,12 @@ $noxxx++;
 				
 			html += '</div>';
 			$('#panel-wrap').append(html);
+			i++;
 		});
 		
 		$(document).on('click', '.remove', function() {
 			$(this).closest('.panel-default').remove();
+			i--;
 		});
 		
 		$(document).on('keyup', '.nama_tugas', function() {
