@@ -25,7 +25,7 @@ if($_GET['act']=="input"){
                             Mengisi Nilai Tugas <span class="judul_tugas"></span>
                         </div>
 						<div class="col-md-5">
-							<input type="text" class="form-control pull-left nama_tugas" id="nama_tugas_0" style="margin-bottom: 15px; margin-top: 15px;" placeholder="Nama Tugas" name="nama_tugas"/>
+							<input type="text" class="form-control pull-left judul" id="judul" style="margin-bottom: 15px; margin-top: 15px;" placeholder="Nama Tugas" name="judul"/>
 						</div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
@@ -46,21 +46,22 @@ if($_GET['act']=="input"){
 $no=1;
 $sql=mysql_query("SELECT * FROM `siswa` WHERE `id_kls`='$_GET[id_kelas]' ");
 
-    $noxxx = 1;
+    
 	while($rs=mysql_fetch_array($sql))
 	{
 ?>	
 											<tr class="odd gradeX">
 												<td><?php echo $no++; ?></td>
-												<input type="hidden" name="nisn[]" value="<?php echo $rs['nisn']; ?>">
-												<input type="hidden" name="id_kelas" value="<?php echo $_GET['id_kelas']; ?>">
-												<input type="hidden" name="id_jadwal" value="<?php echo $_GET['id_jadwal']; ?>">
-                                                <td><?php echo"$rs[nama_siswa]";  ?></td>
+												<input type="text" name="nama_tugas[]" id="nama_tugas_0">
+												<input type="hidden" name="nisn[]" id="nisn_0" value="<?php echo $rs['nisn']; ?>">
+												<input type="hidden" name="id_kelas" id="id_kelas_0" value="<?php echo $_GET['id_kelas']; ?>">
+												<input type="hidden" name="id_jadwal" id="id_jadwal_0" value="<?php echo $_GET['id_jadwal']; ?>">
+                                                <td><?php echo $rs['nama_siswa'];  ?></td>
 												<td><input type="text" class="form-control" name="nilai_tugas[]" id="nilai_tugas_0" type="text" placeholder="Nilai 0 - 100" pattern="[0-9]{0,3}" required/></td>
 												<td><textarea class="form-control" placeholder="Keterangan" name="ket[]" id="ket_0" rows="2" style="resize: vertical;"></textarea></td>
                                             </tr>
 <?php
-$noxxx++;
+
 }
 ?>
                                     </tbody>
@@ -131,15 +132,22 @@ $noxxx++;
 			html += '</div>';
 			$('#panel-wrap').append(html);
 			i++;
+			//console.log(i);
 		});
 		
 		$(document).on('click', '.remove', function() {
 			$(this).closest('.panel-default').remove();
 			i--;
+			//console.log(i);
 		});
 		
-		$(document).on('keyup', '.nama_tugas', function() {
-			document.getElementsByClassName('judul_tugas')[0].innerHTML = document.getElementById('nama_tugas').value;
+		$(document).on('keyup', '.judul', function() {
+			document.getElementsByClassName('judul_tugas')[0].innerHTML = document.getElementById('judul').value;
 		});
+
+		$(document).on('blur', '#judul', function() {
+			$("input[name^='nama_tugas']").val(document.getElementById('judul').value);
+		});
+
 	});
 </script>
