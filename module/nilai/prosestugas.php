@@ -7,10 +7,10 @@ if($aksi == "tambah"){
 	$sqli = "INSERT INTO `n_tugas` VALUES ";
 
 		for($i = 0; $i < sizeof($_POST['nisn']); $i++) {
-			$nama_tugas = $_POST['nama_tugas'];
 			$id_jadwal = $_POST['id_jadwal'];
-			$nisn = $_POST['nisn'][$i];
 			$id_kelas = $_POST['id_kelas'];
+			$nama_tugas = $_POST['nama_tugas'][$i];
+			$nisn = $_POST['nisn'][$i];
 			$nilai_tugas = $_POST['nilai_tugas'][$i];
 			$ket = $_POST['ket'][$i];
 
@@ -19,6 +19,7 @@ if($aksi == "tambah"){
 
 		$sqli = rtrim($sqli, ', ');
 		mysql_query($sqli);
+		//echo $sqli;
 		//$db->input($_POST['id_jadwal'],$_POST['nisn'],$_POST['nama_tugas'],$_POST['nilai_tugas'],$_POST['ket'],$_POST['id_kelas']);
 	
 }

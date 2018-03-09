@@ -10,22 +10,19 @@ if($_GET['act']=="input"){
 	<div class="row">
 		<div class="col-lg-12">
 			<h3 class="page-header"><strong>Input Nilai Tugas Harian Siswa</strong></h3>
-			<form method="post" role="form" action="././module/nilai/prosestugas.php?aksi=tambah">
-			<div class="col-md-12">
-				<button type="submit" class="btn btn-sm btn-info pull-right" style="background: green; margin-right: -15px; margin-bottom: 1rem;">Simpan</button>
-			</div>
 		</div>
 		<!-- /.col-lg-12 -->
 	</div>
 	<!-- /.row -->
             <div class="row">
+            	<form method="post" role="form" action="././module/nilai/prosestugas.php?aksi=tambah">
                 <div class="col-lg-12 panel-wrap" id="panel-wrap">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Mengisi Nilai Tugas <span class="judul_tugas"></span>
+                            Mengisi Nilai Tugas <span id="judul_tugas_0"></span>
                         </div>
 						<div class="col-md-5">
-							<input type="text" class="form-control pull-left judul" id="judul" style="margin-bottom: 15px; margin-top: 15px;" placeholder="Nama Tugas" name="judul"/>
+							<input type="text" class="form-control pull-left judul" id="judul_0" style="margin-bottom: 15px; margin-top: 15px;" placeholder="Nama Tugas" name="judul"/>
 						</div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
@@ -53,9 +50,9 @@ $sql=mysql_query("SELECT * FROM `siswa` WHERE `id_kls`='$_GET[id_kelas]' ");
 											<tr class="odd gradeX">
 												<td><?php echo $no++; ?></td>
 												<input type="text" name="nama_tugas[]" id="nama_tugas_0">
-												<input type="hidden" name="nisn[]" id="nisn_0" value="<?php echo $rs['nisn']; ?>">
-												<input type="hidden" name="id_kelas" id="id_kelas_0" value="<?php echo $_GET['id_kelas']; ?>">
-												<input type="hidden" name="id_jadwal" id="id_jadwal_0" value="<?php echo $_GET['id_jadwal']; ?>">
+												<input type="text" name="nisn[]" id="nisn_0" value="<?php echo $rs['nisn']; ?>">
+												<input type="text" name="id_kelas" id="id_kelas_0" value="<?php echo $_GET['id_kelas']; ?>">
+												<input type="text" name="id_jadwal" id="id_jadwal_0" value="<?php echo $_GET['id_jadwal']; ?>">
                                                 <td><?php echo $rs['nama_siswa'];  ?></td>
 												<td><input type="text" class="form-control" name="nilai_tugas[]" id="nilai_tugas_0" type="text" placeholder="Nilai 0 - 100" pattern="[0-9]{0,3}" required/></td>
 												<td><textarea class="form-control" placeholder="Keterangan" name="ket[]" id="ket_0" rows="2" style="resize: vertical;"></textarea></td>
@@ -69,16 +66,19 @@ $sql=mysql_query("SELECT * FROM `siswa` WHERE `id_kls`='$_GET[id_kelas]' ");
                             </div>
                             <!-- /.table-responsive -->
                         </div>
-						</form>
                         <!-- /.panel-body -->
                     </div>
 					
 					
                     <!-- /.panel -->
                 </div>
-				<button class="btn btn-sm btn-info pull-left add" name="add" style="margin-left: 15px;"><i class="fa fa-plus"></i></button>
+                <div class="col-md-12">
+					<button type="submit" class="btn btn-sm btn-info pull-right" style="background: green; margin-right: 0px; margin-bottom: 1rem;">Simpan</button>
+				</div>
+                </form>
                 <!-- /.col-lg-11 -->
             </div>
+			<button class="btn btn-sm btn-info pull-left add" name="add" style="margin-left: 15px;"><i class="fa fa-plus"></i></button>
             <!-- /.row -->
 <?php } ?>
 
@@ -86,12 +86,12 @@ $sql=mysql_query("SELECT * FROM `siswa` WHERE `id_kls`='$_GET[id_kelas]' ");
 	$(document).ready(function() {
 		let i = 1;
 		$(document).on('click', '.add', function() {
-			var html = '';
+			let html = '';
 			html += '<div class="panel panel-default">';
-				html += '<div class="panel-heading">Mengisi Nilai Tugas <button class="btn btn-sm btn-danger pull-right remove" name="remove" style="margin-top: -0.5rem;"><i class="fa fa-minus"></i></button></div>';
+				html += '<div class="panel-heading">Mengisi Nilai Tugas <span id="judul_tugas_'+ i +'"></span> <button class="btn btn-sm btn-danger pull-right remove" name="remove" style="margin-top: -0.5rem;"><i class="fa fa-minus"></i></button></div>';
 				
 				html += '<div class="col-md-5">'
-					html += '<input type="text" class="form-control pull-left" id="nama_tugas_' + i + '" style="margin-bottom: 15px; margin-top: 15px;" placeholder="Nama Tugas" name="nama_tugas[]"/>';
+					html += '<input type="text" class="form-control pull-left judul" id="judul_'+ i +'" style="margin-bottom: 15px; margin-top: 15px;" placeholder="Nama Tugas" name="judul"/>';
 				html += '</div>';
 				
 				html += '<div class="panel-body">';
@@ -112,17 +112,21 @@ $sql=mysql_query("SELECT * FROM `siswa` WHERE `id_kls`='$_GET[id_kelas]' ");
 								$p = $_GET['id_jadwal'];
 								$sql=mysql_query("SELECT * FROM `siswa` WHERE `id_kls`='$_GET[id_kelas]' ");
 
-									$noxxx = 1;
+									
 									while($rs=mysql_fetch_array($sql))
 									{
 								?>
 									html += '<tr class="odd gradeX">';
 										html += '<td><?php echo $no++; ?></td>';
-										html += '<td><?php echo $rs['nama_siswa'];  ?></td>';
-										html += '<td><input type="text" class="form-control" name="nilai_tugas[]" id="nilai_tugas_' + i + '" placeholder="Nilai 0 - 100" pattern="[0-9]{0,3}" required/></td>';
-										html += '<td><textarea class="form-control" placeholder="Keterangan[]" name="ket" id="ket_' + i + '" rows="2" style="resize: vertical;"></textarea></td>';
+										html += '<input type="text" name="nama_tugas[]" id="nama_tugas_'+ i +'">';
+										html += '<input type="text" name="nisn[]" id="nisn_'+ i +'" value="<?php echo $rs['nisn']; ?>">';
+										html += '<input type="text" name="id_kelas" id="id_kelas_'+ i +'" value="<?php echo $_GET['id_kelas']; ?>">';
+										html += '<input type="text" name="id_jadwal" id="id_jadwal_'+ i +'" value="<?php echo $_GET['id_jadwal']; ?>">';
+										html += '<td><?php echo $rs['nama_siswa'];?></td>';
+										html += '<td><input type="text" class="form-control" name="nilai_tugas[]" id="nilai_tugas_'+ i +'" placeholder="Nilai 0 - 100" pattern="[0-9]{0,3}" required/></td>';
+										html += '<td><textarea class="form-control" placeholder="Keterangan" name="ket[]" id="ket_'+ i +'" rows="2" style="resize: vertical;"></textarea></td>';
 									html += '</tr>';
-								<?php $noxxx++;} ?>
+								<?php } ?>
 							html += '</tbody>';
 							
 						html += '</table>';
@@ -130,6 +134,7 @@ $sql=mysql_query("SELECT * FROM `siswa` WHERE `id_kls`='$_GET[id_kelas]' ");
 				html += '</div>';
 				
 			html += '</div>';
+			html += '<!--/.panel-->';
 			$('#panel-wrap').append(html);
 			i++;
 			//console.log(i);
@@ -141,13 +146,11 @@ $sql=mysql_query("SELECT * FROM `siswa` WHERE `id_kls`='$_GET[id_kelas]' ");
 			//console.log(i);
 		});
 		
-		$(document).on('keyup', '.judul', function() {
-			document.getElementsByClassName('judul_tugas')[0].innerHTML = document.getElementById('judul').value;
+		$(document).on('keyup', '.judul', function(elt) {
+			let idElt = elt.target.id;
+			let idNum = idElt.substring(6,7);
+			document.getElementById('judul_tugas_'+idNum).innerHTML = elt.target.value;
+			$("input[id^='nama_tugas_" + idNum + "']").val(elt.target.value);
 		});
-
-		$(document).on('blur', '#judul', function() {
-			$("input[name^='nama_tugas']").val(document.getElementById('judul').value);
-		});
-
 	});
 </script>
