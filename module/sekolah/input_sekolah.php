@@ -1,9 +1,9 @@
 <!--
 <script type="text/javascript" src="maps/js/jquery-1.7.2.min.js"></script>
 <link rel="stylesheet" type="text/css" href="maps/css/jquery-gmaps-latlon-picker.css"/>
-<script type="text/javascript" src="maps/js/jquery-gmaps-latlon-picker.js"></script>
+<script type="text/javascript" src="maps/js/jquery-gmaps-latlon-picker.js"></script>-->
 <script src="http://maps.googleapis.com/maps/api/js?sensor=false&file=api&v=2&key=AIzaSyAXI2z-oCbyiz4Q21xANCbfU6oByBydmaM"></script>
--->
+
 <?php
 if($_GET['act']=="input"){
 	?>
@@ -120,13 +120,72 @@ if($_GET['act']=="edit_sekolah"){
                                         <button type="submit" class="btn btn-default">Submit Button</button>
                                 </div>
                                 <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <fieldset class="gllpLatlonPicker">
+                                    <div class="form-group" style="">
+                                        <label>Lokasi Sekolah</label>
+                                        <fieldset class="gllpLatlonPicker push-col-md-4" style="">
                                             <div class="gllpMap">Google Maps</div>
-                                            Latitude : <input type="text" name="lati" class="gllpLatitude" value="0.5070628154890728" readonly/>
-                                            Longitude : <input type="text" name="longi" class="gllpLongitude" value="101.44805035605714" readonly/>
-                                            Zoom : <input type="hidden" name="zoom" class="gllpZoom" value="11"/>
+                                            <input type="hidden" name="lati" class="gllpLatitude" value="0.5070628154890728"/>
+                                            <input type="hidden" name="longi" class="gllpLongitude" value="101.44805035605714"/>
+                                            <input type="hidden" name="zoom" class="gllpZoom" value="13"/>
                                         </fieldset>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label>Luas Sekolah (m<sup>2</sup>)</label>
+                                        <input class="form-control" placeholder="Luas" name="luas_sklh" value="<?php echo "$rs[luas_sklh]"; ?>">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Laboratorium</label>
+                                        <div class="a1">
+                                            <input type="checkbox" name="laboratorium" class="a1-checkbox" id="mya1" value="1">
+                                            <label class="a1-label" for="mya1">
+                                                <span class="a1-inner"></span>
+                                                <span class="a1-switch"></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Mushola</label>
+                                        <div class="a2">
+                                            <input type="checkbox" name="mushola" class="a2-checkbox" id="mya2" value="1">
+                                            <label class="a2-label" for="mya2">
+                                                <span class="a2-inner"></span>
+                                                <span class="a2-switch"></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label>Aula</label>
+                                        <div class="a3">
+                                            <input type="checkbox" name="aula" class="a3-checkbox" id="mya3" value="1">
+                                            <label class="a3-label" for="mya3">
+                                                <span class="a3-inner"></span>
+                                                <span class="a3-switch"></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Lapangan Basket</label>
+                                        <div class="a4">
+                                            <input type="checkbox" name="lap_basket" class="a4-checkbox" id="mya4" value="1">
+                                            <label class="a4-label" for="mya4">
+                                                <span class="a4-inner"></span>
+                                                <span class="a4-switch"></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Lapangan Sepakbola</label>
+                                        <div class="a5">
+                                            <input type="checkbox" name="lap_sepakbola" class="a5-checkbox" id="mya5" value="1">
+                                            <label class="a5-label" for="mya5">
+                                                <span class="a5-inner"></span>
+                                                <span class="a5-switch"></span>
+                                            </label>
+                                        </div>
                                     </div>
                                 </div>
                                 <!-- /.col-lg-6 (nested) -->
