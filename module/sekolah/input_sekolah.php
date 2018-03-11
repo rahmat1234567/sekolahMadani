@@ -46,17 +46,92 @@ if($_GET['act']=="input"){
                                         </div>
                                         <div class="form-group">
                                             <label>Alamat</label>
-                                            <textarea class="form-control" placeholder="Alamat" name="alamat_sklh" rows="3" required="required"></textarea>
+                                            <textarea style="resize: vertical;" class="form-control" placeholder="Alamat" name="alamat_sklh" rows="2" required="required"></textarea>
                                         </div>
 										<div class="form-group">
                                             <label>Telp</label>
                                             <input class="form-control" placeholder="Telp" name="telp_sklh" required>
                                         </div>
-
-                                        
-                                        <button type="submit" class="btn btn-default">Submit</button>
+<div class="form-group">
+                                            <label>Email</label>
+                                            <input class="form-control" placeholder="Email" name="email_sklh" value="" required>
+                                        </div>
+                                        <div class="form-group">
+                                        <label>Luas Sekolah (m<sup>2</sup>)</label>
+                                        <input class="form-control" placeholder="Luas" name="luas_sklh" value="" required>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label>Jumlah Ruang Kelas</label>
+                                        <input class="form-control" placeholder="Jumlah Kelas" name="jmlh_ruang_kls" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Laboratorium</label>
+                                        <div class="a1">
+                                            <input type="checkbox" name="laboratorium" class="a1-checkbox" id="mya1" value="1">
+                                            <label class="a1-label" for="mya1">
+                                                <span class="a1-inner"></span>
+                                                <span class="a1-switch"></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Mushola</label>
+                                        <div class="a2">
+                                            <input type="checkbox" name="musholla" class="a2-checkbox" id="mya2" value="1">
+                                            <label class="a2-label" for="mya2">
+                                                <span class="a2-inner"></span>
+                                                <span class="a2-switch"></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Aula</label>
+                                        <div class="a3">
+                                            <input type="checkbox" name="aula" class="a3-checkbox" id="mya3" value="1">
+                                            <label class="a3-label" for="mya3">
+                                                <span class="a3-inner"></span>
+                                                <span class="a3-switch"></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label>Perpustakaan</label>
+                                        <div class="a6">
+                                            <input type="checkbox" name="perpustakaan" class="a6-checkbox" id="mya6" value="1">
+                                            <label class="a6-label" for="mya6">
+                                                <span class="a6-inner"></span>
+                                                <span class="a6-switch"></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Lapangan Basket</label>
+                                        <div class="a4">
+                                            <input type="checkbox" name="lap_basket" class="a4-checkbox" id="mya4" value="1">
+                                            <label class="a4-label" for="mya4">
+                                                <span class="a4-inner"></span>
+                                                <span class="a4-switch"></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Lapangan Sepakbola</label>
+                                        <div class="a5">
+                                            <input type="checkbox" name="lap_sepakbola" class="a5-checkbox" id="mya5" value="1">
+                                            <label class="a5-label" for="mya5">
+                                                <span class="a5-inner"></span>
+                                                <span class="a5-switch"></span>
+                                            </label>
+                                        </div>
+                                    </div>
                                 </div>
                                 <!-- /.col-lg-6 (nested) -->
+                                <center><div class="form-group"><button type="submit" class="btn btn-success" style="width: 60%;transform: translateY(10px);">Edit Data</button></div></center>
                                     </form>
 
                             </div>
@@ -110,7 +185,7 @@ if($_GET['act']=="edit_sekolah"){
                                         </div>
                                         <div class="form-group">
                                             <label>Alamat</label>
-                                            <textarea style="resize: vertical;" class="form-control" placeholder="Alamat" name="alamat_sklh" rows="3"><?php echo "$rs[alamat_sklh]"; ?></textarea>
+                                            <textarea style="resize: vertical;" class="form-control" placeholder="Alamat" name="alamat_sklh" rows="1"><?php echo "$rs[alamat_sklh]"; ?></textarea>
                                         </div>
 										<div class="form-group">
                                             <label>Telp</label>
@@ -118,20 +193,34 @@ if($_GET['act']=="edit_sekolah"){
                                         </div>
                                         <div class="form-group">
                                             <label>Email</label>
-                                            <input class="form-control" placeholder="Telp" name="email_sklh" value="<?php echo "$rs[email_sklh]"; ?>">
+                                            <input class="form-control" placeholder="Email" name="email_sklh" value="<?php echo "$rs[email_sklh]"; ?>">
                                         </div>
                                         <div class="form-group">
                                         <label>Luas Sekolah (m<sup>2</sup>)</label>
                                         <input class="form-control" placeholder="Luas" name="luas_sklh" value="<?php echo "$rs[luas_sklh]"; ?>">
                                     </div>
+                                    <div class="form-group">
+                                        <label>Jumlah Ruang Kelas</label>
+                                        <input class="form-control" placeholder="Jumlah Kelas" name="jmlh_ruang_kls" value="<?php echo "$rs[jmlh_ruang_kls]"; ?>" required>
+                                    </div>
                                 </div>
                                 <div class="col-lg-6">
+                                <?php
+                                    if($rs['lat']==""){
+                                        $lat1 = "0.5070628154890728";
+                                        $lng1 = "101.44805035605714";
+                                    }
+                                    else{
+                                        $lat1 = $rs['lat'];
+                                        $lng1 = $rs['lng'];
+                                    }
+                                ?>
                                     <div class="form-group" style="">
                                         <label>Lokasi Sekolah</label>
                                         <fieldset class="gllpLatlonPicker push-col-md-4" style="">
                                             <div class="gllpMap">Google Maps</div>
-                                            <input type="hidden" name="lati" class="gllpLatitude" value="0.5070628154890728"/>
-                                            <input type="hidden" name="longi" class="gllpLongitude" value="101.44805035605714"/>
+                                            <input type="text" name="lati" class="gllpLatitude" value="<?php echo "$lat1"; ?>"/>
+                                            <input type="text" name="longi" class="gllpLongitude" value="<?php echo "$lng1"; ?>"/>
                                             <input type="hidden" name="zoom" class="gllpZoom" value="13"/>
                                         </fieldset>
                                     </div>
@@ -140,7 +229,9 @@ if($_GET['act']=="edit_sekolah"){
                                     <div class="form-group">
                                         <label>Laboratorium</label>
                                         <div class="a1">
-                                            <input type="checkbox" name="laboratorium" class="a1-checkbox" id="mya1" value="1">
+                                            <input type="checkbox" name="laboratorium" class="a1-checkbox" id="mya1" value="1"
+                                            <?php if($rs['laboratorium']=="1"){ echo " checked"; } ?>
+                                            >
                                             <label class="a1-label" for="mya1">
                                                 <span class="a1-inner"></span>
                                                 <span class="a1-switch"></span>
@@ -150,7 +241,8 @@ if($_GET['act']=="edit_sekolah"){
                                     <div class="form-group">
                                         <label>Mushola</label>
                                         <div class="a2">
-                                            <input type="checkbox" name="mushola" class="a2-checkbox" id="mya2" value="1">
+                                            <input type="checkbox" name="musholla" class="a2-checkbox" id="mya2" value="1"
+                                            <?php if($rs['musholla']=="1"){ echo " checked"; } ?>>
                                             <label class="a2-label" for="mya2">
                                                 <span class="a2-inner"></span>
                                                 <span class="a2-switch"></span>
@@ -160,7 +252,8 @@ if($_GET['act']=="edit_sekolah"){
                                     <div class="form-group">
                                         <label>Aula</label>
                                         <div class="a3">
-                                            <input type="checkbox" name="aula" class="a3-checkbox" id="mya3" value="1">
+                                            <input type="checkbox" name="aula" class="a3-checkbox" id="mya3" value="1"
+                                            <?php if($rs['aula']=="1"){ echo " checked"; } ?>>
                                             <label class="a3-label" for="mya3">
                                                 <span class="a3-inner"></span>
                                                 <span class="a3-switch"></span>
@@ -173,7 +266,8 @@ if($_GET['act']=="edit_sekolah"){
                                     <div class="form-group">
                                         <label>Perpustakaan</label>
                                         <div class="a6">
-                                            <input type="checkbox" name="perpustakaan" class="a6-checkbox" id="mya6" value="1">
+                                            <input type="checkbox" name="perpustakaan" class="a6-checkbox" id="mya6" value="1"
+                                            <?php if($rs['perpustakaan']=="1"){ echo " checked"; } ?>>
                                             <label class="a6-label" for="mya6">
                                                 <span class="a6-inner"></span>
                                                 <span class="a6-switch"></span>
@@ -183,7 +277,8 @@ if($_GET['act']=="edit_sekolah"){
                                     <div class="form-group">
                                         <label>Lapangan Basket</label>
                                         <div class="a4">
-                                            <input type="checkbox" name="lap_basket" class="a4-checkbox" id="mya4" value="1">
+                                            <input type="checkbox" name="lap_basket" class="a4-checkbox" id="mya4" value="1"
+                                            <?php if($rs['lap_basket']=="1"){ echo " checked"; } ?>>
                                             <label class="a4-label" for="mya4">
                                                 <span class="a4-inner"></span>
                                                 <span class="a4-switch"></span>
@@ -193,7 +288,8 @@ if($_GET['act']=="edit_sekolah"){
                                     <div class="form-group">
                                         <label>Lapangan Sepakbola</label>
                                         <div class="a5">
-                                            <input type="checkbox" name="lap_sepakbola" class="a5-checkbox" id="mya5" value="1">
+                                            <input type="checkbox" name="lap_sepakbola" class="a5-checkbox" id="mya5" value="1"
+                                            <?php if($rs['lap_sepakbola']=="1"){ echo " checked"; } ?>>
                                             <label class="a5-label" for="mya5">
                                                 <span class="a5-inner"></span>
                                                 <span class="a5-switch"></span>
