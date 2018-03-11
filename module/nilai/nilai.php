@@ -35,7 +35,8 @@
 $no=1;
 include 'databasenilaiulangan.php';
 $db = new database();
-    foreach($db->data_mpelajaran() as $rs)
+    $sql = mysql_query("SELECT * FROM `jadwal` WHERE `nip`='$_SESSION[id]' ");
+    while($rs=mysql_fetch_array($sql))
 	{
 
 //if($level==1 and $level==2){

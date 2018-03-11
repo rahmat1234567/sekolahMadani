@@ -4,7 +4,7 @@
     
 	<div class="row">
 		<div class="col-lg-12">
-			<h3 class="page-header"><strong>Jadwal Nilai Tugas Harian</strong></h3>
+			<h3 class="page-header"><strong>Jadwal Absensi </strong></h3>
 		</div>
 		<!-- /.col-lg-12 -->
 	</div>
@@ -13,7 +13,7 @@
 		<div class="col-lg-12">
 			<div class="panel panel-default">
 				<div class="panel-heading">
-					Pilih Jadwal Nilai Tugas Harian
+					Pilih Jadwal Absensi
 				</div>
 				<!-- /.panel-heading -->
 				<div class="panel-body">
@@ -30,7 +30,7 @@
                                                                         
 <?php
 $no=1;
-include 'databasenilaitugas.php';
+include 'databaseabsen.php';
 $db = new database();
 	$sql = mysql_query("SELECT * FROM `jadwal` WHERE `nip`='$_SESSION[id]' ");
     while($rs=mysql_fetch_array($sql))
@@ -39,7 +39,7 @@ $db = new database();
 ?>                              <tr class="odd gradeX">
 									<td><?php echo $no++; ?></td>
 
-                                    <td><a href="admin.php?module=input_nilaitugas&act=input&id_kelas=<?php echo $rs['id_kls']; ?>&id_jadwal=<?php echo $rs['id_jadwal']; ?>">
+                                    <td><a href="admin.php?module=input_absen&act=input&id_kelas=<?php echo $rs['id_kls']; ?>&id_jadwal=<?php echo $rs['id_jadwal']; ?>">
                                         <?php
                                             $qmapel = mysql_query("SELECT `nama_matpel` FROM `matpel` WHERE `id_matpel`='$rs[id_matpel]' ");
                                             $dmapel = mysql_fetch_array($qmapel);

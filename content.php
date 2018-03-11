@@ -22,8 +22,8 @@ if($_GET['module']=="detail_siswa"){
 include "module/siswa/detail_siswa.php";
 }
 
-if($_GET['module']=="pilih"){
-include "module/absen/pilih.php";
+if($_GET['module']=="pilihan"){
+include "module/absen/pilihan.php";
 }
 if($_GET['module']=="pilih_view"){
 include "module/absen/pilih_view.php";
