@@ -49,10 +49,10 @@ $sql=mysql_query("SELECT * FROM `siswa` WHERE `id_kls`='$_GET[id_kelas]' ");
 ?>	
 											<tr class="odd gradeX">
 												<td><?php echo $no++; ?></td>
-												<input type="text" name="nama_tugas[]" id="nama_tugas_0">
-												<input type="text" name="nisn[]" id="nisn_0" value="<?php echo $rs['nisn']; ?>">
-												<input type="text" name="id_kelas" id="id_kelas_0" value="<?php echo $_GET['id_kelas']; ?>">
-												<input type="text" name="id_jadwal" id="id_jadwal_0" value="<?php echo $_GET['id_jadwal']; ?>">
+												<input type="hidden" name="nama_tugas[]" id="nama_tugas_0">
+												<input type="hidden" name="nisn[]" id="nisn_0" value="<?php echo $rs['nisn']; ?>">
+												<input type="hidden" name="id_kelas" id="id_kelas_0" value="<?php echo $_GET['id_kelas']; ?>">
+												<input type="hidden" name="id_jadwal" id="id_jadwal_0" value="<?php echo $_GET['id_jadwal']; ?>">
                                                 <td><?php echo $rs['nama_siswa'];  ?></td>
 												<td><input type="text" class="form-control" name="nilai_tugas[]" id="nilai_tugas_0" type="text" placeholder="Nilai 0 - 100" pattern="[0-9]{0,3}" required/></td>
 												<td><textarea class="form-control" placeholder="Keterangan" name="ket[]" id="ket_0" rows="2" style="resize: vertical;"></textarea></td>

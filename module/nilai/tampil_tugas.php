@@ -1,3 +1,13 @@
+<?php
+    if(isset($_GET['aksi'])) {
+        $aksi = $_GET['aksi'];
+    } else {
+        $aksi = "";
+    }
+
+    switch ($aksi) {
+        default:
+?>
             <div class="row">
                 <div class="col-lg-12">
 					<h3 class="page-header"><strong>Data nilai Tugas Siswa</strong></h3>
@@ -34,30 +44,38 @@
 $no=1;
 include 'databasenilaitugas.php';
 $db = new database();
-    foreach($db->tampil_data() as $rs)
+    $qttugas = mysql_query("SELECT * FROM `n_tugas`");
+
+    while($rs = mysql_fetch_array($qttugas))
 	{
 
 	?>	
                                         <tr class="odd gradeX">
                                             <td><?php echo $no++; ?></td>
-											<td><?php echo"$rs[nisn]"; ?></td>
-                                            <?php  
-                                                $asql=mysql_query("select nama_matpel from n_tugas,jadwal,matpel where n_tugas.id_ntugas='$rs[id_ntugas]' and n_tugas.id_jadwal=jadwal.id_jadwal and jadwal.id_matpel=matpel.id_matpel");
-                                                $acount=mysql_num_rows($asql);
-                                                $ars=mysql_fetch_array($asql);                                                  
+                                            <?php 
+                                                $qdsiswa = mysql_query("SELECT `nama_siswa` FROM `siswa` WHERE `nisn`='$rs[nisn]' ");
+                                                $dsiswa = mysql_fetch_array($qdsiswa);
                                             ?>
-											<td><?php echo"$rs[id_jadwal]";  ?>
-                                                <?php
-                                                    echo $ars['nama_matpel'];
-                                                ?>                                 
-                                            </td>
-                                            <td><?php echo"$rs[id_kls]";  ?></td>
-											<td><?php echo"$rs[nama_tugas]";  ?></td>
-											<td><?php echo"$rs[nilai_tugas]";  ?></td>
-											<td><?php echo"$rs[ket]";  ?></td>
+											<td><?php echo $dsiswa['nama_siswa']; ?></td>
+                                            <?php 
+                                                $qjadwal = mysql_query("SELECT `id_matpel` FROM `jadwal` WHERE `id_jadwal`='$rs[id_jadwal]' ");
+                                                $djadwal = mysql_fetch_array($qjadwal);
+
+                                                $qmapel = mysql_query("SELECT `nama_matpel` FROM `matpel` WHERE `id_matpel`='$djadwal[id_matpel]' ");
+                                                $dmapel = mysql_fetch_array($qmapel);
+                                            ?>
+											<td><?php echo $dmapel['nama_matpel']; ?></td>
+                                            <?php 
+                                                $qkelas = mysql_query("SELECT `nama_kls` FROM `kelas` WHERE `id_kls`='$rs[id_kls]' ");
+                                                $dkelas = mysql_fetch_array($qkelas);
+                                            ?>
+                                            <td><?php echo $dkelas['nama_kls'];  ?></td>
+											<td><?php echo $rs['nama_tugas'];  ?></td>
+											<td><?php echo $rs['nilai_tugas'];  ?></td>
+											<td><?php echo $rs['ket'];?></td>
 											<td class="text-center">
-												<a href="./././admin.php?module=input_nilaitugas&act=edit&id_ntugas<?php echo $rs['id_ntugas'] ?>&level=<?php echo $level; ?>"><button type="button" class="btn btn-info">Edit</button></a> 
-												<a href="././module/nilai/prosestugas.php?aksi=hapus&id_ntugas=<?php echo $rs['id_ntugas'] ?>"><button type="button" class="btn btn-danger">Hapus</button></a>
+												<a href="././admin.php?module=tampil_tugas?aksi=update&id_ntugas=<?php echo $rs['id_ntugas'] ?>"><button type="button" class="btn btn-info"><i class="fa fa-pencil"></i></button></a> 
+												<a href="././module/nilai/prosestugas.php?aksi=hapus&id_ntugas=<?php echo $rs['id_ntugas'] ?>"><button type="button" class="btn btn-danger"><i class="fa fa-trash-o"></i></button></a>
 											</td>
                                         </tr>
 	<?php
@@ -75,3 +93,12 @@ $db = new database();
                 <!-- /.col-lg-12 -->
             </div>
             <!-- /.row -->
+<?php 
+        break;
+
+    case "update":
+        echo '<h1>TEST</h1>';
+        break;
+
+}
+?>
