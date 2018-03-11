@@ -33,40 +33,47 @@
 $no=1;
 include 'databasenilaiulangan.php';
 $db = new database();
-    foreach($db->tampil_data() as $rs)
+    $sql = mysql_query("SELECT * FROM `n_ulanganharian`");
+    while($rs = mysql_fetch_array($sql))
 	{
 
 	?>	
                                         <tr class="odd gradeX">
                                             <td><?php echo $no++; ?></td>
-											<td><?php echo"$rs[nisn]";  ?></td>
-                                            <?php  
-                                                $asql=mysql_query("select nama_matpel from n_ulanganharian,jadwal,matpel where n_ulanganharian.id_nuh='$rs[id_nuh]' and n_ulanganharian.id_jadwal=jadwal.id_jadwal and jadwal.id_matpel=matpel.id_matpel");
-                                                $acount=mysql_num_rows($asql);
-                                                $ars=mysql_fetch_array($asql);                                                  
+                                            <?php 
+                                                $qdsiswa = mysql_query("SELECT `nama_siswa` FROM `siswa` WHERE `nisn`='$rs[nisn]' ");
+                                                $dsiswa = mysql_fetch_array($qdsiswa);
                                             ?>
-                                            <td><?php echo"$rs[id_jadwal]";  ?>
-                                                <?php
-                                                    echo $ars['nama_matpel'];
-                                                ?>                                 
-                                            </td>
-											<td><?php echo"$rs[id_kls]";  ?></td>
+											<td><?php echo $dsiswa['nama_siswa'];  ?></td>
+                                            <?php 
+                                                $qjadwal = mysql_query("SELECT `id_matpel` FROM `jadwal` WHERE `id_jadwal`='$rs[id_jadwal]' ");
+                                                $djadwal = mysql_fetch_array($qjadwal);
+
+                                                $qmapel = mysql_query("SELECT `nama_matpel` FROM `matpel` WHERE `id_matpel`='$djadwal[id_matpel]' ");
+                                                $dmapel = mysql_fetch_array($qmapel);
+                                            ?>
+                                            <td><?php echo $dmapel['nama_matpel'];?></td>
+                                            <?php 
+                                                $qkelas = mysql_query("SELECT `nama_kls` FROM `kelas` WHERE `id_kls`='$rs[id_kls]' ");
+                                                $dkelas = mysql_fetch_array($qkelas);
+                                            ?>
+											<td><?php echo $dkelas['nama_kls']; ?></td>
 											<td>
                                                 <?php  
-                                                    echo ($rs['nilai_uh1'] == '0' ? '' : '<input type="text" class="form-control" name="uh_1" value="Nilai UH 1: '.$rs['nilai_uh1'].'">');   
-                                                    echo ($rs['nilai_uh2'] == '0' ? '' : '<input type="text" class="form-control" name="uh_2" value="Nilai UH 2: '.$rs['nilai_uh2'].'">');
-                                                    echo ($rs['nilai_uh3'] == '0' ? '' : '<input type="text" class="form-control" name="uh_3" value="Nilai UH 3: '.$rs['nilai_uh3'].'">');
-                                                    echo ($rs['nilai_uh4'] == '0' ? '' : '<input type="text" class="form-control" name="uh_3" value="Nilai UH 4: '.$rs['nilai_uh4'].'">');
-                                                    echo ($rs['nilai_uh5'] == '0' ? '' : '<input type="text" class="form-control" name="uh_3" value="Nilai UH 5: '.$rs['nilai_uh5'].'">');
-                                                    echo ($rs['nilai_uh6'] == '0' ? '' : '<input type="text" class="form-control" name="uh_3" value="Nilai UH 6: '.$rs['nilai_uh6'].'">');
-                                                    echo ($rs['nilai_uh7'] == '0' ? '' : '<input type="text" class="form-control" name="uh_3" value="Nilai UH 7: '.$rs['nilai_uh7'].'">');
-                                                    echo ($rs['nilai_uh8'] == '0' ? '' : '<input type="text" class="form-control" name="uh_3" value="Nilai UH 8: '.$rs['nilai_uh8'].'">');
+                                                    echo ($rs['nilai_uh1'] == '0' ? '' : '<input type="text" class="form-control" name="uh_1" value="Nilai UH 1: '.$rs['nilai_uh1'].'" readonly>');   
+                                                    echo ($rs['nilai_uh2'] == '0' ? '' : '<input type="text" class="form-control" name="uh_2" value="Nilai UH 2: '.$rs['nilai_uh2'].'" readonly>');
+                                                    echo ($rs['nilai_uh3'] == '0' ? '' : '<input type="text" class="form-control" name="uh_3" value="Nilai UH 3: '.$rs['nilai_uh3'].'" readonly>');
+                                                    echo ($rs['nilai_uh4'] == '0' ? '' : '<input type="text" class="form-control" name="uh_3" value="Nilai UH 4: '.$rs['nilai_uh4'].'" readonly>');
+                                                    echo ($rs['nilai_uh5'] == '0' ? '' : '<input type="text" class="form-control" name="uh_3" value="Nilai UH 5: '.$rs['nilai_uh5'].'" readonly>');
+                                                    echo ($rs['nilai_uh6'] == '0' ? '' : '<input type="text" class="form-control" name="uh_3" value="Nilai UH 6: '.$rs['nilai_uh6'].'" readonly>');
+                                                    echo ($rs['nilai_uh7'] == '0' ? '' : '<input type="text" class="form-control" name="uh_3" value="Nilai UH 7: '.$rs['nilai_uh7'].'" readonly>');
+                                                    echo ($rs['nilai_uh8'] == '0' ? '' : '<input type="text" class="form-control" name="uh_3" value="Nilai UH 8: '.$rs['nilai_uh8'].'" readonly>');
                                                 ?>
                                             </td>
-											<td><?php echo"$rs[ket_uh]";  ?></td>
+											<td><?php echo $rs['ket_uh'];?></td>
 											<td class="text-center">
-												<a href="./././admin.php?module=input_nilai&act=edit&id_nuh<?php echo $rs['id_nuh'] ?>&level=<?php echo $level; ?>"><button type="button" class="btn btn-info">Edit</button></a> 
-												<a href="././module/nilai/prosesulangan.php?aksi=hapus&id_nuh=<?php echo $rs['id_nuh'] ?>"><button type="button" class="btn btn-danger">Hapus</button></a>
+												<a href="./././admin.php?module=input_nilai&act=edit&id_nuh<?php echo $rs['id_nuh'] ?>&level=<?php echo $level; ?>"><button type="button" class="btn btn-info"><i class="fa fa-pencil"></i></button></a> 
+												<a href="././module/nilai/prosesulangan.php?aksi=hapus&id_nuh=<?php echo $rs['id_nuh'] ?>"><button type="button" class="btn btn-danger"><i class="fa fa-trash-o"></i></button></a>
 											</td>
                                         </tr>
 	<?php

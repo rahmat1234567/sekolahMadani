@@ -19,6 +19,7 @@ if($aksi == "tambah"){
 
 		$sqli = rtrim($sqli, ', ');
 		mysql_query($sqli);
+		header("location:http://localhost/sekolahMadani/admin.php?module=tampil_tugas");
 		//echo $sqli;
 		//$db->input($_POST['id_jadwal'],$_POST['nisn'],$_POST['nama_tugas'],$_POST['nilai_tugas'],$_POST['ket'],$_POST['id_kelas']);
 	
@@ -28,7 +29,7 @@ elseif($aksi == "hapus"){
 	header("location:http://localhost/sekolahMadani/admin.php?module=tampil_tugas");
 }
 elseif($aksi == "update"){
-	$db->update($_GET['id_jadwal'],$_POST['nisn'],$_POST['nama_tugas'],$_POST['nilai_tugas'],$_POST['ket']);
-	header("location:http://localhost/sekolahMadani/admin.php?module=tampil_tugas");
+	//$db->update($_GET['id_jadwal'],$_POST['nisn'],$_POST['nama_tugas'],$_POST['nilai_tugas'],$_POST['ket']);
+	//header("location:http://localhost/sekolahMadani/admin.php?module=tampil_tugas");
 }
 ?>
