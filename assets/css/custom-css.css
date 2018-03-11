@@ -390,3 +390,61 @@
     right: 0px; 
     background: #27A1CA;
 }
+
+.a6 {
+    position: relative; width: 90px;
+    -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
+}
+
+.a6-checkbox {
+    display: none;
+}
+
+.a6-label {
+    display: block; overflow: hidden; cursor: pointer;
+    border: 2px solid #d3d3d3; border-radius: 0px;
+}
+
+.a6-inner {
+    display: block; width: 200%; margin-left: -100%;
+    -moz-transition: margin 0.3s ease-in 0s; -webkit-transition: margin 0.3s ease-in 0s;
+    -o-transition: margin 0.3s ease-in 0s; transition: margin 0.3s ease-in 0s;
+}
+
+.a6-inner:before, .a6-inner:after {
+    display: block; float: left; width: 50%; height: 30px; padding: 0; line-height: 26px;
+    font-size: 11px; color: white; font-family: Trebuchet, Arial, sans-serif; font-weight: bold;
+    -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+}
+
+.a6-inner:before {
+    content: "Ada";
+    padding-left: 10px;
+    background-color: #FFFFFF; color: #27A1CA;
+}
+
+.a6-inner:after {
+    content: "Tidak";
+    padding-right: 10px;
+    background-color: #FFFFFF; color: #f44242;
+    text-align: right;
+}
+
+.a6-switch {
+    display: block; width: 25px; margin: 0px;
+    background: #f44242;
+    position: absolute; top: 0; bottom: 0; right: 65px;
+    -moz-transition: all 0.3s ease-in 0s; -webkit-transition: all 0.3s ease-in 0s;
+    -o-transition: all 0.3s ease-in 0s; transition: all 0.3s ease-in 0s; 
+}
+
+.a6-checkbox:checked + .a6-label .a6-inner {
+    margin-left: 0;
+}
+
+.a6-checkbox:checked + .a6-label .a6-switch {
+    right: 0px; 
+    background: #27A1CA;
+}

@@ -110,14 +110,20 @@ if($_GET['act']=="edit_sekolah"){
                                         </div>
                                         <div class="form-group">
                                             <label>Alamat</label>
-                                            <textarea class="form-control" placeholder="Alamat" name="alamat_sklh" rows="3"><?php echo "$rs[alamat_sklh]"; ?></textarea>
+                                            <textarea style="resize: vertical;" class="form-control" placeholder="Alamat" name="alamat_sklh" rows="3"><?php echo "$rs[alamat_sklh]"; ?></textarea>
                                         </div>
 										<div class="form-group">
                                             <label>Telp</label>
-                                            <textarea class="form-control" placeholder="Telp" name="telp_sklh" rows="3"><?php echo "$rs[telp_sklh]"; ?></textarea>
+                                            <input class="form-control" placeholder="Telp" name="telp_sklh" value="<?php echo "$rs[telp_sklh]"; ?>">
                                         </div>
-
-                                        <button type="submit" class="btn btn-default">Submit Button</button>
+                                        <div class="form-group">
+                                            <label>Email</label>
+                                            <input class="form-control" placeholder="Telp" name="email_sklh" value="<?php echo "$rs[email_sklh]"; ?>">
+                                        </div>
+                                        <div class="form-group">
+                                        <label>Luas Sekolah (m<sup>2</sup>)</label>
+                                        <input class="form-control" placeholder="Luas" name="luas_sklh" value="<?php echo "$rs[luas_sklh]"; ?>">
+                                    </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group" style="">
@@ -131,10 +137,6 @@ if($_GET['act']=="edit_sekolah"){
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <label>Luas Sekolah (m<sup>2</sup>)</label>
-                                        <input class="form-control" placeholder="Luas" name="luas_sklh" value="<?php echo "$rs[luas_sklh]"; ?>">
-                                    </div>
                                     <div class="form-group">
                                         <label>Laboratorium</label>
                                         <div class="a1">
@@ -155,8 +157,6 @@ if($_GET['act']=="edit_sekolah"){
                                             </label>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-lg-6">
                                     <div class="form-group">
                                         <label>Aula</label>
                                         <div class="a3">
@@ -164,6 +164,19 @@ if($_GET['act']=="edit_sekolah"){
                                             <label class="a3-label" for="mya3">
                                                 <span class="a3-inner"></span>
                                                 <span class="a3-switch"></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label>Perpustakaan</label>
+                                        <div class="a6">
+                                            <input type="checkbox" name="perpustakaan" class="a6-checkbox" id="mya6" value="1">
+                                            <label class="a6-label" for="mya6">
+                                                <span class="a6-inner"></span>
+                                                <span class="a6-switch"></span>
                                             </label>
                                         </div>
                                     </div>
@@ -187,8 +200,10 @@ if($_GET['act']=="edit_sekolah"){
                                             </label>
                                         </div>
                                     </div>
+
                                 </div>
                                 <!-- /.col-lg-6 (nested) -->
+                                <center><div class="form-group"><button type="submit" class="btn btn-success" style="width: 60%;transform: translateY(10px);">Edit Data</button></div></center>
                                     </form>
 
                             </div>

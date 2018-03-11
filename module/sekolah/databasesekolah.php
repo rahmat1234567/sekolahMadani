@@ -35,7 +35,7 @@ class database{
 		return $hasil;
 	}
 	
-	function update($id_sklh,$nama_sklh,$alamat_sklh,$telp_sklh,$jmlh_siswa){
+	function update($id_sklh,$nama_sklh,$alamat_sklh,$telp_sklh,$email_sklh,$jmlh_siswa,$luas_sklh,$jlmh_ruang_kls,$laboratorium,$musholla,$aula,$perpustakaan,$lap_basket,$lap_sepakbola,$lng,$lat){
 		mysql_query("update sekolah set nama_sklh='$nama_sklh', alamat_sklh='$alamat_sklh', telp_sklh='$telp_sklh', jmlh_siswa='$jmlh_siswa' where id_sklh='$id_sklh'");
 	}
 }
