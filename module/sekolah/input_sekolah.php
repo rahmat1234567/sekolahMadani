@@ -219,8 +219,8 @@ if($_GET['act']=="edit_sekolah"){
                                         <label>Lokasi Sekolah</label>
                                         <fieldset class="gllpLatlonPicker push-col-md-4" style="">
                                             <div class="gllpMap">Google Maps</div>
-                                            <input type="text" name="lati" class="gllpLatitude" value="<?php echo "$lat1"; ?>"/>
-                                            <input type="text" name="longi" class="gllpLongitude" value="<?php echo "$lng1"; ?>"/>
+                                            <input type="hidden" name="lati" class="gllpLatitude" value="<?php echo "$lat1"; ?>"/>
+                                            <input type="hidden" name="longi" class="gllpLongitude" value="<?php echo "$lng1"; ?>"/>
                                             <input type="hidden" name="zoom" class="gllpZoom" value="13"/>
                                         </fieldset>
                                     </div>
