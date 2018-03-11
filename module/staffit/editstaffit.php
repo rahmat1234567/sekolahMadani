@@ -14,7 +14,7 @@ foreach($db->edit($_GET['nik']) as $d){
 		<td>Nama Staff IT</td>
 		<td>
 			<input type="hidden" name="nik" value="<?php echo $d['nik'] ?>">
-			<input type="text" name="nama_pgw" value="<?php echo $d['nama_pgw'] ?>">
+			<input type="text" name="nxama_pgw" value="<?php echo $d['nama_pgw'] ?>">
 		</td>
 	</tr>
 	<tr>
