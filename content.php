@@ -106,4 +106,7 @@ include "module/nilai/tampil_tugas.php";
 if($_GET['module']=="tampil_ulangan"){
 include "module/nilai/tampil_ulangan.php";
 }
+if($_GET['module']=="ekskul"){
+include "module/siswa/ekskul.php";
+}
 ?>

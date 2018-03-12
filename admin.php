@@ -333,7 +333,7 @@ echo "<span style='font-family: helvetica;'>$usre</span>";
 
 <?php if($level==4){ ?>
                         <li>
-                            <a href="#"><i class="fa fa-dashboard fa-fw"></i> Aktifitas Siswa</a>
+                            <a href="admin.php?module=ekskul"><i class="fa fa-dashboard fa-fw"></i> Aktifitas Siswa</a>
                         </li>
 <?php } ?>
 <?php if($level==4){ ?>
