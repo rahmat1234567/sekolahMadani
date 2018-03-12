@@ -281,7 +281,7 @@ echo "<span style='font-family: helvetica;'>$usre</span>";
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Data Absensi<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="admin.php?module=pilih">Input Data</a>
+                                    <a href="admin.php?module=pilihan">Input Data</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
