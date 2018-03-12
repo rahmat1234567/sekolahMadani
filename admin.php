@@ -62,6 +62,10 @@ include "config/conn.php";
     <!-- SB Admin CSS - Include with every page -->
     <link href="assets/css/sb-admin.css" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="assets/css/jquery-gmaps-latlon-picker.css">
+    
+    <!-- Chart.js -->
+    <script src="assets/js/Chart.bundle.js"></script>
+
 
 </head>
 
@@ -344,6 +348,12 @@ echo "<span style='font-family: helvetica;'>$usre</span>";
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
+                        </li>
+<?php } ?>
+
+<?php if($level==4){ ?>
+                        <li>
+                            <a href="admin.php?module=st_siswa"><i class="fa fa-dashboard fa-fw"></i> Statistik Siswa</a>
                         </li>
 <?php } ?>
       
