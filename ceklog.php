@@ -106,7 +106,7 @@ else{
 
 			if($rsx['status_akun']==4){
 
-				$_SESSION['id']=$rsx['nis'];
+				$_SESSION['id']=$rsx['nisn'];
 				$_SESSION['nama']=$rsx['nama_siswa'];
 				$_SESSION['alamat']=$rsx['alamat_siswa'];
 				$_SESSION['nama_ibu']=$rsx['nama_ibu'];

@@ -1,5 +1,5 @@
 <?php                            
-	$sql=mysql_query("select * from siswa where nisn='$_GET[nisn]'");
+	$sql=mysql_query("select * from siswa where nisn='$uidi'");
 	$rs=mysql_fetch_array($sql);
 ?>
           <div class="row">
