@@ -118,10 +118,10 @@ $sql=mysql_query("SELECT * FROM `siswa` WHERE `id_kls`='$_GET[id_kelas]' ");
 								?>
 									html += '<tr class="odd gradeX">';
 										html += '<td><?php echo $no++; ?></td>';
-										html += '<input type="text" name="nama_tugas[]" id="nama_tugas_'+ i +'">';
-										html += '<input type="text" name="nisn[]" id="nisn_'+ i +'" value="<?php echo $rs['nisn']; ?>">';
-										html += '<input type="text" name="id_kelas" id="id_kelas_'+ i +'" value="<?php echo $_GET['id_kelas']; ?>">';
-										html += '<input type="text" name="id_jadwal" id="id_jadwal_'+ i +'" value="<?php echo $_GET['id_jadwal']; ?>">';
+										html += '<input type="hidden" name="nama_tugas[]" id="nama_tugas_'+ i +'">';
+										html += '<input type="hidden" name="nisn[]" id="nisn_'+ i +'" value="<?php echo $rs['nisn']; ?>">';
+										html += '<input type="hidden" name="id_kelas" id="id_kelas_'+ i +'" value="<?php echo $_GET['id_kelas']; ?>">';
+										html += '<input type="hidden" name="id_jadwal" id="id_jadwal_'+ i +'" value="<?php echo $_GET['id_jadwal']; ?>">';
 										html += '<td><?php echo $rs['nama_siswa'];?></td>';
 										html += '<td><input type="text" class="form-control" name="nilai_tugas[]" id="nilai_tugas_'+ i +'" placeholder="Nilai 0 - 100" pattern="[0-9]{0,3}" required/></td>';
 										html += '<td><textarea class="form-control" placeholder="Keterangan" name="ket[]" id="ket_'+ i +'" rows="2" style="resize: vertical;"></textarea></td>';

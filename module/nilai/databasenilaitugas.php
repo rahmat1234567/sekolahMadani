@@ -35,8 +35,14 @@ class database{
 		return $hasil;
 	}
 	
-	function update($nisn,$nama_tugas,$nilai_tugas,$ket){
-		mysql_query("update n_tugas set nisn='$nisn',nama_tugas='$nama_tugas',ket='$ket' where id_ntugas='$id_ntugas'");
+	function update($id_ntugas,$nisn,$id_jadwal,$id_kls,$nilai_tugas,$ket,$nama_tugas){
+		mysql_query("update n_tugas set nisn='$nisn',
+			id_jadwal='$id_jadwal',
+			id_kls='$id_kls',
+			nilai_tugas='$nilai_tugas',
+			ket='$ket',
+			nama_tugas='$nama_tugas' 
+			where id_ntugas='$id_ntugas' ");
 	}
 }
 ?>
