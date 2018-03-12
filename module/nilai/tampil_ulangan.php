@@ -1,3 +1,13 @@
+<?php
+    if(isset($_GET['aksi'])) {
+        $aksi = $_GET['aksi'];
+    } else {
+        $aksi = "";
+    }
+
+    switch ($aksi) {
+        default:
+?>
             <div class="row">
                 <div class="col-lg-12">
 					<h3 class="page-header"><strong>Data nilai Ulangan Siswa</strong></h3>
@@ -72,7 +82,7 @@ $db = new database();
                                             </td>
 											<td><?php echo $rs['ket_uh'];?></td>
 											<td class="text-center">
-												<a href="./././admin.php?module=input_nilai&act=edit&id_nuh<?php echo $rs['id_nuh'] ?>&level=<?php echo $level; ?>"><button type="button" class="btn btn-info"><i class="fa fa-pencil"></i></button></a> 
+												<a href="./././admin.php?module=tampil_ulangan&aksi=update&id_nuh=<?php echo $rs['id_nuh'];?>"><button type="button" class="btn btn-info"><i class="fa fa-pencil"></i></button></a> 
 												<a href="././module/nilai/prosesulangan.php?aksi=hapus&id_nuh=<?php echo $rs['id_nuh'] ?>"><button type="button" class="btn btn-danger"><i class="fa fa-trash-o"></i></button></a>
 											</td>
                                         </tr>
@@ -91,4 +101,120 @@ $db = new database();
                 <!-- /.col-lg-12 -->
             </div>
             <!-- /.row -->
+<?php 
+        break;
+
+    case "update":
+        $qulanganhar = mysql_query("SELECT * FROM `n_ulanganharian` WHERE `id_nuh`='$_GET[id_nuh]' ");
+        $dulanganhar = mysql_fetch_array($qulanganhar);
+
+        echo'<div class="row">
+                <div class="col-lg-12">
+                    <h3 class="page-header"><strong>Edit Data Ulangan Harian</strong></h3>
+                </div>
+            </div>';
+        
+        echo'<div class="col-md-12"><form method="post" role="form" action="././module/nilai/prosesulangan.php?aksi=update">
+            <div class="row">
+               
+                <table>
+                    <input type="hidden" name="id_nuh" value="'.$_GET['id_nuh'].'">
+                    <tr>
+                        <td>
+                            <label for="nisn">Nisn</label>
+                        </td>
+                        <td>:</td>
+                        <td class="col-md-8">
+                            <input type="text" class="form-control" size="50" style="margin-top: 5px;" name="nisn" value="'.$dulanganhar['nisn'].'" readonly>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="id_jadwal">Id Jadwal</label>
+                        </td>
+                        <td>:</td>
+                        <td class="col-md-8"><input type="text" class="form-control" style="margin-top: 5px;" name="id_jadwal" value="'.$dulanganhar['id_jadwal'].'" readonly></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="id_kelas">Id Kelas</label>
+                        </td>
+                        <td>:</td>
+                        <td class="col-md-8"><input type="text" class="form-control" style="margin-top: 5px;" name="id_kls" value="'.$dulanganhar['id_kls'].'" readonly> </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="ket">Keterangan</label>
+                        </td>
+                        <td>:</td>
+                        <td class="col-md-8"><input type="text" class="form-control" style="margin-top: 5px;" name="ket_uh" value="'.$dulanganhar['ket_uh'].'"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="nama_tugas">Ulangan Harian 1</label>
+                        </td>
+                        <td>:</td>
+                        <td class="col-md-8"><input type="text" class="form-control" style="margin-top: 5px;" name="nilai_uh1" value="'.$dulanganhar['nilai_uh1'].'"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="nama_tugas">Ulangan Harian 2</label>
+                        </td>
+                        <td>:</td>
+                        <td class="col-md-8"><input type="text" class="form-control" style="margin-top: 5px;" name="nilai_uh2" value="'.$dulanganhar['nilai_uh2'].'"></td>
+                    </tr>
+                     <tr>
+                        <td>
+                            <label for="nama_tugas">Ulangan Harian 3</label>
+                        </td>
+                        <td>:</td>
+                        <td class="col-md-8"><input type="text" class="form-control" style="margin-top: 5px;" name="nilai_uh3" value="'.$dulanganhar['nilai_uh3'].'"></td>
+                    </tr>
+                     <tr>
+                        <td>
+                            <label for="nama_tugas">Ulangan Harian 4</label>
+                        </td>
+                        <td>:</td>
+                        <td class="col-md-8"><input type="text" class="form-control" style="margin-top: 5px;" name="nilai_uh4" value="'.$dulanganhar['nilai_uh4'].'"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="nama_tugas">Ulangan Harian 5</label>
+                        </td>
+                        <td>:</td>
+                        <td class="col-md-8"><input type="text" class="form-control" style="margin-top: 5px;" name="nilai_uh5" value="'.$dulanganhar['nilai_uh5'].'"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="nama_tugas">Ulangan Harian 6</label>
+                        </td>
+                        <td>:</td>
+                        <td class="col-md-8"><input type="text" class="form-control" style="margin-top: 5px;" name="nilai_uh6" value="'.$dulanganhar['nilai_uh6'].'"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="nama_tugas">Ulangan Harian 7</label>
+                        </td>
+                        <td>:</td>
+                        <td class="col-md-8"><input type="text" class="form-control" style="margin-top: 5px;" name="nilai_uh7" value="'.$dulanganhar['nilai_uh7'].'"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="nama_tugas">Ulangan Harian 8</label>
+                        </td>
+                        <td>:</td>
+                        <td class="col-md-8"><input type="text" class="form-control" style="margin-top: 5px;" name="nilai_uh8" value="'.$dulanganhar['nilai_uh8'].'"></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td><button type="submit" class="btn btn-sm btn-info pull-left" style="margin-top: 5px; margin-left: 1.5rem;">Simpan</button></td>
+                    </tr>
+                </table>
+                    
+            </div>               
+        </form></div>';
+        break;
+} 
+?>
             

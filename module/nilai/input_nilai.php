@@ -53,11 +53,11 @@ $uhnumb6 = 0;
 $uhnumb7 = 0;
 $uhnumb8 = 0;
 $inuhNum = 0;
-$sql=mysql_query("SELECT * FROM `siswa` WHERE `id_kls`='$_GET[id_kelas]' ");
+        $sql=mysql_query("SELECT * FROM `siswa` WHERE `id_kls`='$_GET[id_kelas]' ");
 
-    $noxxx = 1;
-    while($rs=mysql_fetch_array($sql))
-    {
+        $noxxx = 1;
+        while($rs=mysql_fetch_array($sql))
+        {
 
 ?>  
                                             <tr class="odd gradeX">
@@ -81,8 +81,8 @@ $sql=mysql_query("SELECT * FROM `siswa` WHERE `id_kls`='$_GET[id_kelas]' ");
                                                 <td><textarea class="form-control" placeholder="Keterangan" name="ket_uh[]" rows="2" style="resize: vertical;"></textarea></td>
                                             </tr>
 <?php
-$noxxx++;
-}
+        $noxxx++;
+        }
 ?>
                                     </tbody>
                                 </table>

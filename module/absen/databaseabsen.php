@@ -19,8 +19,8 @@ class database{
 		return $hasil;
 	}
 	
-	function input($id_kls,$tgl,$jam,$ket){
-		mysql_query("insert into absensi values('','$id_kls','$tgl','$jam','$ket')");
+	function input($id_kls,$id_jadwal,$tgl,$jam,$ket){
+		mysql_query("insert into absensi values('','$id_kls','id_jadwal','$tgl','$jam','$ket')");
 	}
 	
 	function hapus($id_abs){

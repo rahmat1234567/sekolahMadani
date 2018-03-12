@@ -35,7 +35,7 @@ elseif($aksi == "hapus"){
 	header("location:http://localhost/sekolahMadani/admin.php?module=tampil_ulangan");
 }
 elseif($aksi == "update"){
-	$db->update($_POST['nisn'],$_POST['nilai_uh1'],$_POST['nilai_uh2'],$_POST['nilai_uh3'],$_POST['nilai_uh4'],$_POST['nilai_uh5'],$_POST['nilai_uh6'],$_POST['nilai_uh7'],$_POST['nilai_uh8'],$_POST['ket_uh']);
-	header("location:http://localhost/sekolahMadani/admin.php?module=sekolah&kls=semua");
+	$db->update($_POST['id_nuh'],$_POST['id_jadwal'],$_POST['nisn'],$_POST['id_kls'],$_POST['nilai_uh1'],$_POST['nilai_uh2'],$_POST['nilai_uh3'],$_POST['nilai_uh4'],$_POST['nilai_uh5'],$_POST['nilai_uh6'],$_POST['nilai_uh7'],$_POST['nilai_uh8'],$_POST['ket_uh']);
+	header("location:http://localhost/sekolahMadani/admin.php?module=tampil_ulangan");
 }
 ?>
