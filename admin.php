@@ -341,10 +341,10 @@ echo "<span style='font-family: helvetica;'>$usre</span>";
                             <a href="#"><i class="fa fa-dashboard fa-fw"></i> Data Nilai</a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="admin.php?module=tugassiswa">View Tugas</a>
+                                    <a href="admin.php?module=tampil_tugas">View Tugas</a>
                                 </li>
                                 <li>
-                                    <a href="admin.php?module=ulanganharian">View Ulangan Harian</a>
+                                    <a href="admin.php?module=tampil_ulangan">View Ulangan Harian</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->

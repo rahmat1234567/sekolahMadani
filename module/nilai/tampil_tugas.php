@@ -1,4 +1,7 @@
-<?php
+<?php                            
+    $sql=mysql_query("select * from siswa where nisn='$uidi'");
+    $rs=mysql_fetch_array($sql);
+
     if(isset($_GET['aksi'])) {
         $aksi = $_GET['aksi'];
     } else {
@@ -8,6 +11,7 @@
     switch ($aksi) {
         default:
 ?>
+
             <div class="row">
                 <div class="col-lg-12">
 					<h3 class="page-header"><strong>Data nilai Tugas Siswa</strong></h3>
