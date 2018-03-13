@@ -36,6 +36,7 @@ $mail=$_SESSION['email'];
 $tlpn=$_SESSION['telp'];
 $jkjk=$_SESSION['jk'];
 $nmsklh=$_SESSION['nama_sklh']; 
+$idsklh=$_SESSION['id_sklh']; 
 $nmkls=$_SESSION['nama_kls'];
 
 include "config/conn.php";
