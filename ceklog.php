@@ -30,7 +30,8 @@ $_SESSION['status']="";
 $_SESSION['email']="";
 $_SESSION['telp']="";
 $_SESSION['jk']="";
-$_SESSION['nama_sklh']=""; 
+$_SESSION['nama_sklh']="";
+$_SESSION['id_sklh']=""; 
 $_SESSION['nama_kls']="";
 
 $sql=mysql_query("select * from admin where id_login='$user' and pass_login='$pass'");
@@ -58,6 +59,7 @@ else{
 				$_SESSION['telp']=$rsa['telp_pgw'];
 				$_SESSION['jk']=$rsa['jk'];
 				$_SESSION['status']=$rsa['status_akun'];
+				$_SESSION['id_sklh']=$rsa['id_sklh'];
 					$kode_sklh=$rsa['id_sklh']; 
 					$sqlaaa=mysql_query("select nama_sklh from sekolah where id_sklh='$kode_sklh'");
 					$countaaa=mysql_num_rows($sqlaaa);
@@ -112,6 +114,7 @@ else{
 				$_SESSION['nama_ibu']=$rsx['nama_ibu'];
 				$_SESSION['nama_ayah']=$rsx['nama_ayah'];
 				$_SESSION['status']=$rsx['status_akun'];
+				$_SESSION['id_sklh']=$rsx['id_sklh'];
 					$kode_kls=$rsx['id_kls']; 
 					$sqlxx=mysql_query("select nama_kls from kelas where id_kls='$kode_kls'");
 					$countxx=mysql_num_rows($sqlxx);
@@ -124,7 +127,6 @@ else{
 				$_SESSION['nama_sklh']=$rsxxx['nama_sklh'];
 				header('location:admin.php?module=home');
 			}
-
 			else{
 				header('location:index.php?e=0&error=1');
 				//echo"<center><h2>ID atau Password anda salah.</h2><br>
