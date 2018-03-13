@@ -1,4 +1,5 @@
         <script src="http://maps.googleapis.com/maps/api/js?sensor=false&file=api&v=2&key=AIzaSyDTHdsatggoEPUvt0-1UBy0Km-lvWmrwz4"></script>
+        <?php if($level!=1){ ?>
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header"><?php echo "$nmsklh"; ?></h1>
@@ -6,9 +7,17 @@
             <!-- /.col-lg-12 -->
         </div>
         <!-- /.row -->
+
 <?php
+    }
+    else{
+        ?>
+        <br>
+        <?php
+    }
     $sql=mysql_query("select * from sekolah where id_sklh='$idsklh'");
     $rs=mysql_fetch_array($sql);
+
 ?>
         <div class="row">
             <div class="col-lg-12">
