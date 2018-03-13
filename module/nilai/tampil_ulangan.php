@@ -1,4 +1,5 @@
-<?php
+<?php                            
+
     if(isset($_GET['aksi'])) {
         $aksi = $_GET['aksi'];
     } else {
@@ -43,7 +44,12 @@
 $no=1;
 include 'databasenilaiulangan.php';
 $db = new database();
-    $sql = mysql_query("SELECT * FROM `n_ulanganharian`");
+    if($level==4){
+        $sql = mysql_query("SELECT * FROM `n_ulanganharian` WHERE nisn='$uidi'");
+    }
+    else{
+        $sql = mysql_query("SELECT * FROM `n_ulanganharian` ");
+    }
     while($rs = mysql_fetch_array($sql))
 	{
 

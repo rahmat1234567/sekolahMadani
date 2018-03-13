@@ -1,6 +1,4 @@
 <?php                            
-    $sql=mysql_query("select * from siswa where nisn='$uidi'");
-    $rs=mysql_fetch_array($sql);
 
     if(isset($_GET['aksi'])) {
         $aksi = $_GET['aksi'];
@@ -48,8 +46,12 @@
 $no=1;
 include 'databasenilaitugas.php';
 $db = new database();
-    $qttugas = mysql_query("SELECT * FROM `n_tugas`");
-
+    if($level==4){
+        $qttugas = mysql_query("SELECT * FROM `n_tugas` WHERE nisn='$uidi'");
+    }
+    else{
+        $qttugas = mysql_query("SELECT * FROM `n_tugas`");
+    }
     while($rs = mysql_fetch_array($qttugas))
 	{
 
