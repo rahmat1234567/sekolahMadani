@@ -13,12 +13,24 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="form-group" style="">
-                    <label>Lokasi Sekolah</label>
+                    <?php
+                        if($rs['lat']==""){
+                            $lat1 = "0.5070628154890728";
+                            $lng1 = "101.44805035605714";
+                            $zooom= "13";
+                        }
+                        else{
+                            $lat1 = $rs['lat'];
+                            $lng1 = $rs['lng'];
+                            $zooom= "17";
+                        }
+                    ?>
                     <fieldset class="gllpLatlonPicker push-col-md-4" style="">
                         <div class="gllpMap">Google Maps</div>
-                        <input type="hidden" name="lati" class="gllpLatitude" value="<?php echo "$rs[lat]"; ?>"/>
-                        <input type="hidden" name="longi" class="gllpLongitude" value="<?php echo "$rs[lng]"; ?>"/>
-                        <input type="hidden" name="zoom" class="gllpZoom" value="13"/>
+                        <input type="hidden" name="lati" class="gllpLatitude" value="<?php echo "$lat1"; ?>"/>
+                        <input type="hidden" name="longi" class="gllpLongitude" value="<?php echo "$lng1"; ?>"/>
+                        <input type="hidden" name="zoom" class="gllpZoom" value="<?php echo "$zooom" ?>"/>
+                        <input type="hidden" name="satt" class="gllpSat" value="1"/>
                     </fieldset>
                 </div>
             </div>
