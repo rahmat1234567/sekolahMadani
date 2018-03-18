@@ -1,0 +1,134 @@
+form {
+    width:100;
+    margin:10px 10px;
+}
+.search {
+	color:white;
+    padding:8px 15px;
+    background:rgba(50, 50, 50, 50);
+    border:0px solid #dbdbdb;
+}
+.button {
+    position:relative;
+    padding:6px 15px;
+    left:8px;
+    border:2px solid #53bd84;
+    background-color:#53bd84;
+    color:#fafafa;
+}
+ 
+.button1 {
+    padding:6px 10px;
+    left:-8px;
+    border:2px solid #53bd84;
+    background-color:#53bd84;
+    color:#fafafa;
+	
+}
+#button {
+	font: 17px Century Gothic, Century Gothic, Geneva, AppleGothic, "Arial"; color: white;
+    padding:10px 20px;
+    left:-8px;
+    border:10px solid #white;
+    background-color:#33CC66;
+    color:#fafafa;
+}
+.button:hover  {
+    background-color:#fafafa;
+    color:black;
+}
+.button1:hover  {
+    background-color:#fafafa;
+    color:black;
+}
+#button:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+#footer{
+    height:40px;
+    line-height:30px;
+    background:#333;
+    color:#fff;
+ 
+	position:fixed;
+    bottom:0px;
+	
+ 
+    width:100%; /*biar memenuhi layar*/
+}
+.div {
+     color:black;
+     border: 3px solid transparan;
+     background-color: 	#FFFF00;
+     margin: 10px;
+  
+     box-shadow: 7px 7px 4px 2px #333;
+   }
+   
+#div {
+     color:white;
+     border: 3px solid transparan;
+     
+     margin: 10px;
+  
+     box-shadow: 7px 7px 10px 2px #333;
+   }
+
+.th { font: 17px "Arial", Century Gothic, Century Gothic, Geneva, AppleGothic; color: black; padding: 1px 1px 1px 10px; background:#FFFF00;}
+.td { font: bold 18px "Times New Rowman",Century Gothic, Century Gothic, Geneva, AppleGothic, sans-serif; color: black; box-shadow: 7px 7px 4px 2px #333; padding: 10px 10px 10px 15px; background:#FFFF00; }
+.tr { font: bold 20px "Calibri", Century Gothic, Century Gothic, Geneva, AppleGothic, sans-serif; color: red; box-shadow: 7px 7px 4px 2px #333; padding: 1px 1px 1px 1px; background:#FFFF00; }
+.tk { font: bold 18px "Times New Rowman",Century Gothic, Century Gothic, "Geneva", AppleGothic, sans-serif; color: black; border-right: 0.2em solid red; border-bottom: 0.2em solid red; border-top: 0.2em solid red; padding: 1px 1px 1px 1px; background:#FFFF00; }
+.tk1 { font: 17px "Arial", Century Gothic, Century Gothic, Geneva, AppleGothic; color: black; border-left: 0.2em solid red; border-top: 0.2em solid red; padding: 10px 10px 10px 10px; background:#FFFF00; }
+.tk2 { font: 17px "Arial", Century Gothic, Century Gothic, Geneva, AppleGothic; color: black; border-top: 0.2em solid red; padding: 1px 1px 1px 10px; background:#FFFF00; }
+.tk3 { font: bold 18px "Times New Rowman",Century Gothic, Century Gothic, "Geneva", AppleGothic, sans-serif; color: black; border-top: 0.2em solid red; border-right: 0.3em solid red; padding: 1px 1px 1px 15px; box-shadow: 7px 7px 4px 2px #333; background:#FFFF00; }
+.tk4 { font: 17px "Arial", Century Gothic, Century Gothic, Geneva, AppleGothic; color: black; border-left: 0.2em solid red; padding: 10px 10px 10px 10px; background:#FFFF00; }
+.tk5 { font: 17px "Arial", Century Gothic, Century Gothic, Geneva, AppleGothic; color: black; padding: 1px 1px 1px 10px; background:#FFFF00; }
+.tk6 { font: bold 18px "Times New Rowman",Century Gothic, Century Gothic, "Geneva", AppleGothic, sans-serif; color: black; border-right: 0.3em solid red; padding: 1px 1px 1px 15px; box-shadow: 7px 7px 4px 2px #333; background:#FFFF00; }
+.tk7 { font: 17px "Arial", Century Gothic, Century Gothic, Geneva, AppleGothic; color: black; border-bottom: 0.2em solid red; border-left: 0.2em solid red; padding: 10px 10px 10px 10px; box-shadow: 7px 7px 4px 2px #333; background:#FFFF00; }
+.tk8 { font: 17px "Arial", Century Gothic, Century Gothic, Geneva, AppleGothic; color: black; border-bottom: 0.2em solid red; padding: 1px 1px 1px 10px; box-shadow: 7px 7px 4px 2px #333; background:#FFFF00; }
+.tk9 { font: bold 18px "Times New Rowman",Century Gothic, Century Gothic, "Geneva", AppleGothic, sans-serif; color: black; border-bottom: 0.2em solid red; border-right: 0.3em solid red; padding: 1px 1px 1px 15px; box-shadow: 7px 7px 4px 2px #333; background:#FFFF00; }
+.tk10 { font: 17px "Arial", Century Gothic, Century Gothic, Geneva, AppleGothic; color: black; padding: 10px 10px 10px 10px; box-shadow: 7px 7px 4px 2px #333; background:#FFFF00; }
+
+
+.pt { font: 17px "Arial", Century Gothic, Century Gothic, Geneva, AppleGothic; color: red; padding: 15px 10px 10px 15px; align:center; box-shadow: 7px 7px 10px 2px #333; background:#FFFF00; }
+
+.body{background-color:white; font-size:14px;background:white;color:#5b5b5b;margin:0;padding:0;font-family:Century Gothic,sans-serif;height:100%;width:100%;overflow: -moz-scrollbars-none;}
+
+#atas{background:#006400;background-size:100% 100%;height:115px;width:100%;float:center;box-shadow:0px 0px 10px #5b5b5b;}
+.logo a{margin-top:4px;padding-top:5px;height:30px;float:left;margin:0;padding-left:10px;width:70px;}
+.front2{float:left;margin-top:3px;padding:2px;color:#fff;text-align:left;font-size:30px;}
+.front{float:left;margin-top:6px;padding:2px;color:#fff;text-align:left;font-size:30px;}
+.front span{margin-top:0px;float:left;padding:7px;color:#fff;text-align:left;font-size:20px;}
+
+
+.sp-container-header {
+	 width: 100%;
+     text-align: center;
+     color: transparent;
+     -webkit-animation: blurFadeInOut 10s ease-in backwards;
+     -moz-animation: blurFadeInOut 10s ease-in backwards;
+     -ms-animation: blurFadeInOut 10s ease-in backwards;
+     animation: blurFadeInOut 10s ease-in backwards;
+     animation-iteration-count: infinite;
+}
+
+.sp-container-header .frame-10 {
+     font-size: 1em;
+     -webkit-animation-delay: 0s;
+     -moz-animation-delay: 0s;
+     -ms-animation-delay: 0s;
+     animation-delay: 0s;
+}
+
+.genap {
+ background-color:#E0E0E0;
+ font: bold 17px "Times New Rowman",Century Gothic, Century Gothic, "Geneva", AppleGothic, sans-serif; align:center; color: black; box-shadow: 7px 7px 10px 2px #333; border-right: 0.2em solid black; border-bottom: 0.2em solid black; border-left: 0.2em solid black; border-top: 0.2em solid black; padding: 7px 7px 10px 25px;
+
+}
+
+.head {
+font: 18px "Arial", Century Gothic, Century Gothic, Geneva, AppleGothic; color: black; border-right: 0.1em solid black; border-bottom: 0.1em solid black; border-left: 0.1em solid black; border-top: 0.1em solid black;
+ background: -moz-linear-gradient(top,  rgba(206,220,231,1) 0%, rgba(89,106,114,1) 100%); /* FF3.6+ */ 
+ background: linear-gradient(to bottom,  rgba(206,220,271,1) 0%,rgba(89,216,114,1) 100%); /* W3C */
+ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cedce7', endColorstr='#596a72',GradientType=0 ); /* IE6-9 */
+}
