@@ -3,34 +3,11 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Data Siswa <?php 
-
-                            $nama_sklh=$_GET['nama']; 
-                            $sqlaaa=mysql_query("select id_sklh from sekolah where nama_sklh='$nama_sklh'");
-                            $countaaa=mysql_num_rows($sqlaaa);
-                            $rsaaa=mysql_fetch_array($sqlaaa);
-
-							$sqlj=mysql_query("select * from kelas where id_kls='$rsaaa[id_kls]'");
-							$rsj=mysql_fetch_array($sqlj);
-							
-							echo "Kelas $rsj[nama_kls]";
-							$klas=$_GET['kls'];
-$rg=10;
-while($rg>0){							
-if($_GET['jam']==$rg){
-							 ?>
-
-                             <a href="media.php?module=input_absen&jam=<?php echo $rg ?>&kls=<?php echo $_GET['kls'] ?>&tanggal=<?php echo $_GET['tanggal'] ?>&bulan=<?php echo $_GET['bulan'] ?>&tahun=<?php echo $_GET['tahun'] ?>" class="navbar-right text-danger">&nbsp; Jam ke <?php echo $rg ?> &nbsp;</a>
-<?php }else{ ?>
-                             <a href="media.php?module=input_absen&jam=<?php echo $rg ?>&kls=<?php echo $_GET['kls'] ?>&tanggal=<?php echo $_GET['tanggal'] ?>&bulan=<?php echo $_GET['bulan'] ?>&tahun=<?php echo $_GET['tahun'] ?>" class="navbar-right">&nbsp; Jam ke <?php echo $rg ?> &nbsp;</a>
-
-<?php } ?>
-
-<?php $rg--; } ?>
+                            Data Siswa
                         </div>
                         <div class="panel-body">
                             <div class="table-responsive">
-                           <form method="post" role="form" action="././module/simpan.php?act=input_absen&jam=<?php echo $_GET['jam'] ?>&klas=<?php echo $klas ?>">
+                           <form method="post" role="form" action="././module/prosesabsen.php?aksi=tambah">
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                     <thead>
                                         <tr>
@@ -47,9 +24,9 @@ if($_GET['jam']==$rg){
 <?php
 $no=1;
 $tg=date("d-m-Y");
-	$sql=mysql_query("select * from siswa where id_kls='$rsaaa[id_kls]'");
+	$sql=mysql_query("select * from siswa where id_kls='$_GET[id_kelas]' ");
 	while($rs=mysql_fetch_array($sql)){
-	$sqla=mysql_query("select * from absensi where id_kls='$rs[id_kls]' and tgl='$tgl' and jam='$_GET[jam]'");
+	$sqla=mysql_query("select * from absensi where id_kls='$rs[id_kls]' and tgl='$_GET[tanggal]' and jam='$_GET[jam]'");
 	$rsa=mysql_fetch_array($sqla);
 	$conk=mysql_num_rows($sqla);
 	$sqlw=mysql_query("select * from kelas where id_kls='$rs[id_kls]'");
@@ -58,8 +35,16 @@ $tg=date("d-m-Y");
 	$rsb=mysql_fetch_array($sqlb);
 
 ?>                                        <tr class="odd gradeX">
-                                            <td><?php echo"$rs[nisn]";  ?></td>
-                                            <td><?php echo"$rs[nama_siswa]";  ?></td>
+                                            <input type="hidden" name="id_jadwal" value="<?php echo $_GET['id_jadwal']; ?>">
+                                            <input type="hidden" name="id_kelas" value="<?php echo $_GET['id_kelas']; ?>">
+                                            <?php 
+                                                if(isset($_GET['tanggal'])) {
+                                                    echo'<input type="hidden" name="tanggal" value="'.$_GET['tanggal'].'">';
+                                                }
+                                            ?>
+                                            <input type="hidden" name="jam" value="<?php echo $_GET['jam']; ?>">
+                                            <td><?php echo"$rs[nisn]"; ?></td>
+                                            <td><?php echo"$rs[nama_siswa]"; ?></td>
 <?php
 if($rs['jk']=="L"){
 ?>
@@ -81,21 +66,21 @@ if($rs['jk']=="L"){
 if($conk==0){
 ?>                                            
                                             <label class="radio-inline">
-                                                <input type="radio" name="<?php echo $rs['ids'] ?>" value="A"  >A
+                                                <input type="radio" name="<?php echo $rs['ids'] ?>[]" value="A"  >A
                                             </label>
                                             <label class="radio-inline">
-                                                <input type="radio" name="<?php echo $rs['ids'] ?>" value="I">I
+                                                <input type="radio" name="<?php echo $rs['ids'] ?>[]" value="I">I
                                             </label>
                                             <label class="radio-inline">
-                                                <input type="radio" name="<?php echo $rs['ids'] ?>" value="S">S
-                                            </label>
-
-                                            <label class="radio-inline">
-                                                <input type="radio" name="<?php echo $rs['ids'] ?>" value="M" >M
+                                                <input type="radio" name="<?php echo $rs['ids'] ?>[]" value="S">S
                                             </label>
 
                                             <label class="radio-inline">
-                                                <input type="radio" name="<?php echo $rs['ids'] ?>" value="N" checked>N
+                                                <input type="radio" name="<?php echo $rs['ids'] ?>[]" value="M" >M
+                                            </label>
+
+                                            <label class="radio-inline">
+                                                <input type="radio" name="<?php echo $rs['ids'] ?>[]" value="N" checked>N
                                             </label>
 
 
@@ -105,21 +90,21 @@ if($conk==0){
 if($rsa['ket']=="A"){
 ?>                                            
                                             <label class="radio-inline">
-                                                <input type="radio" name="<?php echo $rs['ids'] ?>" value="A" checked >A
+                                                <input type="radio" name="<?php echo $rs['ids'] ?>[]" value="A" checked >A
                                             </label>
                                             <label class="radio-inline">
-                                                <input type="radio" name="<?php echo $rs['ids'] ?>" value="I">I
+                                                <input type="radio" name="<?php echo $rs['ids'] ?>[]" value="I">I
                                             </label>
                                             <label class="radio-inline">
-                                                <input type="radio" name="<?php echo $rs['ids'] ?>" value="S">S
-                                            </label>
-
-                                            <label class="radio-inline">
-                                                <input type="radio" name="<?php echo $rs['ids'] ?>" value="M" >M
+                                                <input type="radio" name="<?php echo $rs['ids'] ?>[]" value="S">S
                                             </label>
 
                                             <label class="radio-inline">
-                                                <input type="radio" name="<?php echo $rs['ids'] ?>" value="N" >N
+                                                <input type="radio" name="<?php echo $rs['ids'] ?>[]" value="M" >M
+                                            </label>
+
+                                            <label class="radio-inline">
+                                                <input type="radio" name="<?php echo $rs['ids'] ?>[]" value="N" >N
                                             </label>
 
 
@@ -128,21 +113,21 @@ if($rsa['ket']=="A"){
 if($rsa['ket']=="I"){
 ?>                                            
                                             <label class="radio-inline">
-                                                <input type="radio" name="<?php echo $rs['ids'] ?>" value="A"  >A
+                                                <input type="radio" name="<?php echo $rs['ids'] ?>[]" value="A"  >A
                                             </label>
                                             <label class="radio-inline">
-                                                <input type="radio" name="<?php echo $rs['ids'] ?>" value="I" checked>I
+                                                <input type="radio" name="<?php echo $rs['ids'] ?>[]" value="I" checked>I
                                             </label>
                                             <label class="radio-inline">
-                                                <input type="radio" name="<?php echo $rs['ids'] ?>" value="S">S
-                                            </label>
-
-                                            <label class="radio-inline">
-                                                <input type="radio" name="<?php echo $rs['ids'] ?>" value="M" >M
+                                                <input type="radio" name="<?php echo $rs['ids'] ?>[]" value="S">S
                                             </label>
 
                                             <label class="radio-inline">
-                                                <input type="radio" name="<?php echo $rs['ids'] ?>" value="N" >N
+                                                <input type="radio" name="<?php echo $rs['ids'] ?>[]" value="M" >M
+                                            </label>
+
+                                            <label class="radio-inline">
+                                                <input type="radio" name="<?php echo $rs['ids'] ?>[]" value="N" >N
                                             </label>
 
 
@@ -151,21 +136,21 @@ if($rsa['ket']=="I"){
 if($rsa['ket']=="S"){
 ?>                                            
                                             <label class="radio-inline">
-                                                <input type="radio" name="<?php echo $rs['ids'] ?>" value="A"  >A
+                                                <input type="radio" name="<?php echo $rs['ids'] ?>[]" value="A"  >A
                                             </label>
                                             <label class="radio-inline">
-                                                <input type="radio" name="<?php echo $rs['ids'] ?>" value="I" >I
+                                                <input type="radio" name="<?php echo $rs['ids'] ?>[]" value="I" >I
                                             </label>
                                             <label class="radio-inline">
-                                                <input type="radio" name="<?php echo $rs['ids'] ?>" value="S" checked>S
-                                            </label>
-
-                                            <label class="radio-inline">
-                                                <input type="radio" name="<?php echo $rs['ids'] ?>" value="M" >M
+                                                <input type="radio" name="<?php echo $rs['ids'] ?>[]" value="S" checked>S
                                             </label>
 
                                             <label class="radio-inline">
-                                                <input type="radio" name="<?php echo $rs['ids'] ?>" value="N" >N
+                                                <input type="radio" name="<?php echo $rs['ids'] ?>[]" value="M" >M
+                                            </label>
+
+                                            <label class="radio-inline">
+                                                <input type="radio" name="<?php echo $rs['ids'] ?>[]" value="N" >N
                                             </label>
 
 
@@ -174,21 +159,21 @@ if($rsa['ket']=="S"){
 if($rsa['ket']=="M"){
 ?>                                            
                                             <label class="radio-inline">
-                                                <input type="radio" name="<?php echo $rs['ids'] ?>" value="A"  >A
+                                                <input type="radio" name="<?php echo $rs['ids'] ?>[]" value="A"  >A
                                             </label>
                                             <label class="radio-inline">
-                                                <input type="radio" name="<?php echo $rs['ids'] ?>" value="I" >I
+                                                <input type="radio" name="<?php echo $rs['ids'] ?>[]" value="I" >I
                                             </label>
                                             <label class="radio-inline">
-                                                <input type="radio" name="<?php echo $rs['ids'] ?>" value="S" >S
-                                            </label>
-
-                                            <label class="radio-inline">
-                                                <input type="radio" name="<?php echo $rs['ids'] ?>" value="M" checked>M
+                                                <input type="radio" name="<?php echo $rs['ids'] ?>[]" value="S" >S
                                             </label>
 
                                             <label class="radio-inline">
-                                                <input type="radio" name="<?php echo $rs['ids'] ?>" value="N" >N
+                                                <input type="radio" name="<?php echo $rs['ids'] ?>[]" value="M" checked>M
+                                            </label>
+
+                                            <label class="radio-inline">
+                                                <input type="radio" name="<?php echo $rs['ids'] ?>[]" value="N" >N
                                             </label>
 
 
@@ -197,21 +182,21 @@ if($rsa['ket']=="M"){
 if($rsa['ket']=="N"){
 ?>                                            
                                             <label class="radio-inline">
-                                                <input type="radio" name="<?php echo $rs['ids'] ?>" value="A"  >A
+                                                <input type="radio" name="<?php echo $rs['ids'] ?>[]" value="A"  >A
                                             </label>
                                             <label class="radio-inline">
-                                                <input type="radio" name="<?php echo $rs['ids'] ?>" value="I" >I
+                                                <input type="radio" name="<?php echo $rs['ids'] ?>[]" value="I" >I
                                             </label>
                                             <label class="radio-inline">
-                                                <input type="radio" name="<?php echo $rs['ids'] ?>" value="S" >S
-                                            </label>
-
-                                            <label class="radio-inline">
-                                                <input type="radio" name="<?php echo $rs['ids'] ?>" value="M" >M
+                                                <input type="radio" name="<?php echo $rs['ids'] ?>[]" value="S" >S
                                             </label>
 
                                             <label class="radio-inline">
-                                                <input type="radio" name="<?php echo $rs['ids'] ?>" value="N" checked >N
+                                                <input type="radio" name="<?php echo $rs['ids'] ?>[]" value="M" >M
+                                            </label>
+
+                                            <label class="radio-inline">
+                                                <input type="radio" name="<?php echo $rs['ids'] ?>[]" value="N" checked >N
                                             </label>
 
 

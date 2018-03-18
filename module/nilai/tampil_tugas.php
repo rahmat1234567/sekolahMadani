@@ -1,4 +1,5 @@
-<?php
+<?php                            
+
     if(isset($_GET['aksi'])) {
         $aksi = $_GET['aksi'];
     } else {
@@ -8,6 +9,7 @@
     switch ($aksi) {
         default:
 ?>
+
             <div class="row">
                 <div class="col-lg-12">
 					<h3 class="page-header"><strong>Data nilai Tugas Siswa</strong></h3>
@@ -44,8 +46,12 @@
 $no=1;
 include 'databasenilaitugas.php';
 $db = new database();
-    $qttugas = mysql_query("SELECT * FROM `n_tugas`");
-
+    if($level==4){
+        $qttugas = mysql_query("SELECT * FROM `n_tugas` WHERE nisn='$uidi'");
+    }
+    else{
+        $qttugas = mysql_query("SELECT * FROM `n_tugas`");
+    }
     while($rs = mysql_fetch_array($qttugas))
 	{
 

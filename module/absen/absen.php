@@ -25,9 +25,9 @@ while($rg>0){
 if($_GET['jam']==$rg){
 							 ?>
 
-                             <a href="media.php?module=absen&jam=<?php echo $rg ?>&kls=<?php echo $_GET['kls'] ?>&tanggal=<?php echo $_GET['tanggal'] ?>&bulan=<?php echo $_GET['bulan'] ?>&tahun=<?php echo $_GET['tahun'] ?>" class="navbar-right text-danger">&nbsp; Jam ke <?php echo $rg ?> &nbsp;</a>
+                             <a href="media.php?module=absen&jam=<?php echo $rg; ?>&kls=<?php echo $_GET['kls']; ?>&tanggal=<?php echo $_GET['tanggal']; ?>&bulan=<?php echo $_GET['bulan']; ?>&tahun=<?php echo $_GET['tahun']; ?>" class="navbar-right text-danger">&nbsp; Jam ke <?php echo $rg; ?> &nbsp;</a>
 <?php }else{ ?>
-                             <a href="media.php?module=absen&jam=<?php echo $rg ?>&kls=<?php echo $_GET['kls'] ?>&tanggal=<?php echo $_GET['tanggal'] ?>&bulan=<?php echo $_GET['bulan'] ?>&tahun=<?php echo $_GET['tahun'] ?>" class="navbar-right">&nbsp; Jam ke <?php echo $rg ?> &nbsp;</a>
+                             <a href="media.php?module=absen&jam=<?php echo $rg; ?>&kls=<?php echo $_GET['kls']; ?>&tanggal=<?php echo $_GET['tanggal']; ?>&bulan=<?php echo $_GET['bulan']; ?>&tahun=<?php echo $_GET['tahun']; ?>" class="navbar-right">&nbsp; Jam ke <?php echo $rg; ?> &nbsp;</a>
 
 <?php } ?>
 
@@ -75,7 +75,7 @@ if($klas=="semua"){
 	$rsb=mysql_fetch_array($sqlb);
 
 ?>                                        <tr class="odd gradeX">
-                                            <td><?php echo"$rs[nis]";  ?></td>
+                                            <td><?php echo"$rs[nisn]";  ?></td>
                                             <td><?php echo"$rs[nama_siswa]";  ?></td>
 <?php
 if($rs['jk']=="L"){

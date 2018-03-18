@@ -1,4 +1,10 @@
 <?php
+if($_GET['module']=="home"){
+include "module/home.php";
+}
+if($_GET['module']=="st_siswa"){
+include "module/Statistik/st_siswa.php";
+}
 if($_GET['module']=="th_nilai"){
 include "module/nilai/th_nilai.php";
 }
@@ -102,5 +108,8 @@ include "module/nilai/tampil_tugas.php";
 }
 if($_GET['module']=="tampil_ulangan"){
 include "module/nilai/tampil_ulangan.php";
+}
+if($_GET['module']=="ekskul"){
+include "module/siswa/ekskul.php";
 }
 ?>

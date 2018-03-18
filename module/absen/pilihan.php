@@ -38,8 +38,11 @@ $db = new database();
 
 ?>                              <tr class="odd gradeX">
 									<td><?php echo $no++; ?></td>
-
-                                    <td><a href="admin.php?module=input_absen&act=input&id_kelas=<?php echo $rs['id_kls']; ?>&id_jadwal=<?php echo $rs['id_jadwal']; ?>">
+									<?php 
+										$qabsen = mysql_query("SELECT `id_abs` FROM `absensi` WHERE `id_jadwal`='$rs[id_jadwal]' ");
+										$dabsen = mysql_fetch_array($qabsen);
+									?>
+                                    <td><a href="admin.php?module=input_absen&act=input&id_kelas=<?php echo $rs['id_kls']; ?>&id_jadwal=<?php echo $rs['id_jadwal']; ?>&jam=<?php echo $dabsen['jam']; ?>&tanggal=<?php echo $dabsen['tgl']; ?>">
                                         <?php
                                             $qmapel = mysql_query("SELECT `nama_matpel` FROM `matpel` WHERE `id_matpel`='$rs[id_matpel]' ");
                                             $dmapel = mysql_fetch_array($qmapel);

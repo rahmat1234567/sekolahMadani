@@ -36,6 +36,7 @@ $mail=$_SESSION['email'];
 $tlpn=$_SESSION['telp'];
 $jkjk=$_SESSION['jk'];
 $nmsklh=$_SESSION['nama_sklh']; 
+$idsklh=$_SESSION['id_sklh']; 
 $nmkls=$_SESSION['nama_kls'];
 
 include "config/conn.php";
@@ -62,6 +63,10 @@ include "config/conn.php";
     <!-- SB Admin CSS - Include with every page -->
     <link href="assets/css/sb-admin.css" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="assets/css/jquery-gmaps-latlon-picker.css">
+    
+    <!-- Chart.js -->
+    <script src="assets/js/Chart.bundle.js"></script>
+
 
 </head>
 
@@ -329,7 +334,7 @@ echo "<span style='font-family: helvetica;'>$usre</span>";
 
 <?php if($level==4){ ?>
                         <li>
-                            <a href="#"><i class="fa fa-dashboard fa-fw"></i> Aktifitas Siswa</a>
+                            <a href="admin.php?module=ekskul"><i class="fa fa-dashboard fa-fw"></i> Aktifitas Siswa</a>
                         </li>
 <?php } ?>
 <?php if($level==4){ ?>
@@ -337,13 +342,19 @@ echo "<span style='font-family: helvetica;'>$usre</span>";
                             <a href="#"><i class="fa fa-dashboard fa-fw"></i> Data Nilai</a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="admin.php?module=tugassiswa">View Tugas</a>
+                                    <a href="admin.php?module=tampil_tugas">View Tugas</a>
                                 </li>
                                 <li>
-                                    <a href="admin.php?module=ulanganharian">View Ulangan Harian</a>
+                                    <a href="admin.php?module=tampil_ulangan">View Ulangan Harian</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
+                        </li>
+<?php } ?>
+
+<?php if($level==4){ ?>
+                        <li>
+                            <a href="admin.php?module=st_siswa"><i class="fa fa-dashboard fa-fw"></i> Statistik Siswa</a>
                         </li>
 <?php } ?>
       

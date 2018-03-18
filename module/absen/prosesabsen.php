@@ -4,7 +4,7 @@ $db = new database();
 
 $aksi = $_GET['aksi'];
 if($aksi == "tambah"){
-	$db->input($_POST['id_kls'],$_POST['tgl'],$_POST['jam'],$_POST['ket']);
+	$db->input($_POST['id_kls'],$_POST['id_jadwal'],$_POST['tgl'],$_POST['jam'],$_POST['ket']);
 	header("location:http://localhost/smsku/sekolahmadani/module/simpan.php?act=input_absen&jam=1&klas=");
 }
 elseif($aksi == "hapus"){

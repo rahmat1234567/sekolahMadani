@@ -1,5 +1,11 @@
-<?php                            
-	$sql=mysql_query("select * from siswa where nisn='$_GET[nisn]'");
+<?php
+    if($level==1){
+        $dsf=$_GET['nisn'];
+    }                      
+    else{
+        $dsf=$uidi;
+    }      
+	$sql=mysql_query("select * from siswa where nisn='$dsf'");
 	$rs=mysql_fetch_array($sql);
 ?>
           <div class="row">
