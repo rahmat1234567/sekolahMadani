@@ -31,6 +31,9 @@ include "module/siswa/detail_siswa.php";
 if($_GET['module']=="pilihan"){
 include "module/absen/pilihan.php";
 }
+if($_GET['module']=="absen_siswa"){
+include "module/absen/absen_siswa.php";
+}
 if($_GET['module']=="pilih_view"){
 include "module/absen/pilih_view.php";
 }

@@ -1,73 +1,91 @@
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-    <script type="text/javascript" src="js/jquery.js"></script>
-    <script type="text/javascript" src="js/bootstrap.js"></script> 
-    
-	<div class="row">
-		<div class="col-lg-12">
-			<h3 class="page-header"><strong>Jadwal Absensi </strong></h3>
-		</div>
-		<!-- /.col-lg-12 -->
-	</div>
-	<!-- /.row -->
-	<div class="row">
-		<div class="col-lg-12">
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					Pilih Jadwal Absensi
-				</div>
-				<!-- /.panel-heading -->
-				<div class="panel-body">
-					<div class="table-responsive">
-						<table class="table table-striped table-bordered table-hover" id="dataTables-example">
-							<thead>
-								<tr>
-									<th class="text-center">NO</th>
-									<th class="text-center">Nama Mata Pelajaran</th>
-									<th class="text-center">Kelas</th>
-								</tr>
-							</thead>
-							<tbody>
-                                                                        
-<?php
-$no=1;
-include 'databaseabsen.php';
-$db = new database();
-	$sql = mysql_query("SELECT * FROM `jadwal` WHERE `nip`='$_SESSION[id]' ");
-    while($rs=mysql_fetch_array($sql))
-	{
+<?php 
+						// fix
+						include 'databaseabsen.php';
+						date_default_timezone_set("Asia/Jakarta");
+						$check_jadwal = false;
+						$id_kelas = "";
+						$datefromdb = "";
+						$data_locked = "1";
 
-?>                              <tr class="odd gradeX">
-									<td><?php echo $no++; ?></td>
-									<?php 
-										$qabsen = mysql_query("SELECT `id_abs` FROM `absensi` WHERE `id_jadwal`='$rs[id_jadwal]' ");
-										$dabsen = mysql_fetch_array($qabsen);
-									?>
-                                    <td><a href="admin.php?module=input_absen&act=input&id_kelas=<?php echo $rs['id_kls']; ?>&id_jadwal=<?php echo $rs['id_jadwal']; ?>&jam=<?php echo $dabsen['jam']; ?>&tanggal=<?php echo $dabsen['tgl']; ?>">
-                                        <?php
-                                            $qmapel = mysql_query("SELECT `nama_matpel` FROM `matpel` WHERE `id_matpel`='$rs[id_matpel]' ");
-                                            $dmapel = mysql_fetch_array($qmapel);
-                                            echo $dmapel['nama_matpel'];
-                                        ?>
-                                    </a></td>
-                                    <td><?php 
-                                            $qkelas = mysql_query("SELECT `nama_kls` FROM `kelas` WHERE `id_kls`='$rs[id_kls]' ");
-                                            $dkelas = mysql_fetch_array($qkelas);
-                                            echo $dkelas['nama_kls']; 
-                                        ?>
-                                    </td>
-                                </tr>
-    <?php
-}
+						// tanggal sekarang
+						$currentDate = date("Y-m-d");
+
+						// jam sekarang
+						$currentTime = date("H:i:s");
+						
+						$qGuru = mysql_query("SELECT * FROM `jadwal` WHERE `nip`='$_SESSION[id]' AND `jam` BETWEEN '$currentTime' AND ADDTIME('$currentTime', '00:15:00'); ");
+						$dGuru = mysql_fetch_array($qGuru);
+
+						if($dGuru) {
+							echo ", ".$dGuru['jam'];
+
+							// data waktu dari database
+							$dbTime = $dGuru['jam'];
+							// konfigurasi setting jam update absensi pada database
+							$endTime = strtotime("+1 day +0 hour +15 minutes +0 seconds", strtotime($dbTime));
+
+							// menjadikan nilai yang sudah dikonfigurasi di atas menjadi tanggal
+							$updateTime = date('H:i:s', $endTime);
+
+							$qKelas = mysql_query("SELECT `id_kls`,`tgl` FROM `absensi` WHERE `jam` BETWEEN '$currentTime' AND ADDTIME('$currentTime', '00:15:00'); ");
+							$dataKelas = mysql_fetch_array($qKelas);
+
+								// mengambil data id kelas sekarang
+								$id_kelas = $dataKelas['id_kls'];
+
+								// mengambil data tgl sekarang
+								$datefromdb = $dataKelas['tgl'];
+							
+							// memberi nilai locked = 0 agar data bisa di update
+							mysql_query("UPDATE `absensi` SET `locked`='0' WHERE `jam` BETWEEN '$currentTime' AND ADDTIME('$currentTime', '00:15:00'); ");
+
+							// mengambil data locked
+							$qlocked = mysql_query("SELECT `locked` FROM `absensi` WHERE `jam` BETWEEN '$currentTime' AND ADDTIME('$currentTime', '00:15:00'); ");
+							$dlocked = mysql_fetch_array($qlocked);
+
+							$data_locked = $dlocked['locked'];
+
+							$check_jadwal = true;
+						} else {
+
+							echo ", current time: ".$currentTime;
+
+							$tglAbsen = $datefromdb;
+							$nDate = strtotime("$tglAbsen -0 years -0 months +7 days");
+							$newDate = date("Y-m-d", $nDate);
+
+							// mengupdate tanggal apabila tanggal absen sudah melewati sejam dari waktu absen sekarang
+							if($data_locked == "0") {
+								// memberi data locked = 1 agar data nantinya tidak terupdate lagi
+								mysql_query("UPDATE `absensi` SET `tgl`='$newDate', `locked`='1' WHERE `jam` BETWEEN '$dbTime' AND '$updateTime' AND `tgl`='$currentDate' ");
+							} else {
+								// nothing todo
+							}
+							$check_jadwal = false;
+						}
+
+						if($check_jadwal) {
+							echo'
+							  <div class="jumbotron">
+							    <h1>Jadwal absensi ada sekarang!</h1>      
+							    <p style="color: #7b7b7b;">Silahkan absen sekarang juga!.</p>
+							  </div>';
+						} else {
+							$qcheckJadwal = mysql_query("SELECT * FROM `absensi` WHERE `tgl`='$currentDate' AND `jam`>='$currentTime' ");
+							$dcheckJadwal = mysql_fetch_array($qcheckJadwal);
+
+							if($dcheckJadwal) {
+								echo'
+								  <div class="jumbotron">
+								    <h1>Tunggu sesuai waktu absensi anda!</h1>      
+								    <p style="color: #7b7b7b;">Jadwal akan tersedia nanti, silahkan datang kembali sesuai jam masuk anda!</p>
+								  </div>';
+								} else {
+									echo'
+								  <div class="jumbotron">
+								    <h1>Belum ada jadwal absensi!</h1>      
+								    <p style="color: #7b7b7b;">Silahkan datang kembali jika sesuai jadwal absen anda!.</p>
+								  </div>';
+								}
+						}
 ?>
-							</tbody>
-						</table>
-					</div>
-					<!-- /.table-responsive -->
-				</div>
-				<!-- /.panel-body -->
-			</div>
-			<!-- /.panel -->
-		</div>
-		<!-- /.col-lg-12 -->
-	</div>
-	<!-- /.row -->

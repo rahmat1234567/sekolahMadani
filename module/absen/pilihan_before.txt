@@ -1,0 +1,80 @@
+$no_absen = false;
+						$id_kelas = "";
+
+						$qjadwalGuru = mysql_query("SELECT * FROM `jadwal` WHERE `nip`='$_SESSION[id]' ");
+						while($djadwalGuru = mysql_fetch_array($qjadwalGuru)) {
+							$queryabsen = mysql_query("SELECT * FROM `absensi` WHERE `id_jadwal`='$djadwalGuru[id_jadwal]' ");
+							while($dataabsen = mysql_fetch_array($queryabsen)) {
+								// tanggal sekarang
+								$currentDate = date("Y-m-d");
+
+								// jam sekarang
+								$currentTime = date("H:i:s");
+
+								$dbTime = $dataabsen['jam'];
+								// konfigurasi setting jam update absensi pada database
+								$endTime = strtotime("+1 day +0 hour +30 minutes +0 seconds", strtotime($dbTime));
+
+								// menjadikan nilai yang sudah dikonfigurasi di atas menjadi tanggal
+								$updateTime = date('H:i:s', $endTime);
+
+								if($currentDate == $dataabsen['tgl'] && ($currentTime >= $dbTime && $currentTime <= $updateTime)) {
+									// memberi nilai locked = 0 agar data bisa di update
+									mysql_query("UPDATE `absensi` SET `locked`='0' WHERE `jam` BETWEEN '$dbTime' AND '$updateTime' AND `tgl`='$currentDate' ");
+
+									$qKelas = mysql_query("SELECT `id_kls` FROM `absensi` WHERE `jam` BETWEEN '$dbTime' AND '$updateTime' AND `tgl`='$currentDate' ");
+									while($dataKelas = mysql_fetch_array($qKelas)) {
+										$id_kelas = $dataKelas['id_kls'];
+									}
+
+									$no_absen = false;
+								} else {
+									$tglAbsen = $dataabsen['tgl'];
+									$nDate = strtotime("$tglAbsen -0 years -0 months +7 days");
+									$newDate = date("Y-m-d", $nDate);
+									// mengupdate tanggal apabila tanggal absen sudah melewati sejam dari waktu absen sekarang
+
+									if($dataabsen['locked'] == 0) {
+										// memberi data locked = 1 agar data nantinya tidak terupdate lagi
+										mysql_query("UPDATE `absensi` SET `tgl`='$newDate', `locked`='1' WHERE `jam` BETWEEN '$dbTime' AND '$updateTime' AND `tgl`='$currentDate' ");
+									} else {
+										// nothing todo
+									}
+
+									$no_absen = true;
+								}
+							}
+						}
+
+						if($no_absen) {
+							// tanggal sekarang
+							$currentDate = date("Y-m-d");
+
+							// jam sekarang
+							$currentTime = date("H:i:s");
+
+							$absen = mysql_query("SELECT * FROM `absensi` WHERE `tgl`='$currentDate' ");
+							$dabsen = mysql_fetch_array($absen);
+
+							if($dabsen) {
+								echo'
+								  <div class="jumbotron">
+								    <h1>Tunggu sesuai waktu absensi anda!</h1>      
+								    <p style="color: #7b7b7b;">Silahkan datang kembali sesuai jam masuk anda!</p>
+								  </div>';
+							} else {
+								echo'
+								  <div class="jumbotron">
+								    <h1>Tidak ada jadwal absen hari ini!</h1>      
+								    <p style="color: #7b7b7b;">Silahkan datang kembali jika sesuai jadwal absen anda!.</p>
+								  </div>';
+							}
+						} else {
+							echo'
+							  <div class="jumbotron">
+							    <h1>Jadwal absensi ada sekarang!</h1>      
+							    <p style="color: #7b7b7b;">Silahkan absen sekarang juga!.</p>
+							  </div>';
+						}
+					?>
+					<a href="admin.php?module=absen_siswa&id_kelas=<?php echo $id_kelas; ?>" class="btn btn-primary">Absen</a>
