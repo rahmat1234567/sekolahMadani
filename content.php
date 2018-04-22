@@ -28,6 +28,9 @@ if($_GET['module']=="detail_siswa"){
 include "module/siswa/detail_siswa.php";
 }
 
+if($_GET['module']=="tampil_data_absen"){
+include "module/absen/tampil_data_absen.php";
+}
 if($_GET['module']=="pilihan"){
 include "module/absen/pilihan.php";
 }

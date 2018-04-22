@@ -16,7 +16,7 @@ if (isset($_SESSION['_start'])) {
             alert('Anda terlalu lama AFK, silakan login kembali');
             window.location = '$logout_dir';
         </script>";
-    }
+    } 
 }
 
 $_SESSION['_start'] = time();
@@ -74,7 +74,7 @@ include "config/conn.php";
 
     <div id="wrapper">
 
-        <nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="margin-bottom: 0">
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="margin-bottom: 0; background: #0277BD;">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
                     <span class="sr-only">Toggle navigation</span>
@@ -82,14 +82,14 @@ include "config/conn.php";
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <center><a class="navbar-brand" href="admin.php?module=home">SEKOLAH SMART MADANI</a></center>
+                <center><a class="navbar-brand" href="admin.php?module=home" style="color: white;">SEKOLAH SMART MADANI</a></center>
             </div>
             <!-- /.navbar-header -->
 <center>
             <ul class="nav navbar-top-links navbar-right">
                
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <a class="dropdown-toggle" style="color: white;" data-toggle="dropdown" href="#">
 <?php
     $nama_hari = array("Minggu","Senin","Selasa","Rabu","Kamis","Jum'at","Sabtu");
     $hari      = date("w");
@@ -99,7 +99,7 @@ include "config/conn.php";
                    </a>
                 </li>
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="" href="logout.php">
+                    <a class="dropdown-toggle" style="color: white;" data-toggle="" href="logout.php">
                     <i class="fa fa-sign-out">
 <?php echo "Logout"; ?> 
                    </i></a>
@@ -109,14 +109,14 @@ include "config/conn.php";
 </center>
             <!-- /.navbar-top-links -->
 
-            <div class="navbar-default navbar-static-side" role="navigation">
+            <div class="navbar-default navbar-static-side" role="navigation" style="background: #daecf5;">
                 <div class="sidebar-collapse">
                     <ul class="nav" id="side-menu">
-                        <li class="nav nav-second-level" style="padding-top: 10px; padding-bottom: 10px; background-color: rgba(0,0,0,.04)"><center>
+                        <li class="nav nav-second-level" style="padding-top: 10px; padding-bottom: 10px; background-color: rgba(0,0,0,.05)"><center>
                             <a style="font-family: helvetica; text-decoration: none; padding-right: 15px;" href="#">
 <?php 
     date_default_timezone_set('Asia/Jakarta');
-    $hour = date("H");
+    $hour = date("H"); 
     $now  = "";
     if(($hour>=19 && $hour<=24) || ($hour<4 && $hour>=0)){
         $now = "Malam";

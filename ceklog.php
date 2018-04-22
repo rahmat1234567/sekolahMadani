@@ -79,6 +79,7 @@ else{
 					$_SESSION['nama']=$rsz['nama_guru'];
 					$_SESSION['alamat']=$rsz['alamat_guru'];
 					$_SESSION['status']=$rsz['status_akun'];
+					$_SESSION['absen'] = "default";
 						$kode_sklhz=$rsz['id_sklh']; 
 					$_SESSION['id_sklh']=$kode_sklhz;
 						$sqlzz=mysql_query("select nama_sklh from sekolah where id_sklh='$kode_sklhz'");

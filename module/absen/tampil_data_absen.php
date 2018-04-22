@@ -29,47 +29,44 @@
 				<div class="table-responsive">
 					<form action="module/absen/input_absen.php" method="post">
 						<input type="hidden" name="id_kelas" value="<?php echo $_GET['id_kelas']; ?>">
-						<input type="hidden" name="nip" value="<?php echo $_SESSION['id']; ?>">
 						<table class="table table-striped table-bordered table-hover" id="dataTables-example">
 							<thead>
 								<th>No</th>
-								<th>Nama</th>
+								<th>Nama Siswa</th>
+								<th>Kelas</th>
+								<th>Tanggal Absen</th>
+								<th>Waktu Absen</th>
 								<th>Keterangan</th>
 							</thead>
 							<tbody>
 								<?php 
 									include "config/conn.php";
 									$no = 1;
-									$link = "admin.php?module=pilihan";
-									$id_kls = $_GET['id_kelas'];
-									$qKelas = mysql_query("SELECT * FROM `siswa` WHERE `id_kls`='$id_kls' ");
-									while($dKelas = mysql_fetch_array($qKelas)) {
+									$qAbsensi = mysql_query("SELECT * FROM `data_absensi` WHERE `nip`='$_SESSION[id]' ");
+									while($dAbsensi = mysql_fetch_array($qAbsensi)) {
 								?>
 								<tr class="odd gradeX">
-									<td style="width: 5px;"><?php echo $no; ?></td>
-									<td><?php echo $dKelas['nama_siswa']; ?> <input type="hidden" name="nisn[]" value="<?php echo $dKelas['nisn']; ?>"></td>
-									<td>
-										<div class="radio">
-											<label><input type="radio" name="optradio_<?php echo $no; ?>" value="absen"> Absen</label>
-										</div>
-										<div class="radio">
-											<label><input type="radio" name="optradio_<?php echo $no; ?>" value="hadir"> Hadir</label>
-										</div>
-										<div class="radio">
-											<label><input type="radio" name="optradio_<?php echo $no; ?>" value="izin"> Izin</label>
-										</div>
-										<div class="radio">
-											<label><input type="radio" name="optradio_<?php echo $no; ?>" value="sakit"> Sakit</label>
-										</div>
-										<input type="hidden" name="absval[]" id="absvalue_<?php echo $no; ?>">
-									</td>
+									<td><?php echo $no; ?></td>
+									<td><?php 
+										$qSiswa = mysql_query("SELECT `nama_siswa` FROM `siswa` WHERE `nisn`='$dAbsensi[nisn]' ");
+										$dSiswa = mysql_fetch_array($qSiswa);
+
+										echo $dSiswa['nama_siswa'];
+									?></td>
+									<td><?php 
+										$qKelas = mysql_query("SELECT `nama_kls` FROM `kelas` WHERE `id_kls`='$dAbsensi[id_kls]' ");
+										$dKelas = mysql_fetch_array($qKelas);
+
+										echo $dKelas['nama_kls'];
+									 ?></td>
+									 <td><?php echo $dAbsensi['tgl']; ?></td>
+									 <td><?php echo $dAbsensi['jam']; ?></td>
+									 <td><?php echo $dAbsensi['keterangan']; ?></td>
 								</tr>
-								<?php $no++; } ?>
+								<?php $no++; } $_SESSION['absen'] = "false"; ?>
 							</tbody>
 							<input type="hidden" name="row_numb" value="<?php echo $no; ?>">
 						</table>
-						<button type="submit" class="btn btn-default">Simpan</button>
-						<a href="<?php echo $link; ?>" class="btn btn-primary">Back</a>
 					</form>
 				</div>
 			</div>
@@ -84,15 +81,5 @@
 	    <script src="assets/js/plugins/dataTables/jquery.dataTables.js"></script>
 	    <script src="assets/js/plugins/dataTables/dataTables.bootstrap.js"></script>
 
-	    <script type="text/javascript">
-	    	$(document).ready(function() {
-	    		let len = $('input:hidden[name=row_numb]').val();
-	    		for(let i = 1; i < len; i++) {
-	    			$('input:radio[name=optradio_'+ i + ']').on('change', function() {
-	    				$('#absvalue_' + i).val(this.value);
-	    			});
-	    		}
-	    	});
-	    </script>
 	</body>
 </html>

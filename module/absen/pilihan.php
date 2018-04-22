@@ -5,7 +5,6 @@
 						$check_jadwal = false;
 						$id_kelas = "";
 						$datefromdb = "";
-						$data_locked = "1";
 
 						// tanggal sekarang
 						$currentDate = date("Y-m-d");
@@ -13,7 +12,7 @@
 						// jam sekarang
 						$currentTime = date("H:i:s");
 						
-						$qGuru = mysql_query("SELECT * FROM `jadwal` WHERE `nip`='$_SESSION[id]' AND `jam` BETWEEN '$currentTime' AND ADDTIME('$currentTime', '00:15:00'); ");
+						$qGuru = mysql_query("SELECT * FROM `jadwal` WHERE `nip`='$_SESSION[id]' AND `jam` BETWEEN '$currentTime' AND ADDTIME('$currentTime', '00:15:00') AND `tgl`='$currentDate' ");
 						$dGuru = mysql_fetch_array($qGuru);
 
 						if($dGuru) {
@@ -39,37 +38,47 @@
 							// memberi nilai locked = 0 agar data bisa di update
 							mysql_query("UPDATE `absensi` SET `locked`='0' WHERE `jam` BETWEEN '$currentTime' AND ADDTIME('$currentTime', '00:15:00'); ");
 
-							// mengambil data locked
-							$qlocked = mysql_query("SELECT `locked` FROM `absensi` WHERE `jam` BETWEEN '$currentTime' AND ADDTIME('$currentTime', '00:15:00'); ");
-							$dlocked = mysql_fetch_array($qlocked);
-
-							$data_locked = $dlocked['locked'];
+							mysql_query("UPDATE `jadwal` SET `locked`='0' WHERE `jam` BETWEEN '$currentTime' AND ADDTIME('$currentTime', '00:15:00'); ");
 
 							$check_jadwal = true;
 						} else {
-
-							echo ", current time: ".$currentTime;
 
 							$tglAbsen = $datefromdb;
 							$nDate = strtotime("$tglAbsen -0 years -0 months +7 days");
 							$newDate = date("Y-m-d", $nDate);
 
+							$qchecklockedAbsen = mysql_query("SELECT `locked` FROM `absensi` WHERE `locked`='0'");
+							$dchecklockedAbsen = mysql_fetch_array($qchecklockedAbsen);
+
+							$qchecklockedJadwal = mysql_query("SELECT `locked` FROM `jadwal` WHERE `locked`='0'");
+							$dchecklockedJadwal = mysql_fetch_array($qchecklockedJadwal);
+
 							// mengupdate tanggal apabila tanggal absen sudah melewati sejam dari waktu absen sekarang
-							if($data_locked == "0") {
+							if($dchecklockedAbsen['locked'] == "0" && $dchecklockedJadwal['locked'] == "0") {
 								// memberi data locked = 1 agar data nantinya tidak terupdate lagi
-								mysql_query("UPDATE `absensi` SET `tgl`='$newDate', `locked`='1' WHERE `jam` BETWEEN '$dbTime' AND '$updateTime' AND `tgl`='$currentDate' ");
+								mysql_query("UPDATE `absensi` SET `tgl`='$newDate', `locked`='1' WHERE `locked`='0' ");
+								mysql_query("UPDATE `jadwal` SET `tgl`='$newDate', `locked`='1' WHERE `locked`='0' ");
+								$_SESSION['absen'] = "default";
 							} else {
 								// nothing todo
 							}
-							$check_jadwal = false;
 						}
+						
 
-						if($check_jadwal) {
-							echo'
-							  <div class="jumbotron">
-							    <h1>Jadwal absensi ada sekarang!</h1>      
-							    <p style="color: #7b7b7b;">Silahkan absen sekarang juga!.</p>
-							  </div>';
+						if($check_jadwal == true) {
+							if($_SESSION['absen'] == "default") {
+								echo'
+								  <div class="jumbotron">
+								    <h1>Jadwal absensi ada sekarang!</h1>      
+								    <p style="color: #7b7b7b;">Silahkan absen sekarang juga!. <a href="admin.php?module=absen_siswa&id_kelas='.$id_kelas.'" class="btn btn-primary">Absen!</a></p>
+								  </div>';
+							} else if($_SESSION['absen'] == "false") {
+								echo'
+								  <div class="jumbotron">
+								    <h1>Anda telah mengabsen!</h1>      
+								    <p style="color: #7b7b7b;">Terima kasih karena telah mengabsen!</p>
+								  </div>';
+							}
 						} else {
 							$qcheckJadwal = mysql_query("SELECT * FROM `absensi` WHERE `tgl`='$currentDate' AND `jam`>='$currentTime' ");
 							$dcheckJadwal = mysql_fetch_array($qcheckJadwal);
