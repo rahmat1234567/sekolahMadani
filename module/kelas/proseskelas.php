@@ -4,7 +4,7 @@ $db = new database();
 
 $aksi = $_GET['aksi'];
 if($aksi == "tambah"){
-	$db->input($_POST['nama_kls'],$_POST['id_wk'],$_POST['id_sklh']);
+	$db->input($_POST['id_kls'],$_POST['nama_kls'],$_POST['id_wk'],$_POST['id_sklh']);
 	header("location:http://localhost/sekolahMadani/admin.php?module=kelas&kls=semua");
 }
 elseif($aksi == "hapus"){
@@ -12,7 +12,7 @@ elseif($aksi == "hapus"){
 	header("location:http://localhost/sekolahMadani/admin.php?module=kelas&kls=semua");
 }
 elseif($aksi == "update"){
-	$db->update($_POST['nama_kls'],$_POST['id_wk'],$_POST['id_sklh']);
+	$db->update($_POST['id_kls'],$_POST['nama_kls'],$_POST['id_wk'],$_POST['id_sklh']); 
 	header("location:http://localhost/sekolahMadani/admin.php?module=kelas&kls=semua");
 }
 ?>

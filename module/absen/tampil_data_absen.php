@@ -42,6 +42,12 @@
 								<?php 
 									include "config/conn.php";
 									$no = 1;
+									// tanggal sekarang
+									$currentDate = date("Y-m-d");
+
+									// jam sekarang
+									$currentTime = date("H:i:s");
+									
 									$qAbsensi = mysql_query("SELECT * FROM `data_absensi` WHERE `nip`='$_SESSION[id]' ");
 									while($dAbsensi = mysql_fetch_array($qAbsensi)) {
 								?>
@@ -63,7 +69,25 @@
 									 <td><?php echo $dAbsensi['jam']; ?></td>
 									 <td><?php echo $dAbsensi['keterangan']; ?></td>
 								</tr>
-								<?php $no++; } $_SESSION['absen'] = "false"; ?>
+								<?php $no++; } 
+
+									$tglAbsen = $_SESSION['datefromdb'];
+									$nDate = strtotime("$tglAbsen -0 years -0 months +7 days");
+									$newDate = date("Y-m-d", $nDate);
+
+									$qchecklockedAbsen = mysql_query("SELECT `locked` FROM `absensi` WHERE `locked`='0' AND `nip`='$_SESSION[id]' AND `jam` BETWEEN '$currentTime' AND ADDTIME('$currentTime', '00:15:00') AND `tgl`='$currentDate' ");
+									$dchecklockedAbsen = mysql_fetch_array($qchecklockedAbsen);
+
+									$qchecklockedJadwal = mysql_query("SELECT `locked` FROM `jadwal` WHERE `locked`='0' AND `nip`='$_SESSION[id]' AND `jam` BETWEEN '$currentTime' AND ADDTIME('$currentTime', '00:15:00') AND `tgl`='$currentDate' ");
+									$dchecklockedJadwal = mysql_fetch_array($qchecklockedJadwal);
+
+									// mengupdate tanggal apabila tanggal absen sudah melewati sejam dari waktu absen sekarang
+									if($dchecklockedAbsen['locked'] == "0" && $dchecklockedJadwal['locked'] == "0") {
+										// memberi data locked = 1 agar data nantinya tidak terupdate lagi
+										mysql_query("UPDATE `absensi` SET `tgl`='$newDate', `locked`='1' WHERE `locked`='0' AND `nip`='$_SESSION[id]' AND `jam` BETWEEN '$currentTime' AND ADDTIME('$currentTime', '00:15:00') AND `tgl`='$currentDate' ");
+										mysql_query("UPDATE `jadwal` SET `tgl`='$newDate', `locked`='1' WHERE `locked`='0' AND `nip`='$_SESSION[id]' AND `jam` BETWEEN '$currentTime' AND ADDTIME('$currentTime', '00:15:00') AND `tgl`='$currentDate' ");
+									}
+								?>
 							</tbody>
 							<input type="hidden" name="row_numb" value="<?php echo $no; ?>">
 						</table>

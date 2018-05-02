@@ -7,7 +7,7 @@
             <div id="tugas_harian" class="tab-pane fade in active">
             <div class="row">
                 <div class="col-lg-12">
-					<h3 class="page-header"><strong>Jadwal Nilai Ulangan</strong></h3> 
+					<h3 class="page-header"><strong>Jadwal Absen Mata Pelajaran <?php echo $_GET['nama_matpel']; ?></strong></h3> 
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -16,7 +16,7 @@
                 <div class="col-lg-11">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Pilih Jadwal Nilai Ulangan
+                            Lampiran Absen
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
@@ -25,38 +25,34 @@
                                     <thead>
                                         <tr>
 											<th class="text-center">NO</th>
-                                            <th class="text-center">Nama Mata Pelajaran</th>
-                                            <th class="text-center">Kelas</th>
+                                            <th class="text-center">NISN</th>
+                                            <th class="text-center">Nama Siswa</th>
+                                            <th class="text-center">TGL</th>
+                                            <th class="text-center">Jam</th>
+                                            <th class="text-center">Keterangan</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                                                         
 <?php
 $no=1;
-include 'databasenilaiulangan.php';
+include 'databaselaporanabsen.php';
 $db = new database();
-    $sql = mysql_query("SELECT * FROM `jadwal` WHERE `nip`='$_SESSION[id]' ");
-    while($rs=mysql_fetch_array($sql))
-	{
-
-//if($level==1 and $level==2){
+    foreach($db->tampil_data() as $rs)
+    {
 
     ?>                                      <tr class="odd gradeX">
 												<td><?php echo $no++; ?></td>
-
-                                                <td><a href="admin.php?module=input_nilai&act=input&id_jadwal=<?php echo $rs['id_jadwal']; ?>&id_kelas=<?php echo $rs['id_kls']; ?>">
-                                                    <?php
-                                                        $qmapel = mysql_query("SELECT `nama_matpel` FROM `matpel` WHERE `id_matpel`='$rs[id_matpel]' ");
-                                                        $dmapel = mysql_fetch_array($qmapel);
-                                                        echo $dmapel['nama_matpel'];
-                                                    ?>
-                                                </a></td>
-                                                <td><?php 
-                                                        $qkelas = mysql_query("SELECT `nama_kls` FROM `kelas` WHERE `id_kls`='$rs[id_kls]' ");
-                                                        $dkelas = mysql_fetch_array($qkelas);
-                                                        echo $dkelas['nama_kls']; 
-                                                    ?>
-                                                </td>
+                                                <td><?php echo $rs['nisn']; ?></td>
+                                                <?php 
+                                                    $qdsiswa = mysql_query("SELECT `nama_siswa` FROM `siswa` WHERE `nisn`='$rs[nisn]' ");
+                                                    $dsiswa = mysql_fetch_array($qdsiswa);
+                                                ?>
+                                                <td><?php echo $dsiswa['nama_siswa']; ?></td>
+                                                <td><?php echo $rs['tgl']; ?></td>
+                                                <td><?php echo $rs['jam']; ?></td>
+                                                <td><?php echo $rs['keterangan']; ?></td>
+                                                
                                             </tr>
     <?php
     

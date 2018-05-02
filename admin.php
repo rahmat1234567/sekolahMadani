@@ -209,7 +209,26 @@ echo "<span style='font-family: helvetica;'>$usre</span>";
                         </li>
 <?php } ?>
 
-<?php if($level==2 or $level==3){ ?>
+<?php if($level==2 || $level==3){ ?>
+
+                          <li> 
+                            <a href="#"><i class="fa fa-dashboard fa-fw"></i> Data Jadwal<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <?php if($level==2){ ?>
+                                <li>
+                                    <a href="admin.php?module=inputjadwal&act=input">Input Data</a>
+                                </li>
+                                <?php } ?>
+                                <li>
+                                    <a href="admin.php?module=tampiljadwal">View Data</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+
+<?php } ?>
+
+<?php if($level==2){ ?>
 
                         <li>
                             <a href="#"><i class="fa fa-dashboard fa-fw"></i> Data Kelas<span class="fa arrow"></span></a>
@@ -318,7 +337,7 @@ echo "<span style='font-family: helvetica;'>$usre</span>";
 
 <?php if($level==3){ ?>
                         <li>
-                            <a href="admin.php?module=pilih_laporan"><i class="fa fa-bar-chart-o fa-fw"></i> Laporan</a>
+                            <a href="admin.php?module=lihatjadwal"><i class="fa fa-bar-chart-o fa-fw"></i> Laporan</a>
                         </li>
 <?php } ?>
 <?php if($level==3){ ?>

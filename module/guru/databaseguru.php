@@ -7,7 +7,7 @@ class database{
 	var $db="sekolahsm";
 	
 	function __construct(){
-		mysql_connect($this->host, $this->uname, $this->pass);
+		mysql_connect($this->host, $this->uname, $this->pass); 
 		mysql_select_db($this->db);
 	}
 	
@@ -19,8 +19,8 @@ class database{
 		return $hasil;
 	}
 	
-	function input($foto_guru,$nip,$nama_guru,$jk,$alamat_guru,$telp_guru,$pass_guru,$status_akun){
-		mysql_query("insert into guru values('$nip','$nama_guru','$pass_guru','$alamat_guru','$telp_guru','','','$status_akun','$jk','$foto_guru')");
+	function input($foto_guru,$nip,$nama_guru,$jk,$wk_status,$id_sklh,$alamat_guru,$telp_guru,$pass_guru,$status_akun){
+		mysql_query("insert into guru values('$nip','$nama_guru','$pass_guru','$alamat_guru','$telp_guru','$id_sklh','$wk_status','$status_akun','$jk','$foto_guru')");
 	}
 	
 	function hapus($nip){
@@ -36,7 +36,7 @@ class database{
 	}
 	
 	function update($foto_guru,$nip,$nama_guru,$jk,$alamat_guru,$telp_guru,$pass_guru,$status_akun){
-		mysql_query("update guru set foto_guru='$foto_guru',nama_guru='$nama_guru',jk='$jk',alamat_guru='$alamat_guru',telp_guru='$telp_guru',pass_guru='$pass_guru',status_akun='$status_akun' where nip='$nip'");
+		mysql_query("update guru set foto_guru='$foto_guru',nama_guru='$nama_guru',jk='$jk',alamat_guru='$alamat_guru',telp_guru='$telp_guru',pass_guru='$pass_guru',status_akun='$status_akun' where nip='$nip'"); 
 	}
 }
 ?>

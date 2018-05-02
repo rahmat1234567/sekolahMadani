@@ -1,6 +1,6 @@
             <div class="row">
                 <div class="col-lg-12">
-					<h3 class="page-header"><strong>Data Kelas</strong></h3>
+                    <h3 class="page-header"><strong>Data Kelas</strong></h3>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -10,8 +10,8 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             Data Kelas
-                        </div>
-                        <!-- /.panel-heading -->
+                        </div> 
+                        <!-- /.panel-heading --> 
                         <div class="panel-body">
                             <div class="table-responsive">
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
@@ -20,8 +20,6 @@
                                             <th class="text-center" width="13%">Kode Kelas</th>
                                             <th class="text-center">Nama Kelas</th>
                                             <th class="text-center">Nama Wali Kelas</th>
-                                            <th class="text-center">Nama Matapelajaran</th>
-                                            <th class="text-center">Jam</th>
                                             <?php if($level==2){ ?><th class="text-center">Aksi</th> <?php } ?>
 
                                         </tr>
@@ -31,22 +29,13 @@
 $no=1;
 include 'databasekelas.php';
 $db = new database();
-$sql=mysql_query("select * from kelas");
-	
-    foreach($db->tampil_data() as $rs)
-	{
-        $sqlss = mysql_query("select * from jadwal where id_kls='$rs[id_kls]'");
-        $countss = mysql_num_rows($sqlss);
-        $rsss = mysql_fetch_array($sqlss);
+$sql=mysql_query("select * from kelas where id_sklh='$_SESSION[id_sklh]' "); 
 
-
-                                                    $sqlzzz=mysql_query("select * from kelas,matpel,jadwal where jadwal.id_kls='$rs[id_kls]' and jadwal.id_matpel=matpel.id_matpel");
-                                                    $countz=mysql_num_rows($sqlzzz);
-                                                    $rszzz=mysql_fetch_array($sqlzzz);
-
-
-        if($rs['id_sklh']==$idsklh && $rsss['id_kls']!=NULL){
-?>                                        <tr class="odd gradeX">
+    while($rs = mysql_fetch_array($sql))
+    
+    {
+       
+    ?>                                   <tr class="odd gradeX">
                                             <td><?php echo"$rs[id_kls]";  ?></td>
                                             <td><?php echo"$rs[nama_kls]";  ?></td>
                                             <td>
@@ -63,27 +52,16 @@ $sql=mysql_query("select * from kelas");
                                                     }  
                                                 ?>
                                             </td>
-                                            <td>
-                                                <?php
-                                                    echo "$rszzz[nama_matpel]";
-                                                ?>
-                                            </td>
-                                            <td>
-                                                <?php
-                                                    echo "$rszzz[jam]";
-                                                ?>
-                                            </td>
                                             <?php if($level==2){ ?>
                                         <td class="text-center">
-										<a href="./././admin.php?module=input_kelas&act=edit_kelas&id_kls=<?php echo $rs['id_kls'] ?>"><button type="button" class="btn btn-info">Edit</button></a>
-										<a href="././module/kelas/proseskelas.php?aksi=hapus&id_kls=<?php echo $rs['id_kls'] ?>"><button type="button" class="btn btn-danger">Hapus</button></a>
-										</td>
+                                        <a href="./././admin.php?module=input_kelas&act=edit_kelas&id_kls=<?php echo $rs['id_kls'] ?>"><button type="button" class="btn btn-info">Edit</button></a>
+                                        <a href="././module/kelas/proseskelas.php?aksi=hapus&id_kls=<?php echo $rs['id_kls'] ?>"><button type="button" class="btn btn-danger">Hapus</button></a>
+                                        </td>
                                         <?php } ?>
 
                                         </tr>
 
 <?php
-    	}
     }
 ?>
                                     </tbody>
@@ -97,4 +75,10 @@ $sql=mysql_query("select * from kelas");
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
-            <!-- /.row -->
+            <!-- /.row --> 
+
+
+
+
+
+

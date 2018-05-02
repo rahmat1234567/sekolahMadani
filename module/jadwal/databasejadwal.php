@@ -4,10 +4,10 @@ class database{
 	var $host="localhost";
 	var $uname="root";
 	var $pass="";
-	var $db="sekolahsm";
+	var $db="sekolahsm"; 
 	
 	function __construct(){
-		mysql_connect($this->host, $this->uname, $this->pass);
+		mysql_connect($this->host, $this->uname, $this->pass);   
 		mysql_select_db($this->db);
 	}
 	
@@ -18,9 +18,17 @@ class database{
 		}
 		return $hasil;
 	}
+
+	function tampil_data1($p){
+		$data=mysql_query("select * from jadwal where nip='$p'");
+		while($d = mysql_fetch_array($data)){
+			$hasil[]=$d;
+		}
+		return $hasil;
+	}
 	
-	function input($nip,$id_matpel,$id_kls,$jam){
-		mysql_query("insert into jadwal values('','$jam','id_matpel','$nip','$id_kls')");
+	function input($nip,$id_matpel,$id_kls,$tgl,$jam){
+		mysql_query("insert into jadwal set nip='$nip', id_matpel='$id_matpel', id_kls='$id_kls', tgl='$tgl', jam='$jam', locked='1' ");
 	}
 	
 	function hapus($id_jadwal){
@@ -35,8 +43,8 @@ class database{
 		return $hasil;
 	}
 	
-	function update($nip,$id_matpel,$id_kls,$jam){
-		mysql_query("update jadwal set nip='$nip',id_matpel='$id_matpel',id_kls='$id_kls', jam='$jam' where id_jadwal='$id_jadwal'");
+	function update($nip,$id_matpel,$id_kls,$tgl,$jam){
+		mysql_query("update jadwal set nip='$nip',id_matpel='$id_matpel',id_kls='$id_kls', tgl='$tgl', jam='$jam', locked='1' where id_jadwal='$id_jadwal'");
 	}
 }
 ?>

@@ -7,7 +7,7 @@ class database{
 	var $db="sekolahsm";
 	
 	function __construct(){
-		mysql_connect($this->host, $this->uname, $this->pass);
+		mysql_connect($this->host, $this->uname, $this->pass); 
 		mysql_select_db($this->db);
 	}
 	

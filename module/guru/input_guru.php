@@ -1,30 +1,13 @@
-<?php
-if($_GET['act']=="input"){
-	?>
-          <div class="row">
-                <div class="col-lg-12">
-					<h3 class="page-header"><strong>Input Data Guru</strong></h3>
-                </div>
-                <!-- /.col-lg-12 -->
-            </div>
-            <!-- /.row -->
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            Input Data Guru
-                        </div>
-                        <div class="panel-body">
-                            <div class="row">
-								<script>
+                                <script>
                                         function preview_photo(imgg,idpreview){
                                             var gb = imgg.files;
                                             
                                             for (var i = 0; i < gb.length; i++){
                                                 var gbPreview = gb[i];
                                                 var imageType = /image.*/;
-                                                var preview=document.getElementById(idpreview);            
+                                                var preview=document.getElementById(idpreview);             
                                                 var reader = new FileReader();
+                                                var file_size = $('#file')[0].files[0].size;
                                                 
                                                 if (gbPreview.type.match(imageType)) {
 
@@ -35,22 +18,45 @@ if($_GET['act']=="input"){
                                                     }
 
                                                     preview.file = gbPreview;
-                                                    reader.onload = (function(element) { 
+                                                    reader.onload = (function(element) {  
                                                         return function(e) { 
                                                             element.src = e.target.result; 
                                                         }; 
                                                     })(preview);
                                                     reader.readAsDataURL(gbPreview);
-                                                }else{
+                                                }
+                                                else{
                                                     alert("Type file tidak sesuai. Khusus image.");
+                                                    document.getElementById("file").value = "";
+                                                    return false;
                                                 }
                                                
                                             }    
                                         }
-                                </script>
-									
+                                    </script>
+
+<?php
+if($_GET['act']=="input"){
+    ?>
+          <div class="row">
+                <div class="col-lg-12">
+                    <h3 class="page-header"><strong>Input Data Guru</strong></h3>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default"> 
+                        <div class="panel-heading">
+                            Input Data Guru
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                
+                                    
                                     <form method="post" enctype="multipart/form-data" name="formin" role="form" action="././module/guru/prosesguru.php?aksi=tambah" 
-									onSubmit="
+                                    onSubmit="
 
                                     var nohpValid = /^[0-9\-]*$/;
                                     var nohp      = formin.telp_guru.value;
@@ -94,17 +100,17 @@ if($_GET['act']=="input"){
                                         return false;
                                     }
                                     return true;
-									">
+                                    ">
 
                                 <div class="col-lg-6">
-										<div class="form-group">
+                                        <div class="form-group">
                                             <input type="hidden" name="level" value="<?php echo "$level"; ?>">
                                         </div>
-										
-										<div class="form-group" data-provides="fileupload" style="border-bottom: ">
+                                        
+                                        <div class="form-group" data-provides="fileupload" style="border-bottom: ">
                                             <label>FOTO</label>
-											<center><img id="preview" src="" alt="" height="200px" style="padding-bottom: 10px;"/></center>
-                                            <input id="file" type="file" name='foto_guru' accept="image/*" onchange="preview_photo(this,'preview');">
+                                            <center><img id="preview" src="" alt="" height="200px" style="padding-bottom: 10px;"/></center>
+                                            <input id="file" type="file" name="foto_guru" accept="image/*" onchange="preview_photo(this,'preview');">
                                         </div>
                                         <div class="form-group">
                                             <label>NIP</label>
@@ -129,20 +135,24 @@ if($_GET['act']=="input"){
                                                 </label>
                                             </div>
                                         </div>
-										
-										<?php
+                                        <div class="form-group">
+                                            <label>Status Wali Kelas</label>
+                                            <input class="form-control" placeholder="0/1" name="wk_status">
+                                        </div>
+                                        
+                                        <?php
                                             $sqlc=mysql_query("select id_sklh from sekolah where nama_sklh='$nmsklh'");
                                             $countc=mysql_num_rows($sqlc);
                                             $rsc=mysql_fetch_array($sqlc);
                                             $idsk=$rsc['id_sklh'];
                                         ?>
                                         <input type="hidden" name="id_sklh" value="<?php echo $idsk; ?>">
-										
-										
+                                        
+                                        
 </div>
 
                                 <div class="col-lg-6">
-										<div class="form-group">
+                                        <div class="form-group">
                                             <label>Alamat</label>
                                             <textarea class="form-control" placeholder="Alamat" name="alamat_guru" rows="3"></textarea>
                                         </div>
@@ -154,11 +164,11 @@ if($_GET['act']=="input"){
                                             <label>Password</label>
                                             <input class="form-control" placeholder="Password" name="pass_guru" value="" type="password" required>
                                         </div>
-										<div class="form-group">
+                                        <div class="form-group">
                                             <label>Ulangi Password</label>
                                             <input class="form-control" placeholder="Password" name="pass_guru1" type="password" required>
                                         </div>
-										<div class="form-group">
+                                        <div class="form-group">
                                             <label>Status Akun</label>
                                             <div class="onoffswitch4">
                                                 <input type="checkbox" name="status_akun" class="onoffswitch4-checkbox" id="myonoffswitch4" value="3">
@@ -190,10 +200,10 @@ if($_GET['act']=="input"){
            
            <?php
 if($_GET['act']=="edit_guru"){
-	?>
+    ?>
           <div class="row">
                 <div class="col-lg-12">
-					<h3 class="page-header"><strong>Edit Data Guru</strong></h3>
+                    <h3 class="page-header"><strong>Edit Data Guru</strong></h3>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -207,45 +217,12 @@ if($_GET['act']=="edit_guru"){
                         <div class="panel-body">
                             <div class="row">
 <?php                            
-                            	$sql=mysql_query("select * from guru where nip='$_GET[nip]'");
-								$rs=mysql_fetch_array($sql);
+                                $sql=mysql_query("select * from guru where nip='$_GET[nip]'");
+                                $rs=mysql_fetch_array($sql);
 ?>
-									<script>
-                                        function preview_photo(imgg,idpreview){
-                                            var gb = imgg.files;
-                                            
-                                            for (var i = 0; i < gb.length; i++){
-                                                var gbPreview = gb[i];
-                                                var imageType = /image.*/;
-                                                var preview=document.getElementById(idpreview);            
-                                                var reader = new FileReader();
-                                                var file_size = $('#file')[0].files[0].size;
-                                                
-                                                if (gbPreview.type.match(imageType)) {
-
-                                                    if(file_size>512000){
-                                                        alert("File maksimal berukuran 512kb");
-                                                        document.getElementById("file").value = "";
-                                                        return false;
-                                                    }
-
-                                                    preview.file = gbPreview;
-                                                    reader.onload = (function(element) { 
-                                                        return function(e) { 
-                                                            element.src = e.target.result; 
-                                                        }; 
-                                                    })(preview);
-                                                    reader.readAsDataURL(gbPreview);
-                                                }
-                                                else{
-                                                    alert("Type file tidak sesuai. Khusus image.");
-                                                }
-                                               
-                                            }    
-                                        }
-                                    </script>
-                                    <form method="post" name="formin" enctype="multipart/form-data" role="form" action="././module/guru/prosesguru.php?aksi=update
-									onSubmit="
+                                
+                                    <form method="post" name="formin" enctype="multipart/form-data" role="form" action="././module/guru/prosesguru.php?aksi=update"
+                                    onSubmit="
 
                                     var nohpValid = /^[0-9\-]*$/;
                                     var nohp      = formin.telp_ortu.value;
@@ -299,12 +276,12 @@ if($_GET['act']=="edit_guru"){
                                         return false;
                                     }
                                     return true;
-									">
-							
+                                    ">
+                            
                                 <div class="col-lg-6">
-									<input type="hidden" name="level" value="<?php echo "$level"; ?>">
-										
-										<div class="form-group" data-provides="fileupload" style="border-bottom: " >
+                                    <input type="hidden" name="level" value="<?php echo "$level"; ?>">
+                                        
+                                        <div class="form-group" data-provides="fileupload" style="border-bottom: " >
                                             <label>Foto</label>
 
                                             <center><img class="gambar" src="assets/img/<?php echo $rs['foto_guru']; ?>" alt="" height="200px" style="padding-bottom: 10px;" /></center>
@@ -314,7 +291,7 @@ if($_GET['act']=="edit_guru"){
 
                                         <input type="hidden" name="foto_lama" value="<?php $rs[foto_guru] ?>">
                                         
-										<div class="form-group">
+                                        <div class="form-group">
                                             <label>NIP</label>
                                             <input class="form-control" placeholder="NIP" name="nip" value="<?php echo "$rs[nip]"; ?>" >
                                         </div>
@@ -361,11 +338,11 @@ if($_GET['act']=="edit_guru"){
                                 <div class="col-lg-6">
 
                                         <div class="form-group">
-											<?php $almt=$rs["alamat_guru"]; ?>
+                                            <?php $almt=$rs["alamat_guru"]; ?>
                                             <label>Alamat</label>
                                             <textarea class="form-control" placeholder="Alamat" name="alamat_guru" rows="3"><?php echo "$rs[alamat_guru]"; ?></textarea>
                                         </div>
-										<div class="form-group">
+                                        <div class="form-group">
                                             <label>No Telepon</label>
                                             <input type="text" class="form-control" placeholder="No Telp" name="telp_guru" value="<?php echo "$rs[telp_guru]"; ?>" required>
                                         </div>
@@ -394,8 +371,8 @@ if($_GET['act']=="edit_guru"){
                                                     <span class="onoffswitch4-inner"></span>
                                                     <span class="onoffswitch4-switch"></span>
                                                 </label>
-											</div>
-										</div>
+                                            </div>
+                                        </div>
 
                                         <button type="submit" class="btn btn-success">Edit Data</button>
                                 </div>

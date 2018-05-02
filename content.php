@@ -2,6 +2,12 @@
 if($_GET['module']=="home"){
 include "module/home.php";
 }
+if($_GET['module']=="tampiljadwal"){
+include "module/jadwal/tampiljadwal.php";
+}
+if($_GET['module']=="inputjadwal"){
+include "module/jadwal/inputjadwal.php";
+}
 if($_GET['module']=="st_siswa"){
 include "module/Statistik/st_siswa.php";
 }
@@ -117,5 +123,11 @@ include "module/nilai/tampil_ulangan.php";
 }
 if($_GET['module']=="ekskul"){
 include "module/siswa/ekskul.php";
+}
+if($_GET['module']=="lihatjadwal"){
+include "module/laporan/lihatjadwal.php";
+}
+if($_GET['module']=="lampiranabsen"){
+include "module/laporan/lampiranabsen.php";
 }
 ?>

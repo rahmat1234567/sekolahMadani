@@ -13,14 +13,14 @@ class database{
 	
 	function tampil_data(){
 		$data=mysql_query("select * from kelas");
-		while($d = mysql_fetch_array($data)){
+		while($d = mysql_fetch_array($data)){ 
 			$hasil[]=$d;
 		}
 		return $hasil;
 	}
 	
-	function input($nama_kls,$id_wk,$id_sklh){
-		mysql_query("insert into kelas values('','$nama_kls','$id_wk','$id_sklh')");
+	function input($id_kls,$nama_kls,$id_wk,$id_sklh){
+		mysql_query("insert into kelas values('$id_kls','$nama_kls','$id_wk','$id_sklh')");
 	}
 	
 	function hapus($id_kls){
@@ -35,7 +35,7 @@ class database{
 		return $hasil;
 	}
 	
-	function update($nama_kls,$id_wk,$id_sklh){
+	function update($id_kls,$nama_kls,$id_wk,$id_sklh){
 		mysql_query("update kelas set nama_kls='$nama_kls', id_wk='$id_wk', id_sklh='$id_sklh' where id_kls='$id_kls'");
 	}
 }
